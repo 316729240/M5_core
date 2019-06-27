@@ -1,0 +1,10 @@
+D:\myproject\M51_Razor\Common\Helper\bin\Debug\Helper.dll
+D:\myproject\M51_Razor\Common\Helper\bin\Debug\Helper.pdb
+D:\myproject\M51_Razor\Common\Helper\obj\Debug\Helper.dll
+D:\myproject\M51_Razor\Common\Helper\obj\Debug\Helper.pdb
+D:\myproject\M51_Razor\Common\Helper\obj\Debug\Helper.csprojResolveAssemblyReference.cache
+F:\web\my\M51_Razor\Common\Helper\bin\Debug\Helper.dll
+F:\web\my\M51_Razor\Common\Helper\bin\Debug\Helper.pdb
+F:\web\my\M51_Razor\Common\Helper\obj\Debug\Helper.dll
+F:\web\my\M51_Razor\Common\Helper\obj\Debug\Helper.pdb
+F:\web\my\M51_Razor\Common\Helper\obj\Debug\Helper.csprojResolveAssemblyReference.cache

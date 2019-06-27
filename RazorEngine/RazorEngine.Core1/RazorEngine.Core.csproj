@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4B6DDE24-50A4-4545-BABC-32F0A5FE9BAF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RazorEngine.Core</RootNamespace>
+    <AssemblyName>RazorEngine.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Compilation\CompilerServiceBase.cs" />
+    <Compile Include="Compilation\CompilerServiceBuilder.cs" />
+    <Compile Include="Compilation\CompilerServicesUtility.cs" />
+    <Compile Include="Compilation\CSharp\CSharpCodeParser.cs" />
+    <Compile Include="Compilation\CSharp\CSharpDirectCompilerService.cs" />
+    <Compile Include="Compilation\CSharp\CSharpRazorCodeGenerator.cs" />
+    <Compile Include="Compilation\CSharp\CSharpRazorCodeLanguage.cs" />
+    <Compile Include="Compilation\DefaultCompilerServiceFactory.cs" />
+    <Compile Include="Compilation\DirectCompilerServiceBase.cs" />
+    <Compile Include="Compilation\HasDynamicModelAttribute.cs" />
+    <Compile Include="Compilation\ICompilerService.cs" />
+    <Compile Include="Compilation\ICompilerServiceFactory.cs" />
+    <Compile Include="Compilation\Inspectors\ICodeInspector.cs" />
+    <Compile Include="Compilation\RazorDynamicObject.cs" />
+    <Compile Include="Compilation\RazorEngineHost.cs" />
+    <Compile Include="Compilation\TypeContext.cs" />
+    <Compile Include="Compilation\VisualBasic\VBCodeParser.cs" />
+    <Compile Include="Compilation\VisualBasic\VBDirectCompilerService.cs" />
+    <Compile Include="Compilation\VisualBasic\VBRazorCodeGenerator.cs" />
+    <Compile Include="Compilation\VisualBasic\VBRazorCodeLanguage.cs" />
+    <Compile Include="Configuration\Fluent\FluentConfigurationBuilder.cs" />
+    <Compile Include="Configuration\Fluent\FluentTemplateServiceConfiguration.cs" />
+    <Compile Include="Configuration\Fluent\IConfigurationBuilder.cs" />
+    <Compile Include="Configuration\ITemplateServiceConfiguration.cs" />
+    <Compile Include="Configuration\RazorEngineConfigurationSection.cs" />
+    <Compile Include="Configuration\TemplateServiceConfiguration.cs" />
+    <Compile Include="Encoding.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Language.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Razor.cs" />
+    <Compile Include="Spans\ModelSpan.cs" />
+    <Compile Include="Templating\CachedTemplateItem.cs" />
+    <Compile Include="Templating\DefaultActivator.cs" />
+    <Compile Include="Templating\DefaultAppDomainFactory.cs" />
+    <Compile Include="Templating\DelegateActivator.cs" />
+    <Compile Include="Templating\DelegateAppDomainFactory.cs" />
+    <Compile Include="Templating\DelegateTemplateResolver.cs" />
+    <Compile Include="Templating\DynamicViewBag.cs" />
+    <Compile Include="Templating\ExecuteContext.cs" />
+    <Compile Include="Templating\IActivator.cs" />
+    <Compile Include="Templating\IAppDomainFactory.cs" />
+    <Compile Include="Templating\InstanceContext.cs" />
+    <Compile Include="Templating\IsolatedTemplateService.cs" />
+    <Compile Include="Templating\ITemplate.cs" />
+    <Compile Include="Templating\ITemplateOfT.cs" />
+    <Compile Include="Templating\ITemplateResolver.cs" />
+    <Compile Include="Templating\ITemplateService.cs" />
+    <Compile Include="Templating\Parallel\DefaultParallelQueryPlan.cs" />
+    <Compile Include="Templating\Parallel\IParallelQueryPlan.cs" />
+    <Compile Include="Templating\RequireNamespacesAttribute.cs" />
+    <Compile Include="Templating\TemplateBase.cs" />
+    <Compile Include="Templating\TemplateBaseOfT.cs" />
+    <Compile Include="Templating\TemplateCompilationException.cs" />
+    <Compile Include="Templating\TemplateParsingException.cs" />
+    <Compile Include="Templating\TemplateService.cs" />
+    <Compile Include="Templating\TemplateServiceFactory.cs" />
+    <Compile Include="Templating\TemplateWriter.cs" />
+    <Compile Include="Templating\TypeLoader.cs" />
+    <Compile Include="Text\HtmlEncodedString.cs" />
+    <Compile Include="Text\HtmlEncodedStringFactory.cs" />
+    <Compile Include="Text\IEncodedString.cs" />
+    <Compile Include="Text\IEncodedStringFactory.cs" />
+    <Compile Include="Text\RawString.cs" />
+    <Compile Include="Text\RawStringFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\System.Web.Razor\System.Web.Razor.csproj">
+      <Project>{881f3fd2-0341-415c-8312-991513d20d3b}</Project>
+      <Name>System.Web.Razor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="bin\Release\" />
+    <Folder Include="Configuration\Xml\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

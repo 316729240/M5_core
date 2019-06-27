@@ -1,0 +1,6 @@
+F:\web\my\M5_Core\M5\Helper\bin\Debug\MWMS.Helper.dll
+F:\web\my\M5_Core\M5\Helper\bin\Debug\MWMS.Helper.pdb
+F:\web\my\M5_Core\M5\Helper\obj\Debug\MWMS.Helper.csprojResolveAssemblyReference.cache
+F:\web\my\M5_Core\M5\Helper\obj\Debug\MWMS.Helper.csproj.CoreCompileInputs.cache
+F:\web\my\M5_Core\M5\Helper\obj\Debug\MWMS.Helper.dll
+F:\web\my\M5_Core\M5\Helper\obj\Debug\MWMS.Helper.pdb

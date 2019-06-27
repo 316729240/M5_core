@@ -1,0 +1,9 @@
+F:\web\my\M5_Core\M5\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.csproj.CoreCompileInputs.cache
+F:\web\my\M5_Core\M5\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.AssemblyInfoInputs.cache
+F:\web\my\M5_Core\M5\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.AssemblyInfo.cs
+F:\web\my\M5_Core\M5\MWMS.Helper\bin\Debug\netcoreapp2.0\MWMS.Helper.deps.json
+F:\web\my\M5_Core\M5\MWMS.Helper\bin\Debug\netcoreapp2.0\MWMS.Helper.dll
+F:\web\my\M5_Core\M5\MWMS.Helper\bin\Debug\netcoreapp2.0\MWMS.Helper.pdb
+F:\web\my\M5_Core\M5\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.dll
+F:\web\my\M5_Core\M5\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.pdb
+F:\web\my\M5_Core\M5\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.csprojResolveAssemblyReference.cache

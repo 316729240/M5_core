@@ -1,0 +1,8 @@
+F:\web\my\M45_Razor\RazorEngine\System.Web.Razor\bin\Release\System.Web.Razor.Net4.0.dll
+F:\web\my\M45_Razor\RazorEngine\System.Web.Razor\bin\Release\System.Web.Razor.Net4.0.pdb
+F:\web\my\M45_Razor\RazorEngine\System.Web.Razor\obj\Release\System.Web.Razor.csprojResolveAssemblyReference.cache
+F:\web\my\M45_Razor\RazorEngine\System.Web.Razor\obj\Release\Microsoft.Internal.Web.Utils.CommonResources.resources
+F:\web\my\M45_Razor\RazorEngine\System.Web.Razor\obj\Release\System.Web.Razor.Resources.RazorResources.resources
+F:\web\my\M45_Razor\RazorEngine\System.Web.Razor\obj\Release\System.Web.Razor.csproj.GenerateResource.Cache
+F:\web\my\M45_Razor\RazorEngine\System.Web.Razor\obj\Release\System.Web.Razor.Net4.0.dll
+F:\web\my\M45_Razor\RazorEngine\System.Web.Razor\obj\Release\System.Web.Razor.Net4.0.pdb
