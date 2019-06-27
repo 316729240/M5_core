@@ -55,14 +55,35 @@
             var syntaxTree = CSharpSyntaxTree.ParseText(originalText);
             // 指定编译选项。
             var assemblyName = $"{originalClassName}.g";
-            var compilation = CSharpCompilation.Create(assemblyName, new[] { syntaxTree },
-                    options: new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary))
-                .AddReferences(
-                    // 这算是偷懒了吗？我把 .NET Core 运行时用到的那些引用都加入到引用了。
-                    // 加入引用是必要的，不然连 object 类型都是没有的，肯定编译不通过。
-                    AppDomain.CurrentDomain.GetAssemblies().Select(x => MetadataReference.CreateFromFile(x.Location))
-                    );
+            try
+            {
+                var assemblies = CompilerServicesUtility
+                    .GetLoadedAssemblies()
+                    .Where(a => !a.IsDynamic)
+                    .Select(a => a.Location);
 
+                var includeAssemblies = (IncludeAssemblies() ?? Enumerable.Empty<string>());
+                assemblies = assemblies.Concat(includeAssemblies)
+                    .Select(a => a.ToUpperInvariant())
+                    .Where(a => !string.IsNullOrWhiteSpace(a))
+                    .Distinct();
+                int c=assemblies.Count();
+                MetadataReference[] list = new MetadataReference[c];
+                int i = 0;
+                foreach (string item in assemblies)
+                {
+                    list[i]=(MetadataReference.CreateFromFile(item));
+                    i++;
+                }
+
+                var compilation = CSharpCompilation.Create(assemblyName, new[] { syntaxTree },
+                        options: new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary))
+                    .AddReferences(
+                        // 这算是偷懒了吗？我把 .NET Core 运行时用到的那些引用都加入到引用了。
+                        // 加入引用是必要的，不然连 object 类型都是没有的，肯定编译不通过。
+                        //AppDomain.CurrentDomain.GetAssemblies().Select(x => MetadataReference.CreateFromFile(x.Location))
+                        list
+                );
             // 编译到内存流中。
             using (var ms = new MemoryStream())
             {
@@ -75,6 +96,12 @@
                     return assembly.GetTypes().First(x => x.Name == originalClassName);
                 }
                 //throw new CompilingException(result.Diagnostics);
+            }
+
+            }
+            catch (Exception e)
+            {
+
             }
             return null;
         }

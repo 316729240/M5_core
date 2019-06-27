@@ -27,13 +27,13 @@ namespace M5
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
 
-            TemplateServiceConfiguration templateConfig = new TemplateServiceConfiguration
+           /* TemplateServiceConfiguration templateConfig = new TemplateServiceConfiguration
             {
                 CatchPath = Tools.Mappath("assembly/")
             };
             Razor.SetTemplateService(new TemplateService(templateConfig));
             RazorEngine.Razor.Compile("kkkkkk@{Raw((3+4).ToString());}ffff", typeof(object[]), "test", true);
-            string html = RazorEngine.Razor.Run("test", new object[] { "", "" });
+            string html = RazorEngine.Razor.Run("test", new object[] { "", "" });*/
            // return;
             if (env.IsDevelopment())
             {
