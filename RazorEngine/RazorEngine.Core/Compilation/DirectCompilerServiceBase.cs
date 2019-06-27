@@ -60,7 +60,8 @@
                 .AddReferences(
                     // 这算是偷懒了吗？我把 .NET Core 运行时用到的那些引用都加入到引用了。
                     // 加入引用是必要的，不然连 object 类型都是没有的，肯定编译不通过。
-                    AppDomain.CurrentDomain.GetAssemblies().Select(x => MetadataReference.CreateFromFile(x.Location)));
+                    AppDomain.CurrentDomain.GetAssemblies().Select(x => MetadataReference.CreateFromFile(x.Location))
+                    );
 
             // 编译到内存流中。
             using (var ms = new MemoryStream())

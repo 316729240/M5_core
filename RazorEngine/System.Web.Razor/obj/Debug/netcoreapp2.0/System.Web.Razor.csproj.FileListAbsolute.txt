@@ -10,3 +10,15 @@ F:\web\my\M5_Core\M5\RazorEngine\System.Web.Razor\bin\Debug\netcoreapp2.0\System
 F:\web\my\M5_Core\M5\RazorEngine\System.Web.Razor\obj\Debug\netcoreapp2.0\System.Web.Razor.dll
 F:\web\my\M5_Core\M5\RazorEngine\System.Web.Razor\obj\Debug\netcoreapp2.0\System.Web.Razor.pdb
 F:\web\my\M5_Core\M5\RazorEngine\System.Web.Razor\obj\Debug\netcoreapp2.0\System.Web.Razor.csprojResolveAssemblyReference.cache
+C:\web\core\M5_core\RazorEngine\System.Web.Razor\bin\Debug\netcoreapp2.0\System.Web.Razor.deps.json
+C:\web\core\M5_core\RazorEngine\System.Web.Razor\bin\Debug\netcoreapp2.0\System.Web.Razor.dll
+C:\web\core\M5_core\RazorEngine\System.Web.Razor\bin\Debug\netcoreapp2.0\System.Web.Razor.pdb
+C:\web\core\M5_core\RazorEngine\System.Web.Razor\obj\Debug\netcoreapp2.0\System.Web.Razor.csprojResolveAssemblyReference.cache
+C:\web\core\M5_core\RazorEngine\System.Web.Razor\obj\Debug\netcoreapp2.0\System.Web.Razor.Common.CommonResources.resources
+C:\web\core\M5_core\RazorEngine\System.Web.Razor\obj\Debug\netcoreapp2.0\System.Web.Razor.Resources.RazorResources.resources
+C:\web\core\M5_core\RazorEngine\System.Web.Razor\obj\Debug\netcoreapp2.0\System.Web.Razor.csproj.GenerateResource.Cache
+C:\web\core\M5_core\RazorEngine\System.Web.Razor\obj\Debug\netcoreapp2.0\System.Web.Razor.csproj.CoreCompileInputs.cache
+C:\web\core\M5_core\RazorEngine\System.Web.Razor\obj\Debug\netcoreapp2.0\System.Web.Razor.AssemblyInfoInputs.cache
+C:\web\core\M5_core\RazorEngine\System.Web.Razor\obj\Debug\netcoreapp2.0\System.Web.Razor.AssemblyInfo.cs
+C:\web\core\M5_core\RazorEngine\System.Web.Razor\obj\Debug\netcoreapp2.0\System.Web.Razor.dll
+C:\web\core\M5_core\RazorEngine\System.Web.Razor\obj\Debug\netcoreapp2.0\System.Web.Razor.pdb

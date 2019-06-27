@@ -32,9 +32,9 @@ namespace M5
                 CatchPath = Tools.Mappath("assembly/")
             };
             Razor.SetTemplateService(new TemplateService(templateConfig));
-            RazorEngine.Razor.Compile("kkkkkk@{3+4}", typeof(object[]), "test", true);
+            RazorEngine.Razor.Compile("kkkkkk@{Raw((3+4).ToString());}ffff", typeof(object[]), "test", true);
             string html = RazorEngine.Razor.Run("test", new object[] { "", "" });
-            return;
+           // return;
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
