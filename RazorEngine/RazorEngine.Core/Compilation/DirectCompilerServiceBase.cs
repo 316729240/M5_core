@@ -2,7 +2,6 @@
 {
     using Microsoft.CodeAnalysis;
     using Microsoft.CodeAnalysis.CSharp;
-    using MWMS.DataExtensions;
     using System;
     using System.CodeDom.Compiler;
     using System.Diagnostics.Contracts;
@@ -11,12 +10,12 @@
     using System.Linq;
     using System.Reflection;
     using System.Security;
+    using System.Security.Cryptography;
     using System.Text;
     using System.Web.Razor;
     using System.Web.Razor.Parser;
-
     using Templating;
-
+    using RazorEngine.Core;
     /// <summary>
     /// Provides a base implementation of a direct compiler service.
     /// </summary>
@@ -107,7 +106,7 @@
         }
         public override Type GetCompileType(TypeContext context, string name)
         {
-            var key = name.MD5();
+            var key = Common.StrToMD5(name);
             string className = "C" + key;
             var assemblyPath = CatchPath + className + ".dll";
             if (_disposed)
@@ -160,7 +159,7 @@
         [Pure]
         private Tuple<CompilerResults, string> Compile(TypeContext context,string name )
         {
-            var key =name.MD5();
+            var key = Common.StrToMD5(name);
             string className = "C" + key;
             var assemblyPath =  CatchPath + className + ".dll";
             if (_disposed)

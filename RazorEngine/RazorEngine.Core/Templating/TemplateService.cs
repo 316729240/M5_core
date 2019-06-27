@@ -15,7 +15,7 @@
     using System.Runtime.Serialization;
     using System.Runtime.Serialization.Formatters.Binary;
     using System.IO;
-    using MWMS.DataExtensions;
+    using RazorEngine.Core;
 
     /// <summary>
     /// Defines a template service.
@@ -318,7 +318,7 @@
         public virtual Type CreateTemplateType(string razorTemplate, Type modelType,string name,bool flag)
         {
 
-            var key = name.MD5();
+            var key = Common.StrToMD5(name);
             string className = "C" + key;
             var assemblyPath =_config.CatchPath + className + ".dll";
             //if (File.Exists(assemblyPath) && !flag)

@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MWMS.DataExtensions\MWMS.DataExtensions.csproj" />
     <ProjectReference Include="..\System.Web.Razor\System.Web.Razor.csproj" />
   </ItemGroup>
 

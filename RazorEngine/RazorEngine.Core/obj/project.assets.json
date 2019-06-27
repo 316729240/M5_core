@@ -339,18 +339,6 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "NETCore.Encrypt/2.0.7": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
-        },
-        "compile": {
-          "lib/netstandard2.0/NETCore.Encrypt.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/NETCore.Encrypt.dll": {}
-        }
-      },
       "NETStandard.Library/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -364,15 +352,6 @@
         },
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
-        }
-      },
-      "Newtonsoft.Json/11.0.2": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -1654,19 +1633,6 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "MWMS.DataExtensions/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v2.0",
-        "dependencies": {
-          "NETCore.Encrypt": "2.0.7"
-        },
-        "compile": {
-          "bin/placeholder/MWMS.DataExtensions.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/MWMS.DataExtensions.dll": {}
-        }
-      },
       "System.Web.Razor/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
@@ -2094,16 +2060,6 @@
         "runtime.json"
       ]
     },
-    "NETCore.Encrypt/2.0.7": {
-      "sha512": "BlrVEoLCYERdXYMBCd12cNDpxztSdGBoqq8qKgrqa0ZQKMrdyxdtYavPekz7aDhbPLdEKY70osoo2hq6Cwc8eg==",
-      "type": "package",
-      "path": "netcore.encrypt/2.0.7",
-      "files": [
-        "lib/netstandard2.0/NETCore.Encrypt.dll",
-        "netcore.encrypt.2.0.7.nupkg.sha512",
-        "netcore.encrypt.nuspec"
-      ]
-    },
     "NETStandard.Library/2.0.0": {
       "sha512": "7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
       "type": "package",
@@ -2230,35 +2186,6 @@
         "lib/netstandard1.0/_._",
         "netstandard.library.2.0.0.nupkg.sha512",
         "netstandard.library.nuspec"
-      ]
-    },
-    "Newtonsoft.Json/11.0.2": {
-      "sha512": "znZGbws7E4BA9jxNZ7FuiIRI3C9hrgatVQSTKhIYZYNOud4M5VfGlTYi6RdYO5sQrebFuF/g9UEV3hOxDMXF6Q==",
-      "type": "package",
-      "path": "newtonsoft.json/11.0.2",
-      "files": [
-        ".signature.p7s",
-        "LICENSE.md",
-        "lib/net20/Newtonsoft.Json.dll",
-        "lib/net20/Newtonsoft.Json.xml",
-        "lib/net35/Newtonsoft.Json.dll",
-        "lib/net35/Newtonsoft.Json.xml",
-        "lib/net40/Newtonsoft.Json.dll",
-        "lib/net40/Newtonsoft.Json.xml",
-        "lib/net45/Newtonsoft.Json.dll",
-        "lib/net45/Newtonsoft.Json.xml",
-        "lib/netstandard1.0/Newtonsoft.Json.dll",
-        "lib/netstandard1.0/Newtonsoft.Json.xml",
-        "lib/netstandard1.3/Newtonsoft.Json.dll",
-        "lib/netstandard1.3/Newtonsoft.Json.xml",
-        "lib/netstandard2.0/Newtonsoft.Json.dll",
-        "lib/netstandard2.0/Newtonsoft.Json.xml",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.11.0.2.nupkg.sha512",
-        "newtonsoft.json.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -2520,7 +2447,7 @@
       ]
     },
     "System.CodeDom/4.5.0": {
-      "sha512": "qonz9SplbbuApSnBWiWoK7Rfq9q1noTRm3LiWPxyLMWLtcTel2VSK6eWslNdiJODb8J4ghlqFfuHlwLtXCy7IQ==",
+      "sha512": "WvCzCcwGSQo4fMMelnsQxLhcPr0VoGZHk26hAhiLE+5EqCmOL9LmHL9DC0jno+BpEc1Txl0Owf6kUfZ9eB7LpQ==",
       "type": "package",
       "path": "system.codedom/4.5.0",
       "files": [
@@ -2694,7 +2621,7 @@
       ]
     },
     "System.Configuration.ConfigurationManager/4.5.0": {
-      "sha512": "+2SYYKwbN0n+9SrBanflZdaVleFkytEfTNzOu+f3SK0vROMMrorpw1UJyHJQ1ZooughRxPmLj8Fh5N2tSe7sdA==",
+      "sha512": "NIY8VUJuSNeXPrV5wjQBKKMcd/vctzEGzQuY15zt3/j7Vd4PXfk/QVIOBlqU1/ONRRUu0dsdk5uUTLSSNY+now==",
       "type": "package",
       "path": "system.configuration.configurationmanager/4.5.0",
       "files": [
@@ -3581,7 +3508,7 @@
       ]
     },
     "System.Memory/4.5.0": {
-      "sha512": "ULODiqdq81e9YfQS/GL4P5zgek90jyPykAV4t1Sp4sjID3/Ebi18lbvOKm+81biHR5a5FdFRXSU/JVc6nxr/7A==",
+      "sha512": "P56/L4B9vhz0YFTC4qIXFgx+VgMhg3JhCm5/EASihTotyjwmBt2QEAQdmd2tNctYET/w0CRJzVH1cwxgbKGnDQ==",
       "type": "package",
       "path": "system.memory/4.5.0",
       "files": [
@@ -4213,7 +4140,7 @@
       ]
     },
     "System.Runtime.CompilerServices.Unsafe/4.5.0": {
-      "sha512": "+XuFKlQaEBZXzJLGYXK2RWSif4doDGol46fJHHt1wwWQoHQHr0iwlmF76U2LlssIp3ZPJgCVVueY620y6JEhqw==",
+      "sha512": "6zBxkHYemB0kQiHP3vGXGRXejZVoNVuMn2paUuqKKi5Wyjkxfkp+D0rd0c3VrGwotidRINt6KpOi2smL4VkJKw==",
       "type": "package",
       "path": "system.runtime.compilerservices.unsafe/4.5.0",
       "files": [
@@ -4500,7 +4427,7 @@
       ]
     },
     "System.Security.AccessControl/4.5.0": {
-      "sha512": "6RQtcT+TyDgLUFsAnmmdfRRGdLYKxSZGkSPOd052tvYFxOTMaQb6ANlwhGqZtNO52PosaCoXu7uatFneujAxmA==",
+      "sha512": "aVjTe36YkO8FzfNhMLoPEzv3gF9rphoW9ngFhG/MH4zzEPLx07sNrgCLwMP4Wx2leI6qarMrGv21OwQXYUKLmw==",
       "type": "package",
       "path": "system.security.accesscontrol/4.5.0",
       "files": [
@@ -4716,7 +4643,7 @@
       ]
     },
     "System.Security.Cryptography.ProtectedData/4.5.0": {
-      "sha512": "s/MFK8BvgtejZj5a8qAPDXEGBtWkpFX98qwQP/wqVa9CgIC7LrKHxDFdlN5x6afGAb0ZVBVGIZlCdBLnO2QjZw==",
+      "sha512": "wZGwRoLGTuEQBOYXlZmEK41OfmO+vYWbLk7q5ePoFqs6vOKP2kUsOeviEjQoR6MbW9udlDjx9iWhcWOTzSj05w==",
       "type": "package",
       "path": "system.security.cryptography.protecteddata/4.5.0",
       "files": [
@@ -4810,7 +4737,7 @@
       ]
     },
     "System.Security.Permissions/4.5.0": {
-      "sha512": "O+e9qamSTJ4YOJCpnLgsf9FTGfsxJv2On1OdYkhmd/XA5AYRvUatkz7Rp3dS9XR7rhVuklnjST1dRoMK7N4cGw==",
+      "sha512": "vDQ7q30Soe0a1cPhvxn+7IFmMeTG5IP+hTQrnKQDjTNpD2epqwbZSzMM2Git5TXBr4Kwwhc/0SEtJY0qPoiegA==",
       "type": "package",
       "path": "system.security.permissions/4.5.0",
       "files": [
@@ -4830,7 +4757,7 @@
       ]
     },
     "System.Security.Principal.Windows/4.5.0": {
-      "sha512": "aEFuhlWINOa6KnKeFqQNzmtOeyCCyIJY4CS5DI9keDNXgVzqVsK46axp8Rpkx46S+QlNTqGgdx/O/mzrC1GA5A==",
+      "sha512": "WA9ETb/pY3BjnxKjBUHEgO59B7d/nnmjHFsqjJ2eDT780nD769CT1/bw2ia0Z6W7NqlcqokE6sKGKa6uw88XGA==",
       "type": "package",
       "path": "system.security.principal.windows/4.5.0",
       "files": [
@@ -5629,11 +5556,6 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
-    "MWMS.DataExtensions/1.0.0": {
-      "type": "project",
-      "path": "../../MWMS.DataExtensions/MWMS.DataExtensions.csproj",
-      "msbuildProject": "../../MWMS.DataExtensions/MWMS.DataExtensions.csproj"
-    },
     "System.Web.Razor/1.0.0": {
       "type": "project",
       "path": "../System.Web.Razor/System.Web.Razor.csproj",
@@ -5642,7 +5564,6 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
-      "MWMS.DataExtensions >= 1.0.0",
       "Microsoft.CodeAnalysis.CSharp >= 2.10.0",
       "Microsoft.NETCore.App >= 2.0.0",
       "System.Configuration.ConfigurationManager >= 4.5.0",
@@ -5650,7 +5571,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\wangxu\\.nuget\\packages\\": {},
+    "C:\\Users\\wang\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -5659,17 +5580,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\web\\core\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
+      "projectUniqueName": "F:\\web\\my\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
       "projectName": "RazorEngine.Core",
-      "projectPath": "C:\\web\\core\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
-      "packagesPath": "C:\\Users\\wangxu\\.nuget\\packages\\",
-      "outputPath": "C:\\web\\core\\M5_core\\RazorEngine\\RazorEngine.Core\\obj\\",
+      "projectPath": "F:\\web\\my\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
+      "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
+      "outputPath": "F:\\web\\my\\M5_core\\RazorEngine\\RazorEngine.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\wangxu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\wang\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5682,11 +5603,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\web\\core\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj": {
-              "projectPath": "C:\\web\\core\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj"
-            },
-            "C:\\web\\core\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj": {
-              "projectPath": "C:\\web\\core\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj"
+            "F:\\web\\my\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj": {
+              "projectPath": "F:\\web\\my\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj"
             }
           }
         }

@@ -689,11 +689,10 @@
       ]
     },
     "Newtonsoft.Json/11.0.2": {
-      "sha512": "znZGbws7E4BA9jxNZ7FuiIRI3C9hrgatVQSTKhIYZYNOud4M5VfGlTYi6RdYO5sQrebFuF/g9UEV3hOxDMXF6Q==",
+      "sha512": "IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
       "type": "package",
       "path": "newtonsoft.json/11.0.2",
       "files": [
-        ".signature.p7s",
         "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
@@ -725,7 +724,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\wangxu\\.nuget\\packages\\": {},
+    "C:\\Users\\wang\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -734,17 +733,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\web\\core\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj",
+      "projectUniqueName": "F:\\web\\my\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj",
       "projectName": "MWMS.DataExtensions",
-      "projectPath": "C:\\web\\core\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj",
-      "packagesPath": "C:\\Users\\wangxu\\.nuget\\packages\\",
-      "outputPath": "C:\\web\\core\\M5_core\\MWMS.DataExtensions\\obj\\",
+      "projectPath": "F:\\web\\my\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj",
+      "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
+      "outputPath": "F:\\web\\my\\M5_core\\MWMS.DataExtensions\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\wangxu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\wang\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

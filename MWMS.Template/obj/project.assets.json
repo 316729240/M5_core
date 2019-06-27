@@ -664,7 +664,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\wangxu\\.nuget\\packages\\": {},
+    "C:\\Users\\wang\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -673,17 +673,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\web\\core\\M5_core\\MWMS.Template\\MWMS.Template.csproj",
+      "projectUniqueName": "F:\\web\\my\\M5_core\\MWMS.Template\\MWMS.Template.csproj",
       "projectName": "MWMS.Template",
-      "projectPath": "C:\\web\\core\\M5_core\\MWMS.Template\\MWMS.Template.csproj",
-      "packagesPath": "C:\\Users\\wangxu\\.nuget\\packages\\",
-      "outputPath": "C:\\web\\core\\M5_core\\MWMS.Template\\obj\\",
+      "projectPath": "F:\\web\\my\\M5_core\\MWMS.Template\\MWMS.Template.csproj",
+      "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
+      "outputPath": "F:\\web\\my\\M5_core\\MWMS.Template\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\wangxu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\wang\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

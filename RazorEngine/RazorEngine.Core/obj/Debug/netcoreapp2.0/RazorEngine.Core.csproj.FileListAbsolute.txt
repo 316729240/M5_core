@@ -146,3 +146,14 @@ C:\web\core\M5_core\RazorEngine\RazorEngine.Core\obj\Debug\netcoreapp2.0\RazorEn
 C:\web\core\M5_core\RazorEngine\RazorEngine.Core\obj\Debug\netcoreapp2.0\RazorEngine.Core.AssemblyInfo.cs
 C:\web\core\M5_core\RazorEngine\RazorEngine.Core\obj\Debug\netcoreapp2.0\RazorEngine.Core.dll
 C:\web\core\M5_core\RazorEngine\RazorEngine.Core\obj\Debug\netcoreapp2.0\RazorEngine.Core.pdb
+F:\web\my\M5_core\RazorEngine\RazorEngine.Core\bin\Debug\netcoreapp2.0\RazorEngine.Core.deps.json
+F:\web\my\M5_core\RazorEngine\RazorEngine.Core\bin\Debug\netcoreapp2.0\RazorEngine.Core.dll
+F:\web\my\M5_core\RazorEngine\RazorEngine.Core\bin\Debug\netcoreapp2.0\RazorEngine.Core.pdb
+F:\web\my\M5_core\RazorEngine\RazorEngine.Core\bin\Debug\netcoreapp2.0\System.Web.Razor.dll
+F:\web\my\M5_core\RazorEngine\RazorEngine.Core\bin\Debug\netcoreapp2.0\System.Web.Razor.pdb
+F:\web\my\M5_core\RazorEngine\RazorEngine.Core\obj\Debug\netcoreapp2.0\RazorEngine.Core.csprojResolveAssemblyReference.cache
+F:\web\my\M5_core\RazorEngine\RazorEngine.Core\obj\Debug\netcoreapp2.0\RazorEngine.Core.csproj.CoreCompileInputs.cache
+F:\web\my\M5_core\RazorEngine\RazorEngine.Core\obj\Debug\netcoreapp2.0\RazorEngine.Core.AssemblyInfoInputs.cache
+F:\web\my\M5_core\RazorEngine\RazorEngine.Core\obj\Debug\netcoreapp2.0\RazorEngine.Core.AssemblyInfo.cs
+F:\web\my\M5_core\RazorEngine\RazorEngine.Core\obj\Debug\netcoreapp2.0\RazorEngine.Core.dll
+F:\web\my\M5_core\RazorEngine\RazorEngine.Core\obj\Debug\netcoreapp2.0\RazorEngine.Core.pdb

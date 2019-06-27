@@ -667,7 +667,7 @@
       ]
     },
     "System.CodeDom/4.5.0": {
-      "sha512": "qonz9SplbbuApSnBWiWoK7Rfq9q1noTRm3LiWPxyLMWLtcTel2VSK6eWslNdiJODb8J4ghlqFfuHlwLtXCy7IQ==",
+      "sha512": "WvCzCcwGSQo4fMMelnsQxLhcPr0VoGZHk26hAhiLE+5EqCmOL9LmHL9DC0jno+BpEc1Txl0Owf6kUfZ9eB7LpQ==",
       "type": "package",
       "path": "system.codedom/4.5.0",
       "files": [
@@ -694,7 +694,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\wangxu\\.nuget\\packages\\": {},
+    "C:\\Users\\wang\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -703,17 +703,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\web\\core\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj",
+      "projectUniqueName": "F:\\web\\my\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj",
       "projectName": "System.Web.Razor",
-      "projectPath": "C:\\web\\core\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj",
-      "packagesPath": "C:\\Users\\wangxu\\.nuget\\packages\\",
-      "outputPath": "C:\\web\\core\\M5_core\\RazorEngine\\System.Web.Razor\\obj\\",
+      "projectPath": "F:\\web\\my\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj",
+      "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
+      "outputPath": "F:\\web\\my\\M5_core\\RazorEngine\\System.Web.Razor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\wangxu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\wang\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
