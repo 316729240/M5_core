@@ -1,0 +1,4 @@
+  <app title="应用商店" name="appShop" type="1">
+    <include>main.js</include>
+    <cards color="2" size="2" >card.html</cards>
+  </app>

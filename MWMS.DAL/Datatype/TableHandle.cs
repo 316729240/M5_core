@@ -1,6 +1,7 @@
 ﻿using MWMS.DataExtensions;
 using MWMS.Helper;
 using MWMS.SqlHelper;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -46,8 +47,8 @@ namespace MWMS.DAL.Datatype
                 int count = Fields.Where(p1 => p1.Value.isPublicField && p1.Value.name == _fields[i]).Count();
                 fieldList += ((count > 0) ? "A." : "B.") + _fields[i];
             }
-            SqlParameter[] _p = GetParameter(p);
-            SqlDataReader rs = Sql.ExecuteReader("select " + fields + " from [mainTable] A inner join [" + TableName + "] B on A.id=B.id where " + where + " " + desc, _p);
+            MySqlParameter[] _p = GetParameter(p);
+            MySqlDataReader rs = Sql.ExecuteReader("select " + fields + " from maintable A inner join [" + TableName + "] B on A.id=B.id where " + where + " " + desc, _p);
             bool flag = false;
             if (rs.Read())
             {
@@ -74,13 +75,13 @@ namespace MWMS.DAL.Datatype
             if (!flag) return null;
             return model;
         }
-        SqlParameter[] GetParameter(Dictionary<string, object> p)
+        MySqlParameter[] GetParameter(Dictionary<string, object> p)
         {
-            SqlParameter[] _p = new SqlParameter[p.Count];
+            MySqlParameter[] _p = new MySqlParameter[p.Count];
             int i1 = 0;
             foreach (var value in p)
             {
-                _p[i1] = new SqlParameter(value.Key, value.Value);
+                _p[i1] = new MySqlParameter(value.Key, value.Value);
                 i1++;
             }
             return _p;
@@ -105,8 +106,8 @@ namespace MWMS.DAL.Datatype
             url.Replace("$column.dirName", columnModel["dirName"].ToStr());
             url.Replace("$channel.dirName", channelModel["dirName"].ToStr());
             url.Replace(".$extension", "");
-            string sql = "update mainTable set url='" + url + "' where id=@id";
-            Sql.ExecuteNonQuery(sql, new SqlParameter[] { new SqlParameter("id", dataId) });
+            string sql = "update maintable set url='" + url + "' where id=@id";
+            Sql.ExecuteNonQuery(sql, new MySqlParameter[] { new MySqlParameter("id", dataId) });
         }
         /*
         public Dictionary<string, object> RequestToModel(HttpRequest request)
@@ -158,9 +159,9 @@ namespace MWMS.DAL.Datatype
                         {
                             string kzm= "";
                             if (files[i].path.LastIndexOf(".") > -1) kzm = files[i].path.Substring(files[i].path.LastIndexOf(".") + 1);
-                            FileInfo picpath = new FileInfo(Tools.Mappath(files[i].path));
+                            FileInfo picpath = new FileInfo(Tools.MapPath(files[i].path));
                             MWMS.Helper.Picture pic = new Helper.Picture(picpath);
-                            FileInfo newpicpath = new FileInfo(Tools.Mappath(files[i].path.Replace("." + kzm, "_min." + kzm)));
+                            FileInfo newpicpath = new FileInfo(Tools.MapPath(files[i].path.Replace("." + kzm, "_min." + kzm)));
                             newpicpath = pic.PictureSize(newpicpath, config.picWidth, config.picHeight, 100, config.picForce);
                             string newfile = newpicpath.FullName;
                             if (newfile == "")
@@ -235,7 +236,7 @@ namespace MWMS.DAL.Datatype
         }
         public void Recycle(double id)
         {
-            Sql.ExecuteNonQuery("update maintable set orderId=-3 where id=@id",new SqlParameter [] {new SqlParameter("id",id) });
+            Sql.ExecuteNonQuery("update maintable set orderId=-3 where id=@id",new MySqlParameter [] {new MySqlParameter("id",id) });
         }
         ColumnConfig GetConfig(double id)
         {
@@ -243,8 +244,8 @@ namespace MWMS.DAL.Datatype
             double classId = 0, moduleId = 0;
             string parentId = "";
             ColumnConfig config = new ColumnConfig();
-            SqlDataReader rs = Sql.ExecuteReader("select thumbnailWidth,thumbnailHeight,thumbnailForce,saveRemoteImages,inherit,classId,parentId,moduleId,titleRepeat,watermark from class where id=@id", new SqlParameter[]{
-                new SqlParameter("id",id)
+            MySqlDataReader rs = Sql.ExecuteReader("select thumbnailWidth,thumbnailHeight,thumbnailForce,saveRemoteImages,inherit,classId,parentId,moduleId,titleRepeat,watermark from class where id=@id", new MySqlParameter[]{
+                new MySqlParameter("id",id)
             });
             if (rs.Read())
             {
@@ -270,7 +271,7 @@ namespace MWMS.DAL.Datatype
                 if (classId == 7)
                 {
 
-                    rs = Sql.ExecuteReader("select thumbnailWidth,thumbnailHeight,thumbnailForce,saveRemoteImages,titleRepeat,watermark from module where id=@moduleId", new SqlParameter[] { new SqlParameter("moduleId", moduleId) });
+                    rs = Sql.ExecuteReader("select thumbnailWidth,thumbnailHeight,thumbnailForce,saveRemoteImages,titleRepeat,watermark from module where id=@moduleId", new MySqlParameter[] { new MySqlParameter("moduleId", moduleId) });
                     if (rs.Read())
                     {
                         config.picForce = rs.GetInt32(2) == 1;
@@ -312,7 +313,7 @@ namespace MWMS.DAL.Datatype
                     if (!flag)//从模块中查找配制
                     {
 
-                        rs = Sql.ExecuteReader("select thumbnailWidth,thumbnailHeight,thumbnailForce,saveRemoteImages,titleRepeat,watermark from module where id=@moduleId", new SqlParameter[] { new SqlParameter("moduleId", moduleId) });
+                        rs = Sql.ExecuteReader("select thumbnailWidth,thumbnailHeight,thumbnailForce,saveRemoteImages,titleRepeat,watermark from module where id=@moduleId", new MySqlParameter[] { new MySqlParameter("moduleId", moduleId) });
                         if (rs.Read())
                         {
                             config.picForce = rs.GetInt32(2) == 1;

@@ -1,0 +1,9 @@
+F:\web\my\M5_core\SqlHelper\bin\Release\netcoreapp2.0\MWMS.SqlHelper.deps.json
+F:\web\my\M5_core\SqlHelper\bin\Release\netcoreapp2.0\MWMS.SqlHelper.dll
+F:\web\my\M5_core\SqlHelper\bin\Release\netcoreapp2.0\MWMS.SqlHelper.pdb
+F:\web\my\M5_core\SqlHelper\obj\Release\netcoreapp2.0\MWMS.SqlHelper.csprojResolveAssemblyReference.cache
+F:\web\my\M5_core\SqlHelper\obj\Release\netcoreapp2.0\MWMS.SqlHelper.csproj.CoreCompileInputs.cache
+F:\web\my\M5_core\SqlHelper\obj\Release\netcoreapp2.0\MWMS.SqlHelper.AssemblyInfoInputs.cache
+F:\web\my\M5_core\SqlHelper\obj\Release\netcoreapp2.0\MWMS.SqlHelper.AssemblyInfo.cs
+F:\web\my\M5_core\SqlHelper\obj\Release\netcoreapp2.0\MWMS.SqlHelper.dll
+F:\web\my\M5_core\SqlHelper\obj\Release\netcoreapp2.0\MWMS.SqlHelper.pdb

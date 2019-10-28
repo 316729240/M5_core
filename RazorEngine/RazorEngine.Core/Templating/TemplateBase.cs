@@ -118,7 +118,7 @@
        //     HttpContext.Current.Response.AddHeader("Location", url);
        //     HttpContext.Current.Response.End();
         }
-       // public HttpRequest Request = HttpContext.Current.Request;
+       // public HttpRequest Request = M5.PageContext.Current.Request;
        // public HttpResponse Response = HttpContext.Current.Response;
         public  void ERR404()
         {
@@ -129,7 +129,7 @@
         {
             /*
             HttpContext.Current.Response.Status = "404 Not Found";
-            if (HttpContext.Current.Request.Cookies["AdminClassID"] != null && HttpContext.Current.Request.Cookies["AdminClassID"].Value == "6") //管理员浏览网页时不使用缓存
+            if (M5.PageContext.Current.Request.Cookies["AdminClassID"] != null && M5.PageContext.Current.Request.Cookies["AdminClassID"].Value == "6") //管理员浏览网页时不使用缓存
             {
                 HttpContext.Current.Response.Write(msg);
             }

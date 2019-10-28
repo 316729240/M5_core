@@ -1,0 +1,20 @@
+ <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">城市</label>
+        <div class="col-sm-10">
+            <select xtype="SelectBox" name="city"></select>
+            <select xtype="SelectBox" name="area"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">婚姻状况</label>
+        <div class="col-sm-10">
+            <select xtype="SelectBox" name="marriage" items="[{text:'未婚',value:0},{text:'已婚',value:1}]" value="$public.userInfo2.marriage"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">教育程度</label>
+        <div class="col-sm-10">
+            <select xtype="SelectBox" name="education" items="[{text:'小学'},{text:'初中'},{text:'高中'},{text:'大学'},{text:'其它'}]" value="$public.userInfo2.education"></select>
+        </div>
+    </div>
+   

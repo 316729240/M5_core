@@ -23,7 +23,7 @@ namespace MWMS.Helper
         FileInfo picfile=null;
         public Picture(string path)
         {
-            path = Tools.Mappath(path);
+            path = Tools.MapPath(path);
             picfile = new FileInfo(path);
         }
         public Picture(FileInfo path)
@@ -41,7 +41,7 @@ namespace MWMS.Helper
                 }
                 System.IO.File.WriteAllBytes(file.FullName, data);
         }
-        public static string watermark(FileInfo oldfilename,FileInfo markfile,float proportion,float transparency,int margins,int X,int Y,bool bak,int zl)
+        public static string Watermark(FileInfo oldfilename,FileInfo markfile,float proportion,float transparency,int margins,int X,int Y,bool bak,int zl)
         {
 
             if (!markfile.Exists) throw new NullReferenceException("水印图不存在");

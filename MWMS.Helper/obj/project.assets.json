@@ -766,11 +766,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "F:\\web\\my\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj",
+      "projectUniqueName": "F:\\web\\my\\MWMS\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj",
       "projectName": "MWMS.Helper",
-      "projectPath": "F:\\web\\my\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj",
+      "projectPath": "F:\\web\\my\\MWMS\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj",
       "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
-      "outputPath": "F:\\web\\my\\M5_core\\MWMS.Helper\\obj\\",
+      "outputPath": "F:\\web\\my\\MWMS\\M5_core\\MWMS.Helper\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

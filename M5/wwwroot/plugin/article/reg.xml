@@ -1,0 +1,8 @@
+<app title="文章系统" name="article" dataTypeId="22192428132" datetime="2015-9-5">
+    <include>edit.js</include>
+ <interface>
+    <function name="uploadFile" text="批量上传文章" ico="fa-bars" dataTypeId="22192428132" parameter="dataTypeId,classId">
+      <permissions all="true" />
+    </function>
+  </interface>
+</app>

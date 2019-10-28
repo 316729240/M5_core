@@ -1,0 +1,4 @@
+<app title="会员" name="account" dataTypeId="22292428132" >
+  <include>list.js</include>
+  <include>edit.js</include>
+</app>

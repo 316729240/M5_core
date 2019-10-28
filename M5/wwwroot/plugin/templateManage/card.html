@@ -1,0 +1,151 @@
+﻿<style>
+
+.widget-info-one .inner {
+    min-height: 115px;
+    padding: 15px 10px 25px 110px;
+    position: relative;
+}
+.widget-info-one .avatar i {
+    font-size: 40px;
+    line-height: 35px;
+    display: inline-block;
+    height: 80px;
+    width: 75px;
+    text-align: center;
+    padding: 18px 0 0;
+    color: rgba(255, 255, 255, 0.9);
+    background-color: #45B6B0 !important;
+    cursor:pointer;
+}
+.widget-info-one .avatar, .widget_profile .avatar {
+    height: 89px;
+    left: 15px;
+    overflow: hidden;
+    padding: 0px;
+    position: absolute;
+    top: 30px;
+    width: 89px;
+    border: 1px solid #ddd;
+}
+
+.widget-info-one .avatar, .widget-info-one .avatar img, .widget_profile .avatar, .widget_profile .avatar img {
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    display: block;
+    height: 73px;
+    width: 73px;
+}
+
+.widget-info-one h5 {
+    color: #65CEA7;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.widget-info-one .subtitle {
+    display: block;
+}
+
+.widget-info-one .panel-footer {
+    background: #65CEA7;
+    border: none;
+    color: #fff;
+    padding: 0;
+    /*border-radius: 0;*/
+    /*-webkit-border-radius: 0;*/
+    box-shadow: none;
+    height: 40px;
+}
+.widget-info-one ul.post-view {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    width: 100%;
+
+}
+
+.widget-info-one ul.post-view li {
+    text-align: center;
+    padding: 10px;
+    width: 33.33%;
+    float: left;
+}
+
+.widget-info-one ul.post-view li:hover, ul.post-view li.active {
+    background: #6ddfb5;
+    cursor: pointer;
+}
+
+.widget-info-one ul.post-view li a i {
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    padding-right: 5px;
+}
+
+ul.post-view li a {
+    text-decoration: none;
+}
+</style><div class="panel-heading"  id=templateManage_card_title>
+<h3 class="panel-title"><i class="fa fa-sitemap"></i> 网站模板<span class="panel-options">
+</span></h3>
+</div>
+<div class="widget-info-one" id="templateManage_card">
+<div class="inner">
+                            <div class="avatar"><i class="fa fa-home" onclick='$M.app.openFunction("templateManage", "edit", { title:"网站首页",id: 0, classId: 0, datatypeId: -1, defaultFlag: 1, typeId: 0,u_webFAid:templateType.val()?0:1 });'></i></div>
+                            <h5>修改首页</h5>
+                            <span class="subtitle">
+                                无法确定模板时，可点击快速<a href='' >修改模板</a>。
+                            </span>
+                        </div>
+<div class="panel-footer">
+                            <ul class="post-view" >
+                                <li onclick='$M.app.call("$M.templateManage.manage", {u_webFAid:templateType.val()?0:1});'>
+                                    <a href="#" >
+                                        <i class="fa fa-file-code-o"></i>
+                                    </a>
+                                    模板管理
+                                </li>
+                                <li onclick='$M.app.call("$M.templateManage.viewManage", {});'>
+                                    <a href="#">
+                                        <i class="fa fa-puzzle-piece"></i>
+                                    </a>
+                                    视图管理
+                                </li>
+                                <li onclick='$M.app.call("$M.templateManage.find", {u_webFAid:templateType.val()?0:1});'>
+                                    <a href="#">
+                                        <i class="fa fa-search"></i>
+                                    </a>
+                                    查找替换
+                                </li>
+                            </ul>
+                        </div>
+</div>
+<script>
+    var templateType=$("#templateManage_card_title .panel-options").addControl({
+        xtype: "Switch",
+        size: 0, textOn: "PC",
+        textOff: "手机",
+        value: true,
+        onChanage: function (sender, e) {
+            $M.comm("templateManage.setTemplateType", { value: sender.val()?1:0 }, function (json) {
+                
+            });
+        }
+    });
+    $("#templateManage_card .subtitle a").click(function () {
+        $M.prompt("网址",
+                    function (value) {
+                        $M.comm("templateManage.locateTemplate", { url: value, u_webFAid: templateType.val() ? 0 : 1 }, function (json) {
+                            $M.app.call("$M.templateManage.edit", { id: json[3], u_webFAid: json[4] });
+                        });
+                    },
+                    { vtype: { required: true, url: true} });
+        return false;
+    });
+    $M.comm("templateManage.getTemplateType", null, function (json) {
+        templateType.val(json=="1");
+    });
+</script>

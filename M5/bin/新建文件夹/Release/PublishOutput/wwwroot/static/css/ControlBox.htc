@@ -1,0 +1,14 @@
+<public:component lightweight="true">
+
+<script language="javascript">
+
+function CancelEvent()
+{
+	return false ;
+}
+
+this.onbeforeeditfocus = CancelEvent ;
+
+</script>
+
+</public:component>

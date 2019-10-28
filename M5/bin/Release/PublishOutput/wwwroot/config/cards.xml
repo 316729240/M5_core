@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="gb2312"?>
+<files>
+  <item>cards/loginInfo.js</item>
+  <item Permissions="3,37200672661">cards/systemSet.js</item>
+  <item>cards/template.js</item>
+  <item>cards/annex.js</item>
+  <item>cards/systemSafe.js</item>
+  <item Permissions="1,3,4">cards/cache.js</item>
+  <item>cards/components.js</item>
+  <item>cards/dataIndex.js</item>
+  <item>cards/Member.js</item>
+  <item>cards/examine.js</item>
+  <item>cards/webAnalytics.js</item>
+  <item>cards/technicalSupport.js</item>
+</files>

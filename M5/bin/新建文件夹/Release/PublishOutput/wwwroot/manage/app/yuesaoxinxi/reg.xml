@@ -1,0 +1,8 @@
+  <app title="月嫂信息" name="yuesaoxinxi" dataTypeId="22192528242" datetime="2015-9-5">
+    <include>edit.js</include>
+    <interface>
+      <function name="uploadFile" text="导入月嫂信息" ico="fa-bars" dataTypeId="22192528242" parameter="dataTypeId,classId">
+        <permissions all="true" />
+      </function>
+    </interface>
+  </app>

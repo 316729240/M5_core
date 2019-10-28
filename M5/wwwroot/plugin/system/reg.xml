@@ -1,0 +1,8 @@
+  <app title="系统" name="system" type="1">
+    <include>configEdit.js</include>
+    <include>dataManage.js</include>
+    <include>permissions.js</include>
+    <include>upgrade.js</include>
+    <include>insertPic.js</include>
+    <cards color="1" size="2" >card.html</cards>
+  </app>

@@ -55,9 +55,9 @@ namespace MWMS.DAL.Datatype.FieldType
                         #region 删除无效文件 
                         try
                         {
-                            string path =  Tools.Mappath(file.path);
+                            string path =  Tools.MapPath(file.path);
                             if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
-                            string minpath = Tools.Mappath(file.minPath);
+                            string minpath = Tools.MapPath(file.minPath);
                             if (System.IO.File.Exists(minpath)) System.IO.File.Delete(minpath);
                         }
                         catch

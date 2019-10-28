@@ -28,8 +28,8 @@
             Namespaces = new HashSet<string>
                              {
                                  "System",
-                                 "MWMS",
-                                 "MWMS.Helper",
+                                 //"MWMS",
+                                 //"MWMS.Helper",
                                  "System.Collections.Generic", 
                                  "System.Linq"
                              };

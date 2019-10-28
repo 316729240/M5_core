@@ -1,0 +1,6 @@
+  <app title="用户管理" name="userManage" type="1">
+    <include>edit.js</include>
+    <include>editPassword.js</include>
+    <include>manage.js</include>
+    <cards color="2" size="2" >card.html</cards>
+  </app>

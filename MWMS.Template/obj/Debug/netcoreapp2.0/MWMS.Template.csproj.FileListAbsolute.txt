@@ -16,3 +16,7 @@ C:\web\M5\MWMS.Template\obj\Debug\netcoreapp2.0\MWMS.Template.AssemblyInfoInputs
 C:\web\M5\MWMS.Template\obj\Debug\netcoreapp2.0\MWMS.Template.AssemblyInfo.cs
 C:\web\M5\MWMS.Template\obj\Debug\netcoreapp2.0\MWMS.Template.dll
 C:\web\M5\MWMS.Template\obj\Debug\netcoreapp2.0\MWMS.Template.pdb
+F:\web\my\M5_core\MWMS.Template\obj\Debug\netcoreapp2.0\MWMS.Template.csprojResolveAssemblyReference.cache
+F:\web\my\M5_core\MWMS.Template\obj\Debug\netcoreapp2.0\MWMS.Template.csproj.CoreCompileInputs.cache
+F:\web\my\M5_core\MWMS.Template\obj\Debug\netcoreapp2.0\MWMS.Template.AssemblyInfoInputs.cache
+F:\web\my\M5_core\MWMS.Template\obj\Debug\netcoreapp2.0\MWMS.Template.AssemblyInfo.cs

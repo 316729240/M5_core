@@ -1,0 +1,10 @@
+  <app title="数据统计" name="statistical" type="1">
+    <include>table.js</include>
+    <include>exportData.js</include>
+    <cards color="2" size="6" >card.html</cards>
+    <interface>
+      <function name="exportData" text="导出数据" ico="fa-file-excel-o"  parameter="dataTypeId,classId,type,keyword,searchField">
+        <permissions all="true"/>
+      </function>
+    </interface>
+  </app>

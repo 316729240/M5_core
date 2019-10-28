@@ -9,6 +9,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MWMS.Helper\MWMS.Helper.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="System.Web.Extensions">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Web.Extensions.dll</HintPath>
     </Reference>

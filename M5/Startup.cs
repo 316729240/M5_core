@@ -1,63 +1,99 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using M5.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using MWMS.Helper;
+using MWMS.SqlHelper;
+using MySql.Data.MySqlClient;
 using RazorEngine;
 using RazorEngine.Configuration;
 using RazorEngine.Templating;
 
-namespace M5
+namespace M5.Main
 {
     public class Startup
     {
+        static WebService service = new WebService();
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddMvc();
+            services.AddSingleton<Microsoft.AspNetCore.Http.IHttpContextAccessor, Microsoft.AspNetCore.Http.HttpContextAccessor>();
+            var mvcBuilders =  services.AddMvc();
+             mvcBuilders.ConfigureApplicationPartManager(apm =>
+            {
+             //   apm.ApplicationParts.Add(new AssemblyPart(Assembly.LoadFile(@"F:\web\my\M5_core\WebApplication1\bin\Debug\netcoreapp2.0\WebApplication1.dll")));
+                
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-
-           /* TemplateServiceConfiguration templateConfig = new TemplateServiceConfiguration
-            {
-                CatchPath = Tools.Mappath("assembly/")
-            };
-            Razor.SetTemplateService(new TemplateService(templateConfig));
-            RazorEngine.Razor.Compile("kkkkkk@{Raw((3+4).ToString());}ffff", typeof(object[]), "test", true);
-            string html = RazorEngine.Razor.Run("test", new object[] { "", "" });*/
-           // return;
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            PageContext._contextAccessor=app.ApplicationServices.GetRequiredService<Microsoft.AspNetCore.Http.IHttpContextAccessor>();
             app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/plugin")),
+                RequestPath = "/manage/app"
+            });
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "default2",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+
+
+            MWMS_Init();
             app.Run(async (context) =>
             {
-                SystemData.HttpContext = context;
-                await MWMS_Rewrite(context);
+                // WebService.HttpContext = context;
+                //await 
+                service.BeginRequest(context);
             });
         }
-        public static  async Task MWMS_Rewrite(HttpContext context)
+        public static   void MWMS_Init()
         {
-
+            Sql.connectionString = @"server="+ ConfigurationManager.AppSettings["ServerIP"]
+                + ";uid=" + ConfigurationManager.AppSettings["Username"] 
+                + ";pwd=" + ConfigurationManager.AppSettings["Password"]
+                + ";database=" + ConfigurationManager.AppSettings["DataBaseName"] + ";";
+            /*
             TemplateServiceConfiguration templateConfig = new TemplateServiceConfiguration
             {
-                CatchPath =Tools.Mappath("assembly/")
+                CatchPath = Tools.MapPath(@"/cache/"),// Tools.MapPath("assembly/"),
+                Namespaces = new HashSet<string>
+                             {
+                                 "System",
+                                 "MWMS",
+                                 "MWMS.Helper",
+                                 "System.Collections.Generic",
+                                 "System.Linq"
+                             }
             };
             Razor.SetTemplateService(new TemplateService(templateConfig));
-            RazorEngine.Razor.Compile("kkkkkk", typeof(object[]), "test", true);
-            string html = RazorEngine.Razor.Run("test", new object[] { "","" });
-
+            RazorEngine.Razor.Compile("kkkkkak@{Raw(\"1111\");}kkkak", typeof(object[]), "test1", true);
+            string html = RazorEngine.Razor.Run("test1", new object[] { "","" });
+            context.Response.WriteAsync( html);*/
             /*
             UrlMapping u1 = new UrlMapping();
             u1.Path = "2222";
@@ -94,4 +130,5 @@ namespace M5
 
         }
     }
+
 }

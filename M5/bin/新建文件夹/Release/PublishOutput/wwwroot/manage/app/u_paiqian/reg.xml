@@ -1,0 +1,4 @@
+  <app title="派遣信息" name="u_paiqian" dataTypeId="22592528442" datetime="2015-9-5">
+    <include>edit.js</include>
+    <include>list.js</include>
+  </app>

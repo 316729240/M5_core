@@ -1,0 +1,3 @@
+F:\web\my\M5_core\M5\obj\Any CPU\Release\netcoreapp2.0\centos.7-x64\M5.Main.csproj.CoreCompileInputs.cache
+F:\web\my\M5_core\M5\obj\Any CPU\Release\netcoreapp2.0\centos.7-x64\M5.Main.AssemblyInfoInputs.cache
+F:\web\my\M5_core\M5\obj\Any CPU\Release\netcoreapp2.0\centos.7-x64\M5.Main.AssemblyInfo.cs

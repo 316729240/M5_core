@@ -5580,11 +5580,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "F:\\web\\my\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
+      "projectUniqueName": "F:\\web\\my\\MWMS\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
       "projectName": "RazorEngine.Core",
-      "projectPath": "F:\\web\\my\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
+      "projectPath": "F:\\web\\my\\MWMS\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
       "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
-      "outputPath": "F:\\web\\my\\M5_core\\RazorEngine\\RazorEngine.Core\\obj\\",
+      "outputPath": "F:\\web\\my\\MWMS\\M5_core\\RazorEngine\\RazorEngine.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5603,8 +5603,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "F:\\web\\my\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj": {
-              "projectPath": "F:\\web\\my\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj"
+            "F:\\web\\my\\MWMS\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj": {
+              "projectPath": "F:\\web\\my\\MWMS\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj"
             }
           }
         }

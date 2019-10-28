@@ -131,10 +131,10 @@ namespace Microshaoft.Text
                     _encode = Encoding.Unicode;
                     break;
                 case "GB2312":
-                    _encode = Encoding.Default;
+                    _encode = Encoding.GetEncoding("GB2312");
                     break;
                 case "GBK":
-                    _encode = Encoding.UTF8;
+                    _encode = Encoding.GetEncoding("GBK");
                     break;
 
             }

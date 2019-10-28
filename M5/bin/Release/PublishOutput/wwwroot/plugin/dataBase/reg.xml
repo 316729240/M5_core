@@ -1,0 +1,8 @@
+  <app title="数据库工具" name="dataBase" type="1">
+    <include>backup.js</include>
+    <include>reduction.js</include>
+    <include>main.js</include>
+    <include>backupRestore.js</include>
+    <include>formEdit.js</include>
+    <cards color="2" size="2" >card.html</cards>
+  </app>

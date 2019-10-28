@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Media>
+  <Item>
+    <Name>百度竞价</Name>
+    <Value>\?baidu</Value>
+  </Item>
+  <Item>
+    <Name>Google推广</Name>
+    <Value>\?google</Value>
+  </Item>
+</Media>

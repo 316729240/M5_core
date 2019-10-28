@@ -50,7 +50,6 @@
         public ITemplate CreateInstance(Type type)
         {
             //Contract.Requires(type != null);
-
             if (disposed)
                 throw new ObjectDisposedException("TypeLoader");
 

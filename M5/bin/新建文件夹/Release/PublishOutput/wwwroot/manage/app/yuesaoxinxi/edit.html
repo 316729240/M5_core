@@ -1,0 +1,176 @@
+﻿<input name="id" type='hidden'>
+<input name=classId type='hidden'>
+<div class="form-group row">
+    <div class="col-xs-6 row">
+        <div>
+            <div class="col-xs-6">
+                <label for="inputEmail3" class="control-label">姓名</label>
+                <input name="title" class="form-control" vtype="{required: true}" />
+            </div>
+            <div class="col-xs-6">
+                <label for="inputEmail3" class="control-label">电话</label>
+                <input name="u_dianhua" class="form-control" />
+            </div>
+        </div>
+
+        <div style="clear:both;">
+            <div class="col-xs-3">
+                <label for="u_jiguan" class="control-label">籍贯</label>
+                <input name="u_jiguan" class="form-control" />
+            </div>
+            <div class="col-xs-3">
+                <label for="u_qishu" class="control-label">民族</label>
+                <input name="u_minzu" class="form-control" />
+            </div>
+            <div class="col-xs-3">
+                <label for="u_qishu" class="control-label">工作年限</label>
+                <input name="u_nianxian" class="form-control" />
+            </div>
+            <div class="col-xs-3">
+                <label for="inputEmail3" class="control-label">最低薪资</label>
+                <input name="u_xinzi" class="form-control" />
+            </div>
+        </div>
+            <div style="clear:both;">
+                <div class="col-xs-3">
+                    <label for="inputEmail3" class="control-label">年龄</label>
+                    <input name="u_nianling" class="form-control" />
+                </div>
+                <div class="col-xs-3">
+                    <label for="u_qishu" class="control-label">身份证</label>
+                    <input name="u_shenfenzheng" class="form-control" />
+                </div><div class="col-xs-3">
+                    <label for="u_qishu" class="control-label">状态</label>
+                    <select name="u_zhuangtai" class="form-control">
+                        <option>培训中</option>
+                        <option>在岗</option>
+                        <option>请假</option>
+                        <option>待岗</option>
+                        <option>离职</option>
+                    </select>
+                </div>
+                <div class="col-xs-3">
+                    <label for="inputEmail3" class="control-label">下户时间</label>
+                    <input name="u_xiahushijian" class="form-control" xtype="DatePickerInput" />
+                </div>
+            </div>
+        <div style="clear:both;">
+            <div class="col-xs-12">
+                <label for="inputEmail3" class="control-label">联系地址</label>
+                <input name="u_dizhi" class="form-control" />
+            </div>
+        </div>
+            <div style="clear:both;">
+                <div class="col-xs-6">
+                    <label for="inputEmail3" class="control-label">第二联系人姓名</label>
+                    <input name="u_xingming2" class="form-control" />
+                </div>
+                <div class="col-xs-6">
+                    <label for="u_qishu" class="control-label">第二联系人电话</label>
+                    <input name="u_dianhua2" class="form-control" />
+                </div>
+            </div>
+        </div>
+    <div class="col-xs-6 row">
+        <label class="control-label">照片</label>
+        <a href="#" class="thumbnail">
+            <img src="" style="height:200px;" class="u_pic_img">
+        </a>
+        <input xtype="UploadFileBox" type="text" name="u_pic" />
+    </div>
+        
+    </div>
+
+
+<div class="form-group row">
+    <div class="col-xs-2">
+        <label for="u_qishu" class="control-label">持有证书</label>
+        <div>
+            <label class="radio-inline">
+                <input type="radio" name="u_zhengshu" class="control-label" value="是" />是
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="u_zhengshu" class="control-label" value="否" />否
+            </label>
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label for="inputEmail3" class="control-label">有无健康证</label>
+        <div>
+            <label class="radio-inline">
+                <input type="radio" name="u_jiankangzheng" class="control-label" value="有" />有
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="u_jiankangzheng" class="control-label" value="无" />无
+            </label>
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <label for="u_qishu" class="control-label">上户个数</label>
+        <input name="u_shanghugeshu" class="form-control" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-6">
+        <label for="inputEmail3" class="control-label">工种</label>
+        <input name="u_gongzhong" class="form-control" />
+    </div>
+    <div class="col-xs-6">
+        <label for="u_qishu" class="control-label">级别</label>
+        <input name="u_jibie" class="form-control" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-6">
+        <label for="inputEmail3" class="control-label">员工性质</label>
+        <input name="u_yuangongxingzhi" class="form-control" />
+    </div>
+    <div class="col-xs-6">
+        <label for="u_qishu" class="control-label">住宿</label>
+        <input name="u_zhusu" class="form-control" />
+    </div>
+    <div class="col-xs-6">
+        <label for="u_qishu" class="control-label">学历</label>
+        <input name="u_xueli" class="form-control" />
+    </div>
+    <div class="col-xs-6">
+        <label for="u_qishu" class="control-label">简历来源</label>
+        <input name="u_jianlilaiyuan" class="form-control" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-3">
+        <label for="inputEmail3" class="control-label">招生老师</label>
+        <input name="u_zhaoshenglaoshi" class="form-control" />
+    </div>
+    <div class="col-xs-3">
+        <label for="u_qishu" class="control-label">培训老师</label>
+        <input name="u_peixunlaoshi" class="form-control" />
+    </div>
+    <div class="col-xs-3">
+        <label for="inputEmail3" class="control-label">管理老师</label>
+        <input name="u_guanlilaoshi" class="form-control" />
+    </div>
+    <div class="col-xs-3">
+        <label for="u_qishu" class="control-label">督导老师</label>
+        <input name="u_dudaolaoshi" class="form-control" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-4">
+        <label for="inputEmail3" class="control-label">保证金</label>
+        <input name="u_baozhengjin" class="form-control" />
+    </div>
+    <div class="col-xs-4">
+        <label for="u_qishu" class="control-label">保险</label>
+        <input name="u_baoxian" class="form-control" />
+    </div>
+    <div class="col-xs-4">
+        <label for="inputEmail3" class="control-label">入职时间</label>
+        <input name="u_ruzhishijian" class="form-control" xtype="DatePickerInput" />
+    </div>
+</div>

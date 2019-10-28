@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Web.Script.Serialization;
+// using System.Web.Script.Serialization;
 using System.Xml;
 
 namespace MWMS.DataExtensions
@@ -145,20 +145,23 @@ namespace MWMS.DataExtensions
             }
             return sbOut.ToString();
         }
+        // public static string ToJson(this object obj)
+        // {
+        //     return ToJson(obj, null);
+        // }
         public static string ToJson(this object obj)
         {
-            return ToJson(obj, null);
-        }
-        public static string ToJson(this object obj, IEnumerable<JavaScriptConverter> jsonConverters)
-        {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            if (jsonConverters != null) serializer.RegisterConverters(jsonConverters ?? new JavaScriptConverter[0]);
-            return serializer.Serialize(obj);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(obj);
+            // JavaScriptSerializer serializer = new JavaScriptSerializer();
+            // if (jsonConverters != null) serializer.RegisterConverters(jsonConverters ?? new JavaScriptConverter[0]);
+            // return serializer.Serialize(obj);
         }
         public static T ParseJson<T>(this string jsonString)
         {
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            return js.Deserialize<T>(jsonString);
+            //JavaScriptSerializer js = new JavaScriptSerializer();
+            //return js.Deserialize<T>(jsonString);
+
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(jsonString);
 
         }
 

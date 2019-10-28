@@ -1,0 +1,18 @@
+﻿<style>
+#database_card{background-color: #51B72F !important;height:100px;
+    cursor:pointer;}
+#database_card i {
+    font-size: 80px;
+    line-height: 35px;
+    display: inline-block;
+    text-align: center;
+    padding: 18px 0 0;
+    color: rgba(255, 255, 255, 0.9);
+    background-color: #51B72F !important;
+}
+#database_card .message{color:#FFFFFF;position: relative;left:90px;top:0px;}
+</style>
+<div id="database_card" onclick='$M.app.call("$M.dataBase.main");'>
+<div><i  class="fa fa-database"></i></div>
+<div class="message">数据库管理</div>
+</div>

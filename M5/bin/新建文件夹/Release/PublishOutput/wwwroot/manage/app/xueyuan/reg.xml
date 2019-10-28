@@ -1,0 +1,8 @@
+  <app title="学员信息" name="xueyuan" dataTypeId="22192428232" datetime="2015-9-5">
+    <include>edit.js</include>
+    <interface>
+      <function name="uploadFile" text="导入学员信息" ico="fa-bars" dataTypeId="22192428232" parameter="dataTypeId,classId">
+        <permissions all="true" />
+      </function>
+    </interface>
+  </app>

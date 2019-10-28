@@ -1,0 +1,12 @@
+  <app title="数据替换" name="dataReplace" type="1">
+    <include>main.js</include>
+    <cards color="2" size="2" >card.html</cards>
+    <interface>
+      <function name="main" text="数据替换" ico="fa-search" parameter="dataTypeId,moduleId">
+        <permissions all="true"/>
+      </function>
+      <function name="main" text="数据替换" ico="fa-search" parameter="dataTypeId,classId">
+        <permissions all="true"/>
+      </function>
+    </interface>
+  </app>

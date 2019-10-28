@@ -178,3 +178,5 @@ F:\web\my\M5_core\MWMS.DataExtensions\obj\Debug\netcoreapp2.0\MWMS.DataExtension
 F:\web\my\M5_core\MWMS.DataExtensions\obj\Debug\netcoreapp2.0\MWMS.DataExtensions.AssemblyInfo.cs
 F:\web\my\M5_core\MWMS.DataExtensions\obj\Debug\netcoreapp2.0\MWMS.DataExtensions.dll
 F:\web\my\M5_core\MWMS.DataExtensions\obj\Debug\netcoreapp2.0\MWMS.DataExtensions.pdb
+F:\web\my\M5_core\MWMS.DataExtensions\bin\Debug\netcoreapp2.0\MWMS.Helper.dll
+F:\web\my\M5_core\MWMS.DataExtensions\bin\Debug\netcoreapp2.0\MWMS.Helper.pdb

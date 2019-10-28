@@ -1,5 +1,6 @@
 ﻿using MWMS.Helper;
 using MWMS.SqlHelper;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -39,13 +40,13 @@ namespace MWMS.DAL
         {
             return GetModel(fields, where, p, "");
         }
-        SqlParameter [] GetParameter(Dictionary<string, object> p)
+        MySqlParameter [] GetParameter(Dictionary<string, object> p)
         {
-            SqlParameter[] _p = new SqlParameter[p.Count];
+            MySqlParameter[] _p = new MySqlParameter[p.Count];
             int i1 = 0;
             foreach (var value in p)
             {
-                _p[i1] = new SqlParameter(value.Key, value.Value);
+                _p[i1] = new MySqlParameter(value.Key, value.Value);
                 i1++;
             }
             return _p;
@@ -59,9 +60,9 @@ namespace MWMS.DAL
             if (TableName == "") throw new Exception("表名不能为空");
             Dictionary<string, object> model = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
             string[] _fields = fields.Split(',');
-            SqlParameter[] _p = GetParameter(p);
+            MySqlParameter[] _p = GetParameter(p);
             if (desc != "") desc = "order by "+desc;
-            SqlDataReader rs = SqlHelper.Sql.ExecuteReader("select " + fields + " from [" + TableName + "] where "+ where+" "+desc, _p);
+            MySqlDataReader rs = SqlHelper.Sql.ExecuteReader("select " + fields + " from [" + TableName + "] where "+ where+" "+desc, _p);
             bool flag = false;
             if (rs.Read())
             {
@@ -83,7 +84,7 @@ namespace MWMS.DAL
         }
         public int GetCount(string where, Dictionary<string, object> p)
         {
-            SqlParameter[] _p = GetParameter(p);
+            MySqlParameter[] _p = GetParameter(p);
             return (int)Sql.ExecuteScalar("select count(1) from [" + TableName + "] where " + where, _p);
         }
         /// <summary>
@@ -132,8 +133,8 @@ namespace MWMS.DAL
         }
         public void Remove(double id)
         {
-            Sql.ExecuteNonQuery("delete from ["+TableName+"] where "+PrimaryKey+"=@id",new SqlParameter[] {
-                new SqlParameter("id",id)
+            Sql.ExecuteNonQuery("delete from ["+TableName+"] where "+PrimaryKey+"=@id",new MySqlParameter[] {
+                new MySqlParameter("id",id)
             });
         }
     }

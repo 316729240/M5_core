@@ -1,0 +1,38 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.0",
+    "signature": "a6deae3b7a460b17c6a4467016f0ca8bbaf0a9df"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.0": {
+      "System.Web.Razor/1.0.0": {
+        "dependencies": {
+          "System.CodeDom": "4.5.0"
+        },
+        "runtime": {
+          "System.Web.Razor.dll": {}
+        }
+      },
+      "System.CodeDom/4.5.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.CodeDom.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "System.Web.Razor/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.CodeDom/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WvCzCcwGSQo4fMMelnsQxLhcPr0VoGZHk26hAhiLE+5EqCmOL9LmHL9DC0jno+BpEc1Txl0Owf6kUfZ9eB7LpQ==",
+      "path": "system.codedom/4.5.0",
+      "hashPath": "system.codedom.4.5.0.nupkg.sha512"
+    }
+  }
+}

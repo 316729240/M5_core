@@ -1,0 +1,26 @@
+﻿<style>
+#appShop_card{background-color: #51B72F !important;height:100px;
+    cursor:pointer;}
+#appShop_card i {
+    font-size: 80px;
+    line-height: 35px;
+    display: inline-block;
+    text-align: center;
+    padding: 18px 0 0;
+    color: rgba(255, 255, 255, 0.9);
+    background-color: #51B72F !important;
+}
+#appShop_card .message{color:#FFFFFF;position: relative;left:90px;top:0px;}
+    #appShop_card .badge {position: absolute;left:82px;top:5px;display:none;   }
+</style>
+<div id="appShop_card" onclick='$M.app.call("$M.appShop.main");'>
+<div><span class="badge badge-danger" title="可更新的应用">3</span><i  class="fa fa-shopping-cart"></i></div>
+<div class="message">应用商店</div>
+</div>
+<script>
+    $M.comm("appShop.updateCount", null, function (json) {
+        if (json == 0) return;
+        $("#appShop_card .badge").show(200);
+        $("#appShop_card .badge").html(json);
+    })
+</script>

@@ -16,6 +16,7 @@
     using System.Web.Razor.Parser;
     using Templating;
     using RazorEngine.Core;
+    using System.Runtime.InteropServices;
     /// <summary>
     /// Provides a base implementation of a direct compiler service.
     /// </summary>
@@ -49,27 +50,32 @@
         }
         #endregion
 
-        private  Type CompileType(string originalClassName, string originalText)
+        private  byte [] CompileByte(string originalClassName, string originalText)
         {
             var syntaxTree = CSharpSyntaxTree.ParseText(originalText);
             // 指定编译选项。
             var assemblyName = $"{originalClassName}.g";
-            try
-            {
+            //try
+            //{
+            string replstr = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)?"file:///": "file://";
                 var assemblies = CompilerServicesUtility
                     .GetLoadedAssemblies()
-                    .Where(a => !a.IsDynamic)
-                    .Select(a => a.Location);
-
-                var includeAssemblies = (IncludeAssemblies() ?? Enumerable.Empty<string>());
+                    .Where(a => !a.IsDynamic && File.Exists(a.CodeBase.Replace(replstr, "")))
+                    .Select(a => (a.CodeBase.Replace(replstr, "")));
+            /*var assemblies = CompilerServicesUtility
+                    .GetLoadedAssemblies()
+                    .Where(a => !a.IsDynamic && File.Exists(a.Location))
+                    .Select(a => a.Location);*/
+           
+             /*   var includeAssemblies = (IncludeAssemblies() ?? Enumerable.Empty<string>());
                 assemblies = assemblies.Concat(includeAssemblies)
                     .Select(a => a.ToUpperInvariant())
-                    .Where(a => !string.IsNullOrWhiteSpace(a))
-                    .Distinct();
+                    .Where(a => !string.IsNullOrWhiteSpace(a) )
+                    .Distinct();*/
                 int c=assemblies.Count();
                 MetadataReference[] list = new MetadataReference[c];
                 int i = 0;
-                foreach (string item in assemblies)
+            foreach (string item in assemblies)
                 {
                     list[i]=(MetadataReference.CreateFromFile(item));
                     i++;
@@ -87,21 +93,20 @@
             using (var ms = new MemoryStream())
             {
                 var result = compilation.Emit(ms);
-
                 if (result.Success)
                 {
                     ms.Seek(0, SeekOrigin.Begin);
-                    var assembly = Assembly.Load(ms.ToArray());
-                    return assembly.GetTypes().First(x => x.Name == originalClassName);
+                    return ms.ToArray();
                 }
+                //throw new ObjectDisposedException(result);
                 //throw new CompilingException(result.Diagnostics);
             }
 
-            }
-            catch (Exception e)
-            {
+           // }
+            //catch (Exception e)
+            //{
 
-            }
+            //}
             return null;
         }
         public override Type GetCompileType(TypeContext context, string name)
@@ -146,8 +151,10 @@
                 _codeDomProvider.GenerateCodeFromCompileUnit(compileUnit, writer, new CodeGeneratorOptions());
                 sourceCode = builder.ToString();
             }
-
-            return CompileType(context.ClassName, sourceCode);
+            byte [] buff=this.CompileByte(context.ClassName,sourceCode);
+            System.IO.File.WriteAllBytes(assemblyPath,buff);
+            var assembly = Assembly.Load(buff);
+            return assembly.GetTypes().First(x => x.Name == context.ClassName);
             //  }
         }
         #region Methods
@@ -200,7 +207,7 @@
                     sourceCode = builder.ToString();
                 }
 
-                CompileType(context.ClassName, sourceCode);
+              //  CompileType(context.ClassName, sourceCode);
           //  }
             CompilerResults r = _codeDomProvider.CompileAssemblyFromDom(@params, compileUnit);
             return Tuple.Create(r, sourceCode);

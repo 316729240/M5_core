@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Variables>
+  <Item>
+    <Url>/register.aspx</Url>
+    <Msg>会员注册成功</Msg>
+    <BackUrl>/1.asx</BackUrl>
+  </Item>
+</Variables>

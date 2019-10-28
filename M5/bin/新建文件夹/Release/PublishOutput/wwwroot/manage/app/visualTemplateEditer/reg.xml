@@ -1,0 +1,3 @@
+  <app title="可视化模板编辑" name="visualTemplateEditer" type="1">
+    <include>main.js</include>
+  </app>

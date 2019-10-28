@@ -182,6 +182,24 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "Microsoft.Win32.SystemEvents/4.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.0.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
       "NETCore.Encrypt/2.0.7": {
         "type": "package",
         "dependencies": {
@@ -216,6 +234,42 @@
         },
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "System.Drawing.Common/4.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.0.0",
+          "Microsoft.Win32.SystemEvents": "4.5.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Drawing.Common.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Drawing.Common.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp2.0/System.Drawing.Common.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "MWMS.Helper/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "System.Drawing.Common": "4.5.0"
+        },
+        "compile": {
+          "bin/placeholder/MWMS.Helper.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MWMS.Helper.dll": {}
         }
       }
     }
@@ -550,6 +604,25 @@
         "version.txt"
       ]
     },
+    "Microsoft.Win32.SystemEvents/4.5.0": {
+      "sha512": "aXrCxI6PdEEJkqIDRYCe2oBRZ1gto5Ac1Y/WuahG/CD+PB5rAVFU7VpkBILBUQQG/NBtxbIRM0Q61m5uJQLTPw==",
+      "type": "package",
+      "path": "microsoft.win32.systemevents/4.5.0",
+      "files": [
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Win32.SystemEvents.dll",
+        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
+        "microsoft.win32.systemevents.4.5.0.nupkg.sha512",
+        "microsoft.win32.systemevents.nuspec",
+        "ref/net461/Microsoft.Win32.SystemEvents.dll",
+        "ref/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
+        "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.dll",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "NETCore.Encrypt/2.0.7": {
       "sha512": "BlrVEoLCYERdXYMBCd12cNDpxztSdGBoqq8qKgrqa0ZQKMrdyxdtYavPekz7aDhbPLdEKY70osoo2hq6Cwc8eg==",
       "type": "package",
@@ -715,10 +788,48 @@
         "newtonsoft.json.11.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec"
       ]
+    },
+    "System.Drawing.Common/4.5.0": {
+      "sha512": "LLI+GGolsv4K8Eu2PN5N3/1t4pM5zoU4fM3lWhSOawJuCjv9iQJJODjd4/QJIgpjlqxzQDMMoOjAaVuzrNJT0g==",
+      "type": "package",
+      "path": "system.drawing.common/4.5.0",
+      "files": [
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.Drawing.Common.dll",
+        "lib/netstandard2.0/System.Drawing.Common.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net461/System.Drawing.Common.dll",
+        "ref/netstandard2.0/System.Drawing.Common.dll",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/unix/lib/netcoreapp2.0/System.Drawing.Common.dll",
+        "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll",
+        "system.drawing.common.4.5.0.nupkg.sha512",
+        "system.drawing.common.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "MWMS.Helper/1.0.0": {
+      "type": "project",
+      "path": "../MWMS.Helper/MWMS.Helper.csproj",
+      "msbuildProject": "../MWMS.Helper/MWMS.Helper.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
+      "MWMS.Helper >= 1.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
       "NETCore.Encrypt >= 2.0.7"
     ]
@@ -733,11 +844,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "F:\\web\\my\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj",
+      "projectUniqueName": "F:\\web\\my\\MWMS\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj",
       "projectName": "MWMS.DataExtensions",
-      "projectPath": "F:\\web\\my\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj",
+      "projectPath": "F:\\web\\my\\MWMS\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj",
       "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
-      "outputPath": "F:\\web\\my\\M5_core\\MWMS.DataExtensions\\obj\\",
+      "outputPath": "F:\\web\\my\\MWMS\\M5_core\\MWMS.DataExtensions\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -755,7 +866,11 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "F:\\web\\my\\MWMS\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj": {
+              "projectPath": "F:\\web\\my\\MWMS\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

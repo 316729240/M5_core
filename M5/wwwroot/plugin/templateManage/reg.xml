@@ -1,0 +1,7 @@
+  <app title="模板管理器" name="templateManage" type="1">
+    <include>main.js</include>
+    <include>view.js</include>
+    <include>backupRestore.js</include>
+    <include>find.js</include>
+    <cards color="2" size="4"  >card.html</cards>
+  </app>

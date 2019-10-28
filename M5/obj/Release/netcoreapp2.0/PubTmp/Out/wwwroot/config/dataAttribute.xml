@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Type>
+<Item><Keyword>推荐</Keyword><Ico>/manage/skin/icon/tj.png</Ico><Value>1</Value></Item>
+  <Item>
+    <Keyword>精华</Keyword>
+    <Ico>/manage/skin/icon/jh.png</Ico>
+    <Value>2</Value>
+  </Item>
+</Type>

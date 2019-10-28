@@ -10,6 +10,8 @@ using System.Xml;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
 using NETCore.Encrypt;
+using System.Dynamic;
+using Helper;
 
 namespace MWMS.DataExtensions
 {
@@ -219,6 +221,84 @@ namespace MWMS.DataExtensions
             {
                 return "";
             }
+        }
+    }
+
+
+    public class DynamicAttr : DynamicObject
+    {
+        //保存对象动态定义的属性值
+        private Dictionary<string, object> _values;
+        public DynamicAttr()
+        {
+            _values = new Dictionary<string, object>();
+        }
+        /// <summary>
+        /// 获取属性值
+        /// </summary>
+        /// <param name="propertyName"></param>
+        /// <returns></returns>
+        public void Clear()
+        {
+            _values.Clear();
+        }
+        public object Get(string propertyName)
+        {
+            // if (_values.ContainsKey(propertyName) == true)
+            //{
+            return _values[propertyName];
+            //}
+            return null;
+        }
+        /// <summary>
+        /// 设置属性值
+        /// </summary>
+        /// <param name="propertyName"></param>
+        /// <param name="value"></param>
+        public void Set(string propertyName, object value)
+        {
+            if (_values.ContainsKey(propertyName) == true)
+            {
+                _values[propertyName] = value;
+            }
+            else
+            {
+                _values.Add(propertyName, value);
+            }
+        }
+        /// <summary>
+        /// 实现动态对象属性成员访问的方法，得到返回指定属性的值
+        /// </summary>
+        /// <param name="binder"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public override bool TryGetMember(GetMemberBinder binder, out object result)
+        {
+            result = Get(binder.Name);
+            return result == null ? false : true;
+        }
+        /// <summary>
+        /// 实现动态对象属性值设置的方法。
+        /// </summary>
+        /// <param name="binder"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public override bool TrySetMember(SetMemberBinder binder, object value)
+        {
+            Set(binder.Name, value);
+            return true;
+        }
+        /// <summary>
+        /// 动态对象动态方法调用时执行的实际代码
+        /// </summary>
+        /// <param name="binder"></param>
+        /// <param name="args"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+
+        public override bool TryInvoke(InvokeBinder binder, object[] args, out object result)
+        {
+            return base.TryInvoke(binder, args, out result);
         }
     }
 }

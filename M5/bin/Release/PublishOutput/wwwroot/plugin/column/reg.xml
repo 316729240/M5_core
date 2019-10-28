@@ -1,0 +1,4 @@
+<app title="栏目管理" name="column" type="1">
+    <include>columnEdit.js</include>
+    <include>moduleEdit.js</include>
+  </app>
