@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MWMS.DataExtensions\MWMS.DataExtensions.csproj" />
+    <ProjectReference Include="..\..\MWMS.Helper\MWMS.Helper.csproj" />
+    <ProjectReference Include="..\SqlHelper\MWMS.SqlHelper.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -520,7 +520,10 @@ namespace M5.Common
                 }
                 rs.Close();
                 #region 在新父目录下加入Childid信息
-                Sql.ExecuteNonQuery("update class set childid=childid+'" + V + "' where id in (" + parentpath + ")");
+                //sqlserver
+                //Sql.ExecuteNonQuery("update class set childid=childid+'" + V + "' where id in (" + parentpath + ")");
+                Sql.ExecuteNonQuery("update class set childid=CONCAT(childid,'" + V + "') where id in (" + parentpath + ")");
+                
                 #endregion
                 #region 设置所移目录的层次,根目录,父目录
                 Sql.ExecuteNonQuery("update class set RootID=" + RootID + ",classid=" + ParentID + " where id in(" + Items + ")");

@@ -31,14 +31,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Article\Plugin.Article.csproj" />
-    <ProjectReference Include="..\FileManage\Plugin.FileManage.csproj" />
+    <ProjectReference Include="..\MWMS.Plugin\Plugin.Article\Plugin.Article.csproj" />
+    <ProjectReference Include="..\MWMS.Plugin\Plugin.FileManage\Plugin.FileManage.csproj" />
+    <ProjectReference Include="..\MWMS.Plugin\Plugin.BatchAddColumn\Plugin.BatchAddColumn.csproj" />
     <ProjectReference Include="..\M5.Common\M5.Base.csproj" />
     <ProjectReference Include="..\MWMS.DAL\MWMS.DAL.csproj" />
     <ProjectReference Include="..\MWMS.DataExtensions\MWMS.DataExtensions.csproj" />
-    <ProjectReference Include="..\MWMS.Helper\MWMS.Helper.csproj" />
+    <ProjectReference Include="..\..\DAL\MWMS.Helper\MWMS.Helper.csproj" />
     <ProjectReference Include="..\RazorEngine\RazorEngine.Core\RazorEngine.Core.csproj" />
-    <ProjectReference Include="..\SqlHelper\MWMS.SqlHelper.csproj" />
+    <ProjectReference Include="..\..\DAL\SqlHelper\MWMS.SqlHelper.csproj" />
   </ItemGroup>
 
   <ItemGroup>

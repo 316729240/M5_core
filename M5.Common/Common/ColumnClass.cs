@@ -180,7 +180,11 @@ namespace M5.Common
 
                         Sql.ExecuteNonQuery("update class set dirpath='" + Path + "',childid='" + dataId.ToString() + "',parentId='" + rs1[2].ToString() + "," + dataId.ToString() + "',layer=" + rs1[4].ToString() + "+1,pddir='" + rs1[5].ToString() + "',rootid=" + rootId.ToString() + ",url='" + url + "',moduleId=" + rs1[6].ToString() + " where id=" + dataId.ToString());
 
-                        if (rs1[2].ToString() != "") Sql.ExecuteNonQuery("update class set childid=childid+'," + dataId.ToString() + "',moduleId=" + rs1[6].ToString() + " where id in (" + rs1[2].ToString() + ")");
+                        if (rs1[2].ToString() != "") {
+                        //sqlserver
+//                            Sql.ExecuteNonQuery("update class set childid=childid+'," + dataId.ToString() + "',moduleId=" + rs1[6].ToString() + " where id in (" + rs1[2].ToString() + ")");
+                            Sql.ExecuteNonQuery("update class set childid=CONCAT(childid,'" + dataId.ToString() + "'),moduleId=" + rs1[6].ToString() + " where id in (" + rs1[2].ToString() + ")");
+                        }
                     }
                     rs1.Close();
 
@@ -272,11 +276,11 @@ namespace M5.Common
 
             #endregion
             if (info.id < 1) info.id = double.Parse(Tools.GetId());
-            int count = (int)Sql.ExecuteScalar("select count(1) from class where classId=@classId and (dirName=@dirName or className=@className)", new MySqlParameter[]{
+            int count =int.Parse( Sql.ExecuteScalar("select count(1) from class where classId=@classId and (dirName=@dirName or className=@className)", new MySqlParameter[]{
                 new MySqlParameter("classId",info.classId),
                 new MySqlParameter("dirName",info.dirName.ToLower()),
                 new MySqlParameter("className",info.className)
-            });
+            }).ToString());
             if (count > 0)
             {
                 err.errNo = -1;

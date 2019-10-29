@@ -1,0 +1,550 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\project\\M5_core\\MWMS.Plugin\\Plugin.BatchAddColumn\\Plugin.BatchAddColumn.csproj": {}
+  },
+  "projects": {
+    "E:\\project\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\project\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj",
+        "projectName": "MWMS.DAL",
+        "projectPath": "E:\\project\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\DAL\\MWMS.DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.0": {
+            "projectReferences": {
+              "E:\\project\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj": {
+                "projectPath": "E:\\project\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj"
+              },
+              "E:\\project\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj": {
+                "projectPath": "E:\\project\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj"
+              },
+              "E:\\project\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj": {
+                "projectPath": "E:\\project\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.0": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\project\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\project\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj",
+        "projectName": "MWMS.SqlHelper",
+        "projectPath": "E:\\project\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\DAL\\SqlHelper\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.0": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.0, )",
+              "autoReferenced": true
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.17, )"
+            },
+            "System.Data.Common": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.5.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\project\\M5_core\\M5.Common\\M5.Base.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\project\\M5_core\\M5.Common\\M5.Base.csproj",
+        "projectName": "M5.Base",
+        "projectPath": "E:\\project\\M5_core\\M5.Common\\M5.Base.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\M5.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.0": {
+            "projectReferences": {
+              "E:\\project\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj": {
+                "projectPath": "E:\\project\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj"
+              },
+              "E:\\project\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj": {
+                "projectPath": "E:\\project\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj"
+              },
+              "E:\\project\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj": {
+                "projectPath": "E:\\project\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj"
+              },
+              "E:\\project\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj": {
+                "projectPath": "E:\\project\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj"
+              },
+              "E:\\project\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj": {
+                "projectPath": "E:\\project\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.0": {
+          "dependencies": {
+            "Microsoft.AspNetCore.All": {
+              "target": "Package",
+              "version": "[2.0.3, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\project\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\project\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj",
+        "projectName": "MWMS.DataExtensions",
+        "projectPath": "E:\\project\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\MWMS.DataExtensions\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.0": {
+            "projectReferences": {
+              "E:\\project\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj": {
+                "projectPath": "E:\\project\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.0": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.0, )",
+              "autoReferenced": true
+            },
+            "NETCore.Encrypt": {
+              "target": "Package",
+              "version": "[2.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\project\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\project\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj",
+        "projectName": "MWMS.Helper",
+        "projectPath": "E:\\project\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\MWMS.Helper\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.0": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.0, )",
+              "autoReferenced": true
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\project\\M5_core\\MWMS.Plugin\\Plugin.BatchAddColumn\\Plugin.BatchAddColumn.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\project\\M5_core\\MWMS.Plugin\\Plugin.BatchAddColumn\\Plugin.BatchAddColumn.csproj",
+        "projectName": "Plugin.BatchAddColumn",
+        "projectPath": "E:\\project\\M5_core\\MWMS.Plugin\\Plugin.BatchAddColumn\\Plugin.BatchAddColumn.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\MWMS.Plugin\\Plugin.BatchAddColumn\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.0": {
+            "projectReferences": {
+              "E:\\project\\M5_core\\M5.Common\\M5.Base.csproj": {
+                "projectPath": "E:\\project\\M5_core\\M5.Common\\M5.Base.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.0": {
+          "dependencies": {
+            "Microsoft.AspNetCore.All": {
+              "target": "Package",
+              "version": "[2.0.3, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\project\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\project\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
+        "projectName": "RazorEngine.Core",
+        "projectPath": "E:\\project\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\RazorEngine\\RazorEngine.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.0": {
+            "projectReferences": {
+              "E:\\project\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj": {
+                "projectPath": "E:\\project\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.0": {
+          "dependencies": {
+            "Microsoft.CodeAnalysis.CSharp": {
+              "target": "Package",
+              "version": "[2.10.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.0, )",
+              "autoReferenced": true
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\project\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\project\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj",
+        "projectName": "System.Web.Razor",
+        "projectPath": "E:\\project\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\RazorEngine\\System.Web.Razor\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.0": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.0, )",
+              "autoReferenced": true
+            },
+            "System.CodeDom": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -9,11 +9,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MWMS.DAL\MWMS.DAL.csproj" />
+    <ProjectReference Include="..\DAL\MWMS.DAL\MWMS.DAL.csproj" />
     <ProjectReference Include="..\MWMS.DataExtensions\MWMS.DataExtensions.csproj" />
     <ProjectReference Include="..\MWMS.Helper\MWMS.Helper.csproj" />
     <ProjectReference Include="..\RazorEngine\RazorEngine.Core\RazorEngine.Core.csproj" />
-    <ProjectReference Include="..\SqlHelper\MWMS.SqlHelper.csproj" />
+    <ProjectReference Include="..\DAL\SqlHelper\MWMS.SqlHelper.csproj" />
   </ItemGroup>
 
   <ItemGroup>

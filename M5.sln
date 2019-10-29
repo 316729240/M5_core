@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{E7CCF7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MWMS.DataExtensions", "MWMS.DataExtensions\MWMS.DataExtensions.csproj", "{2DEB1A8E-109F-402A-9390-6D8BA1C5BD1D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MWMS.DAL", "MWMS.DAL\MWMS.DAL.csproj", "{66DB264E-3DBF-422C-BF22-CEF1AE447906}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MWMS.DAL", "DAL\MWMS.DAL\MWMS.DAL.csproj", "{66DB264E-3DBF-422C-BF22-CEF1AE447906}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MWMS.SqlHelper", "SqlHelper\MWMS.SqlHelper.csproj", "{AB387505-9205-43C5-BF46-DA4CA2FC7A5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MWMS.SqlHelper", "DAL\SqlHelper\MWMS.SqlHelper.csproj", "{AB387505-9205-43C5-BF46-DA4CA2FC7A5D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{DD655311-398C-4220-B26F-85C472BF58EF}"
 EndProject
@@ -33,9 +33,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M5.Base", "M5.Common\M5.Bas
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MWMS.Plugin", "MWMS.Plugin", "{96C454E5-8B9E-43F2-9340-54726C021493}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.FileManage", "FileManage\Plugin.FileManage.csproj", "{12907FB5-B74B-4E0C-B91C-410C2BF07139}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.FileManage", "MWMS.Plugin\Plugin.FileManage\Plugin.FileManage.csproj", "{12907FB5-B74B-4E0C-B91C-410C2BF07139}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Article", "Article\Plugin.Article.csproj", "{0A7EFE2A-8CD3-4E09-84B6-00942D3B93EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Article", "MWMS.Plugin\Plugin.Article\Plugin.Article.csproj", "{0A7EFE2A-8CD3-4E09-84B6-00942D3B93EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
