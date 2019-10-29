@@ -32,11 +32,11 @@ namespace M5.Common
         /// <returns></returns>
         public static bool customPageExist(double id, double classId, string title)
         {
-            int count = (int)Sql.ExecuteScalar("select count(1) from template B  where B.u_datatypeid=-3 and A.classId=@classId and B.id<>@id and B.title=@title", new MySqlParameter[]{
+            int count = int.Parse( Sql.ExecuteScalar("select count(1) from template B  where B.u_datatypeid=-3 and A.classId=@classId and B.id<>@id and B.title=@title", new MySqlParameter[]{
                 new MySqlParameter("classId",classId),
                 new MySqlParameter("id",id),
                 new MySqlParameter("title",title)
-            });
+            }).ToString());
             return count > 0;
 
         }

@@ -141,11 +141,11 @@ namespace M5.Common
         {
             ReturnValue err = new ReturnValue();
             ColumnInfo info = ColumnClass.get(id);
-            int count = (int)Sql.ExecuteScalar("select count(1) from class where id<>@id and classId=@classId and dirName=@dirName", new MySqlParameter[]{
+            int count = int.Parse( Sql.ExecuteScalar("select count(1) from class where id<>@id and classId=@classId and dirName=@dirName", new MySqlParameter[]{
                 new MySqlParameter("id",info.id),
                 new MySqlParameter("classId",info.classId),
                 new MySqlParameter("dirName",dirName.ToLower())
-            });
+            }).ToString());
             if (count > 0)
             {
                 err.errNo = -1;

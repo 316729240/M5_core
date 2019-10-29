@@ -211,14 +211,14 @@ namespace M5.Common
         public static ReturnValue editDirName(double id, string dirName, UserInfo user)
         {
             ReturnValue err = new ReturnValue();
-            int count = (int)Sql.ExecuteScalar("select count(1) from module where id<>@id and dirName=@dirName", new MySqlParameter[]{
+            int count = int.Parse( Sql.ExecuteScalar("select count(1) from module where id<>@id and dirName=@dirName", new MySqlParameter[]{
                 new MySqlParameter("id",id),
                 new MySqlParameter("dirName",dirName.ToLower())
-            });
-            count = count + (int)Sql.ExecuteScalar("select count(1) from class where classid=7 and id<>@id and dirName=@dirName", new MySqlParameter[]{
+            }).ToString());
+            count = count + int.Parse( Sql.ExecuteScalar("select count(1) from class where classid=7 and id<>@id and dirName=@dirName", new MySqlParameter[]{
                 new MySqlParameter("id",id),
                 new MySqlParameter("dirName",dirName.ToLower())
-            });
+            }).ToString());
             if (count > 0)
             {
                 err.errNo = -1;

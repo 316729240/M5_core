@@ -200,7 +200,7 @@ namespace MWMS.DAL.Datatype
             mainFields["datatypeId"] = DatatypeId;
             if (mainFields.ContainsKey("id") && mainFields["id"].ToDouble()>0)
             {
-                mainFields["updateDate"] = DateTime.Now;
+                mainFields["updateDate"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 t.Update(mainFields);
                 id = t1.Update(dataFields);
             } else
@@ -208,8 +208,8 @@ namespace MWMS.DAL.Datatype
                 id = double.Parse(Helper.Tools.GetId());
                 mainFields["id"] = id;
                 mainFields["auditorid"] = 0;
-                mainFields["updateDate"] = DateTime.Now;
-                mainFields["createDate"] = DateTime.Now;
+                mainFields["updateDate"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                mainFields["createDate"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 dataFields["id"] = id;
                 t.Append(mainFields);
                 id = t1.Append(dataFields);

@@ -239,13 +239,13 @@ namespace M5.Common
                 {
                     where += " and classId in (" + columnConfig.childId + ")";
                 }
-                object c = Sql.ExecuteScalar("select count(1) from maintable where " + where, new MySqlParameter[] {
+                int c =int.Parse( Sql.ExecuteScalar("select count(1) from maintable where " + where, new MySqlParameter[] {
                     new MySqlParameter("title",title),
                     new MySqlParameter("moduleId",parentColumn.moduleId),
                     new MySqlParameter("rootId",parentColumn.rootId),
                     new MySqlParameter("id",id)
-                });
-                if (c != null && (int)c > 0)
+                }).ToString());
+                if (c > 0)
                 {
                     throw new Exception("标题已存在");
                 }
@@ -316,12 +316,12 @@ namespace M5.Common
                 {
                     where += " and classId in (" + columnConfig.childId+ ")";
                 }
-                object c= Sql.ExecuteScalar("select count(1) from maintable where "+where,new MySqlParameter[] {
+                int c=int.Parse( Sql.ExecuteScalar("select count(1) from maintable where "+where,new MySqlParameter[] {
                     new MySqlParameter("title",title),
                     new MySqlParameter("moduleId",parentColumn.moduleId),
                     new MySqlParameter("rootId",parentColumn.rootId)
-                });
-                if(c!=null && (int)c > 0)
+                }).ToString());
+                if( c > 0)
                 {
                     throw new Exception("标题已存在");
                 }

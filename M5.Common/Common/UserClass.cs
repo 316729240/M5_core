@@ -424,17 +424,17 @@ namespace M5.Common
         static ReturnValue add(UserInfo value)
         {
             ReturnValue v = new ReturnValue();
-            if ((int)(Sql.ExecuteScalar("select count(1) from m_admin where uname=@uname", new MySqlParameter[]{
+            if (int.Parse((Sql.ExecuteScalar("select count(1) from m_admin where uname=@uname", new MySqlParameter[]{
                     new MySqlParameter("uname",value.username)
-            })) > 0)
+            })).ToString()) > 0)
             {
                 v.errNo = -1;
                 v.errMsg = "用户名被占用请换一个用户名重试";
                 return (v);
             }
-            if (value.mobile != "" && (int)(Sql.ExecuteScalar("select count(1) from m_admin where mobile=@mobile", new MySqlParameter[]{
+            if (value.mobile != "" && int.Parse((Sql.ExecuteScalar("select count(1) from m_admin where mobile=@mobile", new MySqlParameter[]{
                     new MySqlParameter("mobile",value.mobile)
-            })) > 0)
+            })).ToString()) > 0)
             {
                 v.errNo = -1;
                 v.errMsg = "手机已被注册";
