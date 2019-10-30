@@ -1,0 +1,38 @@
+<reg>
+  <app title="模板管理器" name="templateManage">
+    <include>main.js</include>
+    <include>view.js</include>
+    <include>backupRestore.js</include>
+    <cards color="1" size="4" text="网站模板" ico="fa-sitemap" >card.html</cards>
+  </app>
+  <app title="栏目管理" name="column">
+    <include>columnEdit.js</include>
+    <include>moduleEdit.js</include>
+  </app>
+<app title="系统" name="system">
+    <include>configEdit.js</include>
+  <include>dataManage.js</include>
+  <include>permissions.js</include>
+  <cards color="1" size="2" >card.html</cards>
+</app>
+  <app title="用户管理" name="userManage">
+    <include>manage.js</include>
+    <include>edit.js</include>
+    <cards color="2" size="2" >card.html</cards>
+  </app>
+  <app title="文件管理" name="fileManage">
+    <include>manage.js</include>
+    <include>uploadFile.js</include>
+    <cards color="2" size="2" >card.html</cards>
+  </app>
+  <app title="应用商店" name="appShop">
+    <include>main.js</include>
+    <cards color="2" size="2" >card.html</cards>
+  </app>
+ <app name="天气" path="weather" version="">
+  <cards>weather.html</cards>
+</app>
+  <app title="文章系统" name="article" dataTypeId="22192428132">
+    <include>edit.js</include>
+  </app>
+</reg>

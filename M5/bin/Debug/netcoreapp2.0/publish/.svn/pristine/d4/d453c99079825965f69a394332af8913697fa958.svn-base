@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Web管理系统</title>
+    <script src="../static/js/jquery.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="../static/js/ZeroClipboard.js"></script>
+    <script src="../static/js/resize.js"></script>
+    <script src="../static/js/basecontrol.js"></script>
+    <script src="../static/js/config.js"></script>
+    <script src="../static/js/frame.js"></script>
+    <script src="../static/js/dialog.js"></script>
+    <script src="../static/js/extend.js"></script>
+    <script src="../static/js/jquery.validate.min.js"></script>
+    <script src="../static/js/validate-methods.js"></script>
+    <script src="../static/js/messages_zh.js"></script>
+    <script src="../static/js/xml.js"></script>
+    <script src="../static/js/editor.js"></script>
+    <script src="../static/js/jquery.minicolors.js"></script>
+    <script src="../static/js/jquery.slimscroll.js"></script>
+    <script src="../static/js/chart.min.js"></script>
+    <script src="../static/js/jquery.maskedinput.js"></script>
+    <script src="../static/js/niuniuCapture.js"></script>
+    <link rel="stylesheet" href="../static/css/codemirror.css">
+    <script src="../static/js/codemirror.js"></script>
+    <link type="text/css" href="../static/skin/css/metrostyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/skin/css/ace.css" />
+    <link type="text/css" href="../static/skin/css/tree.css" rel="stylesheet" />
+    <link type="text/css" href="../static/skin/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/skin/css/jquery.minicolors.css" />
+    <link rel="stylesheet" href="../static/skin/css/datepicker.css" />
+    <link rel="stylesheet" href="../static/skin/css/other.css" />
+
+    <script src="../static/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../static/src-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+    <!-- Styles -->
+    <link href="../static/skin/css/style.css" rel="stylesheet" title="lessCss" id="lessCss">
+    <script src="../static/js/less-1.5.0.min.js"></script>
+<style>
+       /* *{font-family: 微软雅黑;font-family:@微软雅黑} */
+    html,body{ margin:0; height:100%;overflow:hidden; }
+
+</style>
+</head>
+
+<body>
+</body>
+<script>
+
+//    $(document.body).addControl({ xtype: "CheckBox", name: "inhe222rit", items: [{ text: "继承设置1", value: 1}], value: 1 });
+//
+    //    return;
+    var reload_call = true;
+    $(document).keydown(function (e) {
+        if (e.which == 116) {
+            if (reload_call){
+                reload_call = false;
+                $M.confirm("您确定要刷新当前页面吗？", function () {
+                    location.reload();
+                }, { onCancel: function () { reload_call = true; } });
+            }
+            return false;
+        }
+    });
+    document.body.oncontextmenu = function () { return false; };
+    var toolBar = null, tree_C = null, mainTab = null; //栏目树
+    var notify = $(document.body).addControl({ xtype: "Notify" });
+    var loadModule = function (sender, e) {
+        var item = toolBar.controls[0].selectedItem;
+        var type = item.attr("type");
+        var moduleId = toolBar.controls[0].val();
+        var p = item.attr("permissions");
+        if (p) toolBar.controls[1].enabled(p.all);
+        else { toolBar.controls[1].enabled(false); }
+        toolBar.controls[2].enabled(p.read);
+
+        tree_C.comm("columnList", { moduleId: moduleId, classId: type ? moduleId : 7 },
+            function (json) {
+                tree_C.root.clear();
+                tree_C.root.addItem(json);
+            });
+    };
+    //-----------------删除栏目-------------------------
+    var delClass = function () {
+        if (tree_C.selectedItem) {
+            $M.confirm("您确定要删除所选栏目？", function () {
+                $M.comm("columnDel", { classId: tree_C.selectedItem.attr("id") }, function (json) { tree_C.selectedItem.remove(); });
+            });
+        } else {
+            $M.alert("请先选择一个栏目");
+        }
+    };
+    //---------------删除模块---------------------------
+    var delModule = function () {
+        $M.confirm("您确定要删除所选模块？", function () {
+            var type = toolBar.controls[0].selectedItem.attr("type");
+            var moduleId = toolBar.controls[0].val();
+            var selectedIndex = toolBar.controls[0].attr("selectedIndex");
+            $M.dialog.deleteModule(moduleId, type, function () { toolBar.controls[0].remove(selectedIndex); loadModule(); });
+        });
+    };
+    //------------------修改模块------------------------
+    var editModule = function () {
+        $M.app.call("$M.column.moduleEdit", { id: toolBar.controls[0].val(), back: function (data) {
+            if (data) toolBar.controls[0].selectedItem.attr("text", data["moduleName"]);
+        }
+        });
+
+    };
+    //------------------添加模块------------------------
+    var addModule = function () {
+        $M.app.call("$M.column.moduleEdit", { back: function (data) {
+            if (data) {
+                data["text"] = data.moduleName;
+                data["value"] = data.id;
+                data["permissions"] = { read: true, write: true, audit: true, all: true };
+                data["type"] = data["type"] == 1;
+                toolBar.controls[0].addItem(data);
+                toolBar.controls[0].val(data.id);
+                tree_C.root.clear();
+            }
+        }
+        });
+    };
+    //------------------修改栏目------------------------
+    var editClass = function () {
+        if (tree_C.selectedItem) {
+            $M.app.call("$M.column.columnEdit", {
+                id: tree_C.selectedItem.attr("id"),
+                classId: tree_C.selectedItem.attr("classId"),
+                moduleId: toolBar.controls[0].val(),
+                dataTypeId: toolBar.controls[0].selectedItem.attr("saveDataType"),
+                back: function (data) { if (data) tree_C.selectedItem.val(data.className); }
+            });
+        }
+    };
+    //------------------添加栏目------------------------
+    var addClass = function (flag) {
+        var type = toolBar.controls[0].selectedItem.attr("type");
+        var moduleId = toolBar.controls[0].val();
+        var dataTypeId = toolBar.controls[0].selectedItem.attr("saveDataType");
+        var parentId = type ? moduleId : 7;
+        if (tree_C.selectedItem && !flag) parentId = tree_C.selectedItem.attr("id");
+        $M.app.call("$M.column.columnEdit", { classId: parentId, moduleId: moduleId, dataTypeId: dataTypeId, back: function (data) {
+            if (data) {
+                if (tree_C.selectedItem && !flag) {
+                    tree_C.selectedItem.addItem({ classId: data.classId, id: data.id, text: data.className, dataTypeId: data.saveDataType });
+                } else {
+                    tree_C.root.addItem({ classId: data.classId, id: data.id, text: data.className, dataTypeId: data.saveDataType });
+                }
+            }
+        }
+        });
+    };
+    //------------------移动栏目------------------------
+    var moveClass = function () {
+        if (tree_C.selectedItem) {
+            $M.dialog.selectColumn(toolBar.controls[0].val(), function (data) {
+                var dragItem = tree_C.selectedItem;
+                if (toolBar.controls[0].val() == data.moduleId && data.id == dragItem.attr("classId")) {
+                    $M.alert("移动无效！");
+                } else {
+                    $M.comm("columnMove", { id: dragItem.attr("id"), moduleId: data.moduleId, classId: data.id }, function (json) {
+                        if (toolBar.controls[0].val() == data.moduleId) {
+                            var item = tree_C.find(function (obj) { return obj.attr("id") == data.id; });
+                            if (data.id == 7) {
+                                dragItem.moveTo({ type: 0, toItem: null });
+                            } else {
+                                if (item != null) {
+                                    dragItem.moveTo({ type: 0, toItem: item });
+                                } else {
+                                    dragItem.remove();
+                                }
+                            }
+                        } else {
+                            dragItem.remove();
+                        }
+                        dragItem.attr("classId", data.id);
+                        $M.dialog.reset(dragItem.attr("id"));
+                    });
+                }
+            });
+        }
+    };
+    //------------------设置栏目状态----------------------
+    var setClassStatus = function () {
+        var selectItem = tree_C.selectedItem;
+        var moduleId = toolBar.controls[0].val();
+        $M.comm("column.setColumnStatus", {
+            moduleId: moduleId, columnId: selectItem.attr("id"),
+            status: tree_C.selectedItem.attr("class") ? 1 : 0
+        }, function (json) {
+            if (tree_C.selectedItem.attr("class")){
+                tree_C.selectedItem.removeClass("M5_Del");
+                tree_C.selectedItem.attr("class", "");
+            }else{
+                tree_C.selectedItem.addClass("M5_Del");
+                tree_C.selectedItem.attr("class", "M5_Del");
+            }
+        });
+        
+    };
+    var initUI = function (loginInfo) {
+        $M.comm("getConfig", { file: "systemVariables.config" }, function (json) {
+            document.title = json.config.item[0].value+"-Web管理系统";
+        });
+        $M.loginInfo = loginInfo;
+        var xml = new $M.xml();
+        xml.loadFile($M.config.webPath + "/config/dataBackupSet.xml");
+        var myDate = new Date();
+        var day = $M.daysBetween(myDate.format("yyyy-MM-dd"), xml.documentElement.childNodes[0].text);
+        if (day > $M.config.backupDay) {
+            notify.addItem({ ico: "fa-database", text: "您已经有" + day + "天没有备份数据库了，点击<a href='#' onclick=\"$M.app.call('$M.dataBase.backupData');return false;\" >备份</a>数据库" });
+        }
+        var moduleExtension = null, classExtension;
+        moduleExtension = $M.loadInterface(["moduleId", "dataTypeId"], 0, function (name) {
+            var permissions = toolBar.controls[0].selectedItem.attr("permissions");
+            $M.app.call(name,
+                {
+                    dataTypeId: toolBar.controls[0].selectedItem.attr("saveDataType"),
+                    moduleId: toolBar.controls[0].val(),
+                    reload: loadModule,
+                    permissions: permissions
+                });
+        });
+        classExtension = $M.loadInterface(["classId", "dataTypeId"], 0, function (name) {
+            var permissions = toolBar.controls[0].selectedItem.attr("permissions");
+            $M.app.call(name,
+                {
+                    dataTypeId: tree_C.selectedItem.attr("dataTypeId"),
+                    classId: tree_C.selectedItem.attr("id"),
+                    moduleId: toolBar.controls[0].val(),
+                    reload: function () {
+                        loadColumn(tree_C.selectedItem);
+                    },
+                    permissions: permissions
+                });
+        });
+        var clip = null, clip2 = null;
+        var treeMenu = $(document.body).addControl({ xtype: "Menu", id: "_copyMenu", items: [
+        { text: "修改", onClick: editClass },
+        { text: "添加子栏目", onClick: function () { addClass(false); } },
+        { text: "移动", onClick: moveClass },
+		    { text: "-" },
+		    { text: "停止", ico: "fa-stop",onClick:setClassStatus},
+		    { text: "删除", onClick: delClass, ico: "fa-trash-o" },
+        { text: "-" },
+        { text: "扩展工具", items: classExtension, ico: "fa-share-alt" },
+        { text: "-" },
+        { text: "权限", onClick: function () {
+            $M.app.call("$M.system.permissions", { classId: tree_C.selectedItem.attr("id") });
+        }
+        },
+        { text: "复制id", id: "_copyId", ico: "fa-copy" }
+        ],
+            onOpening: function (sender, e) {
+                var permissions = toolBar.controls[0].selectedItem.attr("permissions");
+                if (tree_C.selectedItem.parentItem) permissions = tree_C.selectedItem.parentItem.attr("permissions");
+                sender.items[0].attr("enabled", permissions.all);
+                sender.items[1].attr("enabled", permissions.all);
+                sender.items[2].attr("enabled", permissions.all);
+                sender.items[5].attr("enabled", permissions.all);
+                sender.items[9].attr("enabled", permissions.all);
+                //alert(tree_C.selectedItem.attr)
+                //tree_C.selectedItem.setIco(tree_C.selectedItem.attr("class")?"fa-play":"fa-stop");
+                sender.items[4].attr("ico", tree_C.selectedItem.attr("class") ? "fa-play" : "fa-stop");
+                sender.items[4].attr("text", tree_C.selectedItem.attr("class") ? "启用" : "停用");
+                //alert(tree_C.selectedItem.attr("class"));
+            },
+            onOpened: function (sender, e) {
+                clip = new ZeroClipboard.Client();
+                clip.setHandCursor(true);
+                clip.glue("_copyId", "_copyMenu");
+                clip.addEventListener("mouseDown", function () {
+                    clip.setText(tree_C.selectedItem.attr("id"));
+                    setTimeout(sender.close, 200);
+                });
+            },
+            onClose: function (sender, e) {
+                if (clip != null) clip.destroy();
+                clip = null;
+            }
+        });
+        $M.comm("checkUpdate", null, function (json) {
+            if (json != "") {
+                notify.addItem({ ico: "fa-arrow-circle-up", text: "发现新的系统更新，点击<a href='#' onclick=\"$M.app.call('$M.system.upgrade',{dateTime:'" + json + "'});return false;\" >查看</a>" });
+            }
+        }, function (json) {
+            notify.addItem({ ico: "fa-exclamation-circle", color: 4, text: json.errMsg });
+        });
+        var frame = $(document.body).addControl({ xtype: "Frame", type: "x", items: [{ size: 240, "class": "sidebar" }, { size: "*"}] });
+
+        var menu1 = $(document.body).addControl({ xtype: "Menu", id: "_copyMenu2", items: [
+        { text: "修改模块", onClick: editModule },
+        { text: "添加模块", onClick: addModule },
+        { text: "添加子栏目", onClick: function () { addClass(true); } },
+		    { text: "-" },
+		{ text: "删除模块", onClick: delModule, ico: "fa-trash-o" },
+            { text: "-" },
+		{
+		    text: "全部数据", onClick: function () {
+		        var json={
+		            text: toolBar.controls[0].selectedItem.attr("text"),
+		            moduleId: toolBar.controls[0].val(),
+		            classId: toolBar.controls[0].val(),
+		            permissions: toolBar.controls[0].selectedItem.attr("permissions"),
+		            dataTypeId: toolBar.controls[0].selectedItem.attr("saveDataType")
+		        };
+		        $M.app.interface("list", toolBar.controls[0].selectedItem.attr("saveDataType"), function (f) {
+		            if (f) f(json);
+		            else { $M.app.call("$M.system.dataManage", json); }
+		        });
+		    
+		}
+		},
+        { text: "扩展工具", items: moduleExtension, ico: "fa-share-alt" },
+        { text: "-" },
+        { text: "权限", onClick: function () {
+            $M.app.call("$M.system.permissions", { classId: toolBar.controls[0].val() });
+        }
+        },
+        {
+            text: "复制id", id: "_copyId2",ico: "fa-copy"
+        }
+        ],
+            onOpening: function (sender, e) {
+                var p = toolBar.controls[0].selectedItem.attr("permissions");
+                sender.items[0].attr("enabled", p.all);
+                sender.items[1].attr("enabled", p.all);
+                sender.items[2].attr("enabled", p.all);
+                sender.items[4].attr("enabled", p.all);
+                sender.items[9].attr("enabled", p.all);
+            },
+            onOpened: function (sender, e) {
+
+                clip2 = new ZeroClipboard.Client();
+                clip2.setHandCursor(true);
+                clip2.glue("_copyId2", "_copyMenu2");
+                clip2.addEventListener("mouseDown", function () {
+                    clip2.setText(toolBar.controls[0].val());
+                    setTimeout(function () { $("#_copyId2")[0].click(); }, 200);
+                });
+            },
+            onClose: function (sender, e) {
+                if (clip != null) clip2.destroy();
+                clip2 = null;
+            }
+        });
+        var sidebar = frame.items[0];
+        var userInfo = sidebar.append('<div class="sidebar-module">' +
+                '<div class="sidebar-profile">' +
+                '    <img src="" alt="" class="avatar img-circle">' +
+                '    <ul class="sidebar-profile-list">' +
+                '        <li><h3></h3></li>' +
+                '        <li><a href="#" id="editPassword">修改密码</a>  | <a href="#" id="uiSet">界面设置</a> | <a href="#" id="exit">退出</a></li>' +
+                '    </ul>' +
+                '</div>' +
+                '</div>');
+        var userIco = userInfo.find("img");
+        var userH3 = userInfo.find("h3");
+        var uiSet = $(document.body).addControl({ xtype: "Popover", style: { width: "200px", left: "50px" }, location: "bottom" });
+        var system_color = {
+            background_color: { name: "background_color", title: "左侧背景色", colors: ["#333333", "#417CB2", "#007451", "#554161", "#F6F6F6", "#F56954"] },
+            active_color: { name: "active_background_color", title: "焦点背景色", colors: ["#333333", "#FFC34C", "#CCA32F", "#E82A62", "#00BDCC", "#C35342", "#81B441", "#D1351F"] },
+            link_color: { name: "link_color", title: "链接颜色", colors: ["#23BAB5", "#88BDDA", "#DF6C6E"] }
+        };
+        var html = "";
+        for (var color_obj in system_color) {
+            var colors = system_color[color_obj].colors;
+            var item_color_html = "<div class=\"colors\">" + system_color[color_obj].title + "：<ul class=\"list-unstyled\" name=\"" + system_color[color_obj].name + "\">";
+            for (var i = 0; i < colors.length; i++) {
+                item_color_html += "<li color=\"" + colors[i] + "\"  style=\"background:" + colors[i] + "\"></li>";
+            }
+            item_color_html += "</ul></div>";
+            html += item_color_html;
+        }
+        var colorsBox = uiSet.append(html);
+        var setSystemColor = function (colors) {
+            less.sheets.push($('link[title=lessCss]')[0]);
+            less.refresh();
+            less.modifyVars({
+                '@color': "#FFFFFF",
+                '@background_color': colors.background_color,
+                '@title_color': "#000000",
+                '@active_background_color': colors.active_background_color,
+                '@active_color': "#FFFFFF",
+                '@link_color': colors.link_color
+            });
+            colorsBox.find(".list-unstyled li").attr("class", "");
+            colorsBox.find("ul[name='background_color'] li[color='" + colors.background_color + "']").attr("class", "active");
+            colorsBox.find("ul[name='active_background_color'] li[color='" + colors.active_background_color + "']").attr("class", "active");
+            colorsBox.find("ul[name='link_color'] li[color='" + colors.link_color + "']").attr("class", "active");
+        };
+        var system_now_color = { background_color: "#F6F6F6", active_background_color: "#00BDCC", link_color: "#000000" };
+
+
+
+        $M.comm("getSystemColor", null, function (colors) {
+            if (colors) {
+                setSystemColor(colors);
+                system_now_color = colors;
+            }
+        });
+        colorsBox.find(".list-unstyled li").click(function () {
+            var name = $(this).parent().attr("name");
+            system_now_color[name] = $(this).attr("color");
+            $M.comm("setSystemColor", system_now_color, function () {
+                setSystemColor(system_now_color);
+            });
+        });
+        $("#editPassword").click(function () { $M.app.call("$M.userManage.editPassword"); return false; });
+        $("#uiSet").click(function () { uiSet.show($(this)); return false; });
+        $("#exit").click(function () { $M.comm("exit", null, function () { location.reload(); }); return false; });
+        var popover = $(document.body).addControl({ xtype: "Popover", style: { width: "500px", left: "100px" }, location: "bottom" });
+
+        var pic = popover.addControl({ xtype: "Thumbnail", columnCount: 4, picHeight: 80, style: { height: "220px" }, onSelectionChanaged: function (sender, e) {
+            $M.comm("setIcon", { icon: e.item.attr("value") }, function (json) { userIco.attr("src", e.item.attr("url")); });
+            popover.close();
+        }
+        });
+        userIco.attr("src", $M.config.webPath + loginInfo.icon);
+        userH3.html("Hi, " + loginInfo.username);
+        $M.comm("api.readIcon", null, function (json) {
+            for (var i = 0; i < json.length; i++) {
+                pic.addItem({ url: $M.config.webPath + json[i], value: json[i] });
+            }
+
+        });
+        userIco.click(function () {
+            popover.show($(this));
+        });
+        toolBar = sidebar.addControl({
+            xtype: "ToolBar",
+            items: [
+	        [{
+	            xtype: "SelectBox",
+	            style: { width: "110px" },
+	            onChange: loadModule
+	        }],
+            [{ xtype: "Button", ico: "fa-edit", onClick: editModule }, { xtype: "Button", menu: menu1}]
+	        ]
+        });
+        $M.comm("moduleList", null, function (json) {
+            toolBar.controls[0].addItem(json);
+            toolBar.controls[0].addItem({ value: -1, text: "共享资源", permissions: { read: false, write: false, audit: true, all: false} });
+            if (loginInfo.isAdministrator && json.length == 0) {
+                $M.confirm("当前站点没有创建模块，是否现在创建？", function () { addModule(); }, { footer: [{ text: "是" }, { text: "否"}] });
+            }
+            loadModule();
+        });
+        var loadColumn = function (item) {
+            item.attr("loadTag", "2");
+            $M.comm("columnList", { moduleId: item.attr("moduleId"), classId: item.attr("id") }, function (json) {
+                item.clear();
+                item.addItem(json);
+                item.attr("loadTag", "1")
+            });
+        };
+        tree_C = sidebar.addControl({
+            xtype: "TreeView",
+            allowDrop: true,
+            dock: 2,
+            contextMenuStrip: treeMenu,
+            onAfterSelect: function (sender, e) {
+                if (e.item.attr("loadTag") == null && e.item.child.items.length == 0) {
+                    loadColumn(e.item);
+                }
+            },
+            onKeyDown: function (sender, e) {
+                if (e.which == 46) {
+                    delClass();
+                }
+            },
+            onDragDrop: function (sender, e) {
+                $M.confirm("您确定要移动所选栏目？", function () {
+                    if (e.type > 0) {
+                        //alert([e, e.toItem.child, sender.root.items]);
+                        var parent = e.toItem.parentItem;
+                        var items = null;
+                        if (parent == null) {
+                            parent = sender.root;
+                            items = parent.items;
+                        } else {
+                            items = parent.child.items;
+                        }
+                        var ids = "";
+                        var id1 = e.dragItem.attr("id"), id2 = e.toItem.attr("id");
+                        for (var i = 0; i < items.length; i++) {
+                            var tempid = items[i].attr("id");
+                            if (tempid != id1) {
+                                if (tempid == id2 && e.type == 1) ids +=((ids=="")?"":",") + id1;
+                                ids += ((ids=="")?"":",")+tempid;
+                                if (tempid == id2 && e.type == 2) ids += ((ids == "") ? "" : ",") + id1;
+                            }
+                        }
+                        var flag = e.dragItem.attr("classId") == e.toItem.attr("classId");
+                        $M.comm("columnSorting", { classId: e.toItem.attr("classId"), ids: ids, flag: (flag ? 0 : 1) }, function (json) {
+                            e.dragItem.moveTo(e);
+                            if (!flag) $M.dialog.reset(e.dragItem.attr("id"));
+                            e.dragItem.attr("classId", e.toItem.attr("classId"));
+                        });
+                    } else {
+                        $M.comm("columnMove", { id: e.dragItem.attr("id"), moduleId: toolBar.controls[0].val(), classId: e.toItem.attr("id") }, function (json) {
+                            e.dragItem.moveTo(e);
+                            e.dragItem.attr("classId", e.toItem.attr("id"));
+                            $M.dialog.reset(e.toItem.attr("id"));
+                        });
+                    }
+                });
+                return false;
+            },
+            onMouseDoubleClick: function (sender, e) {
+                var json = {
+                    text: sender.selectedItem.attr("text"),
+                    moduleId: toolBar.controls[0].val(),
+                    classId: sender.selectedItem.attr("id"),
+                    dataTypeId: sender.selectedItem.attr("dataTypeId"),
+                    permissions: sender.selectedItem.attr("permissions")
+                };
+                $M.app.interface("list", sender.selectedItem.attr("dataTypeId"), function (f) {
+                    if (f) f(json);
+                    else { $M.app.call("$M.system.dataManage", json); }
+                });
+            },
+            onMouseDown: function (sender, e) {
+            }
+        });
+        mainTab = frame.items[1].addControl({ xtype: "Tab", dock: $M.Control.Constant.dockStyle.fill, style: { width: "500px", height: "300px" }, items: [{ text: "欢迎中心", ico: "fa-home"}] });
+
+        $M.panelGroup = mainTab.items[0].addControl({
+            xtype: "PanelGroup",
+            onChange: function (sender, e) {
+                var layout = "";
+                for (var i = 0; i < sender.items.length; i++) {
+                    layout += sender.items[i].attr("name") + "\n";
+                }
+                $M.comm("saveCardLayout", { layout: layout });
+            }
+        });
+        var apps = _appReg.reg.app;
+        for (var i = 0; i < apps.length; i++) {
+            if (apps[i].load == "1" && apps[i].cards) {
+                try {
+                    apps[i].cards.class = "no-padding",
+                    apps[i].cards.url = "app/" + apps[i].name + "/" + apps[i].cards.value;
+                    apps[i].cards.name = apps[i].name;
+                    $M.panelGroup.addItem(apps[i].cards);
+                } catch (x) {
+                }
+            }
+        }
+        frame.resize();
+        //$M.app.call("$M.templateManage.edit", { title: "网站首页", id: 0, classId: 0, datatypeId: -1, defaultFlag: 1, typeId: 0, u_webFAid: 0 });
+        //$M.app.call("$M.serviceManual.buyCar", { userId: 10415568588 });
+        //$M.dialog.configEdit({});
+        //$M.app.call("$M.dataBase.tableStructure", { id: "11670193235", tableName: "u_test", datatypeName: "test" });
+        //$M.app.call("$M.dataBase.formEdit", { });
+        //$M.app.call("$M.dataBase.backup", { name: "3212333223" });
+        //$M.app.call("$M.statistical.exportData", { name: "ssssss" });
+        //$M.app.call("$M.account.edit", { classId: 9896847028, dataId: 11253741936 });
+        
+        //$M.app.openFunction("templateManage", "edit");
+        //$M.app.openFunction("templateManage", "viewManage");
+        //$M.dialog.selectColumn();
+    }
+    var initUserConfig = function (returnData) {
+        $M.comm("Config.init", null, function (data) {
+            $M.config.webPath = data.webPath;
+            $M.config.appPath = data.appPath;
+            $M.config.sysAppPath = data.sysAppPath;
+            $M.config.backupDay = data.backupDay;
+            this._appReg = $.parseJSON( data._appReg);
+            this._interface = $.parseJSON(data._interface);
+            initUI(returnData);
+        });
+        /*
+        $.getScript("app/includeJS.ashx", function (data, status, jqxhr) {
+            initUI(returnData);
+        });*/
+
+    };
+    //---------------------login-----------------------------
+    $M.comm("api.checkManagerLogin", null, initUserConfig, function () {
+        $M.dialog.login(function (flag, e) {
+            if (flag) initUserConfig(e.returnData);
+        });
+    });
+
+</script>
+
+</html>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="gb2312"?>
+<config>
+  <item xtype="GridView" name="grid" columns="[{text:'IP',width:200,name:'key',xtype:'TextBox'}]">
+  </item>
+</config>

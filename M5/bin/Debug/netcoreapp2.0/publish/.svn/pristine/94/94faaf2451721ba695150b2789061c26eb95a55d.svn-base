@@ -1,0 +1,27 @@
+﻿<table cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+		<tr>
+			<td width="25px;" style="width:25px;"></td>
+			<td align="">
+				<div style="line-height:40px;height:40px;"></div>
+				<p style="margin:0px;padding:0px;"><strong style="font-size:14px;line-height:24px;color:#333333;font-family:arial,sans-serif;">
+				亲爱的用户：</strong></p>
+				<p style="margin:0px;padding:0px;line-height:24px;font-size:12px;color:#333333;font-family:&#39;宋体&#39;,arial,sans-serif;">
+				您好！</p>
+				<p style="margin:0px;padding:0px;line-height:24px;font-size:12px;color:#333333;font-family:&#39;宋体&#39;,arial,sans-serif;">
+				您于 ${api.format(public.dateTime,"yyyy年MM月dd日 hh:mm")} 注册${sys.webName}帐号 $public.accountName ，点击以下链接，即可激活该帐号：</p>
+				<p style="margin:0px;padding:0px;"><a href="$public.url" style="line-height:24px;font-size:12px;font-family:arial,sans-serif;color:#0000cc" target="_blank">
+				$public.url</a></p>
+				<p style="margin:0px;padding:0px;line-height:24px;font-size:12px;color:#979797;font-family:arial,sans-serif;">
+				(如果您无法点击此链接，请将它复制到浏览器地址栏后访问)</p>
+				<p style="margin:0px;padding:0px;line-height:24px;font-size:12px;color:#333333;font-family:&#39;宋体&#39;,arial,sans-serif;">
+				为了保障您帐号的安全性，请在 48小时内完成激活，此链接将在您激活过一次后失效！</p>
+								<div style="line-height:80px;height:80px;"></div>
+				<p style="margin:0px;padding:0px;line-height:24px;font-size:12px;color:#333333;font-family:&#39;宋体&#39;,arial,sans-serif;">
+				${sys.webName}团队</p>
+				<p style="margin:0px;padding:0px;line-height:24px;font-size:12px;color:#333333;font-family:&#39;宋体&#39;,arial,sans-serif;">
+				${api.format(public.dateTime,"yyyy年MM月dd日")}</p>
+			</td>
+		</tr>
+		</tbody>
+		</table>

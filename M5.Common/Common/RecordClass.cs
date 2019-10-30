@@ -336,8 +336,8 @@ namespace M5.Common
             System.Text.StringBuilder str = new System.Text.StringBuilder();
             System.Text.StringBuilder str1 = new System.Text.StringBuilder();
             this.addField("id", id);
-            this.addField("createdate", System.DateTime.Now.ToString());
-            this.addField("updatedate", System.DateTime.Now.ToString());
+            this.addField("createdate", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            this.addField("updatedate", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
             this.addField("datatypeId", dataTypeId);
             this.addField("moduleId", parentColumn.moduleId);
             this.addField("rootId", parentColumn.rootId);

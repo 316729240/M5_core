@@ -1,0 +1,18 @@
+﻿<style>
+#userManage_card{background-color: #45B6B0 !important;height:100px;
+    cursor:pointer;}
+#userManage_card i {
+    font-size: 80px;
+    line-height: 35px;
+    display: inline-block;
+    text-align: center;
+    padding: 18px 0 0;
+    color: rgba(255, 255, 255, 0.9);
+    background-color: #45B6B0 !important;
+}
+#userManage_card .message{color:#FFFFFF;position: relative;left:90px;top:0px;}
+</style>
+<div id="userManage_card" onclick='$M.app.call("$M.userManage.manage");'>
+<div><i  class="fa fa-users"></i></div>
+<div class="message">用户管理</div>
+</div>

@@ -183,7 +183,8 @@ namespace M5.Common
                         if (rs1[2].ToString() != "") {
                         //sqlserver
 //                            Sql.ExecuteNonQuery("update class set childid=childid+'," + dataId.ToString() + "',moduleId=" + rs1[6].ToString() + " where id in (" + rs1[2].ToString() + ")");
-                            Sql.ExecuteNonQuery("update class set childid=CONCAT(childid,'" + dataId.ToString() + "'),moduleId=" + rs1[6].ToString() + " where id in (" + rs1[2].ToString() + ")");
+
+                            Sql.ExecuteNonQuery("update class set childid=CONCAT(childid,',','" + dataId.ToString() + "'),moduleId=" + rs1[6].ToString() + " where id in (" + rs1[2].ToString() + ")");
                         }
                     }
                     rs1.Close();
@@ -366,7 +367,7 @@ namespace M5.Common
                 new MySqlParameter("watermark",info.watermark)
 
                 });
-                //reset(info.id);
+                reset(info.id);
                 err.userData = info.id;
             }
             else

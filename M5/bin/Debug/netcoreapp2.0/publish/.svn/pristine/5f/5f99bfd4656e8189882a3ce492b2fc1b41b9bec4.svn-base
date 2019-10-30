@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="gb2312"?>
+<config>
+  <item xtype="GridView" name="grid" style="{height:'350px'}" columns="[{text:'关键词',width:200,name:'key',xtype:'TextBox'},{text:'链接',width:300,name:'url',xtype:'TextBox'},{text:'数量',width:50,name:'count',xtype:'TextBox'},{text:'颜色',width:50,name:'color',xtype:'TextBox'}]">
+    <data>
+      <key></key>
+      <url></url>
+      <count>1</count>
+      <color />
+    </data>
+  </item>
+</config>

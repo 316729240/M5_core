@@ -1,0 +1,11 @@
+<app title="批量添加栏目" name="batchAddColumn" type="1" datetime="2015-8-11 14:39:41" sn="8EBD9D29CD70A1D350E94CA14B9AFA1FB42555E9">
+  <include>main.js</include>
+  <interface>
+    <function name="main" text="批量添加栏目" ico="fa-bars" dataTypeId="0" parameter="dataTypeId,moduleId">
+      <permissions all="true" />
+    </function>
+    <function name="main" text="批量添加栏目" ico="fa-bars" dataTypeId="0" parameter="dataTypeId,classId">
+      <permissions all="true" />
+    </function>
+  </interface>
+</app>

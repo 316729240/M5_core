@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Web管理系统</title>
+    <script src="../static/js/jquery.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="../static/js/ZeroClipboard.js"></script>
+    <script src="../static/js/resize.js"></script>
+    <script src="../static/js/baseControl.js"></script>
+    <script src="../static/js/config.js"></script>
+    <script src="../static/js/Frame.js"></script>
+    <script src="../static/js/dialog.js"></script>
+    <script src="../static/js/extend.js"></script>
+    <script src="../static/js/jquery.validate.min.js"></script>
+    <script src="../static/js/validate-methods.js"></script>
+    <script src="../static/js/messages_zh.js"></script>
+    <script src="../static/js/xml.js"></script>
+    <script src="../static/js/editor.js"></script>
+    <script src="../static/js/jquery.minicolors.js"></script>
+    <script src="../static/js/jquery.slimscroll.js"></script>
+    <script src="../static/js/chart.min.js"></script>
+    <script src="../static/js/jquery.maskedinput.js"></script>
+    <script src="../static/js/niuniuCapture.js"></script>
+    <link rel="stylesheet" href="../static/css/codemirror.css">
+    <script src="../static/js/codemirror.js"></script>
+    <link type="text/css" href="../static/skin/css/metrostyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/skin/css/ace.css" />
+    <link type="text/css" href="../static/skin/css/tree.css" rel="stylesheet" />
+    <link type="text/css" href="../static/skin/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/skin/css/jquery.minicolors.css" />
+    <link rel="stylesheet" href="../static/skin/css/datepicker.css" />
+    <link rel="stylesheet" href="../static/skin/css/other.css" />
+
+    <!-- Styles -->
+    <link href="../static/skin/css/style.css" rel="stylesheet" title="lessCss" id="lessCss">
+    <script src="../static/js/less-1.5.0.min.js"></script>
+</head>
+
+<body><form class="form-horizontal" id="edit" xtype="Form" method="post" action="/manage/app/account/frontEnd.ashx">
+   
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">城市</label>
+        <div class="col-sm-10">
+            <select xtype="SelectBox" name="city"></select>
+            <select xtype="SelectBox" name="area"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">婚姻状况</label>
+        <div class="col-sm-10">
+            <select xtype="SelectBox" name="marriage" items="[{text:'未婚',value:0},{text:'已婚',value:1}]" value="$public.userInfo2.marriage"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">教育程度</label>
+        <div class="col-sm-10">
+            <select xtype="SelectBox" name="education" items="[{text:'小学'},{text:'初中'},{text:'高中'},{text:'大学'},{text:'其它'}]" value="$public.userInfo2.education"></select>
+        </div>
+    </div>
+   
+</form>
+</body>
+<script>
+    var form = $("#edit").render();
+</script>
+
+</html>

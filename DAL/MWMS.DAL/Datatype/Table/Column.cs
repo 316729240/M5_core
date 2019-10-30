@@ -5,11 +5,11 @@ using System.Text;
 
 namespace MWMS.DAL.Datatype.Table
 {
-    public class Column:DAL.TableHandle
+    public class Column:MWMS.DAL.TableHandle
     {
         public Column()
         {
-            this.TableName = "Class";
+            this.TableName = "class";
         }
     }
 }

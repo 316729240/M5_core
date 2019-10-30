@@ -82,7 +82,7 @@ namespace MWMS.DAL
             if (!flag) return null;
             return model;
         }
-        public int GetCount(string where, Dictionary<string, object> p)
+        public int Count(string where, Dictionary<string, object> p)
         {
             MySqlParameter[] _p = GetParameter(p);
             return int.Parse(Sql.ExecuteScalar("select count(1) from " + TableName + " where " + where, _p).ToString());

@@ -1,0 +1,81 @@
+﻿.tree 
+{
+    overflow:auto;
+}
+.tree ul{
+padding-left:20px;
+}
+.tree li {
+    list-style-type:none;
+    margin:0;
+    padding:0px 5px 0 2px;
+    position:relative;
+    white-space:nowrap; 
+}
+.tree li::before {
+    border-left:1px solid #999;
+    bottom:50px;
+    height:100%;
+    top:0;
+    width:1px
+}
+
+.tree li::before, .tree li:before {
+	display:inline-block;
+	content:"";
+	position:absolute;
+	z-index:1;
+	top:0px;
+	left:-14px;
+	border:1px dotted #67b2dd;
+	border-width:0 0 0 1px
+}
+.tree li::after {
+	display:inline-block;
+	content:"";
+	position:absolute;
+	top:10px;
+	left:-14px;
+	width:10px;
+	border-top:1px dotted #67b2dd;
+	z-index:1
+}
+.tree li.parent_li>span {
+    cursor:pointer
+}
+.tree li:last-child::before {
+    height:11px
+}
+.tree  a {
+  display: block;
+  outline:none;
+}
+.tree  a:hover {
+  text-decoration: none;
+  background-color: #eeeeee;
+}
+.tree  a i {
+margin:0px 5px 0px 0px;
+}
+.tree  a span {
+padding:0px 3px 0px 3px;
+white-space:nowrap;  
+}
+
+.tree  .active > a span {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  background-color: #0088cc;
+}
+
+.tree  .dragActive > a span {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  background-color: #0088cc;
+}
+.insertLine
+{
+    background-color: #000000;
+    height:3px;overflow:hidden;
+    position: absolute; width: 100px;  z-index: 1000;
+}

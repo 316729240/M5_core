@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="gb2312"?>
+<config>
+  <item labelText="网站主域名" name="mainUrl" vtype="{url:true}">
+  </item>
+  <item labelText="绝对路径转换" name="urlConversion" xtype="CheckBox" items="[{'text':'转换',value:1}]">
+  </item>
+  <item labelText="子域名旧页面" name="oldSubdomainsPage" xtype="SelectBox" items="[{'text':'返回404',value:0},{'text':'301跳转至新页面',value:1},{'text':'保持原访问',value:2}]">0</item>
+  <item labelText="后台列表页大小" name="managePageSize" items="[{'text':'10条',value:10},{'text':'20条',value:20},{'text':'40条',value:40},{'text':'100条',value:100}]" xtype="SelectBox">20</item>
+  <item labelText="备份周期" name="backupDay" xtype="Spinner">4</item>
+  <item labelText="内页地址模板" name="contentUrlTemplate">/$column.dirPath/$id.$extension</item>
+  <item labelText="扩展名" name="extension">html</item>
+  <item labelText="手机地址" name="mobileUrl">m/</item>
+  <item labelText="手机站跳转方式" name="mobileRedirectType" xtype="SelectBox" items="[{text:'服务器端跳转',value:0},{text:'JS跳转',value:1},{text:'不跳转',value:2}]">0</item>
+</config>
