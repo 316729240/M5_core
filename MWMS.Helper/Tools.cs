@@ -41,6 +41,7 @@ namespace MWMS.Helper
             else
             {
                 path = System.IO.Directory.GetCurrentDirectory() + @"/wwwroot" + path.Replace("~", "");
+                path = path.Replace("\\", "/");
             }
            
            return path;

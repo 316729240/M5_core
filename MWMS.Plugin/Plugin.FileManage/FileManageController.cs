@@ -57,7 +57,7 @@ System.IO.FileInfo f = new FileInfo(Tools.MapPath(@"~\" + path + @"\" + oldName)
         {
             ReturnValue err = new ReturnValue();
 string rootPath = Tools.MapPath(@"\" + Config.webPath);
-path = Tools.MapPath("~/" +path) + @"\";
+path = Tools.MapPath("~/" +path + @"\") ;
             DirectoryInfo di = new DirectoryInfo(path);
 string newPath = di.Parent.FullName + @"/" + name;
             try
@@ -78,7 +78,7 @@ err.userData = dictionary;
         public ReturnValue delDir(string path)
         {
             ReturnValue err = new ReturnValue();
-path = Tools.MapPath("~/" + path) + @"\";
+path = Tools.MapPath("~/" + path + @"\") ;
             DirectoryInfo di = new DirectoryInfo(path);
             if (di.GetDirectories().Length == 0)
             {
@@ -95,7 +95,7 @@ path = Tools.MapPath("~/" + path) + @"\";
         {
             ReturnValue err = new ReturnValue();
 string[] files =_files.Split(',');
-path = Tools.MapPath("~/" + path) + @"\";
+path = Tools.MapPath("~/" + path + @"\") ;
             try
             {
                 for (int i = 0; i<files.Length; i++)
@@ -115,7 +115,8 @@ path = Tools.MapPath("~/" + path) + @"\";
         {
             ReturnValue err = new ReturnValue();
 string rootPath = Tools.MapPath(@"\" + Config.webPath);
-DirectoryInfo dir = new DirectoryInfo(rootPath + path);
+            string nowpath = Tools.MapPath(@"\" + Config.webPath + path);
+            DirectoryInfo dir = new DirectoryInfo(nowpath);
 DirectoryInfo[] list = dir.GetDirectories();
 object[] dirlist = new object[list.Length];
             for (int i = 0; i<list.Length; i++)
@@ -131,10 +132,12 @@ dictionary["ico"] = "fa-folder-o";
         }
         public ReturnValue readFiles(string path, int pageNo = 1)
         {
+            if (path == "\\") path = "";
             ReturnValue err = new ReturnValue();
             if (pageNo == 0) pageNo = 1;
-string rootPath = Tools.MapPath(@"\" + Config.webPath);
-DirectoryInfo dir = new DirectoryInfo(rootPath + path);
+            string rootPath = Tools.MapPath(@"\" + Config.webPath);
+            string nowpath = Tools.MapPath(@"\" + Config.webPath+ path);
+            DirectoryInfo dir = new DirectoryInfo(nowpath);
 FileInfo[] list = dir.GetFiles();
 ReturnPageData page = new ReturnPageData();
 page.pageNo = pageNo;

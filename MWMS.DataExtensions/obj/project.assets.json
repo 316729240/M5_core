@@ -605,11 +605,10 @@
       ]
     },
     "Microsoft.Win32.SystemEvents/4.5.0": {
-      "sha512": "LuI1oG+24TUj1ZRQQjM5Ew73BKnZE5NZ/7eAdh1o8ST5dPhUnJvIkiIn2re3MwnkRy6ELRnvEbBxHP8uALKhJw==",
+      "sha512": "aXrCxI6PdEEJkqIDRYCe2oBRZ1gto5Ac1Y/WuahG/CD+PB5rAVFU7VpkBILBUQQG/NBtxbIRM0Q61m5uJQLTPw==",
       "type": "package",
       "path": "microsoft.win32.systemevents/4.5.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -791,11 +790,10 @@
       ]
     },
     "System.Drawing.Common/4.5.0": {
-      "sha512": "AiJFxxVPdeITstiRS5aAu8+8Dpf5NawTMoapZ53Gfirml24p7HIfhjmCRxdXnmmf3IUA3AX3CcW7G73CjWxW/Q==",
+      "sha512": "LLI+GGolsv4K8Eu2PN5N3/1t4pM5zoU4fM3lWhSOawJuCjv9iQJJODjd4/QJIgpjlqxzQDMMoOjAaVuzrNJT0g==",
       "type": "package",
       "path": "system.drawing.common/4.5.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -837,23 +835,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\h\\.nuget\\packages\\": {},
+    "C:\\Users\\wang\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
-      "projectUniqueName": "E:\\project\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj",
+      "projectUniqueName": "E:\\web\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj",
       "projectName": "MWMS.DataExtensions",
-      "projectPath": "E:\\project\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj",
-      "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
-      "outputPath": "E:\\project\\M5_core\\MWMS.DataExtensions\\obj\\",
+      "projectPath": "E:\\web\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj",
+      "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
+      "outputPath": "E:\\web\\M5_core\\MWMS.DataExtensions\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\wang\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -866,8 +867,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "E:\\project\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj": {
-              "projectPath": "E:\\project\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj"
+            "E:\\web\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj": {
+              "projectPath": "E:\\web\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj"
             }
           }
         }
@@ -893,16 +894,10 @@
           }
         },
         "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
+          "net461"
         ],
         "assetTargetFallback": true,
-        "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "warn": true
       }
     }
   }

@@ -17,9 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DAL\SqlHelper\MWMS.SqlHelper.csproj" />
     <ProjectReference Include="..\..\M5.Common\M5.Base.csproj" />
-    <ProjectReference Include="..\..\..\DAL\MWMS.Helper\MWMS.Helper.csproj" />
-    <ProjectReference Include="..\..\..\DAL\SqlHelper\MWMS.SqlHelper.csproj" />
+    <ProjectReference Include="..\..\MWMS.Helper\MWMS.Helper.csproj" />
   </ItemGroup>
 
 </Project>
