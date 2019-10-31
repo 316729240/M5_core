@@ -122,3 +122,5 @@ E:\web\M5_core\M5\obj\Debug\netcoreapp2.0\M5.Main.AssemblyInfoInputs.cache
 E:\web\M5_core\M5\obj\Debug\netcoreapp2.0\M5.Main.AssemblyInfo.cs
 E:\web\M5_core\M5\obj\Debug\netcoreapp2.0\M5.Main.dll
 E:\web\M5_core\M5\obj\Debug\netcoreapp2.0\M5.Main.pdb
+E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\MWMS.Template.dll
+E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\MWMS.Template.pdb

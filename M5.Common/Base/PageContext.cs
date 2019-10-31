@@ -45,7 +45,6 @@ namespace M5
             get
             {
                 Microsoft.AspNetCore.Http.HttpContext context = _contextAccessor.HttpContext;
-                
                 // context.Response.WriteAsync("Test");
 
                 return context;

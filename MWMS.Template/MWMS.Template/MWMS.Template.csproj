@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DAL\MWMS.DAL\MWMS.DAL.csproj" />
+    <ProjectReference Include="..\..\M5.Common\M5.Base.csproj" />
+    <ProjectReference Include="..\..\RazorEngine\RazorEngine.Core\RazorEngine.Core.csproj" />
+  </ItemGroup>
+
+</Project>

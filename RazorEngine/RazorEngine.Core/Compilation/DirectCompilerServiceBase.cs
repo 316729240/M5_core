@@ -98,8 +98,12 @@
                     ms.Seek(0, SeekOrigin.Begin);
                     return ms.ToArray();
                 }
-                //throw new ObjectDisposedException(result);
-                //throw new CompilingException(result.Diagnostics);
+                string errmsg = "";
+                for(int i1=0;i1< result.Diagnostics.Length;i1++)
+                {
+                    errmsg += result.Diagnostics[i1]+"\r\n";
+                }
+                throw new Exception(errmsg);
             }
 
            // }

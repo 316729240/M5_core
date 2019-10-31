@@ -25,6 +25,8 @@
       "Plugin.Article/1.0.0": {
         "dependencies": {
           "M5.Base": "1.0.0",
+          "MWMS.Helper": "1.0.0",
+          "MWMS.SqlHelper": "1.0.0",
           "Microsoft.AspNetCore.All": "2.0.3",
           "Microsoft.NETCore.App": "2.0.0"
         },

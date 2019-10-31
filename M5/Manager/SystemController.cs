@@ -818,7 +818,7 @@ public ReturnValue dataList(double moduleId,double classId=-1,int pageNo=1,strin
         string[] fp = new string[fileData.Count];
         for (int i = 0; i < fileData.Count; i++)
         {
-            fp[i] = Lib.saveImage(fileData[i], Config.tempPath);
+            fp[i] = Lib.SaveImage(fileData[i], Config.tempPath,new string []{"jpg","gif","png"});
         }
         info.userData = fp;
         return info;

@@ -15,7 +15,7 @@ namespace M5.Common
             LoginInfo loginInfo = new LoginInfo(sessionId);
             //context.HttpContext.SetLoginInfo(loginInfo);
             if (!loginInfo.checkManagerLogin()) { 
-                context.Result = new JsonResult(ReturnValue.Err(-1000));
+                context.Result = new JsonResult(ReturnValue.Err("没有登录",-1000));
             }
         }
 

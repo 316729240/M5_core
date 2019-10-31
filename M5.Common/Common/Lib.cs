@@ -12,7 +12,7 @@ namespace M5.Common
 {
     public class Lib
     {
-        public static string saveImage(IFormFile file, string filePath)
+        public static string SaveImage(IFormFile file, string filePath,string [] extensions=null)
         {
             var filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName;
 
@@ -21,7 +21,7 @@ namespace M5.Common
                 if (!System.IO.Directory.Exists(Tools.MapPath(path))) System.IO.Directory.CreateDirectory(Tools.MapPath(path));
                 string kzm = "";
                 if (file.FileName.LastIndexOf(".") > -1) kzm = file.FileName.Substring(file.FileName.LastIndexOf(".") + 1).ToLower();
-                if (!Regex.IsMatch(kzm, "(jpg|gif|png)"))
+                if (extensions!=null && !Regex.IsMatch(kzm, "("+String.Join("|",extensions)+")"))
                 {
                     throw new Exception("文件类型不合法，只能上传jpg,gif,png");
                 }

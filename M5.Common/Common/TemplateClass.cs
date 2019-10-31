@@ -291,7 +291,7 @@ namespace M5.Common
             }
             if (info == null)
             {
-                MySqlDataReader rs2 = Sql.ExecuteReader("select top 1 B.title,B.u_content,B.u_editboxStatus,B.u_parameterValue,B.id,B.classId from template B where B.ClassID in (0,@moduleId,@rootId) and B.u_defaultFlag=1 and B.u_datatypeid=@datatypeId and B.u_type=@typeId and B.u_webFAid=@webFAid order by u_layer desc",
+                MySqlDataReader rs2 = Sql.ExecuteReader("select  B.title,B.u_content,B.u_editboxStatus,B.u_parameterValue,B.id,B.classId from template B where B.ClassID in (0,@moduleId,@rootId) and B.u_defaultFlag=1 and B.u_datatypeid=@datatypeId and B.u_type=@typeId and B.u_webFAid=@webFAid order by u_layer desc limit 0,1 ",
     new MySqlParameter[]{
                     new MySqlParameter("moduleId",moduleId),
                     new MySqlParameter("rootId",rootId),
@@ -399,7 +399,7 @@ namespace M5.Common
             }
             if (info == null)
             {
-                MySqlDataReader rs2 = Sql.ExecuteReader("select top 1 B.title,B.u_content,B.u_editboxStatus,B.u_parameterValue,B.id,B.classId from template B where B.ClassID in (0,@moduleId,@rootId) and B.u_datatypeid=@datatypeId and B.u_type=@typeId and B.u_defaultFlag=1 and B.u_webFAid=@webFAid order by u_layer desc",
+                MySqlDataReader rs2 = Sql.ExecuteReader("select  B.title,B.u_content,B.u_editboxStatus,B.u_parameterValue,B.id,B.classId from template B where B.ClassID in (0,@moduleId,@rootId) and B.u_datatypeid=@datatypeId and B.u_type=@typeId and B.u_defaultFlag=1 and B.u_webFAid=@webFAid order by u_layer desc limit 0,1",
     new MySqlParameter[]{
                     new MySqlParameter("moduleId",moduleId),
                     new MySqlParameter("rootId",rootId),

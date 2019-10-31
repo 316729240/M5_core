@@ -16,9 +16,11 @@ namespace MWMS
         {
             this.userData = data;
         }
-        public static ReturnValue Err(int err,string msg=null)
+        public static ReturnValue Err(string msg=null, int err=-1)
         {
             ReturnValue info=new ReturnValue();
+            info.errNo = err;
+            info.errMsg = msg;
             return info;
         }
         public static ReturnValue Success(object data)

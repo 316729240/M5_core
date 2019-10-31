@@ -148,7 +148,7 @@ namespace MWMS.DataExtensions
         /// <returns></returns>
         public static string SubString(this string str, string str1, string str2)
         {
-
+            if (str == null) return "";
             MatchCollection mc;
             Regex r = new Regex(@"(?<=" + str1 + ").*?(?=" + str2 + ")", RegexOptions.Singleline | RegexOptions.IgnoreCase); //定义一个Regex对象实例
             mc = r.Matches(str);

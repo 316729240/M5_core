@@ -25,7 +25,10 @@
       "M5.Main/1.0.0": {
         "dependencies": {
           "M5.Base": "1.0.0",
+          "MWMS.DAL": "1.0.0",
           "MWMS.DataExtensions": "1.0.0",
+          "MWMS.Helper": "1.0.0",
+          "MWMS.SqlHelper": "1.0.0",
           "Microsoft.AspNetCore.All": "2.0.3",
           "Microsoft.NETCore.App": "2.0.0",
           "MySql.Data": "8.0.17",
@@ -4549,6 +4552,8 @@
       "Plugin.Article/1.0.0": {
         "dependencies": {
           "M5.Base": "1.0.0",
+          "MWMS.Helper": "1.0.0",
+          "MWMS.SqlHelper": "1.0.0",
           "Microsoft.AspNetCore.All": "2.0.3"
         },
         "runtime": {

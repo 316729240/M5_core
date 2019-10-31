@@ -8,7 +8,7 @@ using M5.Main.Manager;
 using MWMS;
 using MWMS.DataExtensions;
 using MWMS.Helper;
-
+using Microsoft.AspNetCore.Http;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MWMS.Plugin
@@ -188,6 +188,42 @@ value.Add("encoding", e.WebName);
             value.Add("content", text);
             err.userData = value;
             return err;
+        }
+        public ReturnValue upload(int covered,string path,List<IFormFile> fileData,string editDate){
+            ReturnValue info = new ReturnValue();
+            string _path = Tools.MapPath(@"~\" + path+ @"\") ;
+            //string filePath = s_request.getString("filePath");
+            if (!Directory.Exists(_path)) Directory.CreateDirectory(_path);
+            for(int i=0;i<fileData.Count;i++){
+                                if (fileData[i].FileName.IndexOf(@"/.") > -1)//为目录时
+                {
+                    return info;
+                }
+                FileInfo f = new FileInfo(_path + fileData[i].FileName);
+                if (covered !=1)
+                {
+                    if (f.Exists)
+                    {
+                        info.errNo = -2;
+                        info.errMsg = fileData[i].FileName+ "文件已存在";
+                        Dictionary<string, object> dictionary = new Dictionary<string, object>();
+                        //context.Request.Files[i].
+                        dictionary["oldFile"] = new object[] { f.Name, f.Length.FormatFileSize(), f.LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss") };
+                        dictionary["newFile"] = new object[] { f.Name, fileData[i].Length.FormatFileSize(), editDate };
+                        info.userData = dictionary;
+                        return info;
+                    }
+                }
+                if (!f.Directory.Exists) f.Directory.Create();
+                using (FileStream fs = System.IO.File.Create(f.FullName))
+                {
+                // 复制文件
+                    fileData[i].CopyTo(fs);
+                    // 清空缓冲区数据
+                    fs.Flush();
+                }
+            }
+                        return info;
         }
     }
  

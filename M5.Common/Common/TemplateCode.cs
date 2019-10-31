@@ -37,7 +37,7 @@ namespace MWMS
         string _html,_fileName;
         public TemplateCode(string fileName,string code)
         {
-            _html = code;
+            _html = code+"";
             _fileName = fileName;
         }
         public void addVariable(string name, string value)

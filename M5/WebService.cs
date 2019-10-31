@@ -83,7 +83,7 @@ namespace M5.Main
             }
             */
             string html = RewriteUrl(context);//载入映射规则
-            Response.ContentType = "text/plain; charset="+System.Text.Encoding.Default.HeaderName;
+            //Response.ContentType = "html/plain; charset="+System.Text.Encoding.Default.HeaderName;
             if (html!=null)Response.WriteAsync(html);
 
 
