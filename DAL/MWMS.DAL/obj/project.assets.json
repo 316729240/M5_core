@@ -303,10 +303,10 @@
           "lib/netstandard2.0/MySql.Data.dll": {}
         }
       },
-      "NETCore.Encrypt/2.0.7": {
+      "NETCore.Encrypt/2.0.8": {
         "type": "package",
         "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.1"
         },
         "compile": {
           "lib/netstandard2.0/NETCore.Encrypt.dll": {}
@@ -330,7 +330,7 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Newtonsoft.Json/11.0.2": {
+      "Newtonsoft.Json/12.0.1": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -1376,24 +1376,11 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
-      "MWMS.DataExtensions/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v2.0",
-        "dependencies": {
-          "MWMS.Helper": "1.0.0",
-          "NETCore.Encrypt": "2.0.7"
-        },
-        "compile": {
-          "bin/placeholder/MWMS.DataExtensions.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/MWMS.DataExtensions.dll": {}
-        }
-      },
       "MWMS.Helper/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
+          "NETCore.Encrypt": "2.0.8",
           "System.Drawing.Common": "4.5.0"
         },
         "compile": {
@@ -1939,15 +1926,15 @@
         "mysql.data.nuspec"
       ]
     },
-    "NETCore.Encrypt/2.0.7": {
-      "sha512": "BlrVEoLCYERdXYMBCd12cNDpxztSdGBoqq8qKgrqa0ZQKMrdyxdtYavPekz7aDhbPLdEKY70osoo2hq6Cwc8eg==",
+    "NETCore.Encrypt/2.0.8": {
+      "sha512": "Z4iKzGFNG5kWgn/jbvm6AJs8iPa/Ke6S8YQUJHF9vb5W4EXixBREz4/0v4t6H9Pr7G+n7MCOKUWvKlAJJrabsw==",
       "type": "package",
-      "path": "netcore.encrypt/2.0.7",
+      "path": "netcore.encrypt/2.0.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/NETCore.Encrypt.dll",
-        "netcore.encrypt.2.0.7.nupkg.sha512",
+        "netcore.encrypt.2.0.8.nupkg.sha512",
         "netcore.encrypt.nuspec"
       ]
     },
@@ -2079,33 +2066,42 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/11.0.2": {
-      "sha512": "IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+    "Newtonsoft.Json/12.0.1": {
+      "sha512": "pBR3wCgYWZGiaZDYP+HHYnalVnPJlpP1q55qvVb+adrDHmFMDc1NAKio61xTwftK3Pw5h7TZJPJEEVMd6ty8rg==",
       "type": "package",
-      "path": "newtonsoft.json/11.0.2",
+      "path": "newtonsoft.json/12.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.pdb",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.pdb",
         "lib/net35/Newtonsoft.Json.xml",
         "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.pdb",
         "lib/net40/Newtonsoft.Json.xml",
         "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.pdb",
         "lib/net45/Newtonsoft.Json.xml",
         "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.pdb",
         "lib/netstandard1.0/Newtonsoft.Json.xml",
         "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.pdb",
         "lib/netstandard1.3/Newtonsoft.Json.xml",
         "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.pdb",
         "lib/netstandard2.0/Newtonsoft.Json.xml",
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.pdb",
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.pdb",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.11.0.2.nupkg.sha512",
+        "newtonsoft.json.12.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec"
       ]
     },
@@ -5246,11 +5242,6 @@
         "system.xml.xpath.xmldocument.nuspec"
       ]
     },
-    "MWMS.DataExtensions/1.0.0": {
-      "type": "project",
-      "path": "../../MWMS.DataExtensions/MWMS.DataExtensions.csproj",
-      "msbuildProject": "../../MWMS.DataExtensions/MWMS.DataExtensions.csproj"
-    },
     "MWMS.Helper/1.0.0": {
       "type": "project",
       "path": "../../MWMS.Helper/MWMS.Helper.csproj",
@@ -5264,7 +5255,6 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
-      "MWMS.DataExtensions >= 1.0.0",
       "MWMS.Helper >= 1.0.0",
       "MWMS.SqlHelper >= 1.0.0",
       "Microsoft.NETCore.App >= 2.0.0"
@@ -5302,9 +5292,6 @@
           "projectReferences": {
             "E:\\project\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj": {
               "projectPath": "E:\\project\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj"
-            },
-            "E:\\project\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj": {
-              "projectPath": "E:\\project\\M5_core\\MWMS.DataExtensions\\MWMS.DataExtensions.csproj"
             },
             "E:\\project\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj": {
               "projectPath": "E:\\project\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj"

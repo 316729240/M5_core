@@ -38,7 +38,6 @@
     <ProjectReference Include="..\MWMS.Plugin\Plugin.BatchAddColumn\Plugin.BatchAddColumn.csproj" />
     <ProjectReference Include="..\MWMS.Plugin\Plugin.FileManage\Plugin.FileManage.csproj" />
     <ProjectReference Include="..\M5.Common\M5.Base.csproj" />
-    <ProjectReference Include="..\MWMS.DataExtensions\MWMS.DataExtensions.csproj" />
     <ProjectReference Include="..\MWMS.Template\MWMS.Template\MWMS.Template.csproj" />
     <ProjectReference Include="..\RazorEngine\RazorEngine.Core\RazorEngine.Core.csproj" />
   </ItemGroup>

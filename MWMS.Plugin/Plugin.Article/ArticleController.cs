@@ -7,7 +7,7 @@ using System.Xml;
 using M5.Common;
 using M5.Main.Manager;
 using MWMS;
-using MWMS.DataExtensions;
+using MWMS.Helper.Extensions;
 using MWMS.Helper;
 using MWMS.SqlHelper;
 using MySql.Data.MySqlClient;

@@ -62,7 +62,7 @@ namespace MWMS.DAL
             string[] _fields = fields.Split(',');
             MySqlParameter[] _p = GetParameter(p);
             if (desc != "") desc = "order by "+desc;
-            MySqlDataReader rs = SqlHelper.Sql.ExecuteReader("select " + fields + " from [" + TableName + "] where "+ where+" "+desc, _p);
+            MySqlDataReader rs = SqlHelper.Sql.ExecuteReader("select " + fields + " from " + TableName + " where "+ where+" "+desc, _p);
             bool flag = false;
             if (rs.Read())
             {
@@ -117,7 +117,7 @@ namespace MWMS.DAL
                 fieldstr.Append(field.Key);
                 fieldstr2.Append("@" + field.Key);
             }
-            Sql.ExecuteNonQuery("insert into  [" + TableName + "] (" + fieldstr.ToString() + ")values(" + fieldstr2.ToString()+ ")", model);
+            Sql.ExecuteNonQuery("insert into  " + TableName + " (" + fieldstr.ToString() + ")values(" + fieldstr2.ToString()+ ")", model);
             return (double)model[PrimaryKey];
         }
         public double Update(Dictionary<string, object> model)
@@ -128,12 +128,12 @@ namespace MWMS.DAL
                     if (fieldstr.Length > 0) fieldstr.Append(",");
                     fieldstr.Append(field.Key + "=@" + field.Key);
             }
-            Sql.ExecuteNonQuery("update [" + TableName + "] set " + fieldstr.ToString() + " where "+ PrimaryKey + "=@"+ PrimaryKey, model);
+            Sql.ExecuteNonQuery("update " + TableName + " set " + fieldstr.ToString() + " where "+ PrimaryKey + "=@"+ PrimaryKey, model);
             return (double)model[PrimaryKey];
         }
         public void Remove(double id)
         {
-            Sql.ExecuteNonQuery("delete from ["+TableName+"] where "+PrimaryKey+"=@id",new MySqlParameter[] {
+            Sql.ExecuteNonQuery("delete from "+TableName+" where "+PrimaryKey+"=@id",new MySqlParameter[] {
                 new MySqlParameter("id",id)
             });
         }

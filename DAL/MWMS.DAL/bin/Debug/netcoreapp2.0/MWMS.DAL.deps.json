@@ -8,7 +8,6 @@
     ".NETCoreApp,Version=v2.0": {
       "MWMS.DAL/1.0.0": {
         "dependencies": {
-          "MWMS.DataExtensions": "1.0.0",
           "MWMS.Helper": "1.0.0",
           "MWMS.SqlHelper": "1.0.0"
         },
@@ -116,22 +115,22 @@
           }
         }
       },
-      "NETCore.Encrypt/2.0.7": {
+      "NETCore.Encrypt/2.0.8": {
         "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/NETCore.Encrypt.dll": {
-            "assemblyVersion": "2.0.7.0",
-            "fileVersion": "2.0.7.0"
+            "assemblyVersion": "2.0.8.0",
+            "fileVersion": "2.0.8.0"
           }
         }
       },
-      "Newtonsoft.Json/11.0.2": {
+      "Newtonsoft.Json/12.0.1": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
-            "assemblyVersion": "11.0.0.0",
-            "fileVersion": "11.0.2.21924"
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.1.22727"
           }
         }
       },
@@ -841,17 +840,9 @@
           }
         }
       },
-      "MWMS.DataExtensions/1.0.0": {
-        "dependencies": {
-          "MWMS.Helper": "1.0.0",
-          "NETCore.Encrypt": "2.0.7"
-        },
-        "runtime": {
-          "MWMS.DataExtensions.dll": {}
-        }
-      },
       "MWMS.Helper/1.0.0": {
         "dependencies": {
+          "NETCore.Encrypt": "2.0.8",
           "System.Drawing.Common": "4.5.0"
         },
         "runtime": {
@@ -925,19 +916,19 @@
       "path": "mysql.data/8.0.17",
       "hashPath": "mysql.data.8.0.17.nupkg.sha512"
     },
-    "NETCore.Encrypt/2.0.7": {
+    "NETCore.Encrypt/2.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-BlrVEoLCYERdXYMBCd12cNDpxztSdGBoqq8qKgrqa0ZQKMrdyxdtYavPekz7aDhbPLdEKY70osoo2hq6Cwc8eg==",
-      "path": "netcore.encrypt/2.0.7",
-      "hashPath": "netcore.encrypt.2.0.7.nupkg.sha512"
+      "sha512": "sha512-Z4iKzGFNG5kWgn/jbvm6AJs8iPa/Ke6S8YQUJHF9vb5W4EXixBREz4/0v4t6H9Pr7G+n7MCOKUWvKlAJJrabsw==",
+      "path": "netcore.encrypt/2.0.8",
+      "hashPath": "netcore.encrypt.2.0.8.nupkg.sha512"
     },
-    "Newtonsoft.Json/11.0.2": {
+    "Newtonsoft.Json/12.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
-      "path": "newtonsoft.json/11.0.2",
-      "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
+      "sha512": "sha512-pBR3wCgYWZGiaZDYP+HHYnalVnPJlpP1q55qvVb+adrDHmFMDc1NAKio61xTwftK3Pw5h7TZJPJEEVMd6ty8rg==",
+      "path": "newtonsoft.json/12.0.1",
+      "hashPath": "newtonsoft.json.12.0.1.nupkg.sha512"
     },
     "runtime.native.System/4.0.0": {
       "type": "package",
@@ -1400,11 +1391,6 @@
       "sha512": "sha512-Zm2BdeanuncYs3NhCj4c9e1x3EXFzFBVv2wPEc/Dj4ZbI9R8ecLSR5frAsx4zJCPBtKQreQ7Q/KxJEohJZbfzA==",
       "path": "system.xml.xpath.xmldocument/4.0.1",
       "hashPath": "system.xml.xpath.xmldocument.4.0.1.nupkg.sha512"
-    },
-    "MWMS.DataExtensions/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     },
     "MWMS.Helper/1.0.0": {
       "type": "project",

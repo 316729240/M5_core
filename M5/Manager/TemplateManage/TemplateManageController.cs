@@ -9,7 +9,7 @@ using Helper;
 using M5.Common;
 using Microsoft.AspNetCore.Mvc;
 using MWMS;
-using MWMS.DataExtensions;
+using MWMS.Helper.Extensions;
 using MWMS.Helper;
 using MWMS.SqlHelper;
 using MWMS.Template;
@@ -152,7 +152,7 @@ namespace M5.Main.Manager
                 info.errNo = -1;
                 return info;
             }
-            string sql = "select id,classid,title,u_content,u_datatypeid,u_type,0 from HtmlTemplate where  id=@id ", sql2 = "update HtmlTemplate set u_content=@content where id=@id";
+            string sql = "select id,classid,title,u_content,u_datatypeid,u_type,0 from template where  id=@id ", sql2 = "update template set u_content=@content where id=@id";
             if (mbType == 1)
             {
                 sql = "select B.id,B.classid,A.className+'.'+B.title,B.u_html,B.u_datatypeid,0,1,B.title from template_view B inner join Class A on B.classId=A.id where B.id=@id ";
@@ -215,7 +215,7 @@ namespace M5.Main.Manager
                 return info;;
             }
             List<object[]> data = new List<object[]>();
-            MySqlDataReader rs = Sql.ExecuteReader("select id,classid,title,u_content,u_datatypeid,u_type,0 from HtmlTemplate where   u_webFAid=@webFAid ", new MySqlParameter[]{
+            MySqlDataReader rs = Sql.ExecuteReader("select id,classid,title,u_content,u_datatypeid,u_type,0 from template where   u_webFAid=@webFAid ", new MySqlParameter[]{
         new MySqlParameter("webFAid",u_webFAid)
     });
             MatchCollection mc;
@@ -273,7 +273,7 @@ namespace M5.Main.Manager
         public ReturnValue readBackup(double id)
         {
             ReturnValue info = new ReturnValue();
-            info.userData = Sql.ExecuteScalar("select u_content from backupTemplate where id=@id", new MySqlParameter[]{
+            info.userData = Sql.ExecuteScalar("select u_content from template_backup where id=@id", new MySqlParameter[]{
         new MySqlParameter("id",id )
     });
             return info;
@@ -285,13 +285,13 @@ namespace M5.Main.Manager
             if (u_defaultFlag == 0) where = " and title=@title";
             if (dataId > 0)
             {
-                info.userData = Sql.ExecuteArrayObj("select id,updateDate,userName from backupTemplate where dataId=@dataId  order by updatedate desc", new MySqlParameter[]{
+                info.userData = Sql.ExecuteArrayObj("select id,updateDate,userName from template_backup where dataId=@dataId  order by updatedate desc", new MySqlParameter[]{
             new MySqlParameter("dataId",dataId )
         });
             }
             else
             {
-                info.userData = Sql.ExecuteArrayObj("select id,updateDate,userName from backupTemplate where classid=@classid and u_type=@u_type and u_webFAid=@u_webFAid and u_defaultFlag=@u_defaultFlag and u_datatypeId=@u_datatypeId " + where + "  order by updatedate desc", new MySqlParameter[]{
+                info.userData = Sql.ExecuteArrayObj("select id,updateDate,userName from template_backup where classid=@classid and u_type=@u_type and u_webFAid=@u_webFAid and u_defaultFlag=@u_defaultFlag and u_datatypeId=@u_datatypeId " + where + "  order by updatedate desc", new MySqlParameter[]{
             new MySqlParameter("classid",classId ),
             new MySqlParameter("u_type",u_type),
             new MySqlParameter("u_webFAid",u_webFAid),
@@ -305,7 +305,7 @@ namespace M5.Main.Manager
         public ReturnValue readViewBackupList(double classId,double id,string title)
         {
             ReturnValue info = new ReturnValue();
-            info.userData = Sql.ExecuteArrayObj("select id,updateDate,userName from backupTemplate where (classid=@classid and title=@title) or dataId=@dataId  order by updatedate desc", new MySqlParameter[]{
+            info.userData = Sql.ExecuteArrayObj("select id,updateDate,userName from template_backup where (classid=@classid and title=@title) or dataId=@dataId  order by updatedate desc", new MySqlParameter[]{
             new MySqlParameter("classid",classId ),
             new MySqlParameter("title",title),
             new MySqlParameter("dataId",id)
@@ -379,78 +379,35 @@ namespace M5.Main.Manager
         //参数1:模板ID
         public ReturnValue saveView(double id,double classId,int u_viewType,string title,string u_html,int u_editboxStatus, double u_datatypeId,string u_parameterValue)
         {
-            ReturnValue info = new ReturnValue();
-            if (!loginInfo.value.isAdministrator)
+            try
             {
-                info.errNo = -1;
-                info.errMsg = "没有权限";
+
+                ReturnValue info = new ReturnValue();
+                if (!loginInfo.value.isAdministrator)
+                {
+                    info.errNo = -1;
+                    info.errMsg = "没有权限";
+                    return info;
+                }
+
+                ViewTemplate viewTemplate = new ViewTemplate()
+                {
+                    TemplateId = id,
+                    ColumnId = classId,
+                    ViewType = u_viewType,
+                    TemplateName = title,
+                    TemplateContent = u_html,
+                    EditMode = (EditMode)u_editboxStatus,
+                    DatatypeId = u_datatypeId,
+                    ParameterValue = u_parameterValue
+                };
+                viewTemplate.Save(loginInfo.value.username);
+                info.userData = viewTemplate.TemplateId;
                 return info;
             }
-
-            ViewTemplate viewTemplate = new ViewTemplate()
-            {
-                TemplateId = id,
-                ColumnId = classId,
-                ViewType = u_viewType,
-                TemplateName = title,
-                TemplateContent = u_html,
-                EditMode = (EditMode)u_editboxStatus,
-                DatatypeId = u_datatypeId,
-                ParameterValue = u_parameterValue
-            };
-            viewTemplate.Save(loginInfo.value.username);
-            info.userData = viewTemplate.TemplateId;
-            return info;
-            //-------------------保存模板----------------------------
-            MySqlParameter[] p = new MySqlParameter[]{
-                new MySqlParameter("id",id),
-                new MySqlParameter("classId",classId),
-                new MySqlParameter("u_viewType",u_viewType),
-                new MySqlParameter("title",title),
-                new MySqlParameter("u_pinyin",title.GetPinYin('0')),
-                new MySqlParameter("u_html",u_html),
-                new MySqlParameter("u_editboxStatus",u_editboxStatus),
-                new MySqlParameter("u_datatypeId",u_datatypeId),
-                new MySqlParameter("u_parameterValue",u_parameterValue),
-                new MySqlParameter("createDate",System.DateTime.Now),
-                new MySqlParameter("updateDate",System.DateTime.Now)
-            };
-            if (id < 1)
-            {
-                id = double.Parse(Tools.GetId());
-                p[0].Value = id;
-                Sql.ExecuteNonQuery("insert into template_view (id,classId,u_viewType,title,u_pinyin,u_html,u_editboxStatus,u_datatypeId,u_parameterValue,createDate,updateDate)values(@id,@classId,@u_viewType,@title,@u_pinyin,@u_html,@u_editboxStatus,@u_datatypeId,@u_parameterValue,@createDate,@updateDate)", p);
-
+            catch (Exception e) {
+                return ReturnValue.Err(e.Message);
             }
-            else
-            {
-                Sql.ExecuteNonQuery("update template_view set updateDate=@updateDate,classId=@classId,u_viewType=@u_viewType,title=@title,u_pinyin=@u_pinyin,u_html=@u_html,u_editboxStatus=@u_editboxStatus,u_datatypeId=@u_datatypeId,u_parameterValue=@u_parameterValue where id=@id", p);
-            }
-            info.userData = id;
-            if (info.errNo > -1)
-            {
-                string className = "";
-                MySqlDataReader rs = Sql.ExecuteReader("select classname from class where id=@id", new MySqlParameter[] { new MySqlParameter("id", classId) });
-                if (rs.Read())
-                {
-                    className = rs[0].ToString();
-                }
-                rs.Close();
-                Dictionary<string, object> list = null;
-                if (Config.viewVariables.ContainsKey(className))
-                {
-                    list = (Dictionary<string, object>)Config.viewVariables[className];
-                }
-                else
-                {
-                    list = new Dictionary<string, object>();
-                    Config.viewVariables[className] = list;
-                }
-                TemplateCode code = new TemplateCode(id.ToString(), u_html);
-                code.compile();
-                list[title] = new object[] { id, u_html };
-            }
-            return info;
         }
         public ReturnValue backupView(double id,string html)
         {
@@ -590,7 +547,7 @@ namespace M5.Main.Manager
                 list.Add(new object[] { 0, "全站", "站点通用模板", "", 1, 0, 0 });
                 if (moduleId > 0) list.Add(new object[] { 0, "模块", "模块通用模板", "", 1, moduleId, 0 });
                 if (moduleId > 0 && faId != moduleId) list.Add(new object[] { 0, "频道", "频道页模板", "", 1, faId, 0 });
-                rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid from  HtmlTemplate B  where B.u_type=0 and B.u_datatypeid=0 and B.u_defaultFlag=1 and B.u_webFAId=@webFAId and B.classid in (0,@moduleId,@id)",
+                rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid from  template B  where B.u_type=0 and B.u_datatypeid=0 and B.u_defaultFlag=1 and B.u_webFAId=@webFAId and B.classid in (0,@moduleId,@id)",
                     new MySqlParameter[] {
                     new MySqlParameter("id", faId),
                     new MySqlParameter("moduleId", moduleId),
@@ -613,7 +570,7 @@ namespace M5.Main.Manager
                 list.Add(new object[] { 0, "全站", "站点通用模板", "", 1, 0, 0 });
                 if (moduleId > 0) list.Add(new object[] { 0, "模块", "模块通用模板", "", 1, moduleId, 0 });
                 if (faId != moduleId) list.Add(new object[] { 0, "频道", "频道页模板", "", 1, faId, 0 });
-                rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid,B.u_defaultFlag,B.title from  HtmlTemplate B  where B.u_type=1 and B.u_datatypeid=0 and B.u_webFAId=@webFAId and B.classid in (0,@moduleId,@id) order by B.classid ",
+                rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid,B.u_defaultFlag,B.title from  template B  where B.u_type=1 and B.u_datatypeid=0 and B.u_webFAId=@webFAId and B.classid in (0,@moduleId,@id) order by B.classid ",
                     new MySqlParameter[] {
                     new MySqlParameter("id", faId),
                     new MySqlParameter("moduleId", moduleId),
@@ -672,7 +629,7 @@ namespace M5.Main.Manager
                 #region 获取默认模板
                 for (int i = 0; i < datatypeList.Count; i++)
                 {
-                    rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid,B.title,B.u_defaultFlag,B.u_datatypeId from  HtmlTemplate B where B.u_type=2 and B.u_datatypeid=@datatypeId and B.u_webFAId=@webFAId and B.u_defaultFlag=1 and B.classid in (0,@moduleId,@id)",
+                    rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid,B.title,B.u_defaultFlag,B.u_datatypeId from  template B where B.u_type=2 and B.u_datatypeid=@datatypeId and B.u_webFAId=@webFAId and B.u_defaultFlag=1 and B.classid in (0,@moduleId,@id)",
                         new MySqlParameter[] {
                     new MySqlParameter("id", faId),
                     new MySqlParameter("moduleId", moduleId),
@@ -698,7 +655,7 @@ namespace M5.Main.Manager
                     rs.Close();
                 }
                 #endregion
-                rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid,B.title,B.u_defaultFlag,B.u_datatypeId from  HtmlTemplate B where B.u_type=2 and B.u_webFAId=@webFAId and B.u_defaultFlag=0 and B.classid = @id",
+                rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid,B.title,B.u_defaultFlag,B.u_datatypeId from  template B where B.u_type=2 and B.u_webFAId=@webFAId and B.u_defaultFlag=0 and B.classid = @id",
                     new MySqlParameter[] {
                     new MySqlParameter("id", faId),
                     new MySqlParameter("webFAId",u_webFAid)
@@ -725,7 +682,7 @@ namespace M5.Main.Manager
                     }
                     rs.Close();
                 }
-                rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid,B.title,B.u_defaultFlag from   HtmlTemplate B  where B.u_type=3 and B.u_webFAId=@webFAId  and B.classid = @id",
+                rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid,B.title,B.u_defaultFlag from   template B  where B.u_type=3 and B.u_webFAId=@webFAId  and B.classid = @id",
                 new MySqlParameter[] {
                 new MySqlParameter("id", faId),
                 new MySqlParameter("webFAId",u_webFAid)

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using MWMS;
-using MWMS.DataExtensions;
+using MWMS.Helper.Extensions;
 using MWMS.SqlHelper;
 using MySql.Data.MySqlClient;
 using System.IO;
@@ -96,7 +96,7 @@ namespace MWMS.DAL.Datatype
         /// <returns></returns>
         void ReplaceUrl(double columnId, double dataId)
         {
-            MWMS.DAL.TableHandle column = new MWMS.DAL.TableHandle("Class");
+            MWMS.DAL.TableHandle column = new MWMS.DAL.TableHandle("class");
             Dictionary<string, object> columnModel = column.GetModel(columnId, "dirPath,dirName,rootId");
             Dictionary<string, object> channelModel = column.GetModel(columnModel["rootId"].ToDouble(), "dirName");
             //StringBuilder url = new StringBuilder(BaseConfig.contentUrlTemplate);

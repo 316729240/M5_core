@@ -1,7 +1,7 @@
 ﻿using Helper;
 using M5.Common;
 using MWMS.DAL;
-using MWMS.DataExtensions;
+using MWMS.Helper.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -58,8 +58,8 @@ namespace MWMS.Template
             }
             Build(true);
             list[TemplateName] = new object[] { TemplateId, TemplateContent };
-            TableHandle table2 = new TableHandle("backupTemplate");
-            int count = table2.Count("classid=@classid and title=@title and  getdate()<DATEADD(minute,200,updatedate)", fields);
+            TableHandle table2 = new TableHandle("template_backup");
+            int count = table2.Count("classid=@classid and title=@title and '"+DateTime.Now.AddMinutes(-200).ToString("yyyy-MM-dd HH:mm:ss")+"'<updatedate", fields);
             if (count == 0) this.Backup(username);
         }
     }

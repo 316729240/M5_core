@@ -424,7 +424,7 @@
       "Microsoft.AspNetCore.Authentication.OAuth/2.0.1": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication": "2.0.1",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.OAuth.dll": {
@@ -797,7 +797,7 @@
       "Microsoft.AspNetCore.JsonPatch/2.0.0": {
         "dependencies": {
           "Microsoft.CSharp": "4.4.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {
@@ -1055,7 +1055,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.0.1",
           "Microsoft.Extensions.Logging.Console": "2.0.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.NodeServices.dll": {
@@ -1359,7 +1359,7 @@
           "Microsoft.Azure.KeyVault.WebKey": "2.0.7",
           "Microsoft.Rest.ClientRuntime": "2.3.8",
           "Microsoft.Rest.ClientRuntime.Azure": "3.3.7",
-          "Newtonsoft.Json": "11.0.2",
+          "Newtonsoft.Json": "12.0.1",
           "System.Net.Http": "4.3.0"
         },
         "runtime": {
@@ -1371,7 +1371,7 @@
       },
       "Microsoft.Azure.KeyVault.WebKey/2.0.7": {
         "dependencies": {
-          "Newtonsoft.Json": "11.0.2",
+          "Newtonsoft.Json": "12.0.1",
           "System.Collections": "4.3.0",
           "System.Collections.Concurrent": "4.3.0",
           "System.Linq": "4.3.0",
@@ -1891,7 +1891,7 @@
         "dependencies": {
           "Microsoft.Extensions.Configuration": "2.0.0",
           "Microsoft.Extensions.Configuration.FileExtensions": "2.0.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Configuration.Json.dll": {
@@ -1946,7 +1946,7 @@
       "Microsoft.Extensions.DependencyModel/2.0.3": {
         "dependencies": {
           "Microsoft.DotNet.PlatformAbstractions": "2.0.3",
-          "Newtonsoft.Json": "11.0.2",
+          "Newtonsoft.Json": "12.0.1",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Dynamic.Runtime": "4.3.0",
           "System.Linq": "4.3.0"
@@ -2154,7 +2154,7 @@
       "Microsoft.Extensions.Logging.EventSource/2.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Logging": "2.0.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Logging.EventSource.dll": {
@@ -2302,7 +2302,7 @@
       "Microsoft.IdentityModel.Tokens/5.1.4": {
         "dependencies": {
           "Microsoft.IdentityModel.Logging": "1.1.4",
-          "Newtonsoft.Json": "11.0.2",
+          "Newtonsoft.Json": "12.0.1",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tools": "4.3.0",
           "System.Runtime": "4.3.0",
@@ -2338,7 +2338,7 @@
       "Microsoft.NETCore.Targets/1.1.0": {},
       "Microsoft.Rest.ClientRuntime/2.3.8": {
         "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.1"
         },
         "runtime": {
           "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.dll": {
@@ -2350,7 +2350,7 @@
       "Microsoft.Rest.ClientRuntime.Azure/3.3.7": {
         "dependencies": {
           "Microsoft.Rest.ClientRuntime": "2.3.8",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.1"
         },
         "runtime": {
           "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.Azure.dll": {
@@ -2438,28 +2438,28 @@
           }
         }
       },
-      "NETCore.Encrypt/2.0.7": {
+      "NETCore.Encrypt/2.0.8": {
         "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/NETCore.Encrypt.dll": {
-            "assemblyVersion": "2.0.7.0",
-            "fileVersion": "2.0.7.0"
+            "assemblyVersion": "2.0.8.0",
+            "fileVersion": "2.0.8.0"
           }
         }
       },
-      "Newtonsoft.Json/11.0.2": {
+      "Newtonsoft.Json/12.0.1": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
-            "assemblyVersion": "11.0.0.0",
-            "fileVersion": "11.0.2.21924"
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.1.22727"
           }
         }
       },
       "Newtonsoft.Json.Bson/1.0.1": {
         "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.1"
         },
         "runtime": {
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {
@@ -3816,7 +3816,7 @@
       "WindowsAzure.Storage/8.1.4": {
         "dependencies": {
           "Microsoft.Data.OData": "5.8.2",
-          "Newtonsoft.Json": "11.0.2",
+          "Newtonsoft.Json": "12.0.1",
           "System.Spatial": "5.8.2"
         },
         "runtime": {
@@ -3829,7 +3829,6 @@
       "M5.Base/1.0.0": {
         "dependencies": {
           "MWMS.DAL": "1.0.0",
-          "MWMS.DataExtensions": "1.0.0",
           "MWMS.Helper": "1.0.0",
           "MWMS.SqlHelper": "1.0.0",
           "Microsoft.AspNetCore.All": "2.0.3",
@@ -3841,7 +3840,6 @@
       },
       "MWMS.DAL/1.0.0": {
         "dependencies": {
-          "MWMS.DataExtensions": "1.0.0",
           "MWMS.Helper": "1.0.0",
           "MWMS.SqlHelper": "1.0.0"
         },
@@ -3849,17 +3847,9 @@
           "MWMS.DAL.dll": {}
         }
       },
-      "MWMS.DataExtensions/1.0.0": {
-        "dependencies": {
-          "MWMS.Helper": "1.0.0",
-          "NETCore.Encrypt": "2.0.7"
-        },
-        "runtime": {
-          "MWMS.DataExtensions.dll": {}
-        }
-      },
       "MWMS.Helper/1.0.0": {
         "dependencies": {
+          "NETCore.Encrypt": "2.0.8",
           "System.Drawing.Common": "4.5.0"
         },
         "runtime": {
@@ -5064,19 +5054,19 @@
       "path": "mysql.data/8.0.17",
       "hashPath": "mysql.data.8.0.17.nupkg.sha512"
     },
-    "NETCore.Encrypt/2.0.7": {
+    "NETCore.Encrypt/2.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-BlrVEoLCYERdXYMBCd12cNDpxztSdGBoqq8qKgrqa0ZQKMrdyxdtYavPekz7aDhbPLdEKY70osoo2hq6Cwc8eg==",
-      "path": "netcore.encrypt/2.0.7",
-      "hashPath": "netcore.encrypt.2.0.7.nupkg.sha512"
+      "sha512": "sha512-Z4iKzGFNG5kWgn/jbvm6AJs8iPa/Ke6S8YQUJHF9vb5W4EXixBREz4/0v4t6H9Pr7G+n7MCOKUWvKlAJJrabsw==",
+      "path": "netcore.encrypt/2.0.8",
+      "hashPath": "netcore.encrypt.2.0.8.nupkg.sha512"
     },
-    "Newtonsoft.Json/11.0.2": {
+    "Newtonsoft.Json/12.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
-      "path": "newtonsoft.json/11.0.2",
-      "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
+      "sha512": "sha512-pBR3wCgYWZGiaZDYP+HHYnalVnPJlpP1q55qvVb+adrDHmFMDc1NAKio61xTwftK3Pw5h7TZJPJEEVMd6ty8rg==",
+      "path": "newtonsoft.json/12.0.1",
+      "hashPath": "newtonsoft.json.12.0.1.nupkg.sha512"
     },
     "Newtonsoft.Json.Bson/1.0.1": {
       "type": "package",
@@ -5994,11 +5984,6 @@
       "sha512": ""
     },
     "MWMS.DAL/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "MWMS.DataExtensions/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

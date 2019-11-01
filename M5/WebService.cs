@@ -1,7 +1,9 @@
-﻿using M5.Common;
+﻿using M5.Base.Common;
+using M5.Common;
 using Microsoft.AspNetCore.Http;
 using MWMS.Helper;
 using MWMS.SqlHelper;
+using MWMS.Template;
 using MySql.Data.MySqlClient;
 using RazorEngine;
 using RazorEngine.Configuration;
@@ -292,25 +294,32 @@ namespace M5.Main
         }
         public string getHtml(HttpRequest request, string virtualWebDir, string url, bool isMobile)
         {
-            Config.systemVariables["webUrl"] = request.Url().ToString();// "http://" + M5.PageContext.Current.Request.Url.Authority + Config.webPath;
-            //            Config.systemVariables["webUrl"] = "http://" + M5.PageContext.Current.Request.Url.Authority + Config.webPath;
-            //Config.systemVariables["pageUrl"] = M5.PageContext.Current.Request.Url.AbsoluteUri.ToString();// "http://" + M5.PageContext.Current.Request.Url.Authority +""+ Config.webPath;
+            Config.systemVariables["webUrl"] = "http://" +request.Url();
+            //            Config.systemVariables["webUrl"] = "http://" + HttpContext.Current.Request.Url.Authority + Config.webPath;
+            //Config.systemVariables["pageUrl"] = HttpContext.Current.Request.Url.AbsoluteUri.ToString();// "http://" + HttpContext.Current.Request.Url.Authority +""+ Config.webPath;
 
             Regex r = new Regex(@"(?<=/)((.[^/]*)_((\d){1,5}))(." + BaseConfig.extension + ")", RegexOptions.IgnoreCase);
             string newUrl = r.Replace(url, new MatchEvaluator(_replaceUrl));
-            TemplateInfo info = TemplateClass.get(newUrl, isMobile);
-            if (info == null)
+
+            PageTemplate pageTemplate = null;
+            pageTemplate = new PageTemplate(newUrl, isMobile);
+            pageTemplate.Build();
+
+
+            //TemplateInfo info = TemplateClass.get(newUrl, isMobile);
+            if (pageTemplate == null)
             {
                 Page.ERR404("模板不存在");
             }
             else
             {
+                /*
                 if (info.u_type == 2)
                 {
-                    Sql.ExecuteNonQuery("update maintable set clickCount=clickCount+1 where id=@id", new MySqlParameter[]{
-                    new MySqlParameter("id",info.variable["id"])
+                    Helper.Sql.ExecuteNonQuery("update mainTable set clickCount=clickCount+1 where id=@id", new SqlParameter[]{
+                    new SqlParameter("id",info.variable["id"])
                 });
-                }
+                }*/
                 if (newUrl.IndexOf(".") > -1)
                 {
                     string[] u = newUrl.Split('/');
@@ -320,47 +329,21 @@ namespace M5.Main
                 {
                     _fileName = "default";
                 }
+
+                pageTemplate.Variable.Add("_pageNo", _pageNo);
+                pageTemplate.Variable.Add("_url", request.Url());
+                pageTemplate.Variable.Add("_fileName", _fileName);
+                /*
                 TemplateServiceConfiguration templateConfig = new TemplateServiceConfiguration
                 {
-                    CatchPath = Tools.MapPath("~" + Config.cachePath + "assembly/")
+                    CatchPath = HttpContext.Current.Server.MapPath("~" + Config.cachePath + "assembly/")
                 };
                 Razor.SetTemplateService(new TemplateService(templateConfig));
-                RazorEngine.Razor.Compile(info.u_content, typeof(object[]), info.id.ToString(), false);
-
-
-                string html = RazorEngine.Razor.Run(info.id.ToString(), new object[] { Config.systemVariables, info.variable });
-
-                /*
-                TE_statistical TE_statistical = new TE_statistical();
-                TemplateEngine page = new TemplateEngine();
-                page.isMobile = isMobile;
-                page.TE_statistical = TE_statistical;
-                page.addVariable("sys", Config.systemVariables);
-                page.addVariable("view", Config.viewVariables);
-                page.addVariable("page", info.variable);
-                Dictionary<string, object> _public = new Dictionary<string, object>();
-                _public.Add("_pageNo", _pageNo);
-                _public.Add("_url", M5.PageContext.Current.Request.Url.ToString());
-                _public.Add("_fileName", _fileName);
-                page.addVariable("public", _public);
-                string html = info.u_content;
-                page.isEdit = M5.PageContext.Current.Request.QueryString["_edit"] != null && M5.PageContext.Current.Request.QueryString["_edit"].ToString() == "true";
-                page.render(ref html);
-                
-                //HttpContext.Current.Response.Write("<!--模板解析时间：" + sw.ElapsedMilliseconds.ToString() + "-->");
-                TemplateEngine.replaceKeyword(ref html);
-                //HttpContext.Current.Response.Write("<!--关键词替换时间：" + sw.ElapsedMilliseconds.ToString() + "-->");
-                //page.replaceSubdomains(ref html, isMobile);
-                //if (BaseConfig.urlConversion)  
-                    
-                    page.replaceUrl(ref html);
-                if (page.isEdit)
-                {
-                    html = html.Replace("</head>", "<script src='"+Config.webPath+"/manage/app/visualTemplateEditer/templetEdit.js'></script>\n</head>");
-                }
-                //sw.Stop();
-                //HttpContext.Current.Response.Write("<!--全部解析时间：" + sw.ElapsedMilliseconds.ToString() + "-->");
+                RazorEngine.Razor.Compile(info.u_content, typeof(object[]), info.id.ToString(),false);
                 */
+                string html = RazorEngine.Razor.Run(pageTemplate.TemplateId.ToString(), new object[] { Config.systemVariables, pageTemplate.Variable, pageTemplate.Parameter });
+                SubDomains subDomains = new SubDomains();
+                subDomains.replaceUrl(ref html);
                 return html;
             }
             return null;

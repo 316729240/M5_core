@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DAL\MWMS.DAL\MWMS.DAL.csproj" />
-    <ProjectReference Include="..\MWMS.DataExtensions\MWMS.DataExtensions.csproj" />
     <ProjectReference Include="..\MWMS.Helper\MWMS.Helper.csproj" />
     <ProjectReference Include="..\RazorEngine\RazorEngine.Core\RazorEngine.Core.csproj" />
     <ProjectReference Include="..\DAL\SqlHelper\MWMS.SqlHelper.csproj" />

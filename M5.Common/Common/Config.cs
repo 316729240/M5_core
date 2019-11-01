@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
-using MWMS.DataExtensions;
+using MWMS.Helper.Extensions;
 using MWMS.Helper;
 using MWMS.SqlHelper;
 using MySql.Data.MySqlClient;

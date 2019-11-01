@@ -50,7 +50,7 @@ namespace MWMS.Template
         public TemplateType TemplateType
         {
             get { return _templateType; }
-            set { _templateType = value; this.TableName = value == TemplateType.视图 ? "dataView" : "template"; }
+            set { _templateType = value; this.TableName = value == TemplateType.视图 ? "template_view" : "template"; }
         }
         /// <summary>
         /// 模板名称
@@ -93,32 +93,35 @@ namespace MWMS.Template
 
             if (TemplateType == TemplateType.视图)
             {
-                Sql.ExecuteNonQuery("insert into backupTemplate (id,dataId,u_content,updatedate,username,title,classid)" +
-                    "select @id,@dataId,u_html,getdate(),@username,title,classid from template_view where id=@dataId", new MySqlParameter[]{
+                Sql.ExecuteNonQuery("insert into template_backup (id,dataId,u_content,updatedate,username,title,classid)" +
+                    "select @id,@dataId,u_html,@updatedate,@username,title,classid from template_view where id=@dataId", new MySqlParameter[]{
                  new MySqlParameter("id",double.Parse(Tools.GetId())),
                  new MySqlParameter("dataId",this.TemplateId),
-                 new MySqlParameter("username",username)
+                 new MySqlParameter("username",username),
+                 new MySqlParameter("updatedate",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
                 });
             }
             else
             {
-                Sql.ExecuteNonQuery("insert into backupTemplate (id,dataId,classId,u_type,title,u_content,updateDate,userName,u_webFAid,u_defaultflag,u_datatypeId)" +
-"select @id,B.id,B.classid,B.u_type,B.title,B.u_content,getdate(),@username,B.u_webFAid,B.u_defaultflag,u_datatypeId from template B  " +
+                Sql.ExecuteNonQuery("insert into template_backup (id,dataId,classId,u_type,title,u_content,updateDate,userName,u_webFAid,u_defaultflag,u_datatypeId)" +
+"select @id,B.id,B.classid,B.u_type,B.title,B.u_content,@updatedate,@username,B.u_webFAid,B.u_defaultflag,u_datatypeId from template B  " +
 " where B.id=@dataId", new MySqlParameter[]{
                  new MySqlParameter("id",double.Parse(Tools.GetId())),
                  new MySqlParameter("dataId",this.TemplateId),
                  new MySqlParameter("username",username),
+                 new MySqlParameter("updatedate",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
 });
             }
         }
         public static void Backup(double templateId, string html, string username)
         {
-            Sql.ExecuteNonQuery("insert into backupTemplate (id,dataId,u_content,updateDate,userName)" +
-"values(@id,@dataId,@u_content,getdate(),@username)  ", new MySqlParameter[]{
+            Sql.ExecuteNonQuery("insert into template_backup (id,dataId,u_content,updateDate,userName)" +
+"values(@id,@dataId,@u_content,@updatedate,@username)  ", new MySqlParameter[]{
                  new MySqlParameter("id",double.Parse(Tools.GetId())),
                  new MySqlParameter("dataId",templateId),
                  new MySqlParameter("u_content",html),
                  new MySqlParameter("username",username),
+                 new MySqlParameter("updatedate",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
             });
         }
         /// <summary>

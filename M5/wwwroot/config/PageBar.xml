@@ -2,5 +2,5 @@
 <PageBar>
     <ShowCount>11</ShowCount>
     <FG><![CDATA[ ]]></FG>
-    <template><![CDATA[{LabelName=FirstPage Value=首页}&nbsp; {LabelName=Prev Value=上一页} &nbsp;{LabelName=PageNumber}&nbsp; {LabelName=Next Value=下一页} {LabelName=EndPage Value=尾页} 共[RecordCount]条记录 [PageNo]/[PageCount]]]></template>
+  <htmlTemplate><![CDATA[{LabelName=FirstPage Value=首页}&nbsp; {LabelName=Prev Value=上一页} &nbsp;{LabelName=PageNumber}&nbsp; {LabelName=Next Value=下一页} {LabelName=EndPage Value=尾页} 共[RecordCount]条记录 [PageNo]/[PageCount]]]></htmlTemplate>
 </PageBar>

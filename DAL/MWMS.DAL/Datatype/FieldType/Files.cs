@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections;
-using MWMS.DataExtensions;
+using MWMS.Helper.Extensions;
 
 namespace MWMS.DAL.Datatype.FieldType
 {
@@ -15,7 +15,7 @@ namespace MWMS.DAL.Datatype.FieldType
         /// <summary>
         /// 文件大小
         /// </summary>
-        public int size = 0;
+        public long size = 0;
         /// <summary>
         /// 标题
         /// </summary>

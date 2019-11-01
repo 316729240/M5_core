@@ -91,35 +91,40 @@ $M.article = {
         var toolBar = tab.addControl({
             xtype: "ToolBar", class: "note-toolbar",
             items: [
-                [{ text: "保存", ico: "fa-save", primary:true, onClick: function () { form.submit(); } }, { text: "打开网址", ico: "fa-external-link", onClick: function () {
-                    if (S.url) window.open(S.url);
-                }
+                [{ text: "保存", ico: "fa-save", primary: true, onClick: function () { form.submit(); } }, {
+                    text: "打开网址", ico: "fa-external-link", onClick: function () {
+                        if (S.url) window.open(S.url);
+                    }
                 }, { text: "新增", ico: "fa-plus", onClick: function () { newData(); } }],
-                [{ text: "选择模板",
+                [{
+                    text: "选择模板",
                     onClick: function () {
-                        $M.dialog.selectTemplate({ classId: S.classId, skinId: S.skinId,
+                        $M.dialog.selectTemplate({
+                            classId: S.classId, skinId: S.skinId,
                             back: function (id) {
                                 skinId.val(id);
                             }
                         });
                     }
                 }], [
-                    { text: "审核", menu: [
-                        { text: "通过", onClick: function () { 
-                            $M.comm("auditData", { ids: dataId.val(), flag: 0, classId: classId.val() }, function () { $M.alert("操作成功！"); if (S.back) S.back(); });
-                        }
-                        }, {
-                            text: "拒绝", onClick: function () {
-                                $M.prompt("拒绝理由", function (msg) {
-                                    $M.comm("auditData", { ids: dataId.val(), flag: 1, msg: msg, classId: classId.val() }, function () { $M.alert("操作成功！"); if (S.back) S.back(); });
-                                }, { required: true });
-                                
-                            }
-                        }]
+                    {
+                        text: "审核", menu: [
+                            {
+                                text: "通过", onClick: function () {
+                                    $M.comm("auditData", { ids: dataId.val(), flag: 0, classId: classId.val() }, function () { $M.alert("操作成功！"); if (S.back) S.back(); });
+                                }
+                            }, {
+                                text: "拒绝", onClick: function () {
+                                    $M.prompt("拒绝理由", function (msg) {
+                                        $M.comm("auditData", { ids: dataId.val(), flag: 1, msg: msg, classId: classId.val() }, function () { $M.alert("操作成功！"); if (S.back) S.back(); });
+                                    }, { required: true });
+
+                                }
+                            }]
                     }]
-                ]
+            ]
         });
-        var frame = tab.addControl({ xtype: "Frame", type: "x", dock: 2, items: [{ size: "*" }, { size: 300, visible: false}] });
+        var frame = tab.addControl({ xtype: "Frame", type: "x", dock: 2, items: [{ size: "*" }, { size: 300, visible: false }] });
         //frame.attr("items", [{ size: "*" }, { size: 0}]);
         //frame.items[1].attr("size",0);
         frame.items[0].css({ "overflow-y": "auto", "overflow-x": "hidden" });
@@ -140,7 +145,7 @@ $M.article = {
             },
             onSubmit: function (sender, e) {
                 if (S.back) S.back();
-                $M.confirm("保存成功，是否关闭？", tab.remove, { footer: [{ text: "是" }, { text: "否"}] });
+                $M.confirm("保存成功，是否关闭？", tab.remove, { footer: [{ text: "是" }, { text: "否" }] });
                 read(e.returnData);
             }
         });
@@ -163,7 +168,7 @@ $M.article = {
                 }
             },*/
             { xtype: "UploadFileBox", name: "pic", labelText: "缩 略 图", labelWidth: 2 },
-            { xtype: "TextBox", name: "u_info", labelText: "文章摘要", labelWidth: 2, multiLine: true, style: { height: "50px"} },
+            { xtype: "TextBox", name: "u_info", labelText: "文章摘要", labelWidth: 2, multiLine: true, style: { height: "50px" } },
             { xtype: "Editor", name: "u_content", style: { height: 300 }, labelText: "文章内容", labelWidth: 2 }
         ]);
         var grid = frame.items[1].addControl({
@@ -194,8 +199,8 @@ $M.article = {
             for (var i = 0; i < dataList.length; i++) dataList[i].val("");
             dataId.val("");
         };
-        var comm = [["getCustomField", { classId: S.classId}]];
-        if (S.dataId != null) comm[comm.length] = ["article.read", { id: S.dataId}];
+        var comm = [["getCustomField", { classId: S.classId }]];
+        if (S.dataId != null) comm[comm.length] = ["article.read", { id: S.dataId }];
         $M.comm(comm, function (data) {
             if (data[0] && data[0].variables) {
                 grid.addRow(data[0].variables.item);
@@ -204,7 +209,7 @@ $M.article = {
             if (S.dataId != null) setForm(data[1]);
         });
     },
-    
+
     uploadFile: function (S) {
         var win = $(document.body).addControl({
             xtype: "Window",
@@ -277,7 +282,7 @@ $M.article = {
                 }
             };
 
-            xhr.open("POST", $M.config.appPath + "article/uploadTxt");
+            xhr.open("POST", $M.config.appPath + "article/uploadTxt.ashx");
             xhr.send(fd);
         }
         var inputFile = $("<input type='file' accept='text/plain'  " + (S.isMultiple == false ? "" : "multiple='multiple'") + " style='display:none' >").appendTo($(document.body));

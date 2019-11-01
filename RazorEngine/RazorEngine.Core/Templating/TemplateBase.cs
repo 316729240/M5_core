@@ -102,10 +102,9 @@
         /// </summary>
         /// <param name="rawString">The raw string to write.</param>
         /// <returns>An instance of <see cref="IEncodedString"/>.</returns>
-        public void Raw(string rawString)
+        public IEncodedString Raw(string rawString)
         {
-            WriteLiteral(rawString);
-            //return new RawString(rawString);
+            return new RawString(rawString);
         }
         //public  string Left(string text,int count)
         //{

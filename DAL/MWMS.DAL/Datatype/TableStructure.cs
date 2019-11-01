@@ -25,13 +25,13 @@ namespace MWMS.DAL.Datatype
         public TableStructure(double datatypeId)
         {
             this.DatatypeId = datatypeId;
-            MWMS.DAL.TableHandle table = new MWMS.DAL.TableHandle("Datatype");
+            MWMS.DAL.TableHandle table = new MWMS.DAL.TableHandle("datatype");
             Dictionary<string, object> model = table.GetModel(datatypeId, "tableName,tableStructure,displayField,id");
             Init(model);
         }
         public TableStructure(string tableName)
         {
-            MWMS.DAL.TableHandle table = new MWMS.DAL.TableHandle("Datatype");
+            MWMS.DAL.TableHandle table = new MWMS.DAL.TableHandle("datatype");
             Dictionary<string, object> p = new Dictionary<string, object>();
             p.Add("tableName", tableName);
             Dictionary<string, object> model = table.GetModel( "tableName,tableStructure,displayField,id", "tableName=@tableName",p);

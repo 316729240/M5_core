@@ -29,15 +29,15 @@ $M.Control = {
         size: { "xs": 0, "sm": 1, "default": 2, "lg": 3 }
     }
 };
-$M.getId = function() {
+$M.getId = function () {
     var d = new Date();
     var id = Math.ceil(Math.random() * 999);
     return ("" + d.getFullYear() + d.getMonth() + d.getDay() + d.getHours() + d.getMinutes() + d.getSeconds() + id)
 };
-$M.getIco = function(ico) {
+$M.getIco = function (ico) {
     if (ico.indexOf("fa-") > -1) return "fa " + ico;
 };
-$M.ajax = function(url, data, back, errback, progressHandlingFunction) {
+$M.ajax = function (url, data, back, errback, progressHandlingFunction) {
     try {
         var formdata = new FormData();
         var flag = false;
@@ -67,7 +67,7 @@ $M.ajax = function(url, data, back, errback, progressHandlingFunction) {
         success: back,
         data: data,
         dataType: "json",
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             if (errback) {
                 var messag = { errNo: -1000, errMsg: errorThrown, status: XMLHttpRequest.status };
                 errback(messag);
@@ -79,7 +79,7 @@ $M.ajax = function(url, data, back, errback, progressHandlingFunction) {
     if (flag) {
         json.contentType = false;
         json.processData = false;
-        json.xhr = function() { //获取ajaxSettings中的xhr对象，为它的upload属性绑定progress事件的处理函数
+        json.xhr = function () { //获取ajaxSettings中的xhr对象，为它的upload属性绑定progress事件的处理函数
             myXhr = $.ajaxSettings.xhr();
             if (myXhr.upload) { //检查upload属性是否存在
                 //绑定progress事件的回调函数
@@ -90,14 +90,14 @@ $M.ajax = function(url, data, back, errback, progressHandlingFunction) {
     }
     $.ajax(json);
 };
-$M.loadJs = function(files, f) {
+$M.loadJs = function (files, f) {
     var count = 0, max = files.length;
-    var back = function() { count++; if (max == count) f(); };
+    var back = function () { count++; if (max == count) f(); };
     for (var i = 0; i < max; i++) {
         $.getScript(files[i], back);
     }
 };
-$M.daysBetween = function(DateOne, DateTwo) {
+$M.daysBetween = function (DateOne, DateTwo) {
     var OneMonth = DateOne.substring(5, DateOne.lastIndexOf('-'));
     var OneDay = DateOne.substring(DateOne.length, DateOne.lastIndexOf('-') + 1);
     var OneYear = DateOne.substring(0, DateOne.indexOf('-'));
@@ -109,15 +109,15 @@ $M.daysBetween = function(DateOne, DateTwo) {
     return (cha);
 };
 $M.Method = {
-    Array: function() {
-        this.indexOf = function() {
+    Array: function () {
+        this.indexOf = function () {
             var C = this.length;
             for (var i = 0; i < C; i++) {
                 if (this[i] == arguments[0]) return i;
             };
             return -1;
         };
-        this.del = function(n) {
+        this.del = function (n) {
             if (typeof (n) != "number") {
                 var index = this.indexOf(n);
                 if (index > -1) return this.slice(0, index).concat(this.slice(index + 1, this.length));
@@ -130,33 +130,27 @@ $M.Method = {
             }
         };
     },
-    String: function() {
-        this.toDate = function() {
+    String: function () {
+        this.toDate = function () {
             if (this.indexOf("\/Date(") > -1) {
                 var temp = this.replace("\/Date(", "");
                 var ticks = parseInt(temp.replace(")\/", ""));
                 var d = new Date(ticks);
                 return d;
             }
-            var  arr = this.replace(/T/, " ");
-             arr = arr.replace(/\d+(?=-[^-]+$)/, function (a) { return a; }).match(/\d+/g);
-             if (arr == null || arr.length < 3) return null;
-             var new_date = arr[0] + "/" + parseInt(arr[1]) + "/" + parseInt(arr[2]);
-             if (arr.length > 5) {
-                 new_date += " " + parseInt(arr[3]);
-                 new_date += ":" + parseInt(arr[4]);
-                 new_date += ":" + parseInt(arr[5]);
-             }
-             var date = new Date(new_date);
+            var arr = this.replace(/\d+(?=-[^-]+$)/,
+                function (a) { return a; }).match(/\d+/g);
+            if (arr == null || arr.length < 3) return null;
+            var date = new Date(arr[0] + "/" + parseInt(arr[1]) + "/" + parseInt(arr[2]));
             return date;
         }
     },
-    Date: function() {
-        this.addDays = function(c) {
+    Date: function () {
+        this.addDays = function (c) {
             this.setDate(this.getDate() + c);
             return this;
         };
-        this.format = function(format) {
+        this.format = function (format) {
             /* 
             * eg:format="yyyy-MM-dd hh:mm:ss"; 
             */
@@ -174,23 +168,23 @@ $M.Method = {
 
             if (/(y+)/.test(format)) {
                 format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4
-                            - RegExp.$1.length));
+                    - RegExp.$1.length));
             }
 
             for (var k in o) {
                 if (new RegExp("(" + k + ")").test(format)) {
                     format = format.replace(RegExp.$1, RegExp.$1.length == 1
-                                ? o[k]
-                                : ("00" + o[k]).substr(("" + o[k]).length));
+                        ? o[k]
+                        : ("00" + o[k]).substr(("" + o[k]).length));
                 }
             }
             return format;
         }
     }
 };
-$M.BaseClass = function(S) {
+$M.BaseClass = function (S) {
     var T = this;
-    this.wait = function(flag) {
+    this.wait = function (flag) {
         if (flag) {
             T.waitBox = $("<div class='modal-backdrop fade in' style='position: absolute; top:0px;left:0px;background-color:#FFFFFF'></div>").appendTo(T.container);
             var img = $("<img src='../static/img/wait.gif' style='position: absolute;width:50px' />").appendTo(T.waitBox);
@@ -202,19 +196,19 @@ $M.BaseClass = function(S) {
             T.waitBox = null;
         }
     };
-    this.comm = function(a, b, c, d) {
+    this.comm = function (a, b, c, d) {
         T.wait(true);
         if (typeof (arguments[0]) == "string") {
-            $M.comm(a, b, function(e) { T.wait(false); c(e); }, function(e) { T.wait(false); d(e); });
+            $M.comm(a, b, function (e) { T.wait(false); c(e); }, function (e) { T.wait(false); d(e); });
         } else {
-            $M.comm(a, function(e) { T.wait(false); b(e); }, function(e) { T.wait(false); c(e); });
+            $M.comm(a, function (e) { T.wait(false); b(e); }, function (e) { T.wait(false); c(e); });
         }
     };
-    this.attr = function(a, b) {
+    this.attr = function (a, b) {
         if (b != null) S[a] = b;
         return (S[a]);
     };
-    this.dispose = function() {
+    this.dispose = function () {
         if (T.controls) {
             var count = T.controls.length;
             for (var i = count - 1; i > -1; i--) {
@@ -224,7 +218,7 @@ $M.BaseClass = function(S) {
         T.container.remove();
         T.container = null;
     };
-    this.addControl = function(S2) {
+    this.addControl = function (S2) {
         var T = this;
         var listC = T.container.addControl(S2);
         if (T.controls == null) T.controls = [];
@@ -236,7 +230,7 @@ $M.BaseClass = function(S) {
             if (listC) T.controls[T.controls.length] = listC;
         }
         return listC;
-        var addItem = function(S3) {
+        var addItem = function (S3) {
             line = $("<div class=\"form-group\"></div>").appendTo(T.container);
             S3.width = (S3.width == null ? "12" : S3.width);
             var item = $("<label>" + S3.labelText + ((S3.vtype && S3.vtype.required) ? "<span class=\"f_req\">*</span>" : "") + "</label>").appendTo(line);
@@ -306,24 +300,24 @@ $M.BaseClass = function(S) {
             }
         }
     };
-    this.height = function(h) { return (h == null ? this.container.outerHeight() : this.container.outerHeight(h)); };
-    this.css = function(style) { return this.container.css(style); };
-    this.addClass = function(css) { this.container.addClass(css); };
-    this.removeClass = function(css) { this.container.removeClass(css); };
-    this.append = function(str) {
+    this.height = function (h) { return (h == null ? this.container.outerHeight() : this.container.outerHeight(h)); };
+    this.css = function (style) { return this.container.css(style); };
+    this.addClass = function (css) { this.container.addClass(css); };
+    this.removeClass = function (css) { this.container.removeClass(css); };
+    this.append = function (str) {
         if (this.container) {
             return $(str).appendTo(this.container);
         };
         return null;
     };
-    this.load = function(str, f) {
+    this.load = function (str, f) {
         this.container.load(str, f);
         return null;
     };
-    this.$ = function(str) {
+    this.$ = function (str) {
         return this.container.find(str);
     };
-    this.find = function(name) {
+    this.find = function (name) {
         if (this.controls) {
             for (var i = 0; i < this.controls.length; i++) {
                 if (this.controls[i].attr("name") == name) return this.controls[i];
@@ -336,24 +330,24 @@ $M.BaseClass = function(S) {
             }
         }
     };
-    this.html = function(html) {
+    this.html = function (html) {
         this.container.html(html);
     };
     if (this.container != null) {
-        this.container.mouseup(function(e) {
+        this.container.mouseup(function (e) {
             if (S.onMouseUp) return S.onMouseUp(T, e);
             //return false;
         });
-        this.container.dblclick(function(e) {
+        this.container.dblclick(function (e) {
             if (S.onMouseDoubleClick) return S.onMouseDoubleClick(T, e);
             //return false;
         });
-        this.container.mousedown(function(e) {
+        this.container.mousedown(function (e) {
             if (S.onMouseDown) return S.onMouseDown(T, e);
 
         });
     }
-    this.render = function() {
+    this.render = function () {
         T.controls = [];
         var item = this.container.find("input,select,div,button,textarea");
         for (var i = 0; i < item.length; i++) {
@@ -369,7 +363,7 @@ $M.BaseClass = function(S) {
         }
     };
 };
-$(document).on("focusin.M4.public", function(e) { $M.focusElement = e.target; });
+$(document).on("focusin.M4.public", function (e) { $M.focusElement = e.target; });
 $M.Method.Array.apply(Array.prototype);
 $M.Method.Date.apply(Date.prototype);
 $M.Method.String.apply(String.prototype);
@@ -378,7 +372,7 @@ $.fn.extend({
     //accept:文件类型
     //isMultiple:是否可上传多个文件
     //onUploadProgress:当前进度 value:百分比
-    uploadFile: function(url, back, S) {
+    uploadFile: function (url, back, S) {
         if (url == null) throw ("提交地址不能为空");
         var button = $(this);
         if (button.length == 0) return;
@@ -392,7 +386,7 @@ $.fn.extend({
         var inputFile = $("<input type='file' id='" + fileId + "' name=fileData accept='image/*' " + multiple + " style='display:none' >");
         if (S && S.accept) inputFile.attr("accept", S.accept);
         button.attr("for", fileId);
-        var uploadCallback = function(html) {
+        var uploadCallback = function (html) {
             if (back) back(html);
         };
         var form = null;
@@ -403,14 +397,14 @@ $.fn.extend({
             var ifr = $('<iframe  id="' + frameId + '" name="' + frameId + '" style="display:none" ></iframe>');
             $(document.body).append(form);
             $(document.body).append(ifr);
-            ifr.load(function() {
+            ifr.load(function () {
                 if (ifr[0].contentWindow.location.href == "about:blank") return;
                 uploadCallback(ifr[0].contentWindow.document.body.innerHTML);
             });
         } else {
             $(document.body).append(inputFile);
         }
-        inputFile.on("change", function(e) {
+        inputFile.on("change", function (e) {
             if (S.onStartUpload) {
                 if (S.onStartUpload() == false) return;
             }
@@ -422,7 +416,7 @@ $.fn.extend({
                     fd.append("fileData", inputFile[0].files[i]);
                 }
                 var xhr = new XMLHttpRequest();
-                xhr.upload.addEventListener("progress", function(evt) {
+                xhr.upload.addEventListener("progress", function (evt) {
                     if (evt.lengthComputable) {
                         var fileIndex = 0;
                         //var fen = 100 / inputFile[0].files.length;
@@ -433,7 +427,7 @@ $.fn.extend({
                         }
                     }
                 }, false);
-                xhr.onreadystatechange = function() {
+                xhr.onreadystatechange = function () {
                     if (xhr.readyState == 4) {
                         uploadCallback(xhr.responseText);
                     }
@@ -444,7 +438,7 @@ $.fn.extend({
         });
         //inputFile[0].click();
     },
-    render: function() {
+    render: function () {
         var xtype = this.attr("xtype");
         var attrs = this.get(0).attributes;
         var S = [];
@@ -469,11 +463,11 @@ $.fn.extend({
         }
         return F;
     },
-    addControl: function(S2) {
+    addControl: function (S2) {
         var box = this;
         var clist = new Array();
         //添加单个控件
-        var add = function(dom, S) {
+        var add = function (dom, S) {
             if (!S) return;
             $M.Index++;
             if (!S.xtype) S.xtype = "TextBox";
@@ -489,7 +483,7 @@ $.fn.extend({
                 obj = null;
             }
         };
-        var addItem = function(S3) {
+        var addItem = function (S3) {
             line = $("<div class=\"form-group\"></div>").appendTo(box);
             if (S3.width != null) line.addClass("col-sm-" + S3.width);
             S3.width = (S3.width == null ? "12" : S3.width);
@@ -554,35 +548,35 @@ $.fn.extend({
         }
         return null;
     },
-    resizable: function(S) {
+    resizable: function (S) {
         var T = this;
         var resizeBox = [];
         var obj = $(this);
         var moveflag = false, isShow = false;
-        var setPix = function() {
+        var setPix = function () {
             var xy = obj.offset();
             resizeBox[0].css({ top: xy.top + obj.height() - 5, left: xy.left + obj.width() - 5 });
         };
-        var resize = function(e) {
+        var resize = function (e) {
             var xy = obj.offset();
             obj.css({ width: e.pageX - xy.left, height: e.pageY - xy.top });
             setPix();
         };
-        var mousedown = function() {
+        var mousedown = function () {
             moveflag = true;
-            document.body.onselectstart = function() { return false; }
+            document.body.onselectstart = function () { return false; }
             $(document.body).on("mousemove", resize);
         };
-        var mouseup = function() {
+        var mouseup = function () {
             moveflag = false;
             $(document.body).unbind("mousemove", resize);
-            document.body.onselectstart = function() { return true; }
+            document.body.onselectstart = function () { return true; }
         };
         for (var i = 0; i < 1; i++) {
             resizeBox[i] = $("<span val=" + i + " class='m5_pix_drop' style='cursor:se-resize;position: absolute;float:left;background-color: #FF00FF;width:10px;height:10px;overflow:hidden;z-index:100000' ></span>"); //.appendTo($(document.body));
         }
         $(document.body).on("mouseup", mouseup);
-        $(document.body).on("mousemove", function(e) {
+        $(document.body).on("mousemove", function (e) {
             var xy = obj.offset();
             if (xy.top < e.pageY && xy.left < e.pageX && xy.left + obj.width() + 15 > e.pageX && xy.left + obj.width() + 15 > e.pageX) {
                 if (!isShow) {
@@ -608,17 +602,17 @@ $.fn.extend({
         //    resizeBox[0].remove();
         //});
     },
-    moveBox: function(S) {
+    moveBox: function (S) {
         //alert($(this).length);
         var T = this;
         var moveObj = null;
         var markObj = null;
         var moveflag = false;
         var $this = null;
-        var init = function(e) {
+        var init = function (e) {
             var _start = { x: e.pageX, y: e.pageY };
             var o = { iTop: 0, iLeft: 0, width: $(this).outerWidth(), height: $(this).outerHeight() };
-            var start = function() {
+            var start = function () {
                 if (S.onStart) S.onStart(T, {});
                 var _position = null;
                 if (S.html == null) {
@@ -643,7 +637,7 @@ $.fn.extend({
                 markObj = $("<div />").appendTo(moveObj.parent());
                 markObj.css({ "z-index": 2000, position: "absolute", width: o.width + "px", height: o.height + "px" });
             };
-            $(document).bind("mousemove", function(e) {
+            $(document).bind("mousemove", function (e) {
                 if (!moveflag) {
                     var c_w = Math.abs(e.pageX - _start.x), c_h = Math.abs(e.pageY - _start.y);
                     if (c_w < 10 && c_h < 10) return;
@@ -662,8 +656,8 @@ $.fn.extend({
                 });
                 if (S.onMove) S.onMove(T, { x: iLeft, y: iTop });
             });
-            $(document).bind("mouseup", function() {
-                setTimeout(function() {
+            $(document).bind("mouseup", function () {
+                setTimeout(function () {
                     if (moveflag) {
                         moveflag = false;
                         if (S.html) moveObj.remove();
@@ -684,7 +678,7 @@ $.fn.extend({
         }
     }
 });
-$M.Control["inputBox"] = function(BoxID, S) {
+$M.Control["inputBox"] = function (BoxID, S) {
     var BZ = false;
     var T = this;
     var tipColor = "#C0C0C0";
@@ -703,11 +697,11 @@ $M.Control["inputBox"] = function(BoxID, S) {
     this.text = "";
     this.value = "";
     var tempValue = "";
-    this.clearBoth = function() {
+    this.clearBoth = function () {
         A.style.clear = "both"
     };
     var D = null;
-    B.addEvent("onfocus", function() {
+    B.addEvent("onfocus", function () {
         B.style.color = defaultColor;
         if (B.value == S.tip) {
             B.value = ""
@@ -718,7 +712,7 @@ $M.Control["inputBox"] = function(BoxID, S) {
         if (S.onfocus != null) S.onfocus();
         return false;
     });
-    B.addEvent("onblur", function() {
+    B.addEvent("onblur", function () {
         if (S.tip != null && B.value == "") {
             B.value = S.tip;
             B.style.color = tipColor
@@ -729,24 +723,24 @@ $M.Control["inputBox"] = function(BoxID, S) {
         if (S.onblur != null) S.onblur();
         return false;
     });
-    B.addEvent("onkeyup", function() {
+    B.addEvent("onkeyup", function () {
         if (tempValue != B.value) {
             tempValue = B.value;
             if (S.oninput != null) S.oninput(T)
         };
         if ($.event.keyCode() == 13 && S.onconfirm != null) S.onconfirm()
     });
-    C.addEvent("onmousedown", function() {
+    C.addEvent("onmousedown", function () {
         C.className = "Button_Down";
         if (S.onconfirm != null) S.onconfirm()
     });
-    C.addEvent("onmouseup", function() {
+    C.addEvent("onmouseup", function () {
         C.className = "Button_Up";
         B.className = "TextBox_focus";
         B.focus();
         BZ = true
     });
-    this.remove = function() {
+    this.remove = function () {
         B.remove();
         C.remove();
         A.remove();
@@ -754,23 +748,23 @@ $M.Control["inputBox"] = function(BoxID, S) {
         B = null;
         C = null
     };
-    this.focus = function() {
+    this.focus = function () {
         B.focus()
     };
-    this.setValue = function(v) {
+    this.setValue = function (v) {
         B.style.color = defaultColor;
         B.value = v
     };
-    this.val = function() {
+    this.val = function () {
         if (B.value == S.tip) return ("");
         else {
             return (B.value)
         }
     };
-    this.setAttribute = function(a, b) {
+    this.setAttribute = function (a, b) {
         S[a] = b
     };
-    this.setSize = function(w, h) {
+    this.setSize = function (w, h) {
         A.setSize(w, h);
         B.setSize(A.offsetWidth - 21, h)
     };
@@ -778,19 +772,19 @@ $M.Control["inputBox"] = function(BoxID, S) {
     B.className = "TextBox_focus";
     B.focus()
 };
-$M.Control["DialogInput"] = function(BoxID, S) {
+$M.Control["DialogInput"] = function (BoxID, S) {
     var T = this;
     if (S.ico == null) S.ico = "fa-ellipsis-h";
     var html = '<div class="input-group btn-group">' +
-                '<input class="inputbox form-control" ' + (S.inputReadOnly ? 'readonly' : '') + ' type="text">' +
-				'<div class="input-group-btn"><button type="button" class="btn btn-default dropdown-toggle"><i class="fa ' + S.ico + '"></i></button></div>' +
-			'</div>';
+        '<input class="inputbox form-control" ' + (S.inputReadOnly ? 'readonly' : '') + ' type="text">' +
+        '<div class="input-group-btn"><button type="button" class="btn btn-default dropdown-toggle"><i class="fa ' + S.ico + '"></i></button></div>' +
+        '</div>';
     var A = $(html).appendTo(BoxID);
     A.addClass("input-group-" + $M.Control.Constant.sizeCss[S.size == null ? 1 : S.size]);
     var button = A.find("button");
     var inputbox = A.find(".inputbox");
-    if (S.onButtonClick) button.click(function() { S.onButtonClick(T, null); });
-    T.val = function(value) {
+    if (S.onButtonClick) button.click(function () { S.onButtonClick(T, null); });
+    T.val = function (value) {
         if (value != null) {
             inputbox.val(value);
             return (value);
@@ -799,16 +793,16 @@ $M.Control["DialogInput"] = function(BoxID, S) {
         }
     };
 
-    A.keydown(function(e) {
+    A.keydown(function (e) {
         if (S.onKeyDown) return S.onKeyDown(T, e);
     });
-    A.keyup(function(e) {
+    A.keyup(function (e) {
         if (e.keyCode == 13) {
             if (S.onButtonClick) S.onButtonClick(T, null);
         }
         if (S.onKeyUp) return S.onKeyUp(T, e);
     });
-    T.focus = function() {
+    T.focus = function () {
         inputbox.select();
         inputbox.focus();
     };
@@ -816,7 +810,7 @@ $M.Control["DialogInput"] = function(BoxID, S) {
     $M.BaseClass.apply(T, [S]);
     if (S.style) T.css(S.style);
 };
-$M.Control["UploadFileBox"] = function(BoxID, S, CID) {
+$M.Control["UploadFileBox"] = function (BoxID, S, CID) {
     var T = this;
     if (S.ico == null) S.ico = "fa-ellipsis-h";
     var A = null;
@@ -830,10 +824,10 @@ $M.Control["UploadFileBox"] = function(BoxID, S, CID) {
         A.append('<div class="input-group-btn"><button type="button" class="btn btn-default">选择文件</button></div>');
     } else {
         var html = '<div class="input-group">' +
-                    '<a class=\"inputbox form-control openfile\" target=_blank ></a>' +
-                        '<input class="inputbox form-control" ' + (S.inputReadOnly ? 'readonly' : '') + ' type="text" name="' + S.name + '">' +
-                        '<div class="input-group-btn"><label type="button" class="btn btn-default">选择文件</label></div>' +
-                    '</div>';
+            '<a class=\"inputbox form-control openfile\" target=_blank ></a>' +
+            '<input class="inputbox form-control" ' + (S.inputReadOnly ? 'readonly' : '') + ' type="text" name="' + S.name + '">' +
+            '<div class="input-group-btn"><label type="button" class="btn btn-default">选择文件</label></div>' +
+            '</div>';
         A = $(html).appendTo(BoxID);
     }
     A.addClass("input-group-" + $M.Control.Constant.sizeCss[S.size == null ? 1 : S.size]);
@@ -853,13 +847,13 @@ $M.Control["UploadFileBox"] = function(BoxID, S, CID) {
     });
     //        img.click();
     });*/
-    T.val = function(value) {
+    T.val = function (value) {
         if (value != null) {
             var json = null;
             if ($.isArray(value)) {
                 json = value;
             } else {
-                if (typeof(value) != "object") {
+                if (typeof (value) != "object") {
                     try {
                         json = JSON.parse(value);
                     } catch (x) { json = []; }
@@ -867,16 +861,15 @@ $M.Control["UploadFileBox"] = function(BoxID, S, CID) {
                     json = value;
                 }
             }
-            //inputbox.val(JSON.stringify(json));
-            inputbox.val(value);
+            inputbox.val(JSON.stringify(json));
             if (value != "") {
                 A.find(".openfile").html("预览文件");
-                A.find(".openfile").attr("href", value);//json.path);
+                A.find(".openfile").attr("href", json.path);
             }
         }
         return (inputbox.val());
     };
-    button.uploadFile("/manage/app/system/upload", function(json) {
+    button.uploadFile("/manage/app/system/upload.ashx", function (json) {
         button.html("上传文件");
         button.removeClass("disabled");
         json = JSON.parse(json);
@@ -890,29 +883,29 @@ $M.Control["UploadFileBox"] = function(BoxID, S, CID) {
     }, {
         accept: S.accept,
         isMultiple: true,
-        onUploadProgress: function(json) {
+        onUploadProgress: function (json) {
             button.html("上传中..." + json.value + "%");
             if (S.onUploadProgress) {
                 S.onUploadProgress(T, json);
             }
         },
-        onStartUpload: function() {
+        onStartUpload: function () {
             button.addClass("disabled");
             button.find("span").html("上传中...");
         }
     });
 
-    A.keydown(function(e) {
+    A.keydown(function (e) {
         if (S.onKeyDown) return S.onKeyDown(T, e);
     });
-    A.keyup(function(e) {
+    A.keyup(function (e) {
         if (S.onKeyUp) return S.onKeyUp(T, e);
     });
     T.container = A;
     $M.BaseClass.apply(T, [S]);
     if (S.style) T.css(S.style);
 };
-$M.Control["UploadFileBox2"] = function(BoxID, S, CID) {
+$M.Control["UploadFileBox2"] = function (BoxID, S, CID) {
     var T = this;
     if (S.ico == null) S.ico = "fa-ellipsis-h";
     var A = null;
@@ -936,10 +929,10 @@ $M.Control["UploadFileBox2"] = function(BoxID, S, CID) {
     }
     var uiSet = $(document.body).addControl({ xtype: "ToolTip", location: "bottom" });
     var img = uiSet.append("<img width=100%>");
-    var remove = function() {
+    var remove = function () {
         $(this).parent().hide();
     };
-    T.addFile = function(json) {
+    T.addFile = function (json) {
         var ex = json.path.substring(json.path.length - 3);
         var ico = "fa-file-o";
         if ("jpg,png,gif".indexOf(ex) > -1) ico = "fa-picture-o";
@@ -951,21 +944,21 @@ $M.Control["UploadFileBox2"] = function(BoxID, S, CID) {
         file.insertBefore(Button);
         file.attr(json);
         file.find(".remove").click(remove);
-        file.on("mouseover", function() {
+        file.on("mouseover", function () {
             var filename = $(this).attr("path");
             var ex = filename.substring(filename.length - 3);
             if ("jpg,png,gif".indexOf(ex) == -1) return;
             img.attr("src", filename);
             uiSet.show(file);
         });
-        file.on("mouseout", function() {
+        file.on("mouseout", function () {
             uiSet.close();
         });
     };
     T.container = A;
     $M.BaseClass.apply(T, [S]);
     S.isMultiple = S.isMultiple || S.ismultiple;
-    Button.uploadFile("/manage/app/system/upload", function(json) {
+    Button.uploadFile("/manage/app/system/upload.ashx", function (json) {
         Button.find("span").html("上传文件");
         Button.removeClass("disabled");
         if (!S.isMultiple) {
@@ -983,19 +976,19 @@ $M.Control["UploadFileBox2"] = function(BoxID, S, CID) {
     }, {
         accept: S.accept,
         isMultiple: S.isMultiple,
-        onUploadProgress: function(json) {
+        onUploadProgress: function (json) {
             Button.find("span").html("上传中..." + json.value + "%");
             if (S.onUploadProgress) {
                 S.onUploadProgress(T, json);
             }
         },
-        onStartUpload: function() {
+        onStartUpload: function () {
             Button.addClass("disabled");
             Button.find("span").html("上传中...");
         }
     });
     if (S.style) T.css(S.style);
-    T.val = function(value) {
+    T.val = function (value) {
         if (value) {
             A.find("._file").remove();
             var json = null;
@@ -1011,7 +1004,7 @@ $M.Control["UploadFileBox2"] = function(BoxID, S, CID) {
             }
         }
         var list = [];
-        A.find("._file").each(function() {
+        A.find("._file").each(function () {
             var item = { "title": $(this).attr("title"), "size": $(this).attr("size"), "path": $(this).attr("path"), isDel: $(this).is(":visible") ? 0 : 1 };
             list[list.length] = item;
         });
@@ -1019,7 +1012,7 @@ $M.Control["UploadFileBox2"] = function(BoxID, S, CID) {
     };
     T.val(Textarea.val());
 };
-$M.Control["PathBar"] = function(BoxID, S) {
+$M.Control["PathBar"] = function (BoxID, S) {
     var T = this;
     T.items = new Array();
     var Box = BoxID.addDom("div");
@@ -1031,7 +1024,7 @@ $M.Control["PathBar"] = function(BoxID, S) {
     var pathBox = Box.addDom("div");
     var textBox = Box.addDom("input");
     textBox.style.display = "none";
-    Box.addEvent("onmousedown", function() {
+    Box.addEvent("onmousedown", function () {
         if ($.event.target().tagName != "DIV" || pathBox.style.display == "none") return;
         pathBox.style.display = "none";
         textBox.style.display = "";
@@ -1039,42 +1032,42 @@ $M.Control["PathBar"] = function(BoxID, S) {
         Box.className += " PathEdit";
         setTimeout(setf, 100);
     });
-    var setf = function() {
+    var setf = function () {
         textBox.focused = true;
         textBox.select();
     };
-    Box.addEvent("onkeydown", function() {
+    Box.addEvent("onkeydown", function () {
         if ($.event.keyCode() == 13) {
             if (S.ongopath != null) S.ongopath(textBox.value)
         }
     });
-    textBox.addEvent("onblur", function() {
+    textBox.addEvent("onblur", function () {
         pathBox.style.display = "";
         textBox.style.display = "none";
         Box.className = Box.className.replace(" PathEdit", "")
     });
-    T.setSize = function(w, h) {
+    T.setSize = function (w, h) {
         Box.setSize(w, h);
         textBox.setSize(w - 10, null)
     };
-    T.add = function(value) {
+    T.add = function (value) {
         T.clear();
         T.items[T.items.length] = value;
         T.reload()
     };
-    T.clear = function() {
+    T.clear = function () {
         var count = pathBox.childNodes.length;
         for (var i = 0; i < count; i++) pathBox.childNodes[0].remove()
     };
-    T.val = function() {
+    T.val = function () {
         return (T.items[T.items.length - 1].value)
     };
-    T.go = function(i) {
+    T.go = function (i) {
         T.items.length = i + 1;
         T.reload();
         if (S.onchange != null) S.onchange(T.items[i])
     };
-    T.reload = function() {
+    T.reload = function () {
         T.clear();
         for (var i = 0; i < T.items.length; i++) {
             if (i > 0) pathBox.addDom("span").innerHTML = "->";
@@ -1086,61 +1079,61 @@ $M.Control["PathBar"] = function(BoxID, S) {
     }
 };
 
-$M.Control["Panel"] = function(BoxID, S) {
+$M.Control["Panel"] = function (BoxID, S) {
     var T = this;
     var A = BoxID.addDom("div");
     A.className = "Panel";
     var Title_Div = A.addDom("div");
     Title_Div.className = "Title_L";
-    Title_Div.addEvent("onmousedown", function() {
+    Title_Div.addEvent("onmousedown", function () {
         if (S.onmovestart != null) S.onmovestart($.event.x(), $.event.y())
     });
-    Title_Div.addEvent("onmousemove", function() {
+    Title_Div.addEvent("onmousemove", function () {
         if (S.onmove != null) S.onmove($.event.x(), $.event.y())
     });
-    Title_Div.addEvent("onmouseup", function() {
+    Title_Div.addEvent("onmouseup", function () {
         if (S.onmoveend != null) S.onmoveend($.event.x(), $.event.y())
     });
-    this.getXY = function() {
+    this.getXY = function () {
         return (A.getXY())
     };
-    this.setCapture = function() {
+    this.setCapture = function () {
         Title_Div.setCapture()
     };
-    this.releaseCapture = function() {
+    this.releaseCapture = function () {
         Title_Div.releaseCapture()
     };
-    this.setXY = function(x, y) {
+    this.setXY = function (x, y) {
         if (x != null) A.style.left = x + "px";
         if (y != null) A.style.top = y + "px"
     };
-    this.insertDom = function(o) {
+    this.insertDom = function (o) {
         return (A.insertDom(o))
     };
-    this.getSize = function() {
+    this.getSize = function () {
         return ({
             width: A.offsetWidth,
             height: A.offsetHeight
         })
     };
-    this.replaceObj = function(obj) {
+    this.replaceObj = function (obj) {
         if (obj != null) {
             var M = obj.parentNode.insertBefore(A, obj);
             T.setPosition("");
             obj.remove()
         }
     };
-    this.remove = function() {
+    this.remove = function () {
         A.remove();
         A = null
     };
-    this.addDom = function(D) {
+    this.addDom = function (D) {
         return (Content.addDom(D))
     };
-    this.addControl = function(D) {
+    this.addControl = function (D) {
         return (Content.addControl(D))
     };
-    this.setPosition = function(p) {
+    this.setPosition = function (p) {
         A.style.position = p
     };
     var B = Title_Div.addDom("div");
@@ -1156,7 +1149,7 @@ $M.Control["Panel"] = function(BoxID, S) {
         setButton = ButtonDiv.addDom("a");
         setButton.className = "Set";
         setButton.href = "#";
-        setButton.addEvent("onmousedown", function() {
+        setButton.addEvent("onmousedown", function () {
             if (S.onclose != null) S.onclose();
             T.remove();
             return (false)
@@ -1166,7 +1159,7 @@ $M.Control["Panel"] = function(BoxID, S) {
         closeButton = ButtonDiv.addDom("a");
         closeButton.className = "Close";
         closeButton.href = "#";
-        closeButton.addEvent("onmousedown", function() {
+        closeButton.addEvent("onmousedown", function () {
             T.remove();
             if (S.onclose != null) S.onclose();
             return (false)
@@ -1184,14 +1177,14 @@ $M.Control["Panel"] = function(BoxID, S) {
     B.className = "Foot_R";
     B = B.addDom("div");
     B.className = "Foot_C";
-    this.setCaption = function(text) {
+    this.setCaption = function (text) {
         Caption.innerHTML = text
     };
-    this.getCaption = function() {
+    this.getCaption = function () {
         return (Caption.innerHTML)
     };
     if (S.caption != null) this.setCaption(S.caption);
-    this.setSize = function(w, h) {
+    this.setSize = function (w, h) {
         if (w != null) A.style.width = w + "px";
         if (h != null) Content.style.height = (h - Title_Div.offsetHeight - Foot_Div.offsetHeight) + "px"
     };
@@ -1200,7 +1193,7 @@ $M.Control["Panel"] = function(BoxID, S) {
     if (S.onload != null) S.onload(T)
 };
 
-$M.Control["Label"] = function(BoxID, S, CID) {
+$M.Control["Label"] = function (BoxID, S, CID) {
     var A = null, T = this;
     if (CID != null) A = CID;
     else {
@@ -1210,15 +1203,15 @@ $M.Control["Label"] = function(BoxID, S, CID) {
     T.container = A;
     $M.BaseClass.apply(T, [S]);
     if (S.style) A.css(S.style);
-    T.html = function(html) {
+    T.html = function (html) {
         A.html(html);
 
     };
-    T.val = function(text) {
+    T.val = function (text) {
         A.html(text);
     };
 };
-$M.Control["ListBox"] = function(BoxID, S) {
+$M.Control["ListBox"] = function (BoxID, S) {
     var OpenTag = 0;
     var BZ = false;
     var T = this;
@@ -1229,21 +1222,21 @@ $M.Control["ListBox"] = function(BoxID, S) {
     if (S.height) A.style.height = S.height + "px";
     A.style.top = S.top + "px";
     A.style.left = S.left + "px";
-    this.setZIndex = function(I) {
+    this.setZIndex = function (I) {
         A.style.zIndex = I
     };
     if (S.ZIndex != null) T.setZIndex(S.ZIndex);
-    A.addEvent("onmouseover", function() {
+    A.addEvent("onmouseover", function () {
         BZ = true;
         if (S.onMouseover != null) S.onMouseover()
     });
-    A.addEvent("onmouseout", function() {
+    A.addEvent("onmouseout", function () {
         BZ = false;
         if (S.onMouseout != null) S.onMouseout()
     });
     this.width = A.offsetWidth;
     this.height = A.offsetHeight;
-    var Dclick = function() {
+    var Dclick = function () {
         if (!BZ) {
             if (OpenTag > 0) {
                 if (S.onBlur != null) S.onBlur()
@@ -1252,11 +1245,11 @@ $M.Control["ListBox"] = function(BoxID, S) {
         }
     };
     $D.addEvent("onclick", Dclick);
-    this.setXY = function(X, Y) {
+    this.setXY = function (X, Y) {
         if (X != null) A.style.left = X + "px";
         if (Y != null) A.style.top = Y + "px"
     };
-    this.addItem = function(text, value) {
+    this.addItem = function (text, value) {
         var B = A.addDom("div");
         B.unselectable = "on";
         if (S.type == "color") {
@@ -1265,20 +1258,20 @@ $M.Control["ListBox"] = function(BoxID, S) {
             B.innerHTML = text
         }
         B.value = value;
-        B.addEvent("onmouseover", function() {
+        B.addEvent("onmouseover", function () {
             B.className = "SelectItem"
         });
-        B.addEvent("onmouseout", function() {
+        B.addEvent("onmouseout", function () {
             B.className = ""
         });
-        B.addEvent("onclick", function() {
+        B.addEvent("onclick", function () {
             if (S.onSelectItem != null) S.onSelectItem(text, value)
         })
     };
-    this.removeItem = function(n) {
+    this.removeItem = function (n) {
         A.childNodes[n].remove()
     };
-    this.removeAll = function() {
+    this.removeAll = function () {
         var c = A.childNodes.length;
         for (var i = 0; i < c; i++) {
             A.childNodes[0].remove()
@@ -1292,12 +1285,12 @@ $M.Control["ListBox"] = function(BoxID, S) {
             }
         }
     }
-    this.remove = function() {
+    this.remove = function () {
         A.remove();
         $D.removeEvent('onclick', Dclick)
     }
 };
-$M.Control["RadioBox"] = function(BoxID, S, CID) {
+$M.Control["RadioBox"] = function (BoxID, S, CID) {
     var T = this;
     var A = null;
     if (CID != null) BoxID = CID;
@@ -1325,7 +1318,7 @@ $M.Control["RadioBox"] = function(BoxID, S, CID) {
         c[i]._control = BoxID;
     }
     //    BoxID._control;
-    T.val = function(value) {
+    T.val = function (value) {
         var c = BoxID.find("input");
         if (value != null) {
             for (var i = 0; i < c.length; i++) {
@@ -1346,7 +1339,7 @@ $M.Control["RadioBox"] = function(BoxID, S, CID) {
         }
         return v;
     };
-    T.attr = function(name, value) {
+    T.attr = function (name, value) {
         if (value != null) {
             S[name] = value;
 
@@ -1356,7 +1349,7 @@ $M.Control["RadioBox"] = function(BoxID, S, CID) {
     };
 };
 
-$M.Control["Switch"] = function(BoxID, S, CID) {
+$M.Control["Switch"] = function (BoxID, S, CID) {
     var T = this;
     var A = null;
     if (S.value == null) S.value = false;
@@ -1388,8 +1381,8 @@ $M.Control["Switch"] = function(BoxID, S, CID) {
         A = $(html).appendTo(BoxID);
         checkbox = A.find("input");
     }
-    checkbox.change(function() { if (S.onChange) S.onChange(T, null); });
-    T.val = function(value) {
+    checkbox.change(function () { if (S.onChange) S.onChange(T, null); });
+    T.val = function (value) {
         if (value != null) {
             if (value) {
                 checkbox.attr("checked", true);
@@ -1405,10 +1398,10 @@ $M.Control["Switch"] = function(BoxID, S, CID) {
     T.container = A;
     $M.BaseClass.apply(T, [S]);
 };
-$M.Control["CheckBox"] = function(BoxID, S, CID) {
+$M.Control["CheckBox"] = function (BoxID, S, CID) {
     var T = this;
     var A = BoxID;
-    var init = function() {
+    var init = function () {
         var html = "";
         var value = [];
         if (S.value != null) {
@@ -1437,7 +1430,7 @@ $M.Control["CheckBox"] = function(BoxID, S, CID) {
     else {
         init();
     }
-    T.val = function(value) {
+    T.val = function (value) {
         var c = BoxID.find("input[name='" + S.name + "']");
         if (value != null) {
             for (var i = 0; i < c.length; i++) {
@@ -1460,13 +1453,13 @@ $M.Control["CheckBox"] = function(BoxID, S, CID) {
         }
         return v;
     };
-    BoxID.find("input[name='" + S.name + "']").change(function() {
+    BoxID.find("input[name='" + S.name + "']").change(function () {
         if (S.onChange) S.onChange();
     });
     T.container = A;
 
     $M.BaseClass.apply(T, [S]);
-    T.attr = function(name, value) {
+    T.attr = function (name, value) {
         if (value != null) {
             S[name] = value;
 
@@ -1476,7 +1469,7 @@ $M.Control["CheckBox"] = function(BoxID, S, CID) {
     };
 };
 
-$M.Control["SelectBox"] = function(BoxID, S, CID) {
+$M.Control["SelectBox"] = function (BoxID, S, CID) {
     var T = this;
     var A = null;
     if (CID != null) A = CID;
@@ -1493,7 +1486,7 @@ $M.Control["SelectBox"] = function(BoxID, S, CID) {
     if (typeof (S.items) == "string") { eval("S.items=" + S.items); }
     S.items = S.items == null ? [] : S.items;
     var loadFlag = true;
-    T.addItem = function(items) {
+    T.addItem = function (items) {
         if (typeof (items.length) != "undefined") {
             for (var i = 0; i < items.length; i++) {
                 var value = "", text = "";
@@ -1516,15 +1509,15 @@ $M.Control["SelectBox"] = function(BoxID, S, CID) {
         if (typeof (S.vtype) == "string") { A.attr("vtype", S.vtype); }
         else { A.attr(S.vtype); }
     }
-    T.val = function(value) {
+    T.val = function (value) {
         if (value) A.val(value);
         return (A.val());
     };
-    T.text = function() {
+    T.text = function () {
         return (S.items[A[0].selectedIndex]["text"]);
     };
     T.selectedItem = {
-        attr: function(name, value) {
+        attr: function (name, value) {
             if (value != null) {
                 S.items[A[0].selectedIndex][name] = value;
                 if (name == "text") {
@@ -1534,7 +1527,7 @@ $M.Control["SelectBox"] = function(BoxID, S, CID) {
             return (S.items[A[0].selectedIndex][name]);
         }
     };
-    T.attr = function(name, value) {
+    T.attr = function (name, value) {
         if (value != null) {
             S[name] = value;
             if (name == "selectedIndex") A[0].selectedIndex = value;
@@ -1542,24 +1535,24 @@ $M.Control["SelectBox"] = function(BoxID, S, CID) {
         if (name == "selectedIndex") return A[0].selectedIndex;
         return (S[name]);
     };
-    T.remove = function(index) {
+    T.remove = function (index) {
         A[0].remove(index);
         S.items = S.items.del(index);
     };
-    T.clear = function() {
+    T.clear = function () {
         A[0].length = 0;
         S.items = [];
     };
-    T.focus = function() {
+    T.focus = function () {
         A.focus();
     };
-    A.blur(function() {
+    A.blur(function () {
         if (S.onBlur != null) S.onBlur();
     });
     T.addItem(S.items);
     loadFlag = false;
     T.val(S.value);
-    A.change(function() { if (S.onChange) S.onChange(T); });
+    A.change(function () { if (S.onChange) S.onChange(T); });
     return;
     T.disabledTag = false;
     if (S.disabled) T.disabledTag = true;
@@ -1601,7 +1594,7 @@ $M.Control["SelectBox"] = function(BoxID, S, CID) {
         B2.className = "TextBox_Disabled";
         C.className = "Button_Disabled"
     }
-    this.getIndex = function(v) {
+    this.getIndex = function (v) {
         if (S.items != null) {
             for (var i = 0; i < S.items.length; i++) {
                 if ((S.items[i].value != null && S.items[i].value == v) || (S.items[i].value == null && S.items[i].caption == v)) {
@@ -1611,14 +1604,14 @@ $M.Control["SelectBox"] = function(BoxID, S, CID) {
         }
         return null;
     };
-    this.removeValue = function(v) {
+    this.removeValue = function (v) {
         var i = this.getIndex(v);
         if (i != null) {
             S.items = S.items.del(i);
         }
         this.setIndex(0);
     };
-    this.setValue = function(v) {
+    this.setValue = function (v) {
         var i = this.getIndex(v);
         if (i != null) {
             var text = "";
@@ -1648,34 +1641,34 @@ $M.Control["SelectBox"] = function(BoxID, S, CID) {
         //            }
         //        }
     };
-    this.setIndex = function(index) {
+    this.setIndex = function (index) {
         T.setValue(S.items[index].value)
     };
     if (S.value != null) T.setValue(S.value);
     this.text = "";
     this.value = "";
-    this.clearBoth = function() {
+    this.clearBoth = function () {
         A.style.clear = "both"
     };
-    this.setSize = function(w, h) {
+    this.setSize = function (w, h) {
         A.setSize(w, h);
         B.setSize(w - 21, null);
         B2.setSize(w - 21, null)
     };
-    B.addEvent("onfocus", function() {
+    B.addEvent("onfocus", function () {
         if (T.disabledTag) return;
         B.className = "TextBox_focus";
         B2.className = "TextBox_focus";
         C.className = "Button_focus";
         if (S.onfocus != null) S.onfocus()
     });
-    B.addEvent("onblur", function() {
+    B.addEvent("onblur", function () {
         B.className = "TextBox";
         B2.className = "TextBox";
         C.className = "Button";
         if (S.onblur != null && !OpenTag) S.onblur()
     });
-    var openBox = function() {
+    var openBox = function () {
         if (T.disabledTag) return;
         if (!OpenTag) {
             C.className = "Button_Up";
@@ -1708,13 +1701,13 @@ $M.Control["SelectBox"] = function(BoxID, S, CID) {
                 left: WZ.left,
                 type: S.type,
                 height: L_height,
-                onBlur: function() {
+                onBlur: function () {
                     OpenTag = false;
                     S1.remove();
                     L.remove();
                     if (S.onblur != null) S.onblur()
                 },
-                onSelectItem: function(text, value) {
+                onSelectItem: function (text, value) {
                     B.value = text;
                     this.text = text;
                     this.value = value;
@@ -1741,7 +1734,7 @@ $M.Control["SelectBox"] = function(BoxID, S, CID) {
             OpenTag = true
         }
     };
-    var inputfocus = function() {
+    var inputfocus = function () {
         if (!T.disabledTag) {
             B.className = "TextBox_focus";
             B2.className = "TextBox_focus";
@@ -1751,7 +1744,7 @@ $M.Control["SelectBox"] = function(BoxID, S, CID) {
         }
     };
     B2.addEvent("onfocus", inputfocus);
-    B2.addEvent("onblur", function() {
+    B2.addEvent("onblur", function () {
         if (T.disabledTag) return;
         B.className = "TextBox";
         B2.className = "TextBox";
@@ -1759,19 +1752,19 @@ $M.Control["SelectBox"] = function(BoxID, S, CID) {
         if (S.onblur != null && !OpenTag) S.onblur()
     });
     B2.addEvent("onmouseup", openBox);
-    C.addEvent("onmousedown", function() {
+    C.addEvent("onmousedown", function () {
         if (T.disabledTag) return;
         C.className = "Button_Down"
     });
     C.addEvent("onmouseup", openBox);
-    this.addItem = function(text, value) {
+    this.addItem = function (text, value) {
         if (S.items == null) S.items = new Array();
         S.items[S.items.length] = {
             text: text,
             value: value
         }
     };
-    this.disabled = function(tag) {
+    this.disabled = function (tag) {
         T.disabledTag = tag;
         if (tag) {
             B.className = "TextBox_Disabled";
@@ -1783,15 +1776,15 @@ $M.Control["SelectBox"] = function(BoxID, S, CID) {
             C.className = "Button"
         }
     };
-    this.clear = function() {
+    this.clear = function () {
         if (S.items != null) S.items.length = 0
     };
-    this.remove = function() {
+    this.remove = function () {
         C.remove();
         B.remove();
         A.remove()
     };
-    this.setfocus = function() {
+    this.setfocus = function () {
         if (!T.disabledTag) {
             if (inputTag) B.focus();
             else {
@@ -1799,7 +1792,7 @@ $M.Control["SelectBox"] = function(BoxID, S, CID) {
             }
         }
     };
-    this.focus = function() {
+    this.focus = function () {
         if (!T.disabledTag) {
             if (inputTag) B.focus();
             else {
@@ -1807,15 +1800,15 @@ $M.Control["SelectBox"] = function(BoxID, S, CID) {
             }
         }
     };
-    this.val = function() {
+    this.val = function () {
         return (B1.value)
     };
-    this.setAttribute = function(a, b) {
+    this.setAttribute = function (a, b) {
         S[a] = b
     };
     this.focus()
 };
-$M.Control["InputGroup"] = function(BoxID, S) {
+$M.Control["InputGroup"] = function (BoxID, S) {
     var T = this;
     T.controls = [];
     var A = $("<div class=\"input-group\" ></div>").appendTo(BoxID);
@@ -1831,7 +1824,7 @@ $M.Control["InputGroup"] = function(BoxID, S) {
     T.container = A;
     $M.BaseClass.apply(T, [S]);
 };
-$M.Control["ButtonCheckGroup"] = function(BoxID, S) {
+$M.Control["ButtonCheckGroup"] = function (BoxID, S) {
     var T = this;
     var A = $("<div class=\"btn-group\"></div>").appendTo(BoxID);
     for (var i = 0; i < S.items.length; i++) {
@@ -1843,13 +1836,13 @@ $M.Control["ButtonCheckGroup"] = function(BoxID, S) {
         if (S.items[i].tip) S.items[i].dom.attr("title", S.items[i].tip);
         S.items[i].dom.addClass("btn-" + $M.Control.Constant.colorCss[S.color == null ? 0 : S.items[i].color]);
         S.items[i].dom.addClass("btn-" + $M.Control.Constant.sizeCss[S.size == null ? 1 : S.items[i].size]);
-        S.items[i].dom.click(function() {
+        S.items[i].dom.click(function () {
             A.find("button").removeClass("active");
             $(this).addClass("active");
             if (S.onClick) S.onClick(T, { value: $(this).val() });
         });
     }
-    T.val = function(value) {
+    T.val = function (value) {
         if (value != null) {
             for (var i = 0; i < S.items.length; i++) {
                 if (S.items[i].dom.val() == S.value) {
@@ -1864,11 +1857,11 @@ $M.Control["ButtonCheckGroup"] = function(BoxID, S) {
     T.container = A;
     $M.BaseClass.apply(T, [S]);
 };
-$M.Control["Button"] = function(BoxID, S, CID) {
+$M.Control["Button"] = function (BoxID, S, CID) {
     var T = this;
     var A = null;
     var group = null, menuButton = null;
-    T.val = function(text) {
+    T.val = function (text) {
 
         //if (text == null) {
         //} else {
@@ -1914,28 +1907,28 @@ $M.Control["Button"] = function(BoxID, S, CID) {
         }
         //A.attr("type", S.type);
     }
-    T.focus = function() {
+    T.focus = function () {
         A.focus();
     };
-    T.enabled = function(flag) {
+    T.enabled = function (flag) {
         A.attr({ "disabled": !flag });
         if (menuButton) menuButton.attr({ "disabled": !flag });
     };
     var objID = "Button_" + $.Index + "_";
     A.attr("id", objID);
-    A.click(function() {
+    A.click(function () {
         var f = true;
         if (S.onClick) { S.onClick(T, null); f = false; }
         return f;
     });
     if (T.menu) {
-        menuButton.on("click", function() {
+        menuButton.on("click", function () {
             if (T.menu) {
                 group.addClass("open");
                 var xy = group.offset();
                 T.menu.open(null, null, group);
             }
-            T.menu.attr("onClose", function() {
+            T.menu.attr("onClose", function () {
                 group.removeClass("open");
                 if (S.onMenuClose) S.onMenuClose(T, null);
             });
@@ -1945,7 +1938,7 @@ $M.Control["Button"] = function(BoxID, S, CID) {
     T.container = A;
     $M.BaseClass.apply(T, [S]);
 };
-$M.Control["Spinner"] = function(BoxID, S, CID) {
+$M.Control["Spinner"] = function (BoxID, S, CID) {
     T = this;
     S.minimum = S.minimum == null ? 0 : S.minimum;
     S.maximum = S.maximum == null ? 100 : S.maximum;
@@ -1958,7 +1951,7 @@ $M.Control["Spinner"] = function(BoxID, S, CID) {
     var input = $("<input name=\"" + S.name + "\" class=\"form-control ui-spinner-input\" >").appendTo(A);
     var upButton = $("<a class=\"ui-spinner-button ui-spinner-up fa fa-caret-up\" tabindex=\"-1\" ></a>").appendTo(A);
     var downButton = $("<a class=\"ui-spinner-button ui-spinner-down  fa fa-caret-down\" tabindex=\"-1\" ></a></span>").appendTo(A);
-    var _down = function() {
+    var _down = function () {
         var value = parseInt(input.val());
         if (isNaN(parseInt(value))) {
             value = S.maximum;
@@ -1968,7 +1961,7 @@ $M.Control["Spinner"] = function(BoxID, S, CID) {
         if (value < S.minimum) value = S.maximum;
         input.val(value);
     };
-    var _up = function() {
+    var _up = function () {
         var value = parseInt(input.val());
         if (isNaN(parseInt(value))) {
             value = S.minimum;
@@ -1978,18 +1971,18 @@ $M.Control["Spinner"] = function(BoxID, S, CID) {
         if (value > S.maximum) value = S.minimum;
         input.val(value);
     };
-    A.keydown(function(e) {
+    A.keydown(function (e) {
         if (e.which == 38) _up();
         if (e.which == 40) _down();
     });
     upButton.mousedown(_up);
     downButton.mousedown(_down);
-    T.val = function(value) { if (value != null) { input.val(value); } return input.val(); };
+    T.val = function (value) { if (value != null) { input.val(value); } return input.val(); };
     if (S.value != null) T.val(S.value);
     T.container = A;
     $M.BaseClass.apply(T, [S]);
 };
-$M.Control["TextBox"] = function(BoxID, S, CID) {
+$M.Control["TextBox"] = function (BoxID, S, CID) {
     var T = this;
     var B = null;
     if (CID) {
@@ -2018,18 +2011,18 @@ $M.Control["TextBox"] = function(BoxID, S, CID) {
         if (typeof (S.vtype) == "string") { B.attr("vtype", S.vtype); }
         else { B.attr(S.vtype); }
     }
-    T.css = function(json) {
+    T.css = function (json) {
         B.css(json);
     };
-    B.blur(function() { if (S.onBlur) S.onBlur(T); });
-    B.change(function() { if (S.onChange) S.onChange(T); });
-    B.keydown(function(e) {
+    B.blur(function () { if (S.onBlur) S.onBlur(T); });
+    B.change(function () { if (S.onChange) S.onChange(T); });
+    B.keydown(function (e) {
         if (S.onKeyDown) S.onKeyDown(T, e);
     });
-    B.keyup(function(e) {
+    B.keyup(function (e) {
         if (S.onKeyUp) S.onKeyUp(T, e);
     });
-    T.val = function(value) {
+    T.val = function (value) {
         if (value == null) {
             if (B.val() == S.tip) {
                 return ("")
@@ -2040,7 +2033,7 @@ $M.Control["TextBox"] = function(BoxID, S, CID) {
             B.val(value);
         }
     };
-    T.focus = function() {
+    T.focus = function () {
         B.focus();
     };
 
@@ -2048,45 +2041,45 @@ $M.Control["TextBox"] = function(BoxID, S, CID) {
     $M.BaseClass.apply(T, [S]);
     if (S.value) T.val(S.value);
 };
-$M.Control["Shadow"] = function(BoxID, Setting) {
+$M.Control["Shadow"] = function (BoxID, Setting) {
     var B = BoxID.addDom("div");
     if (Setting.width != null) B.style.width = Setting.width + "px";
     if (Setting.height != null) B.style.height = Setting.height + "px";
     if (Setting.left != null) B.style.left = Setting.left + "px";
     if (Setting.top != null) B.style.top = Setting.top + "px";
     B.className = "M4_Shadow";
-    this.setWidth = function(W) {
+    this.setWidth = function (W) {
         if ($.Browse.isIE()) {
             B.style.width = W + "px"
         } else {
             B.style.width = W - 5 + "px"
         }
     };
-    this.setHeight = function(H) {
+    this.setHeight = function (H) {
         if ($.Browse.isIE()) {
             B.style.height = H + "px"
         } else {
             B.style.height = H - 5 + "px"
         }
     };
-    this.setZIndex = function(I) {
+    this.setZIndex = function (I) {
         B.style.zIndex = I
     };
-    this.setLeft = function(L) {
+    this.setLeft = function (L) {
         if ($.Browse.isIE()) {
             B.style.left = L + "px"
         } else {
             B.style.left = L + "px"
         }
     };
-    this.setTop = function(T) {
+    this.setTop = function (T) {
         if ($.Browse.isIE()) {
             B.style.top = T + "px"
         } else {
             B.style.top = T + "px"
         }
     };
-    this.setXY = function(l, t) {
+    this.setXY = function (l, t) {
         if ($.Browse.isIE()) {
             B.style.top = t - 5 + "px";
             B.style.left = l - 5 + "px"
@@ -2095,18 +2088,18 @@ $M.Control["Shadow"] = function(BoxID, Setting) {
             B.style.left = l + "px"
         }
     };
-    this.hide = function() {
+    this.hide = function () {
         B.hide()
     };
-    this.show = function() {
+    this.show = function () {
         B.show()
     };
-    this.remove = function() {
+    this.remove = function () {
         B.remove();
         B = null
     }
 };
-$M.Control["Tip"] = function(BoxID, Setting) {
+$M.Control["Tip"] = function (BoxID, Setting) {
     var S = null;
     if ($.Browse.isIE()) {
         S = BoxID.addControl({
@@ -2140,7 +2133,7 @@ $M.Control["Tip"] = function(BoxID, Setting) {
     A.className = "C2";
     B.style.width = "200px";
     if (Setting.width != null) B.style.width = Setting.width + "px";
-    this.remove = function() {
+    this.remove = function () {
         B.remove();
         if (S != null) {
             S.remove();
@@ -2149,11 +2142,11 @@ $M.Control["Tip"] = function(BoxID, Setting) {
         A = null;
         B = null
     };
-    this.show = function() {
+    this.show = function () {
         B.show();
         S.show()
     };
-    this.setXY = function(X, Y) {
+    this.setXY = function (X, Y) {
         B.style.left = X + "px";
         B.style.top = Y + "px";
         if ($.Browse.isIE()) {
@@ -2165,11 +2158,11 @@ $M.Control["Tip"] = function(BoxID, Setting) {
     };
     if (Setting.HTML != null) M.innerHTML = Setting.HTML;
 };
-$M.Control["Err"] = function(BoxID, Setting) {
+$M.Control["Err"] = function (BoxID, Setting) {
     var B = BoxID.addDom("div");
     var T;
     B.className = "Err";
-    var ShowMsg = function() {
+    var ShowMsg = function () {
         T = $B.addControl({
             xtype: 'Tip',
             HTML: Setting.text,
@@ -2177,10 +2170,10 @@ $M.Control["Err"] = function(BoxID, Setting) {
         });
         T.setXY(B.getXY().left + 30, B.getXY().top + 30)
     };
-    var HideMsg = function() {
+    var HideMsg = function () {
         setTimeout(T.remove, 500)
     };
-    this.hide = function() {
+    this.hide = function () {
         B.remove();
         B = null;
         T = null
@@ -2189,7 +2182,7 @@ $M.Control["Err"] = function(BoxID, Setting) {
     B.addEvent("onmouseout", HideMsg)
 };
 
-$M.Control["DateRangePickerInput"] = function(BoxID, S, CID) {
+$M.Control["DateRangePickerInput"] = function (BoxID, S, CID) {
     var A = $("<div class=\"input-group input-daterange input-group-" + $M.Control.Constant.sizeCss[S.size == null ? 1 : S.size] + "\" ></div>"), input = null;
     if (CID) {
         A.insertBefore(CID);
@@ -2212,7 +2205,7 @@ $M.Control["DateRangePickerInput"] = function(BoxID, S, CID) {
 
     var p2 = A.addControl({ xtype: "DatePickerInput", size: S.size, value: v2, fromValue: v1 });
     var menu = A.addControl({
-        xtype: "Menu", onItemClicked: function(sender, e) {
+        xtype: "Menu", onItemClicked: function (sender, e) {
             var day = new Date();
             switch (e.attr("val")) {
                 case 0:
@@ -2244,30 +2237,30 @@ $M.Control["DateRangePickerInput"] = function(BoxID, S, CID) {
                     p1.val(day.addDays(-index));*/
                     break;
             }
-        }, items: [{ text: "今天", val: 0 }, { text: "咋天", val: 1 }, { text: "最近七天", val: 2 }, { text: "最近一月", val: 3}]
+        }, items: [{ text: "今天", val: 0 }, { text: "咋天", val: 1 }, { text: "最近七天", val: 2 }, { text: "最近一月", val: 3 }]
     });
     var button = $("<span class=\"input-group-btn open\"><button class='btn btn-default' ><span class=\"caret\"></span></button></span>").appendTo(A);
-    button.find("button").click(function() {
+    button.find("button").click(function () {
         menu.open(null, null, button);
         return false;
     });
-    p1.attr("onChange", function() {
+    p1.attr("onChange", function () {
         p2.attr("fromValue", p1.val());
         input.val(p1.val() + "," + p2.val());
     });
 
-    p2.attr("onChange", function() {
+    p2.attr("onChange", function () {
         p1.attr("toValue", p2.val());
         input.val(p1.val() + "," + p2.val());
     });
     var T = this;
-    T.dispose = function() {
+    T.dispose = function () {
         p1.dispose();
         p2.dispose();
         A.remove();
         A = null;
     };
-    T.val = function(value) {
+    T.val = function (value) {
         if (value != null) {
             var v = value.split(',');
             p1.val(v[0]);
@@ -2278,12 +2271,12 @@ $M.Control["DateRangePickerInput"] = function(BoxID, S, CID) {
     };
     input.val(p1.val() + "," + p2.val());
 
-    T.attr = function(a, b) {
+    T.attr = function (a, b) {
         if (b != null) S[a] = b;
         return S[a];
     }
 };
-$M.Control["DatePickerInput"] = function(BoxID, S, CID) {
+$M.Control["DatePickerInput"] = function (BoxID, S, CID) {
     var A = null;
     if (CID) {
         A = $("<div class=\"input-group input-daterange input-group-" + $M.Control.Constant.sizeCss[S.size == null ? 1 : S.size] + "\"></div>");
@@ -2304,27 +2297,27 @@ $M.Control["DatePickerInput"] = function(BoxID, S, CID) {
     }
     input[0]._control = A[0];
     var button = $("<span class=\"input-group-btn\"><button class=\"dropdown-toggle btn btn-default btn-" + $M.Control.Constant.sizeCss[S.size == null ? 1 : S.size] + "\" ><i class=\"fa fa-calendar\"></i></button></span>").appendTo(A);
-    var popover = $(document.body).addControl({ xtype: "Popover", location: "bottom", onClose: function() { button.removeClass("open"); } });
+    var popover = $(document.body).addControl({ xtype: "Popover", location: "bottom", onClose: function () { button.removeClass("open"); } });
     var picker = popover.addControl({
-        xtype: "DatePicker", value: S.value, format: S.format, minValue: S.minValue, maxValue: S.maxValue, toValue: S.toValue, fromValue: S.fromValue, onChange: function() {
+        xtype: "DatePicker", value: S.value, format: S.format, minValue: S.minValue, maxValue: S.maxValue, toValue: S.toValue, fromValue: S.fromValue, onChange: function () {
             popover.close();
             T.val(picker.val());
         }
     });
-    input.change(function() { S.value = input.val(); })
-    button.click(function() {
+    input.change(function () { S.value = input.val(); })
+    button.click(function () {
         button.addClass("open");
         picker.val(S["value"]);
         popover.show(button);
         return false;
     });
     var T = this;
-    T.dispose = function() {
+    T.dispose = function () {
         popover.dispose();
         A.remove();
         A = null;
     };
-    T.val = function(a) {
+    T.val = function (a) {
         if (a != null) {
             if (!(a instanceof Date)) a = (a + "").toDate();
             S["value"] = a.format("yyyy-MM-dd");
@@ -2333,7 +2326,7 @@ $M.Control["DatePickerInput"] = function(BoxID, S, CID) {
         }
         return S["value"];
     };
-    T.attr = function(a, b) {
+    T.attr = function (a, b) {
         if (a == "minValue" || a == "maxValue" || a == "toValue" || a == "fromValue") picker.attr(a, b);
         if (b != null) S[a] = b;
 
@@ -2341,7 +2334,7 @@ $M.Control["DatePickerInput"] = function(BoxID, S, CID) {
     };
     if (S.value) T.val(S.value);
 };
-$M.Control["DatePicker"] = function(BoxID, S) {
+$M.Control["DatePicker"] = function (BoxID, S) {
     var T = this;
     if (S.format == null) S.format = "yyyy-MM-dd";
     var date = new Date();
@@ -2355,7 +2348,7 @@ $M.Control["DatePicker"] = function(BoxID, S) {
     var year = date.getFullYear(), month = date.getMonth() + 1, day = date.getDate();
 
     var lastMonth = 1;
-    var openMonthSwich = function() {
+    var openMonthSwich = function () {
         A.hide();
         B.show();
         if (lastMonth != month) $(monthList[lastMonth - 1]).removeClass("active");
@@ -2365,34 +2358,34 @@ $M.Control["DatePicker"] = function(BoxID, S) {
     var menu = $("<div class=\"datepicker\" style=\"display: block; \"></div>").appendTo(BoxID);
     var A = $("<div class=\"datepicker-days\" style=\"display: block;\"></div>").appendTo(menu);
 
-    var getMonthDay = function(year, month) {
+    var getMonthDay = function (year, month) {
         var tmp = new Date(year, month, 0);
         return tmp.getDate()
     };
-    var getDayWeek = function(D) {
+    var getDayWeek = function (D) {
         var tmp = new Date(Date.parse(D));
         return tmp.getDay()
     };
-    var showDay = function() {
+    var showDay = function () {
         monthswitch.html(year + "年");
         var table = "<table class=\" table-condensed\">" +
-        "<thead><tr>" +
-        "<th class=\"prev\" style=\"visibility: visible;\">" +
-	    "<i class=\"glyphicon glyphicon-arrow-left\"></i></th>" +
-	    "<th colspan=\"5\" class=\"_switch\">" + year + "年 " + month + "月</th>" +
-	    "<th class=\"next\" style=\"visibility: visible;\">" +
-	    "<i class=\"glyphicon glyphicon-arrow-right\"></i></th>" +
-        "</tr>" +
-        "<tr>" +
-	    "   <th class=\"dow\">日</th>" +
-	    "   <th class=\"dow\">一</th>" +
-	    "   <th class=\"dow\">二</th>" +
-	    "   <th class=\"dow\">三</th>" +
-	    "   <th class=\"dow\">四</th>" +
-	    "   <th class=\"dow\">五</th>" +
-	    "   <th class=\"dow\">六</th>" +
-	    "</tr>" +
-        "</thead>";
+            "<thead><tr>" +
+            "<th class=\"prev\" style=\"visibility: visible;\">" +
+            "<i class=\"glyphicon glyphicon-arrow-left\"></i></th>" +
+            "<th colspan=\"5\" class=\"_switch\">" + year + "年 " + month + "月</th>" +
+            "<th class=\"next\" style=\"visibility: visible;\">" +
+            "<i class=\"glyphicon glyphicon-arrow-right\"></i></th>" +
+            "</tr>" +
+            "<tr>" +
+            "   <th class=\"dow\">日</th>" +
+            "   <th class=\"dow\">一</th>" +
+            "   <th class=\"dow\">二</th>" +
+            "   <th class=\"dow\">三</th>" +
+            "   <th class=\"dow\">四</th>" +
+            "   <th class=\"dow\">五</th>" +
+            "   <th class=\"dow\">六</th>" +
+            "</tr>" +
+            "</thead>";
         var html = "";
         var LC = getMonthDay(year, month - 1);
         var SD = getDayWeek(year + "/" + month + "/1");
@@ -2400,7 +2393,7 @@ $M.Control["DatePicker"] = function(BoxID, S) {
         var nowDate = new Date(year + "/" + month + "/" + day);
         var i1 = 0;
         var Count = 7;
-        var AddDay = function(Y, M, D, className) {
+        var AddDay = function (Y, M, D, className) {
             var val = "";
             if (D != "") {
                 var date = new Date(Y + "/" + M + "/" + D);
@@ -2432,25 +2425,25 @@ $M.Control["DatePicker"] = function(BoxID, S) {
 
         A.html(table + "<tr>" + html + "</tr></table>");
         A.find("._switch").click(openMonthSwich);
-        A.find(".prev").click(function() {
+        A.find(".prev").click(function () {
             month--;
             if (month == 0) { year--; month = 12; }
             showDay();
 
         });
-        A.find(".next").click(function() {
+        A.find(".next").click(function () {
 
             month++;
             if (month == 13) { year++; month = 1; }
             showDay();
         });
-        A.find(".day").click(function() {
+        A.find(".day").click(function () {
             if ($(this).attr("val") == null) return;
             day = $(this).html();
             showDay();
             if (S.onChange) S.onChange(T, null);
         });
-        T.val = function(a) {
+        T.val = function (a) {
             if (a) {
                 date = a.toDate();
                 if (date == null) date = new Date();
@@ -2465,7 +2458,7 @@ $M.Control["DatePicker"] = function(BoxID, S) {
         };
         T.container = A;
         $M.BaseClass.apply(T, [S]);
-        T.attr = function(a, b) {
+        T.attr = function (a, b) {
             if (b != null) {
                 S[a] = b;
                 switch (a) {
@@ -2501,28 +2494,28 @@ $M.Control["DatePicker"] = function(BoxID, S) {
     var C = $("<div  class='datepicker-years'></div>").appendTo(menu);
     var monthswitch = B.find("._switch");
     var monthList = B.find(".month");
-    monthList.click(function() {
+    monthList.click(function () {
         B.hide();
         A.show();
         month = $(this).attr("val");
         showDay();
     });
-    monthswitch.click(function() {
+    monthswitch.click(function () {
         B.hide();
         tempyear = parseInt(year / 10) * 10;
         showYearList();
         C.show();
     });
-    B.find(".prev").click(function() {
+    B.find(".prev").click(function () {
         year--;
         monthswitch.html(year + "年");
     });
-    B.find(".next").click(function() {
+    B.find(".next").click(function () {
         year++;
         monthswitch.html(year + "年");
     });
     var tempyear = 0;
-    var showYearList = function() {
+    var showYearList = function () {
 
         var monthHtml = "<table class=\"table-condensed\">";
         monthHtml += "<thead><tr>";
@@ -2536,7 +2529,7 @@ $M.Control["DatePicker"] = function(BoxID, S) {
         monthHtml += "</tr></table>";
         C.html(monthHtml);
         var yearswitch = C.find("._switch");
-        C.find(".year").click(function() {
+        C.find(".year").click(function () {
             year = $(this).attr("val");
             monthswitch.html(year + "年");
             C.hide();
@@ -2545,12 +2538,12 @@ $M.Control["DatePicker"] = function(BoxID, S) {
             $(monthList[month - 1]).addClass("active");
             lastMonth = month;
         });
-        C.find(".prev").click(function() {
+        C.find(".prev").click(function () {
             tempyear = (parseInt(tempyear / 10) - 1) * 10;
             yearswitch.html(tempyear + "年-" + (tempyear + 10) + "年");
             showYearList();
         });
-        C.find(".next").click(function() {
+        C.find(".next").click(function () {
             tempyear = (parseInt(tempyear / 10) + 1) * 10;
             yearswitch.html(tempyear + "年-" + (tempyear + 10) + "年");
             showYearList();
@@ -2559,32 +2552,32 @@ $M.Control["DatePicker"] = function(BoxID, S) {
     showDay();
 };
 
-$M.Control["ProgressBar"] = function(BoxID, S) {
+$M.Control["ProgressBar"] = function (BoxID, S) {
     var T = this;
     this.value = 0;
     var A = $("<div class=\"progress\"></div>").appendTo(BoxID);
     var P = $(" <div class=\"progress-bar progress-bar-success progress-bar-striped\"  style=\"width: 0%\"></div>").appendTo(A);
     var span = $("<span class=\"sr-only\"></span>").appendTo(P);
-    var refresh = function() {
+    var refresh = function () {
         var value = ((S.value + 0.0) / (S.maximum - S.minimum)) * 100;
         P.css({ width: value + "%" });
     };
     if (S.minimum == null) S.minimum = 0;
     if (S.maximum == null) S.maximum = 100;
-    T.attr = function(a, b) {
+    T.attr = function (a, b) {
         if (b != null) S[a] = b;
         if (a == "maximum" || a == "minimum" || a == "value") {
             refresh();
         }
 
     };
-    T.val = function(a) {
+    T.val = function (a) {
         if (a != null) T.attr("value", a);
         return S["value"];
     };
     refresh();
 };
-$M.Control["TrackBar"] = function(BoxID, S) {
+$M.Control["TrackBar"] = function (BoxID, S) {
     var T = this;
     var Tag = false;
     var xz = 0,
@@ -2599,10 +2592,10 @@ $M.Control["TrackBar"] = function(BoxID, S) {
     var html = "<div class='left' unselectable='on'><div class='right' unselectable='on'><div class='C' unselectable='on'><div class='button' unselectable='on' id='" + Button + "'></div></div></div></div>";
     A.innerHTML = html;
     Button = $(Button);
-    T.addEvent = function(E, F) {
+    T.addEvent = function (E, F) {
         S[E] = F
     };
-    T.setValue = function(value) {
+    T.setValue = function (value) {
         value = Math.floor(value);
         var xy = A.getXY();
         if (value == null) value = S.min;
@@ -2616,14 +2609,14 @@ $M.Control["TrackBar"] = function(BoxID, S) {
         }
         this.value = value
     };
-    T.setAttribute = function(a, b) {
+    T.setAttribute = function (a, b) {
         S[a] = b
     };
-    A.addEvent("onkeydown", function() {
+    A.addEvent("onkeydown", function () {
         if ($.event.keyCode() == 37) T.setValue(T.value - 1);
         if ($.event.keyCode() == 39) T.setValue(T.value + 1)
     });
-    A.addEvent("onclick", function() {
+    A.addEvent("onclick", function () {
         var x = $.event.x();
         var xy = A.getXY();
         var bfb = (A.offsetWidth - 10) / 100;
@@ -2633,10 +2626,10 @@ $M.Control["TrackBar"] = function(BoxID, S) {
         if (S.onchange != null && oldValue != T.value) S.onchange(T.value);
         A.focus()
     });
-    Button.addEvent("onmouseout", function() {
+    Button.addEvent("onmouseout", function () {
         Button.className = "button"
     });
-    Button.addEvent("onmousedown", function() {
+    Button.addEvent("onmousedown", function () {
         oldValue = T.value;
         Button.className = "button_down";
         var x = $.event.x();
@@ -2644,7 +2637,7 @@ $M.Control["TrackBar"] = function(BoxID, S) {
         Button.setCapture();
         Tag = true
     });
-    Button.addEvent("onmousemove", function() {
+    Button.addEvent("onmousemove", function () {
         Button.className = "button_move";
         if (Tag) {
             var x = $.event.x();
@@ -2662,7 +2655,7 @@ $M.Control["TrackBar"] = function(BoxID, S) {
             T.setValue(value)
         }
     });
-    Button.addEvent("onmouseup", function() {
+    Button.addEvent("onmouseup", function () {
         Tag = false;
         Button.releaseCapture();
         Button.className = "button";
@@ -2674,18 +2667,18 @@ $M.Control["TrackBar"] = function(BoxID, S) {
     }
 };
 
-$M.Control["ColorBox"] = function(BoxID, S) {
+$M.Control["ColorBox"] = function (BoxID, S) {
     var T = this;
     var A = null;
     var list = [["#000", "#444", "#666", "#999", "#ccc", "#eee", "#f3f3f3", "#fff"],
-        ["#f00", "#f90", "#ff0", "#0f0", "#0ff", "#00f", "#90f", "#f0f"],
-        ["#f4cccc", "#fce5cd", "#fff2cc", "#d9ead3", "#d0e0e3", "#cfe2f3", "#d9d2e9", "#ead1dc"],
-        ["#ea9999", "#f9cb9c", "#ffe599", "#b6d7a8", "#a2c4c9", "#9fc5e8", "#b4a7d6", "#d5a6bd"],
-        ["#e06666", "#f6b26b", "#ffd966", "#93c47d", "#76a5af", "#6fa8dc", "#8e7cc3", "#c27ba0"],
-        ["#c00", "#e69138", "#f1c232", "#6aa84f", "#45818e", "#3d85c6", "#674ea7", "#a64d79"],
-        ["#900", "#b45f06", "#bf9000", "#38761d", "#134f5c", "#0b5394", "#351c75", "#741b47"],
-        ["#600", "#783f04", "#7f6000", "#274e13", "#0c343d", "#073763", "#20124d", "#4c1130"]];
-    T.open = function(x, y, obj) {
+    ["#f00", "#f90", "#ff0", "#0f0", "#0ff", "#00f", "#90f", "#f0f"],
+    ["#f4cccc", "#fce5cd", "#fff2cc", "#d9ead3", "#d0e0e3", "#cfe2f3", "#d9d2e9", "#ead1dc"],
+    ["#ea9999", "#f9cb9c", "#ffe599", "#b6d7a8", "#a2c4c9", "#9fc5e8", "#b4a7d6", "#d5a6bd"],
+    ["#e06666", "#f6b26b", "#ffd966", "#93c47d", "#76a5af", "#6fa8dc", "#8e7cc3", "#c27ba0"],
+    ["#c00", "#e69138", "#f1c232", "#6aa84f", "#45818e", "#3d85c6", "#674ea7", "#a64d79"],
+    ["#900", "#b45f06", "#bf9000", "#38761d", "#134f5c", "#0b5394", "#351c75", "#741b47"],
+    ["#600", "#783f04", "#7f6000", "#274e13", "#0c343d", "#073763", "#20124d", "#4c1130"]];
+    T.open = function (x, y, obj) {
         if (obj != null) BoxID = obj;
         var color = null;
         A = $("<div class=\"M5_droppicker dropdown-menu\" ></div>").appendTo(BoxID);
@@ -2699,14 +2692,14 @@ $M.Control["ColorBox"] = function(BoxID, S) {
         }
         html += "</div>";
         A.html(html);
-        A.find("button").click(function() { color = $(this).attr("val"); T.close(); });
+        A.find("button").click(function () { color = $(this).attr("val"); T.close(); });
         if (x != null && y != null) A.css({ left: x + "px", top: y + "px", display: "inline" });
-        $(document).on("mousedown", function(e) {
+        $(document).on("mousedown", function (e) {
             if (A.has(e.target).length == 0) T.close();
         });
     };
-    T.val = function() { return color; };
-    T.close = function() {
+    T.val = function () { return color; };
+    T.close = function () {
         if (S.onClose) S.onClose();
         //$(document).unbind("keydown", keydown);
         $(document).unbind("mousedown", T.close);
@@ -2714,10 +2707,10 @@ $M.Control["ColorBox"] = function(BoxID, S) {
     };
     $M.BaseClass.apply(T, [S]);
 };
-$M.Control["ColorBox2"] = function(BoxID, S) {
+$M.Control["ColorBox2"] = function (BoxID, S) {
     var T = this;
     var A = null;
-    T.open = function(x, y, obj) {
+    T.open = function (x, y, obj) {
         if (obj != null) BoxID = obj;
         A = $("<div class=\"droppicker dropdown-menu\" ></div>").appendTo(BoxID);
         if (x != null && y != null) A.css({ left: x + "px", top: y + "px", display: "inline" });
@@ -2725,7 +2718,7 @@ $M.Control["ColorBox2"] = function(BoxID, S) {
         box.minicolors({
             control: false,
             inline: true,
-            change: function(hex, opacity) {
+            change: function (hex, opacity) {
                 //T.close();
                 //                if (!hex) return;
             }
@@ -2733,11 +2726,11 @@ $M.Control["ColorBox2"] = function(BoxID, S) {
         if (x != null && y != null) A.css({ left: x + "px", top: y + "px", display: "inline" });
 
         //$(document).on("keydown", keydown);
-        $(document).on("mousedown", function(e) {
+        $(document).on("mousedown", function (e) {
             if (A.has(e.target).length == 0) T.close();
         });
     };
-    T.close = function() {
+    T.close = function () {
         if (S.onClose) S.onClose();
         //$(document).unbind("keydown", keydown);
         $(document).unbind("mousedown", T.close);
@@ -2745,11 +2738,11 @@ $M.Control["ColorBox2"] = function(BoxID, S) {
     };
     $M.BaseClass.apply(T, [S]);
 };
-$M.Control["Menu"] = function(BoxID, S) {
+$M.Control["Menu"] = function (BoxID, S) {
     var T = this;
     var A = null;
     if (!S.event) S.event = {};
-    var keydown = function(e) {
+    var keydown = function (e) {
         if (e.keyCode == 27) T.close();
         var $items = A.find("li a");
         if (!$items.length || (e.keyCode != 38 && e.keyCode != 40)) return
@@ -2763,10 +2756,10 @@ $M.Control["Menu"] = function(BoxID, S) {
         if (! ~index) index = 0
         $items.eq(index).focus()
     };
-    var menuItem = function(item) {
+    var menuItem = function (item) {
         var T2 = this;
         T2.items = [];
-        T2.attr = function(a, b) {
+        T2.attr = function (a, b) {
             if (b != null) item[a] = b;
             return item[a];
         }
@@ -2775,7 +2768,7 @@ $M.Control["Menu"] = function(BoxID, S) {
                 T2.items[i] = new menuItem(item.items[i]);
             }
         }
-        T2.addDom = function(dom) {
+        T2.addDom = function (dom) {
             if (item.text == "-") {
                 dom.append("<li class=\"divider\"></li>");
             } else {
@@ -2790,7 +2783,7 @@ $M.Control["Menu"] = function(BoxID, S) {
                     var id = item.id != null ? " id='" + item.id + "' " : "";
                     var li = $("<li " + id + " class='" + (item.enabled == null || item.enabled ? "" : "disabled") + "'><a href=\"#\"><i class='ico fa" + (item.checked ? " fa-check" : "") + " " + (item.ico ? item.ico : "") + "' />" + item.text + "</a></li>").appendTo(dom);
 
-                    li.on("click", function() {
+                    li.on("click", function () {
                         if (!(item.enabled == null || item.enabled)) return;
                         if (item.onClick) item.onClick(T, T2);
                         if (S.onItemClicked && (item.enabled == null || item.enabled)) S.onItemClicked(T, T2);
@@ -2806,22 +2799,22 @@ $M.Control["Menu"] = function(BoxID, S) {
             T.items[i] = new menuItem(S.items[i]);
         }
     }
-    var close = function(e) {
+    var close = function (e) {
         if (A.has(e.target).length == 0) T.close();
     };
-    T.close = function() {
+    T.close = function () {
         if (S.onClose) S.onClose();
         $(document).unbind("keydown", keydown);
         $(document).unbind("mousedown", close);
-		$("iframe").each(function(){
-			var ifrD=$(this)[0].contentWindow.document;
-			if(ifrD==null)return;
-			$(ifrD).unbind("keydown", keydown);
-			$(ifrD).unbind("mousedown", close);
-		});
+        $("iframe").each(function () {
+            var ifrD = $(this)[0].contentWindow.document;
+            if (ifrD == null) return;
+            $(ifrD).unbind("keydown", keydown);
+            $(ifrD).unbind("mousedown", close);
+        });
         if (A) A.remove();
     };
-    T.open = function(x, y, obj) {
+    T.open = function (x, y, obj) {
         if (S.onOpening) S.onOpening(T, null);
         if (obj != null) BoxID = obj;
         A = $("<ul class=\"dropdown-menu\"  id=\"" + S.id + "\"  ></ul>").appendTo(BoxID);
@@ -2848,13 +2841,13 @@ $M.Control["Menu"] = function(BoxID, S) {
         if (x != null && y != null) A.css({ left: x + "px", top: y + "px", display: "inline" });
         $(document).on("keydown", keydown);
         $(document).on("mousedown", close);
-		$("iframe").each(function(){
-			var ifrD=$(this)[0].contentWindow.document;
-			if(ifrD==null)return;
-			$(ifrD).on("keydown", keydown);
-			$(ifrD).on("mousedown", close);
-		});
-        A.on("mousemove", function(e) {
+        $("iframe").each(function () {
+            var ifrD = $(this)[0].contentWindow.document;
+            if (ifrD == null) return;
+            $(ifrD).on("keydown", keydown);
+            $(ifrD).on("mousedown", close);
+        });
+        A.on("mousemove", function (e) {
             var xy = A.offset();
             var scroll_y = e.pageY - xy.top;
             var bl = (scroll_y + 0.0) / A.height();
@@ -2865,7 +2858,7 @@ $M.Control["Menu"] = function(BoxID, S) {
         if (S.onOpened) S.onOpened(T, null);
     };
     $M.BaseClass.apply(T, [S]);
-    T.attr = function(a, b) {
+    T.attr = function (a, b) {
         if (b != null) S[a] = b;
         if (a == "items" && b != null) {
             T.items.length = 0;
@@ -2878,7 +2871,7 @@ $M.Control["Menu"] = function(BoxID, S) {
 };
 
 
-$M.Control["TreeView"] = function(BoxID, S) {
+$M.Control["TreeView"] = function (BoxID, S) {
     var T = this;
     if (S.allowDrop == null) S.allowDrop = false; //是否允许拖动节点
     T.selectedItem = null;
@@ -2892,12 +2885,12 @@ $M.Control["TreeView"] = function(BoxID, S) {
     var A = $("<div class=\"tree\" tabindex=\"-1\" ></div>").appendTo(BoxID);
     if (!S.openIco) S.openIco = "fa fa-minus-square-o";
     if (!S.closeIco) S.closeIco = "fa fa-plus-square-o";
-    var _setIco = function(item, _ico) {
+    var _setIco = function (item, _ico) {
         if (item.child.items.length > 0) {
             _ico.attr("class", item.child.isOpen ? S.openIco : S.closeIco);
         }
     };
-    var _add = function(box, sItem) {
+    var _add = function (box, sItem) {
         if (!sItem) return;
         if (sItem.length == null) {
             var item = new box.item(sItem);
@@ -2911,13 +2904,13 @@ $M.Control["TreeView"] = function(BoxID, S) {
             }
         }
     };
-    var treeChild = function(BoxID, items) {
+    var treeChild = function (BoxID, items) {
         var T2 = this;
         T2.parentItem = null;
         T2.isOpen = true;
         var A = $("<ul></ul>").appendTo(BoxID);
         T2.items = [];
-        T2.item = function(S2) {
+        T2.item = function (S2) {
             var T3 = this;
             T2.items[T2.items.length] = T3;
             //T3.parentItem=
@@ -2932,13 +2925,13 @@ $M.Control["TreeView"] = function(BoxID, S) {
             var _title = T3.box.find("a");
             var _title2 = T3.box.find("a span");
             $M.BaseClass.apply(T3, [S2]);
-            T3.addClass = function(S3) { T3.box.addClass(S3); };
-            T3.css = function(S3) { T3.box.css(S3); };
-            T3.removeClass = function(S3) { T3.box.removeClass(S3); };
-            T3.setIco = function() {
+            T3.addClass = function (S3) { T3.box.addClass(S3); };
+            T3.css = function (S3) { T3.box.css(S3); };
+            T3.removeClass = function (S3) { T3.box.removeClass(S3); };
+            T3.setIco = function () {
                 _setIco(T3, _ico);
             };
-            T3.addItem = function(S3) {
+            T3.addItem = function (S3) {
                 if (T3.child == null) {
                     T3.child = new treeChild(T3.box, null);
                     T3.child.parentItem = T3;
@@ -2947,18 +2940,18 @@ $M.Control["TreeView"] = function(BoxID, S) {
                 _setIco(T3, _ico);
                 return item;
             };
-            T3.clear = function() {
+            T3.clear = function () {
                 T3.child.clear();
             };
             T3.addClass(S2["class"]);
             T3.addItem(S2.items);
-            T3.after = function(obj) {
+            T3.after = function (obj) {
                 T3.box.after(obj.box);
             };
-            T3.before = function(obj) {
+            T3.before = function (obj) {
                 T3.box.before(obj.box);
             };
-            _ico.click(function() {
+            _ico.click(function () {
                 if (T3.child) {
                     if (T3.child.isOpen) {
                         T3.child.close();
@@ -2969,36 +2962,36 @@ $M.Control["TreeView"] = function(BoxID, S) {
                 }
             });
             var downFlag = false, moveFlag = false;
-            T3.focus = function() {
+            T3.focus = function () {
                 if (T.selectedItem) T.selectedItem.removeClass("active");
                 T.selectedItem = T3;
                 T3.addClass("active");
                 if (S.onAfterSelect) { S.onAfterSelect(T, { item: T3 }); };
             };
-            _title.mousedown(function(e) {
-                $(document.body).on("selectstart", function() { return false; });
+            _title.mousedown(function (e) {
+                $(document.body).on("selectstart", function () { return false; });
                 $(document.body).addClass("disableSelect");
 
                 T3.focus();
                 downFlag = true; moveFlag = false;
             });
-            _title.mouseup(function(e) {
+            _title.mouseup(function (e) {
                 downFlag = false; moveFlag = false;
                 $(document.body).unbind("selectstart");
                 $(document.body).removeClass("disableSelect");
             });
-            var itemDrop = function(e) {
+            var itemDrop = function (e) {
                 if (downFlag && !moveFlag) {
                     insertLine = $("<div class='insertLine' style='display:none;'></div>").appendTo(document.body);
                     _title.moveBox({
                         html: "<span class='label label-info'>" + _title2.html() + "</span>",
                         pageX: e.pageX, pageY: e.pageY,
                         offsetX: 15, offsetY: 15,
-                        onStart: function() {
+                        onStart: function () {
                             dragData.dragItem = T.selectedItem;
                             dragFlag = true;
                         },
-                        onEnd: function(sender, e) {
+                        onEnd: function (sender, e) {
                             dragFlag = false;
                             //sender.remove();
                             insertLine.remove();
@@ -3022,10 +3015,10 @@ $M.Control["TreeView"] = function(BoxID, S) {
                 }
                 moveFlag = true;
             };
-            _title.mousemove(function(e) {
+            _title.mousemove(function (e) {
                 if (S.allowDrop) itemDrop(e);
             });
-            _title.mouseover(function() {
+            _title.mouseover(function () {
                 if (dragFlag) {
                     dragData.type = 0;
                     insertLine.hide();
@@ -3040,7 +3033,7 @@ $M.Control["TreeView"] = function(BoxID, S) {
                     }
                 }
             });
-            _title.mouseout(function(e) {
+            _title.mouseout(function (e) {
                 if (dragFlag) {
                     T3.css({ "cursor": "auto" });
                     insertLine.css({ "cursor": "auto" });
@@ -3057,18 +3050,18 @@ $M.Control["TreeView"] = function(BoxID, S) {
                     insertLine.css({ left: _position.left + "px", top: _position.top + "px" });
                 }
             });
-            T3.val = function(text) {
+            T3.val = function (text) {
                 _title2.html(text);
                 S2["text"] = text;
             };
-            T3.remove = function() {
+            T3.remove = function () {
                 T3.child.remove();
                 T3.box.remove();
                 T2.items = T2.items.del(T3);
                 if (T.selectedItem == T3) T.selectedItem = null;
                 T3 = null;
             };
-            T3.moveTo = function(data) {
+            T3.moveTo = function (data) {
                 if (data.toItem == null) {
                     T.root.addItem(T3);
                 } else if (T3 != data.toItem && T3.box.has(data.toItem.box[0]).length == 0) {
@@ -3090,17 +3083,17 @@ $M.Control["TreeView"] = function(BoxID, S) {
                 }
             };
         };
-        T2.clear = function() {
+        T2.clear = function () {
             for (var i = T2.items.length - 1; i > -1; i--) {
                 T2.items[i].remove();
             }
         };
-        T2.remove = function() {
+        T2.remove = function () {
             T2.clear();
             A.remove();
             T2 = null;
         };
-        T2.addItem = function(S2) {
+        T2.addItem = function (S2) {
             if (S2 != null && typeof (S2.moveTo) != "undefined") {
                 A.append(S2.box);
                 T2.items[T2.items.length] = S2;
@@ -3108,16 +3101,16 @@ $M.Control["TreeView"] = function(BoxID, S) {
                 return _add(T2, S2);
             }
         };
-        T2.close = function() {
+        T2.close = function () {
             A.hide();
             T2.isOpen = false;
         };
-        T2.open = function() {
+        T2.open = function () {
             A.show();
             T2.isOpen = true;
         };
         T2.addItem(items);
-        T2.find = function(f) {
+        T2.find = function (f) {
             var item = T2.root;
             for (var i = 0; i < T2.items.length; i++) {
                 var value = f(T2.items[i]);
@@ -3135,14 +3128,14 @@ $M.Control["TreeView"] = function(BoxID, S) {
     T.container = A;
     $M.BaseClass.apply(T, [S]);
 
-    var keydown = function(e) {
+    var keydown = function (e) {
         if (A[0] == $M.focusElement || A.has($M.focusElement).length) {
             if (S.onKeyDown) S.onKeyDown(T, e);
         }
     };
     $(document).on("keydown", keydown);
 
-    A.mouseup(function(e) {
+    A.mouseup(function (e) {
         if (e.which == 3 && S.contextMenuStrip) S.contextMenuStrip.open(e.pageX, e.pageY);
     });
     //    T.css = function (S2) {
@@ -3158,7 +3151,70 @@ $M.Control["TreeView"] = function(BoxID, S) {
     if (S.style) A.css(S.style);
 };
 
-$M.Control["GridView"] = function(BoxID, S, CID) {
+var idTmr;
+function method1(tableid) {//整个表格拷贝到EXCEL中
+    if ($.browser.msie) {
+        var curTbl = tablei[0];
+        var oXL = new ActiveXObject("Excel.Application");
+
+        //创建AX对象excel 
+        var oWB = oXL.Workbooks.Add();
+        //获取workbook对象 
+        var xlsheet = oWB.Worksheets(1);
+        //激活当前sheet 
+        var sel = document.body.createTextRange();
+        sel.moveToElementText(curTbl);
+        //把表格中的内容移到TextRange中 
+        sel.select;
+        //全选TextRange中内容 
+        sel.execCommand("Copy");
+        //复制TextRange中内容  
+        xlsheet.Paste();
+        //粘贴到活动的EXCEL中       
+        oXL.Visible = true;
+        //设置excel可见属性
+
+        try {
+            var fname = oXL.Application.GetSaveAsFilename("Excel.xls", "Excel Spreadsheets (*.xls), *.xls");
+        } catch (e) {
+            print("Nested catch caught " + e);
+        } finally {
+            oWB.SaveAs(fname);
+
+            oWB.Close(savechanges = false);
+            //xls.visible = false;
+            oXL.Quit();
+            oXL = null;
+            //结束excel进程，退出完成
+            //window.setInterval("Cleanup();",1);
+            idTmr = window.setInterval("Cleanup();", 1);
+
+        }
+
+    }
+    else {
+        tableToExcel(tableid);
+    }
+}
+function Cleanup() {
+    window.clearInterval(idTmr);
+    CollectGarbage();
+}
+var tableToExcel = (function () {
+    var uri = 'data:application/vnd.ms-excel;base64,',
+        template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+        base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) },
+        format = function (s, c) {
+            return s.replace(/{(\w+)}/g,
+                function (m, p) { return c[p]; })
+        }
+    return function (html, name) {
+        //        if (!table.nodeType) table = table[0];
+        var ctx = { worksheet: name || 'Worksheet', table: html }
+        window.location.href = uri + base64(format(template, ctx))
+    }
+})();
+$M.Control["GridView"] = function (BoxID, S, CID) {
     var T = this;
     var A = null;
     if (CID == null) {
@@ -3190,7 +3246,11 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
     T.rows = [];
     S.allowSorting = S.allowSorting ? true : false;
     if (typeof (S.columns) == "string") eval("S.columns=" + S.columns);
-    var columnClick = function() {
+    T.toExecl = function () {
+        tableToExcel(headTable.html() + bodyTable2.html(), "1.xls");
+        // method1(bodyTable2);
+    };
+    var columnClick = function () {
         var index = $(this).attr("index");
         if (S.allowSorting) {
             if (S.columns[index].name == null) return;
@@ -3208,7 +3268,7 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
         }
         columnFocusIndex = index;
     };
-    T.addColumn = function(columns) {
+    T.addColumn = function (columns) {
         for (var i = 0; i < columns.length; i++) {
             tableWidth += columns[i].width;
             var display = (columns[i].visible != false ? "" : "display:none;");
@@ -3225,13 +3285,13 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
         }
         $("<th />").appendTo(theadTr);
     };
-    T.tableRow = function(S2) {
+    T.tableRow = function (S2) {
         var T2 = this;
         T2.cells = [];
         T.selectedRow = null;
         var rowIndex = T.rows.length;
         T.rows[T.rows.length] = T2;
-        var tableCell = function(S3) {
+        var tableCell = function (S3) {
             var T3 = this;
             var td = S3.dom;
             var value = null;
@@ -3239,7 +3299,7 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
             if (S.columns[S3.cellIndex].xtype == "CheckBox") { S3.dom = $("<input type=checkbox >").appendTo(td); }
 
             T2.cells[T2.cells.length] = T3;
-            T3.val = function(text) {
+            T3.val = function (text) {
                 if (text != null) value = text;
                 if (S.columns[S3.cellIndex].xtype == "CheckBox") {
                     S3.dom.prop("checked", text);
@@ -3258,10 +3318,10 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
                     return (value);
                 }
             };
-            T3.html = function(html) {
+            T3.html = function (html) {
                 S3.dom.html(html);
             };
-            T3.attr = function(name, value) {
+            T3.attr = function (name, value) {
                 if (value != null) {
                     S3[name] = value;
                     if (name == "foreColor") S3.dom.css("color", value);
@@ -3269,10 +3329,11 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
                 return (S3[name]);
             };
             T3.val(S3.value);
-            T3.focus = function() {
+            T3.focus = function () {
                 if (S.columns[S3.cellIndex].xtype && S.columns[S3.cellIndex].xtype != "CheckBox") {
                     var xy = td.offset();
-                    S.columns[S3.cellIndex].style = { position: "fixed", zIndex: $M.zIndex++, left: xy.left + "px", top: xy.top + "px", width: td.outerWidth() + "px", height: td.outerHeight() + "px" };
+                    S.columns[S3.cellIndex].style = { position: "fixed", zIndex: $M.zIndex++, left: xy.left + "px", top: (xy.top - document.body.scrollTop) + "px", width: td.outerWidth() + "px", height: td.outerHeight() + "px" };
+                    //                    S.columns[S3.cellIndex].style = { position: "fixed", zIndex: $M.zIndex++, left: xy.left + "px", top: xy.top + "px", width: td.outerWidth() + "px", height: td.outerHeight() + "px" };
                     S.columns[S3.cellIndex].onBlur = focusBlur;
                     foucsObj.control = A.addControl(S.columns[S3.cellIndex]);
                     foucsObj.cell = T3;
@@ -3283,7 +3344,8 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
 
                 } else if (S3.xtype && S3.xtype != "CheckBox") {
                     var xy = td.offset();
-                    S3.style = { position: "fixed", zIndex: $M.zIndex++, left: xy.left + "px", top: xy.top + "px", width: td.outerWidth() + "px", height: td.outerHeight() + "px" };
+                    S3.style = { position: "fixed", zIndex: $M.zIndex++, left: xy.left + "px", top: (xy.top - 500) + "px", width: td.outerWidth() + "px", height: td.outerHeight() + "px" };
+                    //                    S3.style = { position: "fixed", zIndex: $M.zIndex++, left: xy.left + "px", top: xy.top + "px", width: td.outerWidth() + "px", height: td.outerHeight() + "px" };
                     S3.onBlur = focusBlur;
                     foucsObj.control = A.addControl(S3);
                     foucsObj.cell = T3;
@@ -3297,14 +3359,14 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
 
             };
             S3.dom.click(T3.focus);
-            td.dblclick(function() {
+            td.dblclick(function () {
                 if (S.onCellMouseDoubleClick) S.onCellMouseDoubleClick(T, { x: td.attr("_x"), y: td.parent().attr("_y") });
             });
-            td.click(function() {
+            td.click(function () {
                 if (S.onCellMouseClick) S.onCellMouseClick(T, { x: td.attr("_x"), y: td.parent().attr("_y"), target: event.target });
             });
         };
-        T2.find = function(name) {
+        T2.find = function (name) {
             for (var i1 = 0; i1 < S.columns.length; i1++) {
                 if (S.columns[i1].name == name) return T2.cells[i1];
             }
@@ -3312,7 +3374,7 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
         };
         var tr = $("<tr _y=" + rowIndex + " ></tr>").appendTo(tbody);
 
-        T2.addClass = function(className) {
+        T2.addClass = function (className) {
             tr.addClass(className);
         };
         if (S.allowMultiple) var th = $("<td  style='width:30px;'><input type=checkbox  class='rowCheck' index=" + T.rows.length + "></td>").appendTo(tr);
@@ -3331,13 +3393,13 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
         $("<td />").appendTo(tr);
         var rowCheck = tr.find(".rowCheck");
 
-        T2.remove = function() {
+        T2.remove = function () {
             tr.remove();
             T.selectedRows = T.selectedRows.del(T2);
             T.rows = T.rows.del(T2);
             T2 = null;
         };
-        T2.focus = function(obj) {
+        T2.focus = function (obj) {
             //if (T.selectedRow == T2) return;
             //if (T.selectedRow) T.selectedRow.blur();
             T.selectedRows[T.selectedRows.length] = T2;
@@ -3345,14 +3407,14 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
             rowCheck.prop("checked", true);
             if (obj == null && S.onSelectionChanged) S.onSelectionChanged(T, { y: tr.attr("_y") });
         };
-        T2.blur = function(obj) {
+        T2.blur = function (obj) {
             tr.removeClass("active");
             rowCheck.prop("checked", false);
             T.selectedRows = T.selectedRows.del(T2);
             if (obj == null && S.onSelectionChanged) S.onSelectionChanged(T, { y: tr.attr("_y") });
         };
 
-        tr.click(function(e) {
+        tr.click(function (e) {
             var obj = $(e.target);
             if (obj.attr("class") == "rowCheck") {
                 if (rowCheck.prop("checked")) {
@@ -3383,7 +3445,7 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
             }
         }
         if (S.dragLine) {
-            var move = function(box, x, y) {
+            var move = function (box, x, y) {
                 var obj = null;
                 var x1 = x + box.width(), y1 = y + box.height();
                 var tr = tbody.find("tr");
@@ -3404,23 +3466,23 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
                 if (obj) exchangePos(blankBox, obj);
             };
             tr.moveBox({
-                onStart: function(sender, e) {
+                onStart: function (sender, e) {
                     //blankBox = $("<tr></tr>").insertAfter(sender);
                     blankBox = sender.clone(true);
                     blankBox.insertAfter(sender);
                     blankBox.css({ width: sender.outerWidth() + "px", height: sender.outerHeight() + "px", 'opacity': '0.2' });
                 },
-                onMove: function(sender, e) {
+                onMove: function (sender, e) {
                     move(sender, e.x, e.y);
                 },
-                onEnd: function(sender, e) {
+                onEnd: function (sender, e) {
                     blankBox.before(sender);
                     blankBox.remove();
                     sender.css({ position: "" });
                 }
             });
         }
-        T2.attr = function(a, b) {
+        T2.attr = function (a, b) {
             if (a == "visible") {
                 if (b != null) {
                     if (b) { tr.show(); } else { tr.hide(); }
@@ -3431,7 +3493,7 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
             return (S2[a]);
         };
     };
-    T.addRow = function(data) {
+    T.addRow = function (data) {
         if (data) {
 
             if (data.length == 0) return;
@@ -3445,7 +3507,7 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
             }
         }
     };
-    T.getSelection = function() {
+    T.getSelection = function () {
         var sels = [];
         var line = bodyTable.find('.rowCheck'); //.prop("checked", $(this).prop("checked"));
         for (var i = 0; i < line.length; i++) {
@@ -3456,7 +3518,7 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
         return sels;
     };
     var foucsObj = { control: null, cell: null, td: null };
-    var focusBlur = function() {
+    var focusBlur = function () {
         headDiv.scrollLeft($(this).scrollLeft());
         if (foucsObj.control != null) {
             foucsObj.cell.val(foucsObj.control.val());
@@ -3483,7 +3545,7 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
     //            foucsObj.control.focus();
     //        }
     //    });
-    T.val = function(data) {
+    T.val = function (data) {
         if (data != null) {
             T.addRow(data);
         }
@@ -3503,19 +3565,19 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
     };
     T.container = A;
     $M.BaseClass.apply(T, [S]);
-    T.css = function(style) {
+    T.css = function (style) {
         A.css(style);
         if (style && style.height) {
             bodyTable.outerHeight(A.outerHeight() - headTable.outerHeight());
         }
     };
-    var selectAll = function(checked) {
+    var selectAll = function (checked) {
         for (var i = 0; i < T.rows.length; i++) {
             if (checked) T.rows[i].focus();
             else { T.rows[i].blur(); }
         }
     };
-    T.attr = function(a, b) {
+    T.attr = function (a, b) {
         if (b != null) {
             S[a] = b;
             if (a == "columns") {
@@ -3526,7 +3588,7 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
                     tableWidth += 30;
                     var th = $("<th style='width:30px;'></th>").appendTo(theadTr);
                     mainCheck = $("<input type=checkbox >").appendTo(th);
-                    mainCheck.change(function() {
+                    mainCheck.change(function () {
                         selectAll($(this).prop("checked"));
                         //                        bodyTable.find('.rowCheck').prop("checked", $(this).prop("checked"));
 
@@ -3541,32 +3603,32 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
         return S[a];
     };
     T.attr("columns", S.columns);
-    T.clear = function() {
+    T.clear = function () {
         T.rows.length = 0;
         T.selectedRows.length = 0;
         tbody.html("");
         if (mainCheck != null) mainCheck[0].checked = false;
     };
 
-    var keydown = function(e) {
+    var keydown = function (e) {
         if (A[0] == $M.focusElement || A.has($M.focusElement).length) {
             if (S.onKeyDown) S.onKeyDown(T, e);
         }
     };
     $(document).on("keydown", keydown);
 
-    A.mouseup(function(e) {
+    A.mouseup(function (e) {
         if (e.which == 3 && S.contextMenuStrip) S.contextMenuStrip.open(e.pageX, e.pageY);
     });
     if (S.data) T.addRow(S.data);
     if (S.style) T.css(S.style);
 };
-$M.Control["Notify"] = function(BoxID, S) {
+$M.Control["Notify"] = function (BoxID, S) {
     var T = this;
     T.items = [];
     var A = $("<div class=\"sticky-queue\" style='display:none'></div>").appendTo(BoxID);
     A.addClass("top-right");
-    var item = function(S2) {
+    var item = function (S2) {
         var T2 = this;
         T.items[T.items.length] = T2;
         if (T.items.length > 0) A.show();
@@ -3577,8 +3639,8 @@ $M.Control["Notify"] = function(BoxID, S) {
         if (S2.color != null) box.addClass("st-" + $M.Control.Constant.colorCss[S2.color]);
         var text = (S2.ico != "" ? "<i class='fa " + S2.ico + "'/> " : "") + S2.text;
         con.html(text);
-        T2.close = function() {
-            box.animate({ height: '0px', paddingBottom: "0px", paddingTop: "0px", opacity: 0 }, function() {
+        T2.close = function () {
+            box.animate({ height: '0px', paddingBottom: "0px", paddingTop: "0px", opacity: 0 }, function () {
                 box.remove();
                 T.items = T.items.del(T2);
                 T2 = null;
@@ -3586,14 +3648,14 @@ $M.Control["Notify"] = function(BoxID, S) {
             });
         };
         if (S2.autoClose != null) setTimeout(T2.close, S2.autoClose);
-        close.click(function() {
+        close.click(function () {
             T2.close();
             if (S2.onClose) S2.onClose(T2, null);
         });
         T.container = box;
         $M.BaseClass.apply(T2, [S2]);
     };
-    T.find = function(name, value) {
+    T.find = function (name, value) {
         for (var i = 0; i < T.items.length; i++) {
             if (T.items[i].attr(name) == value) {
                 return T.items[i];
@@ -3601,7 +3663,7 @@ $M.Control["Notify"] = function(BoxID, S) {
         }
         return null;
     };
-    T.addItem = function(data) {
+    T.addItem = function (data) {
         if (data) {
             if (data.length == 0) return;
             if (typeof (data[0]) == "object") {
@@ -3621,13 +3683,13 @@ tabIndent = {
         tab: '\t'
     },
     events: {
-        keydown: function(e) {
+        keydown: function (e) {
             var tab = tabIndent.config.tab;
             var tabWidth = tab.length;
             if (e.keyCode === 9) {
                 e.preventDefault();
                 var currentStart = this.selectionStart,
-					currentEnd = this.selectionEnd;
+                    currentEnd = this.selectionEnd;
                 if (e.shiftKey === false) {
                     // Normal Tab Behaviour
                     if (!tabIndent.isMultiLine(this)) {
@@ -3638,10 +3700,10 @@ tabIndent = {
                     } else {
                         // Iterating through the startIndices, if the index falls within selectionStart and selectionEnd, indent it there.
                         var startIndices = tabIndent.findStartIndices(this),
-							l = startIndices.length,
-							newStart = undefined,
-							newEnd = undefined,
-							affectedRows = 0;
+                            l = startIndices.length,
+                            newStart = undefined,
+                            newEnd = undefined,
+                            affectedRows = 0;
 
                         while (l--) {
                             var lowerBound = startIndices[l];
@@ -3676,10 +3738,10 @@ tabIndent = {
                     } else {
                         // Iterating through the startIndices, if the index falls within selectionStart and selectionEnd, remove an indent from that row
                         var startIndices = tabIndent.findStartIndices(this),
-							l = startIndices.length,
-							newStart = undefined,
-							newEnd = undefined,
-							affectedRows = 0;
+                            l = startIndices.length,
+                            newStart = undefined,
+                            newEnd = undefined,
+                            affectedRows = 0;
 
                         while (l--) {
                             var lowerBound = startIndices[l];
@@ -3705,16 +3767,16 @@ tabIndent = {
                 tabIndent.events.disable(e);
             } else if (e.keyCode === 13 && e.shiftKey === false) {	// Enter
                 var self = tabIndent,
-					cursorPos = this.selectionStart,
-					startIndices = self.findStartIndices(this),
-					numStartIndices = startIndices.length,
-					startIndex = 0,
-					endIndex = 0,
-					tabMatch = new RegExp(tab.replace('\t', '\\t').replace(/ /g, '\\s'), 'g'),
-					lineText = '',
-					indentText = '';
+                    cursorPos = this.selectionStart,
+                    startIndices = self.findStartIndices(this),
+                    numStartIndices = startIndices.length,
+                    startIndex = 0,
+                    endIndex = 0,
+                    tabMatch = new RegExp(tab.replace('\t', '\\t').replace(/ /g, '\\s'), 'g'),
+                    lineText = '',
+                    indentText = '';
                 tabs = null,
-                numTabs = 0;
+                    numTabs = 0;
 
                 for (var x = 0; x < numStartIndices; x++) {
                     if (startIndices[x + 1] && (cursorPos >= startIndices[x]) && (cursorPos < startIndices[x + 1])) {
@@ -3743,28 +3805,28 @@ tabIndent = {
                 }
             }
         },
-        disable: function(e) {
+        disable: function (e) {
             var events = this;
 
             // Temporarily suspend the main tabIndent event
             tabIndent.remove(e.target);
         },
-        focus: function() {
+        focus: function () {
             var self = tabIndent,
-				el = this,
-				delayedRefocus = setTimeout(function() {
-				    var classes = (el.getAttribute('class') || '').split(' '),
-					contains = classes.indexOf('tabIndent');
+                el = this,
+                delayedRefocus = setTimeout(function () {
+                    var classes = (el.getAttribute('class') || '').split(' '),
+                        contains = classes.indexOf('tabIndent');
 
-				    el.addEventListener('keydown', self.events.keydown);
+                    el.addEventListener('keydown', self.events.keydown);
 
 
-				    if (contains !== -1) classes.splice(contains, 1);
-				    classes.push('tabIndent-rendered');
-				    el.setAttribute('class', classes.join(' '));
+                    if (contains !== -1) classes.splice(contains, 1);
+                    classes.push('tabIndent-rendered');
+                    el.setAttribute('class', classes.join(' '));
 
-				    el.removeEventListener('focus', self.events.keydown);
-				}, 500);
+                    el.removeEventListener('focus', self.events.keydown);
+                }, 500);
 
             // If they were just tabbing through the input, let them continue unimpeded
             el.addEventListener('blur', function b() {
@@ -3773,17 +3835,17 @@ tabIndent = {
             });
         }
     },
-    render: function(el) {
+    render: function (el) {
         var self = this;
         el.focus(self.events.focus);
         el.blur(function b(e) {
             self.events.disable(e);
         });
     },
-    remove: function(el) {
+    remove: function (el) {
         if (el.nodeName === 'TEXTAREA') {
             var classes = (el.getAttribute('class') || '').split(' '),
-				contains = classes.indexOf('tabIndent-rendered');
+                contains = classes.indexOf('tabIndent-rendered');
 
             if (contains !== -1) {
                 el.removeEventListener('keydown', this.events.keydown);
@@ -3795,13 +3857,13 @@ tabIndent = {
             }
         }
     },
-    removeAll: function() {
+    removeAll: function () {
         // Find all elements with the tabIndent class
         var textareas = document.getElementsByTagName('textarea'),
-			t = textareas.length,
-			contains = -1,
-			classes = [],
-			el = undefined;
+            t = textareas.length,
+            contains = -1,
+            classes = [],
+            el = undefined;
 
         while (t--) {
             classes = (textareas[t].getAttribute('class') || '').split(' ');
@@ -3816,18 +3878,18 @@ tabIndent = {
             el = undefined;
         }
     },
-    isMultiLine: function(el) {
+    isMultiLine: function (el) {
         // Extract the selection
         var snippet = el.value.slice(el.selectionStart, el.selectionEnd),
-			nlRegex = new RegExp(/\n/);
+            nlRegex = new RegExp(/\n/);
 
         if (nlRegex.test(snippet)) return true;
         else return false;
     },
-    findStartIndices: function(el) {
+    findStartIndices: function (el) {
         var text = el.value,
-			startIndices = [],
-			offset = 0;
+            startIndices = [],
+            offset = 0;
 
         while (text.match(/\n/) && text.match(/\n/).length > 0) {
             offset = (startIndices.length > 0 ? startIndices[startIndices.length - 1] : 0);

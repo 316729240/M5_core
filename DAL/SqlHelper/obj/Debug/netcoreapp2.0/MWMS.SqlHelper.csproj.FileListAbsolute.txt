@@ -35,7 +35,6 @@ E:\project\M5_core\SqlHelper\obj\Debug\netcoreapp2.0\MWMS.SqlHelper.pdb
 E:\project\M5_core\DAL\SqlHelper\bin\Debug\netcoreapp2.0\MWMS.SqlHelper.deps.json
 E:\project\M5_core\DAL\SqlHelper\bin\Debug\netcoreapp2.0\MWMS.SqlHelper.dll
 E:\project\M5_core\DAL\SqlHelper\bin\Debug\netcoreapp2.0\MWMS.SqlHelper.pdb
-E:\project\M5_core\DAL\SqlHelper\obj\Debug\netcoreapp2.0\MWMS.SqlHelper.csprojAssemblyReference.cache
 E:\project\M5_core\DAL\SqlHelper\obj\Debug\netcoreapp2.0\MWMS.SqlHelper.AssemblyInfoInputs.cache
 E:\project\M5_core\DAL\SqlHelper\obj\Debug\netcoreapp2.0\MWMS.SqlHelper.AssemblyInfo.cs
 E:\project\M5_core\DAL\SqlHelper\obj\Debug\netcoreapp2.0\MWMS.SqlHelper.dll

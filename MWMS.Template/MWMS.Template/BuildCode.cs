@@ -1,4 +1,4 @@
-﻿using MWMS.DataExtensions;
+﻿using MWMS.Helper.Extensions;
 using MWMS.Helper;
 using MWMS.SqlHelper;
 using System;
@@ -75,20 +75,21 @@ namespace MWMS.Template
                                  "MWMS",
                                  "M5.Common",
                                  "MWMS.Helper",
+                                 "MWMS.Helper.Extensions",
                                  "System.Collections.Generic",
                                  "System.Linq"
                              }
 
             };
             Razor.SetTemplateService(new TemplateService(templateConfig));
-
+            LoginInfo user = new LoginInfo();
             string headCode = "@using System.Collections\r\n" +
                 "@using MWMS.Template\r\n" +
                     "@using Helper\r\n" +
                     "@{ Dictionary<string, string> sys=( Dictionary<string, string>)Model[0];\r\n" +
                     "Dictionary<string, dynamic> _page=( Dictionary<string, object>)Model[1];\r\n" +
                     "dynamic [] parameter= Model[2]==null?null:(dynamic [])Model[2];\r\n" +
-                    "var loginUser=ManagerFramework.LoginUser.GetLoginUser();}";
+                    "var loginUser = new LoginInfo();}";
             code = headCode + code;
 
             r = new Regex(@"(<|&lt;)!-- #(.*?)#[\s\S]*?--(>|&gt;)", RegexOptions.IgnoreCase);
@@ -503,24 +504,25 @@ namespace MWMS.Template
             if (pageSize == 0 && recordCount > 0) { }
             else
             {
-                fieldList += ",row_number() OVER(" + orderByStr + ") row_number";
+                //fieldList += ",row_number() OVER(" + orderByStr + ") row_number";
+                fieldList += "";
             }
-            sql += " " + fieldList + " from [mainTable] A WITH(NOLOCK) ";
-            countSql += " from [mainTable] A WITH(NOLOCK) ";
-            maxSql += " from [mainTable] A WITH(NOLOCK) ";
+            sql += " " + fieldList + " from maintable A  ";
+            countSql += " from maintable A  ";
+            maxSql += " from maintable A  ";
 
             if (infoFlag || (pageSize > 0 && addWhere.IndexOf("u_") > -1))
             {
-                sql += " inner join [" + tableInfo.TableName + "] B WITH(NOLOCK) on A.id=B.id ";
-                countSql += " inner join [" + tableInfo.TableName + "] B WITH(NOLOCK) on A.id=B.id ";
+                sql += " inner join " + tableInfo.TableName + " B  on A.id=B.id ";
+                countSql += " inner join " + tableInfo.TableName + " B  on A.id=B.id ";
             }
             if (classFlag)
             {
-                sql += " inner join [class] C WITH(NOLOCK) on A.classId=C.id ";
-                countSql += " inner join [class] C WITH(NOLOCK) on A.classId=C.id ";
+                sql += " inner join class C WITH(NOLOCK) on A.classId=C.id ";
+                countSql += " inner join class C WITH(NOLOCK) on A.classId=C.id ";
             }
             int pageNo = 1;
-            StringBuilder where = new StringBuilder(" where  A.orderid>-1 and A.createdate<getdate() ");
+            StringBuilder where = new StringBuilder(" where  A.orderid>-1 and A.createdate<'"+DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+"' ");
             if (showPic) where.Append(" and A.pic<>'' ");
             string max_where = "";
 
@@ -548,7 +550,7 @@ namespace MWMS.Template
             #endregion
             if (classId > 0)
             {
-                MySqlDataReader rs2 = Sql.ExecuteReader("select rootId,childId,classId from [class] where  id=@id", new MySqlParameter[] { new MySqlParameter("id", classId) });
+                MySqlDataReader rs2 = Sql.ExecuteReader("select rootId,childId,classId from class where  id=@id", new MySqlParameter[] { new MySqlParameter("id", classId) });
                 if (rs2.Read())
                 {
                     if (rs2.GetDouble(2) == 7)//是否为频道
@@ -612,7 +614,8 @@ namespace MWMS.Template
                     Page.ERR404("页码不正确");
                 }
                 page["pagebar_" + labelId] = p;
-                sql = "select top " + pageSize.ToString() + " * from (" + sql + where.ToString() + ")L where L.row_number>" + (pageSize * (pageNo - 1)).ToString();
+                //sql = "select top " + pageSize.ToString() + " * from (" + sql + where.ToString() + ")L where L.row_number>" + (pageSize * (pageNo - 1)).ToString();
+                sql += where +" limit "+ (pageSize * (pageNo - 1)).ToString() + ","+ (pageSize * (pageNo - 1)+pageSize).ToString();
                 //sql = sql + " where A.id in (" + tempsql + ")";
                 //sql = "select top " +pageSize.ToString() + " * from (" +
                 //sql +where+
@@ -626,9 +629,11 @@ namespace MWMS.Template
             else
             {
                 if (recordCount == 0) recordCount = 100000;
-                sql += " inner join  (select top " + recordCount.ToString() + " A.id from maintable A WITH(NOLOCK) ";
-                if (addWhere.IndexOf("u_") > -1) sql += " inner join [" + tableInfo.TableName + "] B WITH(NOLOCK) on A.id=B.id ";
-                sql += where.ToString() + " " + orderByStr + ") H on A.id=H.id ";
+                sql += where +" " +orderByStr + " limit 0," + recordCount.ToString();
+               // sql += " inner join  (select top " + recordCount.ToString() + " A.id from maintable A WITH(NOLOCK) ";
+                //sql += " inner join  (select  A.id from maintable A  ";
+                //if (addWhere.IndexOf("u_") > -1) sql += " inner join " + tableInfo.TableName + " B  on A.id=B.id ";
+                //sql += where.ToString() + " " + orderByStr + ") H on A.id=H.id ";
                 //if (debug) return "调试：" + sql;
                 //rs1 = Sql.ExecuteReader(sql + where.ToString() + " " + orderByStr);
                 //rs1 = Sql.ExecuteArray(sql, sql_p);
@@ -804,12 +809,11 @@ namespace MWMS.Template
                 string fieldList = sql.SubString("select", "from");
                 string tempsql = sql.Substring(("select" + fieldList).Length);
                 string countSql = "select count(1) " + tempsql;
-                sql = "select" + fieldList + ",row_number() OVER(order by " + (orderBy == "" ? "(select 0)" : orderBy) + ") row_number " + tempsql;
-                //sql = sql.Replace(fieldList, fieldList + ",row_number() OVER(order by " + (orderBy == "" ? "(select 0)" : orderBy) + ") row_number ");
+                //sql = "select" + fieldList + ",row_number() OVER(order by " + (orderBy == "" ? "(select 0)" : orderBy) + ") row_number " + tempsql;
+                sql = "select" + fieldList + " " + tempsql;
                 PageBar p = new PageBar();
                 p.RecordCount = (int)Sql.ExecuteScalar(countSql, sql_p);
                 SafeReqeust request = new SafeReqeust(0, 0);
-                // pageNo = (int)getVariable("public._pageNo");
                 pageNo = page["_pageNo"] == null ? 1 : (int)page["_pageNo"];
                 p.PageSize = pageSize;
                 p.PageNo = pageNo;
@@ -820,12 +824,18 @@ namespace MWMS.Template
                 {
                     Page.ERR404("页码不正确");
                 }
-                //variables["pageBar_" + labelId] = p;
-                sql = "select top " + pageSize.ToString() + " * from (" +
-                sql +
-                ")L where L.row_number>" + (pageSize * (pageNo - 1)).ToString();
+                //sql = "select top " + pageSize.ToString() + " * from (" +
+                //sql +
+                //")L where L.row_number>" + (pageSize * (pageNo - 1)).ToString();
+                sql += " limit "+ (pageSize * (pageNo - 1)).ToString() + "," + (pageSize * (pageNo - 1)+pageSize).ToString();
             }
-            else if (recordCount > 0 && sql.IndexOf(" top ") == -1) sql = Regex.Replace(sql, "^select ", "select top " + recordCount.ToString() + " ", RegexOptions.IgnoreCase);
+            else if (recordCount > 0 && (sql.IndexOf(" top ") == -1 && sql.IndexOf(" limit ") == -1))
+            {
+                //sqlserver
+                //sql = Regex.Replace(sql, "^select ", "select top " + recordCount.ToString() + " ", RegexOptions.IgnoreCase);
+                //mysql
+                sql += " limit 0," + recordCount.ToString();
+            }
 
 
             //if (debug == "true") return "调试：" + sql;

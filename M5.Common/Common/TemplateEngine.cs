@@ -1,4 +1,4 @@
-﻿using MWMS.DataExtensions;
+﻿using MWMS.Helper.Extensions;
 using MWMS.Helper;
 using MWMS.SqlHelper;
 using System;
@@ -290,7 +290,7 @@ namespace M5.Common
                     int showCount = getFieldInt(m.Value, "showCount");
                     string pageBarId = getFieldString(m.Value, "pageBarId");
                     string FG = m.Value.SubString("FG=", "(\r\n)|(\n)");
-                    string html = m.Value.SubString("<template>", "</template>");
+                    string html = m.Value.SubString("<htmlTemplate>", "</htmlTemplate>");
                     if (variables.ContainsKey("pageBar_" + pageBarId))
                     {
                         pageBar p = (pageBar)variables["pageBar_" + pageBarId];
@@ -408,7 +408,7 @@ namespace M5.Common
                 int showCount = getFieldInt(m.Value, "showCount");
                 string pageBarId = getFieldString(m.Value, "pageBarId");
                 string FG = m.Value.SubString("FG=", "(\r\n)|(\n)");
-                string html = m.Value.SubString("<template>", "</template>");
+                string html = m.Value.SubString("<htmlTemplate>", "</htmlTemplate>");
                 if (variables.ContainsKey("pageBar_" + pageBarId))
                 {
                     pageBar p = (pageBar)variables["pageBar_" + pageBarId];
@@ -482,7 +482,7 @@ namespace M5.Common
             }
             else if (recordCount > 0 && sql.IndexOf(" top ") == -1) sql = Regex.Replace(sql, "^select ", "select top " + recordCount.ToString() + " ", RegexOptions.IgnoreCase);
 
-            string template = html.SubString("<template>", "</template>");
+            string template = html.SubString("<htmlTemplate>", "</htmlTemplate>");
 
             if (debug == "true") return "调试：" + sql;
             MySqlDataReader rs1 = Sql.ExecuteReader(sql, sql_p);
@@ -544,7 +544,7 @@ namespace M5.Common
             int recordCount = int.Parse(getValue(getFieldString(html, "recordCount")).ToString());
             object _classId = getValue(getFieldString(html, "classId"));
             double classId = Convert.ToDouble(_classId);
-            string template = Tools.GetStrFG(html, "<template>", "</template>");
+            string template = Tools.GetStrFG(html, "<htmlTemplate>", "</htmlTemplate>");
             double datatypeId = TemplateEngine.getFieldDouble(html, "datatypeId");
             object _moduleId = getValue(getFieldString(html, "moduleId"));
             double moduleId = Convert.ToDouble(_moduleId); ;

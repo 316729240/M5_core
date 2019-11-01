@@ -9,7 +9,7 @@ using RazorEngine.Configuration;
 using RazorEngine.Templating;
 using RazorEngine;
 using System.Collections;
-using MWMS.DataExtensions;
+using MWMS.Helper.Extensions;
 using MWMS.Helper;
 using M5;
 using M5.Common;
@@ -53,7 +53,6 @@ namespace MWMS
              r = new Regex(@"view(.*?)\(", RegexOptions.IgnoreCase);
             _html = r.Replace(_html, new MatchEvaluator(_variable3));
 
-
             TemplateServiceConfiguration templateConfig = new TemplateServiceConfiguration
             {
                 CatchPath = Tools.MapPath("~" + Config.cachePath + "assembly/"),
@@ -61,8 +60,10 @@ namespace MWMS
                              {
                                  "System",
                                  "MWMS",
+                                 "MWMS.Helper.Extensions",
                                  "M5.Common",
                                  "MWMS.Helper",
+                                 "MWMS.Helper.Extensions",
                                  "System.Collections.Generic",
                                  "System.Linq"
                              }
@@ -119,7 +120,7 @@ namespace MWMS
                 int showCount = getFieldInt(m.Value, "showCount");
                 string pageBarId = getFieldString(m.Value, "pageBarId");
                 string FG = m.Value.SubString("FG=", "(\r\n)|(\n)");
-                string html = m.Value.SubString("<template>", "</template>");
+                string html = m.Value.SubString("<htmlTemplate>", "</htmlTemplate>");
                 if (variables.ContainsKey("pageBar_" + pageBarId))
                 {
                     return "";
@@ -612,7 +613,7 @@ namespace MWMS
             string debug = getFP(html, "debug", 2);
             string[] fields = getFieldString(html, "fields").Split(',');
             string sql = getFP(html, "sql");
-            string template = Tools.GetStrFG(html, "<template>", "</template>");
+            string template = Tools.GetStrFG(html, "<htmlTemplate>", "</htmlTemplate>");
             StringBuilder outhtml = new StringBuilder("");
             Regex r = new Regex(@"\@((\w|\.|\[|\]){1,30})", RegexOptions.IgnoreCase);
             outhtml.Append("@{\r\n");
@@ -733,7 +734,7 @@ namespace MWMS
             string moduleId = getFP(html, "moduleId",1);
             string classId = getFP(html, "classId",1);
             if (moduleId == "0" && classId == "0") return "调用错误：必须指定模块或栏目id";
-            string template =Tools.GetStrFG(html, "<template>", "</template>");
+            string template =Tools.GetStrFG(html, "<htmlTemplate>", "</htmlTemplate>");
             string datatypeId = getFP(html, "datatypeId",1);
             string orderBy = getFP(html, "orderBy", 1);
             string [] fields = getFieldString(html, "fields").Split(',');

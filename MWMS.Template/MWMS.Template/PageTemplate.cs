@@ -361,8 +361,8 @@ namespace MWMS.Template
             fields["u_editboxStatus"] = (int)this.EditMode;
             fields["u_parameterValue"] = this.ParameterValue;
             fields["u_webFAid"] = this.IsMobile ? 1 : 0;
-            TableHandle table = new TableHandle("backupTemplate");
-            int count = table.Count("classid=@classid and u_type=@u_type and u_webFAid=@u_webFAid and u_defaultFlag=@u_defaultFlag and u_datatypeId=@u_datatypeId and title=@title and  getdate()<DATEADD(minute,200,updatedate)", fields);
+            TableHandle table = new TableHandle("template_backup");
+            int count = table.Count("classid=@classid and u_type=@u_type and u_webFAid=@u_webFAid and u_defaultFlag=@u_defaultFlag and u_datatypeId=@u_datatypeId and title=@title and  '"+DateTime.Now.AddMinutes(-200)+ "'<updatedate", fields);
             if (count == 0) this.Backup(username);
         }
         /// <summary>

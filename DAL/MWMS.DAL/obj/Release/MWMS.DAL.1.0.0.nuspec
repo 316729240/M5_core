@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>MWMS.DAL</id>
+    <version>1.0.0</version>
+    <authors>MWMS.DAL</authors>
+    <owners>MWMS.DAL</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETCoreApp2.0">
+        <dependency id="MWMS.SqlHelper" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="MWMS.DataExtensions" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="MWMS.Helper" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="E:\project\M5_core\DAL\MWMS.DAL\bin\Release\netcoreapp2.0\MWMS.DAL.dll" target="lib\netcoreapp2.0\MWMS.DAL.dll" />
+  </files>
+</package>

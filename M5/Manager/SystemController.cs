@@ -12,10 +12,11 @@ using M5.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MWMS;
-using MWMS.DataExtensions;
+using MWMS.Helper.Extensions;
 using MWMS.Helper;
 using MWMS.SqlHelper;
 using MySql.Data.MySqlClient;
+using MWMS.DAL.Datatype.FieldType;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -808,20 +809,24 @@ public ReturnValue dataList(double moduleId,double classId=-1,int pageNo=1,strin
     err.userData = data;
     return err;
         }
-    public ReturnValue upload(List<IFormFile> fileData)
-    {
-
-
-        ReturnValue info = new ReturnValue();
-       // Response.ContentType = "text/plain";
-
-        string[] fp = new string[fileData.Count];
-        for (int i = 0; i < fileData.Count; i++)
+        public ReturnValue upload(List<IFormFile> fileData)
         {
-            fp[i] = Lib.SaveImage(fileData[i], Config.tempPath,new string []{"jpg","gif","png"});
-        }
-        info.userData = fp;
-        return info;
+            string[] fp = new string[fileData.Count];
+            List<File> list = new List<File>();
+            for (int i = 0; i < fileData.Count; i++)
+            {
+                try
+                {
+                    string newfile = Lib.SaveImage(fileData[i], Config.tempPath, new string[] { "jpg", "gif", "png" });
+                    list.Add(new File { title = fileData[i].FileName, size = fileData[i].Length, path = newfile });
+                }
+                catch
+                {
+
+                }
+            }
+
+            return ReturnValue.Success(list);
         }
     }
 }

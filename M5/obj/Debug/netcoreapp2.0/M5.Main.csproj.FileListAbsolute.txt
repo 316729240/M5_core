@@ -62,7 +62,6 @@ E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\M5.Main.runtimeconfig.dev.json
 E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\M5.Main.dll
 E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\M5.Main.pdb
 E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\M5.Base.dll
-E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\MWMS.DataExtensions.dll
 E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\MWMS.Helper.dll
 E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\MWMS.SqlHelper.dll
 E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\Plugin.Article.dll
@@ -72,7 +71,6 @@ E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\System.Web.Razor.dll
 E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\Plugin.Article.pdb
 E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\Plugin.FileManage.pdb
 E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\M5.Base.pdb
-E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\MWMS.DataExtensions.pdb
 E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\MWMS.Helper.pdb
 E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\RazorEngine.Core.pdb
 E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\MWMS.SqlHelper.pdb

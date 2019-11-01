@@ -376,15 +376,15 @@ $M.templateManage.label = function (back) {
             html += "datatypeId=" + moduleJson[moduleId.attr("selectedIndex")].saveDataType + "\n";
             html += "recordCount=" + recordCount.val() + "\n";
             html += "pageSize=" + (pageSize.val()=="1"?recordCount.val():"") + "\n";
-            html += "<template>";
+            html += "<htmlTemplate>";
             html += editBox.val();
-            html += "</template>";
+            html += "</htmlTemplate>";
             html += "-->";
             if (pageSize.val() > 0) {
                 html += "<!-- #PageBar#\n";
                 html += "pageBarId=" + labelId + "\n";
                 html += "showCount=12\n";
-                html += "<template>{LabelName=FirstPage Value=首页}&nbsp; {LabelName=Prev Value=上一页} &nbsp;{LabelName=PageNumber}&nbsp; {LabelName=Next Value=下一页} {LabelName=EndPage Value=尾页} 共[RecordCount]条记录 [PageNo]/[PageCount]</template>\n";
+                html += "<htmlTemplate>{LabelName=FirstPage Value=首页}&nbsp; {LabelName=Prev Value=上一页} &nbsp;{LabelName=PageNumber}&nbsp; {LabelName=Next Value=下一页} {LabelName=EndPage Value=尾页} 共[RecordCount]条记录 [PageNo]/[PageCount]</htmlTemplate>\n";
                 html += "-->";
             }
 
@@ -450,15 +450,15 @@ $M.templateManage.sqlLabel = function (back) {
             html += "sql=" + sqlBox.val() + "\n";
             html += "recordCount=" + recordCount.val() + "\n";
             html += "pageSize=" + (pageSize.val() == "1" ? recordCount.val() : "") + "\n";
-            html += "<template>";
+            html += "<htmlTemplate>";
             html += editBox.val();
-            html += "</template>";
+            html += "</htmlTemplate>";
             html += "-->";
             if (pageSize.val() > 0) {
                 html += "<!-- #PageBar#\n";
                 html += "pageBarId=" + labelId + "\n";
                 html += "showCount=12\n";
-                html += "<template>{LabelName=FirstPage Value=首页}&nbsp; {LabelName=Prev Value=上一页} &nbsp;{LabelName=PageNumber}&nbsp; {LabelName=Next Value=下一页} {LabelName=EndPage Value=尾页} 共[RecordCount]条记录 [PageNo]/[PageCount]</template>\n";
+                html += "<htmlTemplate>{LabelName=FirstPage Value=首页}&nbsp; {LabelName=Prev Value=上一页} &nbsp;{LabelName=PageNumber}&nbsp; {LabelName=Next Value=下一页} {LabelName=EndPage Value=尾页} 共[RecordCount]条记录 [PageNo]/[PageCount]</htmlTemplate>\n";
                 html += "-->";
             }
             back(html);
