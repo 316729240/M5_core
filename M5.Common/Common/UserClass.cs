@@ -183,14 +183,14 @@ namespace M5.Common
             /*HttpCookie cook = new HttpCookie("u_name");
             if (hour > 0) cook.Expires = System.DateTime.Now.AddHours(hour);
             cook.Value = HttpUtility.UrlEncode(info.username);
-            HttpContext.Current.Response.Cookies.Add(cook);
+            PageContext.Current.Response.Cookies.Add(cook);
             cook = new HttpCookie("u_id");
             if (hour > 0) cook.Expires = System.DateTime.Now.AddHours(hour);
             cook.Value = info.id.ToString();
-            HttpContext.Current.Response.Cookies.Add(cook);*/
+            PageContext.Current.Response.Cookies.Add(cook);*/
 
-            //HttpContext.Current.Response.Cookies["u_name"].Value = HttpUtility.UrlEncode(info.username);
-            //HttpContext.Current.Response.Cookies["u_id"].Value = info.id.ToString();
+            //PageContext.Current.Response.Cookies["u_name"].Value = HttpUtility.UrlEncode(info.username);
+            //PageContext.Current.Response.Cookies["u_id"].Value = info.id.ToString();
             Tools.writeLog("login", info.username + "登陆成功");
             return err;
         }

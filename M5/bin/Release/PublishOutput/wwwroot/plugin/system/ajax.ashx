@@ -24,7 +24,7 @@ public class ajax : IHttpHandler {
         string m = context.Request.Form["_m"].ToString();
         if (m == "exit") {
             login.exit();
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             context.Response.Write(err.ToJson());
         } else if (m == "saveCardLayout")
         {
@@ -32,7 +32,7 @@ public class ajax : IHttpHandler {
             string path=context.Server.MapPath("~" + Config.tempPath + @"user\" + login.value.id.ToString() + @"\");
             if (!System.IO.Directory.Exists(path)) System.IO.Directory.CreateDirectory(path);
             System.IO.File.WriteAllText(path + "cardLayout.config", layout);
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             context.Response.Write(err.ToJson());
 
         }else if (m == "cardPermissions")
@@ -42,7 +42,7 @@ public class ajax : IHttpHandler {
         }
         else if (m == "saveDisplayField")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             double id = s_request.getDouble("id");
             string fields = s_request.getString("fields");
             Sql.ExecuteNonQuery("update datatype set displayField=@fields where id=@id",new SqlParameter[]{
@@ -55,7 +55,7 @@ public class ajax : IHttpHandler {
         }
         else if (m == "fieldInfo")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             double id = s_request.getDouble("id");
             TableInfo t = new TableInfo(id);
             err.userData = t.fields;
@@ -64,7 +64,7 @@ public class ajax : IHttpHandler {
         }
         else if (m == "getCustomField")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             double classId = s_request.getDouble("classId");
             object moduleId = Sql.ExecuteScalar("select moduleId from class where id=@id", new SqlParameter[] { new SqlParameter("id", classId) });
             if (moduleId != null)
@@ -79,7 +79,7 @@ public class ajax : IHttpHandler {
         }
         else if (m == "getUpdateLog")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             string dateTime = s_request.getString("dateTime");
             string xml = Http.getUrl("http://" + ConfigurationManager.AppSettings["OfficialWeb"] + "/Updatelog.aspx?datetime=" + dateTime, Encoding.UTF8);
             XmlDocument reg = new XmlDocument();
@@ -92,7 +92,7 @@ public class ajax : IHttpHandler {
         }
         else if (m == "getUpdateFile")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             string dateTime = s_request.getString("dateTime");
             string xml = Http.getUrl("http://" + ConfigurationManager.AppSettings["OfficialWeb"] + "/UpdateXML.aspx?datetime=" + dateTime, Encoding.UTF8);
             XmlDocument reg = new XmlDocument();
@@ -104,7 +104,7 @@ public class ajax : IHttpHandler {
         }
         else if (m == "downUpdateFile")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             string fileName = s_request.getString("fileName");
             string tempPath = context.Server.MapPath("~" + Config.tempPath);
             if (!System.IO.Directory.Exists(tempPath)) System.IO.Directory.CreateDirectory(tempPath);
@@ -121,7 +121,7 @@ public class ajax : IHttpHandler {
         }
         else if (m == "updateSystem")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             string tempPath = context.Server.MapPath("~" + Config.tempPath);
             string[] files = s_request.getString("files").Split(',');
             string[] fileIds = s_request.getString("fileIds").Split(',');
@@ -158,7 +158,7 @@ public class ajax : IHttpHandler {
                 #region 更新系统版本
                 if (dateTime != "")
                 {
-                    string fileName = HttpContext.Current.Server.MapPath("~" + Config.configPath + "Version.xml");
+                    string fileName = PageContext.Current.Server.MapPath("~" + Config.configPath + "Version.xml");
                     XmlDocument doc2 = new XmlDocument();
                     doc2.Load(fileName);
                     doc2.DocumentElement.ChildNodes.Item(1).InnerText = dateTime;
@@ -178,8 +178,8 @@ public class ajax : IHttpHandler {
 
         else if (m == "checkUpdate")
         {
-            ReturnValue err = new ReturnValue();
-            string fileName = HttpContext.Current.Server.MapPath("~" + Config.configPath + "Version.xml");
+            ErrInfo err = new ErrInfo();
+            string fileName = PageContext.Current.Server.MapPath("~" + Config.configPath + "Version.xml");
             XmlDocument doc = new XmlDocument();
             doc.Load(fileName);
             string dateTime = doc.DocumentElement.ChildNodes.Item(1).InnerText;
@@ -216,7 +216,7 @@ public class ajax : IHttpHandler {
         }
         else if (m == "getUserList")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             int type = s_request.getInt("type");
             if (type == 0)
             {
@@ -235,7 +235,7 @@ public class ajax : IHttpHandler {
         }
         else if (m == "getPermissions")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             double classId = s_request.getDouble("classId");
             info.userData = Sql.ExecuteArrayObj("select A.dataId,A.type,B.name,p0,p1,p2,p3,p4 from permissions A inner join role B  on A.dataId=B.id where A.classId=@classId " +
             " union " +
@@ -247,7 +247,7 @@ public class ajax : IHttpHandler {
         }
         else if (m == "setPermissions")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             if (!login.value.isAdministrator)
             {
                 info.errMsg = "没有权限";
@@ -285,13 +285,13 @@ public class ajax : IHttpHandler {
         }
         else if (m == "setIcon")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             info = UserClass.setIcon(s_request.getString("icon"), login.value);
             context.Response.Write(info.ToJson());
         }
         else if (m == "columnSorting")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             double classId = s_request.getDouble("classId");
             string ids = s_request.getString("ids");
             string[] id = ids.Split(',');
@@ -311,7 +311,7 @@ public class ajax : IHttpHandler {
 
         else if (m == "moduleDel")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             double moduleId = s_request.getDouble("moduleId");
             double classId = s_request.getDouble("classId");
             int type = s_request.getInt("type");
@@ -363,14 +363,14 @@ public class ajax : IHttpHandler {
         }
         else if (m == "resetContent")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             double id = s_request.getDouble("id");
             info = ColumnClass.resetContentUrl(id);
             context.Response.Write(info.ToJson());
         }
         else if (m == "resetColumn")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             double id = s_request.getDouble("id");
             ColumnClass.reset(id);
             string childId = ColumnClass.getChildId(id);
@@ -379,7 +379,7 @@ public class ajax : IHttpHandler {
         }
         else if (m == "moduleList")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             string sql = "";
             if (login.value.isAccess)
             {
@@ -419,7 +419,7 @@ public class ajax : IHttpHandler {
         }
         else if (m == "columnList")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             double moduleId = s_request.getDouble("moduleId");
             double classId = s_request.getDouble("classId");
             if (moduleId == -1 && classId == 7)
@@ -483,7 +483,7 @@ public class ajax : IHttpHandler {
         }
         else if (m == "columnDel")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             double classId = s_request.getDouble("classId");
             //ColumnInfo value = ColumnClass.get(classId);
             //Permissions p = login.value.getColumnPermissions(value.id);
@@ -502,7 +502,7 @@ public class ajax : IHttpHandler {
             int type = s_request.getInt("type");
             int isMobile = s_request.getInt("isMobile");
             ColumnInfo info = ColumnClass.get(classId);
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             if (info != null)
             {
                 err.userData = info.getTemplateList(type,isMobile==1);
@@ -516,13 +516,13 @@ public class ajax : IHttpHandler {
         }
         else if (m == "dataTypeList")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             err.userData = Sql.ExecuteArray("select id value,datatype text from datatype where id>100 and classid=16");
             context.Response.Write(err.ToJson());
         }
         else if (m == "columnMove")
         {
-            ReturnValue err = ColumnClass.move(s_request.getDouble("id"), s_request.getDouble("moduleId"), s_request.getDouble("classId"),login.value);
+            ErrInfo err = ColumnClass.move(s_request.getDouble("id"), s_request.getDouble("moduleId"), s_request.getDouble("classId"),login.value);
             context.Response.Write(err.ToJson());
         }
         else if (m == "dataList") dataList(context);
@@ -545,7 +545,7 @@ public class ajax : IHttpHandler {
     }
     void auditData(HttpContext context)
     {
-        ReturnValue err = new ReturnValue();
+        ErrInfo err = new ErrInfo();
         double classId = s_request.getDouble("classId");
         double moduleId = s_request.getDouble("moduleId");
         string ids = s_request.getString("ids");
@@ -569,12 +569,12 @@ public class ajax : IHttpHandler {
     }
     void saveCaptureScreen(HttpContext context)
     {
-        ReturnValue err = new ReturnValue();
+        ErrInfo err = new ErrInfo();
         string byteStr = s_request.getString("byteStr");
         byte[] byteData = Convert.FromBase64String(byteStr);
         if (byteData.Length > 0) {
             string fileName = API.GetId() + ".jpg";
-            string path = Config.webPath + Config.tempPath + System.DateTime.Now.ToString("yyyy-MM/");
+            string path = Config.webPath + Config.tempPath + System.DateTime.Now.ToString("yyyy-MM")+"/";
             if (!System.IO.Directory.Exists(context.Server.MapPath(path))) System.IO.Directory.CreateDirectory(context.Server.MapPath(path));
             System.IO.File.WriteAllBytes(context.Server.MapPath(path) + fileName, byteData);
             err.userData = path+fileName;
@@ -588,7 +588,7 @@ public class ajax : IHttpHandler {
     }
     void appConfigList(HttpContext context)
     {
-        ReturnValue err = new ReturnValue();
+        ErrInfo err = new ErrInfo();
         List<object> list = new List<object>();
         string path = context.Server.MapPath("~" + Config.appPath);
         string[] appDir = System.IO.Directory.GetDirectories(path);
@@ -613,7 +613,7 @@ public class ajax : IHttpHandler {
     }
     void getSystemColor(HttpContext context)
     {
-        ReturnValue err = new ReturnValue();
+        ErrInfo err = new ErrInfo();
         string path=context.Server.MapPath("~" + Config.tempPath + @"user\" + login.value.id.ToString() + @"\");
         Dictionary<string, string> colors =(Dictionary<string, string>)API.readObjectFile(path + "systemColor.config");
         err.userData = colors;
@@ -621,7 +621,7 @@ public class ajax : IHttpHandler {
     }
     void setSystemColor(HttpContext context)
     {
-        ReturnValue err = new ReturnValue();
+        ErrInfo err = new ErrInfo();
         Dictionary<string, string> colors = new Dictionary<string, string>();
         colors["background_color"] = s_request.getString("background_color");
         colors["active_background_color"] = s_request.getString("active_background_color");
@@ -633,7 +633,7 @@ public class ajax : IHttpHandler {
     }
     void saveConfig(HttpContext context)
     {
-        ReturnValue err = new ReturnValue();
+        ErrInfo err = new ErrInfo();
         if (!login.value.isAdministrator)
         {
             err.errNo = -1;
@@ -644,7 +644,7 @@ public class ajax : IHttpHandler {
         try
         {
             string file = s_request.getString("_configFile");
-            string configFile = file.IndexOf(".") > -1 ? HttpContext.Current.Server.MapPath("~" + Config.configPath + file) : HttpContext.Current.Server.MapPath("~" + Config.appPath + file+@"/app.config");
+            string configFile = file.IndexOf(".") > -1 ? PageContext.Current.Server.MapPath("~" + Config.configPath + file) : PageContext.Current.Server.MapPath("~" + Config.appPath + file+@"/app.config");
 
             string xml = API.GetFileText(configFile);
             XmlDocument doc = new XmlDocument();
@@ -702,9 +702,9 @@ public class ajax : IHttpHandler {
     }
     void getConfig(HttpContext context)
     {
-        ReturnValue err = new ReturnValue();
+        ErrInfo err = new ErrInfo();
         string file = s_request.getString("file");
-        string configFile = file.IndexOf(".") > -1 ? HttpContext.Current.Server.MapPath("~" + Config.configPath + file) : HttpContext.Current.Server.MapPath("~" + Config.appPath + file+@"/app.config");
+        string configFile = file.IndexOf(".") > -1 ? PageContext.Current.Server.MapPath("~" + Config.configPath + file) : PageContext.Current.Server.MapPath("~" + Config.appPath + file+@"/app.config");
         if (!System.IO.File.Exists(configFile))
         {
             err.errNo = -1;
@@ -719,7 +719,7 @@ public class ajax : IHttpHandler {
     }
     void setOrderId(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string ids = context.Request.Form["ids"].ToString();
         int orderId = s_request.getInt("orderId");
         string[] id = ids.Split(',');
@@ -740,11 +740,12 @@ public class ajax : IHttpHandler {
             new SqlParameter("orderId",orderId),
             new SqlParameter("auditorId",login.value.id)
         });
+
         context.Response.Write(info.ToJson());
     }
     void setAttr(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string ids = context.Request.Form["ids"].ToString();
         int type = s_request.getInt("type");
         int flag = s_request.getInt("flag");
@@ -753,7 +754,7 @@ public class ajax : IHttpHandler {
     }
     void moveData(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string ids = context.Request.Form["ids"].ToString();
         double classId = s_request.getDouble("classId");
         info = TableInfo.moveData(ids, classId);
@@ -761,7 +762,7 @@ public class ajax : IHttpHandler {
     }
     void setTop(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string ids = context.Request.Form["ids"].ToString();
         int flag = s_request.getInt("flag");
         info = TableInfo.setTop(ids, flag==1);
@@ -775,7 +776,7 @@ public class ajax : IHttpHandler {
         int tag =int.Parse(context.Request.Form["tag"].ToString());
         Permissions p = login.value.getModulePermissions(moduleId,classId);
 
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         if (p.delete)
         {
             info = TableInfo.reductionData(ids, login.value);
@@ -805,7 +806,7 @@ public class ajax : IHttpHandler {
             rs.Close();
             p = login.value.getColumnPermissions(classId);
         }
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         if (p.delete)
         {
             if (p.audit)
@@ -825,7 +826,7 @@ public class ajax : IHttpHandler {
     }
     void dataList(HttpContext context)
     {
-        ReturnValue err = new ReturnValue();
+        ErrInfo err = new ErrInfo();
         double moduleId = s_request.getDouble("moduleId");
         double classId = s_request.getDouble("classId");
         int pageNo =s_request.getInt("pageNo");
@@ -904,7 +905,7 @@ public class ajax : IHttpHandler {
                         where += searchField.IndexOf("u_") == 0 ? "B." : "A.";
                         where += searchField + " like '%" + keyword + "%'";
                     }
-                    else if (list.type == "DateTime") 
+                    else if (list.type == "DateTime")
                     {
                         string[] item = keyword.Split(',');
                         where += searchField.IndexOf("u_") == 0 ? "B." : "A.";

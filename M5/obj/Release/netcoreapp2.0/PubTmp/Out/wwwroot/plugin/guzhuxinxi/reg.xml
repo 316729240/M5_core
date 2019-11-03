@@ -1,0 +1,8 @@
+  <app title="雇主信息" name="guzhuxinxi" dataTypeId="22592528242" datetime="2015-9-5">
+    <include>edit.js</include>
+    <interface>
+      <function name="uploadFile" text="导入雇主信息" ico="fa-bars" dataTypeId="22592528242" parameter="dataTypeId,classId">
+        <permissions all="true" />
+      </function>
+    </interface>
+  </app>

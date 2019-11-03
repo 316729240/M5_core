@@ -168,7 +168,7 @@ namespace MWMS.Helper
                     case "ICO":
                         /*
                         XmlDocument xmlDoc = new XmlDocument();
-                        xmlDoc.Load(HttpContext.Current.Server.MapPath("~/config/DataAttribute.xml"));
+                        xmlDoc.Load(PageContext.Current.Server.MapPath("~/config/DataAttribute.xml"));
                         string icostr = "";
                         XmlNode xn = xmlDoc.SelectSingleNode("Type");
                         XmlNodeList xnl = xn.ChildNodes;

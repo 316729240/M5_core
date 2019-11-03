@@ -1,4 +1,51 @@
-﻿$M.Control["PageBar"] = function (BoxID, S, CID) {
+﻿$M.Control["InputSelect"] = function(BoxID, S, CID) {
+    var T = this;
+    var A = null;
+    var html = '<div class="input-group btn-group">' +
+				'<div class="input-group-btn"><button type="button" class="btn btn-default dropdown-toggle"></button></div>' +
+			'</div>';
+    if (CID) {
+        A = $(html);
+        A.insertBefore(CID);
+        var input_group_btn = A.find(".input-group-btn");
+        $(CID).insertBefore(input_group_btn);
+        CID.addClass("inputbox");
+        CID.addClass("form-control");
+    } else {
+        A = $(html).appendTo(BoxID);
+        var input_group_btn = A.find(".input_group_btn");
+        input_group_btn.insertBefore('<input class="inputbox form-control"  type="text">');
+    }
+    A.addClass("input-group-" + $M.Control.Constant.sizeCss[S.size == null ? 1 : S.size]);
+    var button = A.find("button");
+    var inputbox = A.find(".inputbox");
+
+    if (typeof (S.items) == "string") { eval("S.items=" + S.items); }
+    var menu = $(document.body).addControl({ xtype: "Menu", items:S.items, style: { width: '100%' },
+        onClose: function(sender, e) {
+            A.removeClass("open");
+        },
+        onItemClicked: function(sender, e) {
+        inputbox.val(e.attr("text"));
+        inputbox.focus();
+        inputbox.select();
+        }
+    });
+    button.click(function() {
+        A.addClass("open");
+        menu.open(null, null, A);
+    });
+    T.attr = function(a, b) {
+        return S[a];
+    };
+
+    T.val = function(value) {
+        if (value == null) return inputbox.val();
+        inputbox.val(value);
+    }; 
+    inputbox[0]._control = A;
+};
+$M.Control["PageBar"] = function (BoxID, S, CID) {
     var A = null, T = this;
     var pageCount = Math.floor(((S.recordCount - 1) / S.pageSize) + 1);
     var record1 = ((S.pageNo - 1) * S.pageSize) + 1;

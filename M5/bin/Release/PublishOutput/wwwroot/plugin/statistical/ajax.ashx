@@ -24,7 +24,7 @@ public class ajax : IHttpHandler {
         string m = context.Request.Form["_m"].ToString();
         if (m == "readUserReport")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             double roleId = s_request.getDouble("roleId");
             string name = s_request.getString("name");
             string day = s_request.getString("day");
@@ -50,18 +50,18 @@ public class ajax : IHttpHandler {
                 dayWhere = dayWhere+"  userId="+login.value.id.ToString();
             }
             if (dayWhere != "") dayWhere = " where " + dayWhere;
-            info.userData = Sql.ExecuteArrayObj("select B.uname,A.count from (select userId,count(1) count from maintable " + dayWhere + " group by userId) A left join  m_admin B on A.userId=B.id " + where + orderBy);
+            info.userData = Sql.ExecuteArrayObj("select B.uname,A.count from (select userId,count(1) count from mainTable " + dayWhere + " group by userId) A left join  m_admin B on A.userId=B.id " + where + orderBy);
             context.Response.Write(info.ToJson());
         }else if (m == "getData")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             int flag = s_request.getInt("flag");
             if (login.value.isAdministrator)
             {
                 Cache cache = new Cache("statistical_getData", null, 720,Config.cachePath);
                 if (cache.get() || flag==1)
                 {
-                    info.userData = Sql.ExecuteArrayObj("select CONVERT(varchar(100), createdate, 23),count(1) from maintable where  createdate>DATEADD(day,-7,getDate()) group by CONVERT(varchar(100),createdate, 23)  order by CONVERT(varchar(100), createdate, 23) ");
+                    info.userData = Sql.ExecuteArrayObj("select CONVERT(varchar(100), createdate, 23),count(1) from mainTable where  createdate>DATEADD(day,-7,getDate()) group by CONVERT(varchar(100),createdate, 23)  order by CONVERT(varchar(100), createdate, 23) ");
                     cache.set(info.userData);
                 }
                 else
@@ -74,7 +74,7 @@ public class ajax : IHttpHandler {
                 Cache cache = new Cache("statistical_getData", new string[] { login.value.id.ToString() }, 720, Config.cachePath);
                 if (cache.get() || flag == 1)
                 {
-                    info.userData = Sql.ExecuteArrayObj("select CONVERT(varchar(100), createdate, 23),count(1) from maintable where userId=@id and createdate>DATEADD(day,-7,getDate()) group by CONVERT(varchar(100),createdate, 23)  order by CONVERT(varchar(100), createdate, 23) ", new SqlParameter[]{
+                    info.userData = Sql.ExecuteArrayObj("select CONVERT(varchar(100), createdate, 23),count(1) from mainTable where userId=@id and createdate>DATEADD(day,-7,getDate()) group by CONVERT(varchar(100),createdate, 23)  order by CONVERT(varchar(100), createdate, 23) ", new SqlParameter[]{
                     new SqlParameter("id",login.value.id)
                     });
                     cache.set(info.userData);

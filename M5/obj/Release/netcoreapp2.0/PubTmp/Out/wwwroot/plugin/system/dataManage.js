@@ -351,8 +351,7 @@ $M.system.dataManage = function (S) {
             onCellFormatting: function (sender, e) {
                 for (var i = 0; i < dateField.length; i++) {
                     if (e.columnIndex == dateField[i]) {
-                        console.log(e.value);
-                        var value = e.value.toDate();// new Date(parseInt(e.value.replace(/\D/igm, "")));
+                        var value = new Date(parseInt(e.value.replace(/\D/igm, "")));
                         return value.format("yyyy-MM-dd hh:mm:ss");
                     }
                 }
@@ -410,7 +409,7 @@ $M.system.dataManage = function (S) {
                 for (var i = 0; i < json[0].length; i++) {
                     json[0][i].isLink = json[0][i].isTitle;
                     if (json[0][i].name == "attribute") { attrIndex = i; json[0][i].name = null; }
-                    if (json[0][i].type == "Date") dateField[dateField.length] = i;
+                    if (json[0][i].type == "DateTime") dateField[dateField.length] = i;
                     if (json[0][i].name == "orderId") { json[0][i].visible = false; statusIndex = i; }
                     if (json[0][i].name == "auditMsg") { json[0][i].visible = false; auditMsgIndex = i; }
                     

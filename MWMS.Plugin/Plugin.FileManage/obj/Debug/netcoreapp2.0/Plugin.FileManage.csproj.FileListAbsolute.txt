@@ -105,14 +105,12 @@ E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\bin\Debug\netcoreapp2.0\Plugin.File
 E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\bin\Debug\netcoreapp2.0\Plugin.FileManage.pdb
 E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\bin\Debug\netcoreapp2.0\M5.Base.dll
 E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\bin\Debug\netcoreapp2.0\MWMS.DAL.dll
-E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\bin\Debug\netcoreapp2.0\MWMS.DataExtensions.dll
 E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\bin\Debug\netcoreapp2.0\MWMS.Helper.dll
 E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\bin\Debug\netcoreapp2.0\MWMS.SqlHelper.dll
 E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\bin\Debug\netcoreapp2.0\RazorEngine.Core.dll
 E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\bin\Debug\netcoreapp2.0\System.Web.Razor.dll
 E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\bin\Debug\netcoreapp2.0\M5.Base.pdb
 E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\bin\Debug\netcoreapp2.0\MWMS.DAL.pdb
-E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\bin\Debug\netcoreapp2.0\MWMS.DataExtensions.pdb
 E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\bin\Debug\netcoreapp2.0\MWMS.Helper.pdb
 E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\bin\Debug\netcoreapp2.0\MWMS.SqlHelper.pdb
 E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\bin\Debug\netcoreapp2.0\RazorEngine.Core.pdb

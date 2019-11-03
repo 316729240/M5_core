@@ -1,10 +1,12 @@
-﻿using System;
+﻿using M5;
+using M5.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace M5.Common
+namespace M5.Base
 {
 
     public class SafeReqeust
@@ -16,10 +18,10 @@ namespace M5.Common
         /// </summary>
         /// <param name="_requestType">获取方式 0 自动 1query 2form</param>
         /// <param name="_errType">错误处理 0屏蔽错误 1输出错误信息 2不处理</param>
-        public SafeReqeust(int _requestType,int _errType)
+        public SafeReqeust(int _requestType, int _errType)
         {
             requestType = _requestType;
-            errType=_errType;
+            errType = _errType;
         }
         /// <summary>
         /// 获取字符串类型数据
@@ -28,8 +30,8 @@ namespace M5.Common
         /// <returns></returns>
         public string getString(string name)
         {
-            object value=getObject(0, name);
-            return value==null?"":(string)value;
+            object value = getObject(0, name);
+            return value == null ? "" : (string)value;
         }
         /// <summary>
         /// 获取整型数据
@@ -77,18 +79,29 @@ namespace M5.Common
         /// <param name="type">0字符型 1整型 2浮点型 3双精度浮点</param>
         /// <param name="name">参数名</param>
         /// <returns></returns>
-        public object getObject(int type,string name)
+        public object getObject(int type, string name)
         {
             object value = null;
-            /*
             string temp = "";
             try
             {
-                if (requestType == 0) temp = SystemData.HttpContext.Request[name].ToString();
-                else if (requestType == 1) temp = SystemData.HttpContext.Request.QueryString[name].ToString();
+                if (requestType == 0)
+                {
+                    if (PageContext.Current.Request.Query.ContainsKey(name))
+                    {
+
+                        temp = PageContext.Current.Request.Query[name].ToString();
+                    }
+                    else
+                    {
+                        temp = PageContext.Current.Request.Form[name].ToString();
+
+                    }
+                }
+                else if (requestType == 1) temp = PageContext.Current.Request.Query[name].ToString();
                 else
                 {
-                    temp = SystemData.M5.PageContext.Current.Request.Form[name].ToString();
+                    temp = PageContext.Current.Request.Form[name].ToString();
                 }
                 if (type == 1) value = int.Parse(temp);
                 else if (type == 2) value = float.Parse(temp);
@@ -106,9 +119,9 @@ namespace M5.Common
                 {
                     throw new NullReferenceException(ex.ToString());
                 }
-            }*/
+            }
             return value;
         }
     }
-    
+
 }

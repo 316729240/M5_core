@@ -107,7 +107,6 @@ E:\web\M5_core\MWMS.Plugin\Plugin.Article\bin\Debug\netcoreapp2.0\Plugin.Article
 E:\web\M5_core\MWMS.Plugin\Plugin.Article\bin\Debug\netcoreapp2.0\Plugin.Article.pdb
 E:\web\M5_core\MWMS.Plugin\Plugin.Article\bin\Debug\netcoreapp2.0\M5.Base.dll
 E:\web\M5_core\MWMS.Plugin\Plugin.Article\bin\Debug\netcoreapp2.0\MWMS.DAL.dll
-E:\web\M5_core\MWMS.Plugin\Plugin.Article\bin\Debug\netcoreapp2.0\MWMS.DataExtensions.dll
 E:\web\M5_core\MWMS.Plugin\Plugin.Article\bin\Debug\netcoreapp2.0\MWMS.Helper.dll
 E:\web\M5_core\MWMS.Plugin\Plugin.Article\bin\Debug\netcoreapp2.0\MWMS.SqlHelper.dll
 E:\web\M5_core\MWMS.Plugin\Plugin.Article\bin\Debug\netcoreapp2.0\RazorEngine.Core.dll
@@ -116,7 +115,6 @@ E:\web\M5_core\MWMS.Plugin\Plugin.Article\bin\Debug\netcoreapp2.0\MWMS.SqlHelper
 E:\web\M5_core\MWMS.Plugin\Plugin.Article\bin\Debug\netcoreapp2.0\M5.Base.pdb
 E:\web\M5_core\MWMS.Plugin\Plugin.Article\bin\Debug\netcoreapp2.0\MWMS.Helper.pdb
 E:\web\M5_core\MWMS.Plugin\Plugin.Article\bin\Debug\netcoreapp2.0\MWMS.DAL.pdb
-E:\web\M5_core\MWMS.Plugin\Plugin.Article\bin\Debug\netcoreapp2.0\MWMS.DataExtensions.pdb
 E:\web\M5_core\MWMS.Plugin\Plugin.Article\bin\Debug\netcoreapp2.0\RazorEngine.Core.pdb
 E:\web\M5_core\MWMS.Plugin\Plugin.Article\bin\Debug\netcoreapp2.0\System.Web.Razor.pdb
 E:\web\M5_core\MWMS.Plugin\Plugin.Article\obj\Debug\netcoreapp2.0\Plugin.Article.csprojResolveAssemblyReference.cache

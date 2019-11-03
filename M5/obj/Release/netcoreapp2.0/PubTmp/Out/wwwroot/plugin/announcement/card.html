@@ -1,0 +1,15 @@
+﻿<div class="panel-heading"  id=announcement_card_title>
+<h3 class="panel-title"><i class="fa fa-bullhorn"></i> 公告<span class="panel-options">
+                        <a href="#" class="panel-refresh">
+                            <i class="fa fa-edit"></i>
+                        </a></span></h3>
+</div>
+<div style="width:100%" id="announcement_card" class="container">
+</div>
+<script>
+    if (!$M.loginInfo.isAdministrator) $("#announcement_card_title .panel-refresh").hide();
+    $("#announcement_card_title .panel-refresh").click(function () {
+        $M.app.call("$M.announcement.main", { back: function (html) { $("#announcement_card").html(html); } });
+    });
+    $M.comm("announcement.read", {}, function (html) { $("#announcement_card").html(html); });
+</script>

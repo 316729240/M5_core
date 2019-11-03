@@ -6,6 +6,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>E:\project\M5_core\M5\bin\Release\PublishOutput</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\web\M5_core\M5\bin\Release\PublishOutput</_PublishTargetUrl>
   </PropertyGroup>
 </Project>

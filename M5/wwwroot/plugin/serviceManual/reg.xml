@@ -1,0 +1,4 @@
+﻿<app title="维修手册" name="serviceManual" dataTypeId="22391458135" datetime="2015-9-5">
+    <include>edit.js</include>
+  <include>dataManage.js</include>
+</app>

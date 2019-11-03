@@ -66,7 +66,7 @@ $M.insertFujian = function (S) {
             }
         };
 
-        xhr.open("POST", $M.config.appPath + "article/upload.ashx");
+        xhr.open("POST", $M.config.appPath + "article/upload");
         xhr.send(fd);
     }
     var inputFile = $("<input type='file' accept='aplication/*'  " + (S.isMultiple == false ? "" : "multiple='multiple'") + " style='display:none' >").appendTo($(document.body));
@@ -277,7 +277,7 @@ $M.article = {
                 }
             };
 
-            xhr.open("POST", $M.config.appPath + "article/uploadTxt");
+            xhr.open("POST", $M.config.appPath + "article/uploadTxt.ashx");
             xhr.send(fd);
         }
         var inputFile = $("<input type='file' accept='text/plain'  " + (S.isMultiple == false ? "" : "multiple='multiple'") + " style='display:none' >").appendTo($(document.body));

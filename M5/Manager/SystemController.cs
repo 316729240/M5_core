@@ -715,6 +715,7 @@ public ReturnValue delData(string ids,double moduleId,double classId,int tag)
     }
     return info;
 }
+/*
 public ReturnValue dataList(double moduleId,double classId=-1,int pageNo=1,string orderBy="",int sortDirection=0,string type="", string searchField="",string keyword="")
 {
     ReturnValue err = new ReturnValue();
@@ -809,6 +810,7 @@ public ReturnValue dataList(double moduleId,double classId=-1,int pageNo=1,strin
     err.userData = data;
     return err;
         }
+        */
         public ReturnValue upload(List<IFormFile> fileData)
         {
             string[] fp = new string[fileData.Count];

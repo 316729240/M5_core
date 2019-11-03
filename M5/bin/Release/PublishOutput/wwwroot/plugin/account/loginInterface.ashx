@@ -56,14 +56,14 @@ public class loginInterface :  IHttpHandler,System.Web.SessionState.IRequiresSes
         if (obj != null)
         {
             //帐号存在登录
-            ReturnValue err= UserClass.login((double)obj);
+            ErrInfo err= UserClass.login((double)obj);
             if (err.errNo < 0) { context.Response.Write(err.ToJson()); return; }
             context.Response.Redirect("/");
         }
         else
         {
             //帐号不存在
-            HttpContext.Current.Response.Redirect("connect.html");
+            PageContext.Current.Response.Redirect("connect.html");
         }
     }
     void login_qq(HttpContext context)
@@ -102,14 +102,14 @@ public class loginInterface :  IHttpHandler,System.Web.SessionState.IRequiresSes
         if (obj != null)
         {
             //帐号存在登录
-            ReturnValue err= UserClass.login((double)obj);
+            ErrInfo err= UserClass.login((double)obj);
             if (err.errNo < 0) { context.Response.Write(err.ToJson()); return; }
             context.Response.Redirect("/");
         }
         else
         {
             //帐号不存在
-            HttpContext.Current.Response.Redirect("connect.html");
+            PageContext.Current.Response.Redirect("connect.html");
         }
     }
     public bool IsReusable {

@@ -152,7 +152,7 @@ namespace MWMS.SqlHelper
             switch(System.Configuration.ConfigurationSettings.AppSettings["DataBaseTag"])
             {
                 case "0":
-                    connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + System.Web.HttpContext.Current.Server.MapPath("~/")+System.Configuration.ConfigurationSettings.AppSettings["AccessPath"] + ";Persist Security Info=False";
+                    connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + System.Web.PageContext.Current.Server.MapPath("~/")+System.Configuration.ConfigurationSettings.AppSettings["AccessPath"] + ";Persist Security Info=False";
                     break;
                 case "1":
                     break;

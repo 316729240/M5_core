@@ -6,6 +6,8 @@ using System.Text.RegularExpressions;
 
 using System.Collections.Generic;
 using MWMS;
+using ManagerFramework;
+using Helper;
 public class api : IHttpHandler {
 
     public void ProcessRequest(HttpContext context)
@@ -16,11 +18,11 @@ public class api : IHttpHandler {
         string m = context.Request.Form["_m"].ToString();
         if (m == "login")
         {
-
-            ReturnValue err =new ReturnValue();
+            ErrInfo err =new ErrInfo();
             try
             {
-                err = UserClass.manageLogin(context.Request.Form["uname"].ToString(), context.Request.Form["pword"].ToString(),1);
+                LoginUser loginUser=new LoginUser(s_request.getString("uname"), s_request.getString("pword"));
+                err.userData= loginUser.GetModel("id,icon,uname,classId");
             }
             catch (Exception ex)
             {
@@ -31,11 +33,30 @@ public class api : IHttpHandler {
         }
         else if (m == "checkManagerLogin")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             try {
-                LoginInfo info = new LoginInfo();
-                err.userData = info.value;
-                err.errNo = (info.value != null && info.isManagerLogin()) ? 0 : -1;
+                LoginUser loginUser = LoginUser.GetLoginUser();
+                if (loginUser == null) {
+                    err.errNo = -1;
+                }else
+                {
+                    Dictionary<string,object> data=loginUser.GetModel("id,icon,uname,classId");
+                    if (data != null)
+                    {
+                        if ((double)data["classId"] == 0)
+                        {
+
+                            err.userData = loginUser.GetModel("id,icon,uname,classId");
+                        }else
+                        {
+                            err.errNo = -1;
+                            err.errMsg = "非管理员";
+                        }
+                    }
+                }
+                //LoginInfo info = new LoginInfo();
+                //err.userData = info.value;
+                //err.errNo = (info.value != null && info.isManagerLogin()) ? 0 : -1;
             }
             catch (Exception ex)
             {
@@ -46,9 +67,9 @@ public class api : IHttpHandler {
         }
         else if (m == "getDirName")
         {
-            
+
             string name = s_request.getString("name");
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             string pinyin = name.GetPinYin();
             if (pinyin.Length > 15) pinyin = name.GetPinYin('2');
             pinyin = Regex.Replace(pinyin, "[ "+@"\-_"+"`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]", "");
@@ -58,9 +79,9 @@ public class api : IHttpHandler {
         }
         else if (m == "readIcon")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             string path = Config.staticPath + "icon/";
-            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(HttpContext.Current.Server.MapPath("~" + path));
+            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(PageContext.Current.Server.MapPath("~" + path));
             System.IO.FileInfo[] f = dir.GetFiles("*.jpg");
             string[] file = new string[f.Length];
             for (int i = 0; i < f.Length; i++)
@@ -73,8 +94,8 @@ public class api : IHttpHandler {
         else if (m == "getDataUrl")
         {
             double id = s_request.getDouble("id");
-            ReturnValue info = new ReturnValue();
-            System.Data.SqlClient.SqlDataReader rs1 = Helper.Sql.ExecuteReader("select url from maintable where id=@id", new System.Data.SqlClient.SqlParameter[]{
+            ErrInfo info = new ErrInfo();
+            System.Data.SqlClient.SqlDataReader rs1 = Helper.Sql.ExecuteReader("select url from mainTable where id=@id", new System.Data.SqlClient.SqlParameter[]{
                 new System.Data.SqlClient.SqlParameter("id",id)
             });
             if (rs1.Read())

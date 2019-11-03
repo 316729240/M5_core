@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\MWMS.DAL\MWMS.DAL.csproj" />
+    <ProjectReference Include="..\DAL\SqlHelper\MWMS.SqlHelper.csproj" />
+    <ProjectReference Include="..\M5.Common\M5.Base.csproj" />
+    <ProjectReference Include="..\MWMS.Helper\MWMS.Helper.csproj" />
+  </ItemGroup>
+
+</Project>

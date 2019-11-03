@@ -138,16 +138,10 @@ $M.Method = {
                 var d = new Date(ticks);
                 return d;
             }
-            var  arr = this.replace(/T/, " ");
-             arr = arr.replace(/\d+(?=-[^-]+$)/, function (a) { return a; }).match(/\d+/g);
-             if (arr == null || arr.length < 3) return null;
-             var new_date = arr[0] + "/" + parseInt(arr[1]) + "/" + parseInt(arr[2]);
-             if (arr.length > 5) {
-                 new_date += " " + parseInt(arr[3]);
-                 new_date += ":" + parseInt(arr[4]);
-                 new_date += ":" + parseInt(arr[5]);
-             }
-             var date = new Date(new_date);
+            var arr = this.replace(/\d+(?=-[^-]+$)/,
+       function(a) { return a; }).match(/\d+/g);
+            if (arr == null || arr.length < 3) return null;
+            var date = new Date(arr[0] + "/" + parseInt(arr[1]) + "/" + parseInt(arr[2]));
             return date;
         }
     },
@@ -827,7 +821,7 @@ $M.Control["UploadFileBox"] = function(BoxID, S, CID) {
         CID.attr("class", "inputbox form-control");
         CID.disable = false;
         A.append(CID);
-        A.append('<div class="input-group-btn"><button type="button" class="btn btn-default">选择文件</button></div>');
+        A.append('<div class="input-group-btn"><label type="button" class="btn btn-default">选择文件</label></div>');
     } else {
         var html = '<div class="input-group">' +
                     '<a class=\"inputbox form-control openfile\" target=_blank ></a>' +
@@ -867,11 +861,10 @@ $M.Control["UploadFileBox"] = function(BoxID, S, CID) {
                     json = value;
                 }
             }
-            //inputbox.val(JSON.stringify(json));
-            inputbox.val(value);
+            inputbox.val(JSON.stringify(json));
             if (value != "") {
                 A.find(".openfile").html("预览文件");
-                A.find(".openfile").attr("href", value);//json.path);
+                A.find(".openfile").attr("href", json.path);
             }
         }
         return (inputbox.val());
@@ -3158,6 +3151,69 @@ $M.Control["TreeView"] = function(BoxID, S) {
     if (S.style) A.css(S.style);
 };
 
+var idTmr;
+function method1(tableid) {//整个表格拷贝到EXCEL中
+    if ($.browser.msie) {
+        var curTbl = tablei[0];
+        var oXL = new ActiveXObject("Excel.Application");
+
+        //创建AX对象excel 
+        var oWB = oXL.Workbooks.Add();
+        //获取workbook对象 
+        var xlsheet = oWB.Worksheets(1);
+        //激活当前sheet 
+        var sel = document.body.createTextRange();
+        sel.moveToElementText(curTbl);
+        //把表格中的内容移到TextRange中 
+        sel.select;
+        //全选TextRange中内容 
+        sel.execCommand("Copy");
+        //复制TextRange中内容  
+        xlsheet.Paste();
+        //粘贴到活动的EXCEL中       
+        oXL.Visible = true;
+        //设置excel可见属性
+
+        try {
+            var fname = oXL.Application.GetSaveAsFilename("Excel.xls", "Excel Spreadsheets (*.xls), *.xls");
+        } catch (e) {
+            print("Nested catch caught " + e);
+        } finally {
+            oWB.SaveAs(fname);
+
+            oWB.Close(savechanges = false);
+            //xls.visible = false;
+            oXL.Quit();
+            oXL = null;
+            //结束excel进程，退出完成
+            //window.setInterval("Cleanup();",1);
+            idTmr = window.setInterval("Cleanup();", 1);
+
+        }
+
+    }
+    else {
+        tableToExcel(tableid);
+    }
+}
+function Cleanup() {
+    window.clearInterval(idTmr);
+    CollectGarbage();
+}
+var tableToExcel = (function() {
+    var uri = 'data:application/vnd.ms-excel;base64,',
+              template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+                base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) },
+                format = function(s, c) {
+                    return s.replace(/{(\w+)}/g,
+                    function(m, p) { return c[p]; })
+                }
+                return function(html, name) {
+//        if (!table.nodeType) table = table[0];
+        var ctx = { worksheet: name || 'Worksheet', table:html }
+        window.location.href = uri + base64(format(template, ctx))
+    }
+})();
 $M.Control["GridView"] = function(BoxID, S, CID) {
     var T = this;
     var A = null;
@@ -3190,6 +3246,10 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
     T.rows = [];
     S.allowSorting = S.allowSorting ? true : false;
     if (typeof (S.columns) == "string") eval("S.columns=" + S.columns);
+    T.toExecl = function() {
+		tableToExcel(headTable.html()+bodyTable2.html(),"1.xls");
+       // method1(bodyTable2);
+    };
     var columnClick = function() {
         var index = $(this).attr("index");
         if (S.allowSorting) {
@@ -3272,7 +3332,8 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
             T3.focus = function() {
                 if (S.columns[S3.cellIndex].xtype && S.columns[S3.cellIndex].xtype != "CheckBox") {
                     var xy = td.offset();
-                    S.columns[S3.cellIndex].style = { position: "fixed", zIndex: $M.zIndex++, left: xy.left + "px", top: xy.top + "px", width: td.outerWidth() + "px", height: td.outerHeight() + "px" };
+                    S.columns[S3.cellIndex].style = { position: "fixed", zIndex: $M.zIndex++, left: xy.left + "px", top: (xy.top - document.body.scrollTop) + "px", width: td.outerWidth() + "px", height: td.outerHeight() + "px" };
+//                    S.columns[S3.cellIndex].style = { position: "fixed", zIndex: $M.zIndex++, left: xy.left + "px", top: xy.top + "px", width: td.outerWidth() + "px", height: td.outerHeight() + "px" };
                     S.columns[S3.cellIndex].onBlur = focusBlur;
                     foucsObj.control = A.addControl(S.columns[S3.cellIndex]);
                     foucsObj.cell = T3;
@@ -3283,7 +3344,8 @@ $M.Control["GridView"] = function(BoxID, S, CID) {
 
                 } else if (S3.xtype && S3.xtype != "CheckBox") {
                     var xy = td.offset();
-                    S3.style = { position: "fixed", zIndex: $M.zIndex++, left: xy.left + "px", top: xy.top + "px", width: td.outerWidth() + "px", height: td.outerHeight() + "px" };
+                    S3.style = { position: "fixed", zIndex: $M.zIndex++, left: xy.left + "px", top: (xy.top - 500) + "px", width: td.outerWidth() + "px", height: td.outerHeight() + "px" };
+//                    S3.style = { position: "fixed", zIndex: $M.zIndex++, left: xy.left + "px", top: xy.top + "px", width: td.outerWidth() + "px", height: td.outerHeight() + "px" };
                     S3.onBlur = focusBlur;
                     foucsObj.control = A.addControl(S3);
                     foucsObj.cell = T3;

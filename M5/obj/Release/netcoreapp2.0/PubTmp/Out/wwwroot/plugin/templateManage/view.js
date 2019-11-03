@@ -148,8 +148,10 @@ $M.templateManage.viewEdit = function (S) {
                     }
                     }], [{
                         ico: "fa-clipboard", name: "reduction", text: "还原", enabled: false, onClick: function () {
-                            $M.app.call("$M.templateManage.backupRestore", {
+                            $M.app.call("$M.templateManage.backupViewRestore", {
                                 dataId: S.id,
+                                title: S.viewName,
+                                classId: S.classId,
                                 back: function (html) {
                                     u_html.val(html);
                                 }

@@ -10,58 +10,21 @@ using System.Configuration;
 using System.Data;
 using System.Xml;
 using System.Text.RegularExpressions;
-public class ajax : IHttpHandler
+using MWMS.Template;
+using ManagerFramework;
+public class ajax : ManageHandle//IHttpHandler
 {
     LoginInfo login = new LoginInfo();
     int webFAId = 0;//默认网站模板方案
-    SafeReqeust s_request = new SafeReqeust(0, 0);
-    public void ProcessRequest(HttpContext context)
-    {
-        login.checkLogin();
-        context.Response.ContentType = "text/plain";
-        if (context.Request.Form["_m"] == null) context.Response.End();
-        string m = context.Request.Form["_m"].ToString();
-        if (m == "load")
-        {
-            context.Response.Write(login.value.isAdministrator);
-            context.Response.End();
-        }
-        else if (m == "templateList") templateList(context);
-        else if (m == "readTemplateLable") readTemplateLable(context);
-        else if (m == "readTemplateViewClass") readTemplateViewClass(context);
-        else if (m == "readTemplateView") readTemplateView(context);
-        else if (m == "saveTemplate") saveTemplate(context);
-        else if (m == "readTemplate") readTemplate(context);
-        else if (m == "delTemplate") delTemplate(context);
-        else if (m == "backupTemplate") backupTemplate(context);
-        else if (m == "backupView") backupView(context);
-        else if (m == "readView") readView(context);
-        else if (m == "saveView") saveView(context);
-        else if (m == "readDataTypeLable") readDataTypeLable(context);
-        else if (m == "readSqlLable") readSqlLable(context);
-        else if (m == "delViewClass") delViewClass(context);
-        else if (m == "addViewClass") addViewClass(context);
-        else if (m == "delView") delView(context);
-        else if (m == "readBackupList") readBackupList(context);
-        else if (m == "readBackup") readBackup(context);
-        else if (m == "find") find(context);
-        else if (m == "replace") replace(context);
-        else if (m == "locateTemplate") locateTemplate(context);
-        else if (m == "setTemplateType") setTemplateType(context);
-        else if (m == "getTemplateType") getTemplateType(context);
-        else if (m == "readView") readView(context);
-        else if (m == "readViewForm") readViewForm(context);
-
-    }
-    void readViewForm(HttpContext context)
+    void readViewForm()
     {
         string [] viewName = s_request.getString("viewName").SubString("view.",@"\(").Split('.');
         double classId = (double)Sql.ExecuteScalar("select id from class where classId=12 and className=@className",new SqlParameter[] { new SqlParameter("className",viewName[0])});
 
-        Dictionary<string,object> list  = Helper.Sql.ExecuteDictionary("select B.u_p_form from template_view  B where B.classId=@classId and B.title=@viewName",
+        Dictionary<string,object> list  = Helper.Sql.ExecuteDictionary("select B.u_p_form from dataView B where B.classId=@classId and B.title=@viewName",
             new SqlParameter[]{
-                    new SqlParameter("classId",classId),
-                    new SqlParameter("viewName",viewName[1])
+                new SqlParameter("classId",classId),
+                new SqlParameter("viewName",viewName[1])
                 });
         XmlDocument doc = new XmlDocument();
         doc.LoadXml(list["u_p_form"].ToString());
@@ -69,48 +32,46 @@ public class ajax : IHttpHandler
     }
     //读取模板
     //参数1:模板ID
-    void readView(HttpContext context)
+    public ReturnValue  readView()
     {
         ReturnValue info = new ReturnValue();
         double id = s_request.getDouble("id");
         string[] viewName = s_request.getString("viewName").SubString("view.", @"\(").Split('.');
         if (id > 0) {
-            info.userData = Helper.Sql.ExecuteDictionary("select B.title,B.u_html,B.u_editboxStatus,B.u_parameterValue,B.u_viewType,B.u_datatypeId,B.classId,B.id from template_view  B where B.id=@id",
+            info.userData = Helper.Sql.ExecuteDictionary("select B.title,B.u_html,B.u_editboxStatus,B.u_parameterValue,B.u_viewType,B.u_datatypeId,B.classId,B.id from dataView B where B.id=@id",
                 new SqlParameter[]{
-                    new SqlParameter("id",id)
+                new SqlParameter("id",id)
                     });
         }
         else
         {
             if (viewName.Length >1) {
                 double classId = (double)Sql.ExecuteScalar("select id from class where classId=12 and className=@className",new SqlParameter[] { new SqlParameter("className",viewName[0])});
-                info.userData = Helper.Sql.ExecuteDictionary("select B.id,B.title,B.u_html,B.u_editboxStatus,B.u_parameterValue,B.u_viewType,B.u_datatypeId,B.classId,B.u_p_form from template_view  B where B.classId=@classId and B.title=@viewName",
+                info.userData = Helper.Sql.ExecuteDictionary("select B.id,B.title,B.u_html,B.u_editboxStatus,B.u_parameterValue,B.u_viewType,B.u_datatypeId,B.classId,B.u_p_form from dataView B where B.classId=@classId and B.title=@viewName",
                 new SqlParameter[]{
-                    new SqlParameter("classId",classId),
-                    new SqlParameter("viewName",viewName[1])
+                new SqlParameter("classId",classId),
+                new SqlParameter("viewName",viewName[1])
                     });}
         }
-        context.Response.Write(info.ToJson());
+        return info;
     }
-    void getTemplateType(HttpContext context)
+    public ReturnValue  getTemplateType()
     {
         ReturnValue info = new ReturnValue();
         string value = "1";
         System.IO.FileInfo f = new System.IO.FileInfo(context.Server.MapPath("~" + Config.tempPath + @"user\" + login.value.id.ToString() + @"\templateType.config"));
         if(f.Exists)value=System.IO.File.ReadAllText(f.FullName);
         info.userData = value;
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        return info;
     }
-    void setTemplateType(HttpContext context)
+    public ReturnValue  setTemplateType()
     {
         ReturnValue info = new ReturnValue();
         string value = s_request.getString("value");
         System.IO.FileInfo f = new System.IO.FileInfo(context.Server.MapPath("~" + Config.tempPath + @"user\" + login.value.id.ToString() + @"\templateType.config"));
         if (!f.Directory.Exists) f.Directory.Create();
         System.IO.File.WriteAllText(f.FullName,value);
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        return info;
     }
     string _replaceUrl(Match m)
     {
@@ -123,9 +84,8 @@ public class ajax : IHttpHandler
             return Regex.Replace(m.Value, @"_((\d){1,5})", "");
         }
     }
-    void locateTemplate(HttpContext context)
+    public ReturnValue locateTemplate()
     {
-
         ReturnValue info = new ReturnValue();
         Uri url = new Uri(s_request.getString("url"));
         int u_webFAid = s_request.getInt("u_webFAid");
@@ -167,10 +127,9 @@ public class ajax : IHttpHandler
             object[] obj = new object[] { moduleId, classId, v.u_type, v.id,isMobilePage?1:0 };
             info.userData = obj;
         }
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        return info;
     }
-    void replace(HttpContext context)
+    public ReturnValue  replace()
     {
 
         ReturnValue info = new ReturnValue();
@@ -178,8 +137,7 @@ public class ajax : IHttpHandler
         {
             info.errNo = -1;
             info.errMsg = "没有权限";
-            context.Response.Write(info.ToJson());
-            return;
+            return info;
         }
         double id = s_request.getDouble("id");
         int type = s_request.getInt("type");
@@ -190,19 +148,19 @@ public class ajax : IHttpHandler
         {
             info.errMsg = "查询内容不能为空";
             info.errNo = -1;
-            return;
+            return info;
         }
         string keyword2 = s_request.getString("keyword2");
-        string sql = "select id,classid,title,u_content,u_datatypeid,u_type,0 from template where  id=@id ", sql2 = "update template set u_content=@content where id=@id";
+        string sql = "select id,classid,title,u_content,u_datatypeid,u_type,0 from HtmlTemplate where  id=@id ", sql2 = "update HtmlTemplate set u_content=@content where id=@id";
         if (mbType == 1)
         {
-            sql = "select B.id,B.classid,A.className+'.'+B.title,B.u_html,B.u_datatypeid,0,1,B.title from template_view B inner join Class A on B.classId=A.id where B.id=@id ";
-            sql2 = "update template_view set u_html=@content where id=@id";
+            sql = "select B.id,B.classid,A.className+'.'+B.title,B.u_html,B.u_datatypeid,0,1,B.title from dataview B inner join Class A on B.classId=A.id where B.id=@id ";
+            sql2 = "update dataview set u_html=@content where id=@id";
         }
         SqlDataReader rs = Sql.ExecuteReader(sql, new SqlParameter[]{
-            new SqlParameter("webFAid",u_webFAid),
-            new SqlParameter("id",id)
-        });
+        new SqlParameter("webFAid",u_webFAid),
+        new SqlParameter("id",id)
+    });
         MatchCollection mc;
         Regex r = null;
         if (rs.Read())
@@ -227,9 +185,9 @@ public class ajax : IHttpHandler
             if (flag)
             {
                 Sql.ExecuteNonQuery(sql2, new SqlParameter[]{
-                    new SqlParameter("content",content),
-                    new SqlParameter("id",rs[0])
-                });
+                new SqlParameter("content",content),
+                new SqlParameter("id",rs[0])
+            });
             }
             if (mbType == 1)//视 图时加载
             {
@@ -237,20 +195,17 @@ public class ajax : IHttpHandler
             }
         }
         rs.Close();
-
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        return info;
 
     }
-    void find(HttpContext context)
+    public ReturnValue find()
     {
         ReturnValue info = new ReturnValue();
         if (!login.value.isAdministrator)
         {
             info.errNo = -1;
             info.errMsg = "没有权限";
-            context.Response.Write(info.ToJson());
-            return;
+            return info;
         }
         string keyword = s_request.getString("keyword");
         if (keyword == "")
@@ -263,9 +218,9 @@ public class ajax : IHttpHandler
         int type = s_request.getInt("type");
         int u_webFAid = s_request.getInt("u_webFAid");
         List<object[]> data = new List<object[]>();
-        SqlDataReader rs = Sql.ExecuteReader("select id,classid,title,u_content,u_datatypeid,u_type,0 from template where   u_webFAid=@webFAid ", new SqlParameter[]{
-            new SqlParameter("webFAid",u_webFAid)
-        });
+        SqlDataReader rs = Sql.ExecuteReader("select id,classid,title,u_content,u_datatypeid,u_type,0 from HtmlTemplate where   u_webFAid=@webFAid ", new SqlParameter[]{
+        new SqlParameter("webFAid",u_webFAid)
+    });
         MatchCollection mc;
         Regex r = null;
         while (rs.Read())
@@ -285,13 +240,13 @@ public class ajax : IHttpHandler
             if (flag)
             {
                 object[] value = new object[]{
-                rs[0],rs[1],rs[4],rs[5],rs[6],rs[2]
-                };
+            rs[0],rs[1],rs[4],rs[5],rs[6],rs[2]
+            };
                 data.Add(value);
             }
         }
         rs.Close();
-        rs = Sql.ExecuteReader("select B.id,B.classid,A.className+'.'+B.title,B.u_html,B.u_datatypeid,0,1 from template_view B inner join Class A on B.classId=A.id");
+        rs = Sql.ExecuteReader("select B.id,B.classid,A.className+'.'+B.title,B.u_html,B.u_datatypeid,0,1 from dataview B inner join Class A on B.classId=A.id");
         while (rs.Read())
         {
             string content = rs.GetString(3);
@@ -308,28 +263,26 @@ public class ajax : IHttpHandler
             if (flag)
             {
                 object[] value = new object[]{
-                rs[0],rs[1],rs[4],rs[5],rs[6],rs[2]
-                };
+            rs[0],rs[1],rs[4],rs[5],rs[6],rs[2]
+            };
                 data.Add(value);
             }
         }
         rs.Close();
         info.userData = data;
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        return info;
 
     }
-    void readBackup(HttpContext context)
+    public ReturnValue  readBackup()
     {
         ReturnValue info = new ReturnValue();
         double id = s_request.getDouble("id");
-        info.userData = Sql.ExecuteScalar("select u_content from backup_template where id=@id", new SqlParameter[]{
-            new SqlParameter("id",id )
-        });
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        info.userData = Sql.ExecuteScalar("select u_content from backupTemplate where id=@id", new SqlParameter[]{
+        new SqlParameter("id",id )
+    });
+        return info;
     }
-    void readBackupList(HttpContext context)
+    public ReturnValue readBackupList()
     {
         ReturnValue info = new ReturnValue();
         double dataId=s_request.getDouble("dataId");
@@ -343,41 +296,50 @@ public class ajax : IHttpHandler
         if (u_defaultFlag == 0) where = " and title=@title";
         if (dataId > 0)
         {
-            info.userData = Sql.ExecuteArrayObj("select id,updateDate,userName from backup_template where dataId=@dataId  order by updatedate desc", new SqlParameter[]{
-                new SqlParameter("dataId",dataId )
-            });
+            info.userData = Sql.ExecuteArrayObj("select id,updateDate,userName from backupTemplate where dataId=@dataId  order by updatedate desc", new SqlParameter[]{
+            new SqlParameter("dataId",dataId )
+        });
         }
         else {
-            info.userData = Sql.ExecuteArrayObj("select id,updateDate,userName from backup_template where classid=@classid and u_type=@u_type and u_webFAid=@u_webFAid and u_defaultFlag=@u_defaultFlag and u_datatypeId=@u_datatypeId " + where + "  order by updatedate desc", new SqlParameter[]{
-                new SqlParameter("classid",classId ),
-                new SqlParameter("u_type",u_type),
-                new SqlParameter("u_webFAid",u_webFAid),
-                new SqlParameter("u_defaultFlag",u_defaultFlag),
-                new SqlParameter("u_datatypeId",u_datatypeId),
-                new SqlParameter("title",title)
-            });
+            info.userData = Sql.ExecuteArrayObj("select id,updateDate,userName from backupTemplate where classid=@classid and u_type=@u_type and u_webFAid=@u_webFAid and u_defaultFlag=@u_defaultFlag and u_datatypeId=@u_datatypeId " + where + "  order by updatedate desc", new SqlParameter[]{
+            new SqlParameter("classid",classId ),
+            new SqlParameter("u_type",u_type),
+            new SqlParameter("u_webFAid",u_webFAid),
+            new SqlParameter("u_defaultFlag",u_defaultFlag),
+            new SqlParameter("u_datatypeId",u_datatypeId),
+            new SqlParameter("title",title)
+        });
         }
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        return info;
     }
-    void delView(HttpContext context)
+    public ReturnValue readViewBackupList()
+    {
+        ReturnValue info = new ReturnValue();
+        double classId = s_request.getDouble("classId");
+        double id = s_request.getDouble("dataId");
+        string title = s_request.getString("title");
+ info.userData = Sql.ExecuteArrayObj("select id,updateDate,userName from backupTemplate where (classid=@classid and title=@title) or dataId=@dataId  order by updatedate desc", new SqlParameter[]{
+            new SqlParameter("classid",classId ),
+            new SqlParameter("title",title),
+            new SqlParameter("dataId",id)
+        });
+        return info;
+    }
+    public ReturnValue  delView()
     {
         ReturnValue info = new ReturnValue();
         string ids = s_request.getString("ids");
-        Sql.ExecuteNonQuery("delete from template_view where id in (" + ids + ")");
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        Sql.ExecuteNonQuery("delete from dataview where id in (" + ids + ")");
+        return info;
     }
-    void addViewClass(HttpContext context)
+    public ReturnValue  addViewClass()
     {
         ReturnValue info = new ReturnValue();
         if (!login.value.isAdministrator)
         {
             info.errNo = -1;
             info.errMsg = "没有权限";
-            context.Response.Write(info.ToJson());
-            context.Response.End();
-            return;
+            return info;
         }
         double id =double.Parse(API.GetId());
         double classId = 12;
@@ -391,25 +353,23 @@ public class ajax : IHttpHandler
         else
         {
             Sql.ExecuteNonQuery("insert into class (id,classId,className)values(@id,@classId,@className)", new SqlParameter[] {
-            new SqlParameter("id", id) ,
-            new SqlParameter("classId", classId) ,
-            new SqlParameter("className", className) }
+        new SqlParameter("id", id) ,
+        new SqlParameter("classId", classId) ,
+        new SqlParameter("className", className) }
                 );
         }
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        return info;
     }
-    void delViewClass(HttpContext context)
+    public ReturnValue delViewClass()
     {
         ReturnValue info = new ReturnValue();
         double id = s_request.getDouble("id");
         Sql.ExecuteNonQuery("delete from class where id=@id", new SqlParameter[] { new SqlParameter("id", id) });
-        Sql.ExecuteNonQuery("delete from template_view where classid=@id", new SqlParameter[] { new SqlParameter("id", id) });
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        Sql.ExecuteNonQuery("delete from dataview where classid=@id", new SqlParameter[] { new SqlParameter("id", id) });
+        return info;
     }
 
-    void readSqlLable(HttpContext context)
+    public ReturnValue   readSqlLable()
     {
         ReturnValue info = new ReturnValue();
         string sql = s_request.getString("sql");
@@ -423,21 +383,19 @@ public class ajax : IHttpHandler
         }
         rs.Close();
         info.userData = field;
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        return info;
     }
 
-    void readDataTypeLable(HttpContext context)
+    public ReturnValue  readDataTypeLable()
     {
         ReturnValue info = new ReturnValue();
         double dataTypeId = s_request.getDouble("dataTypeId");
         info.userData = new TableInfo(dataTypeId);
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        return info;
     }
     //保存模板
     //参数1:模板ID
-    void saveView(HttpContext context)
+    public ReturnValue saveView()
     {
         ReturnValue info = new ReturnValue();
         double id = s_request.getDouble("id");
@@ -452,31 +410,45 @@ public class ajax : IHttpHandler
         {
             info.errNo = -1;
             info.errMsg = "没有权限";
-            context.Response.Write(info.ToJson());
-            return;
+            return info;
         }
+
+        ViewTemplate viewTemplate = new ViewTemplate()
+        {
+            TemplateId=s_request.getDouble("id"),
+            ColumnId=s_request.getDouble("classId"),
+            ViewType=s_request.getInt("u_viewType"),
+            TemplateName=s_request.getString("title"),
+            TemplateContent=s_request.getString("u_html"),
+            EditMode=(EditMode)s_request.getInt("u_editboxStatus"),
+            DatatypeId=s_request.getDouble("u_datatypeId"),
+            ParameterValue=s_request.getString("u_parameterValue")
+        };
+        viewTemplate.Save(login.value.username);
+        info.userData = viewTemplate.TemplateId;
+        return info;
         //-------------------保存模板----------------------------
         SqlParameter[] p = new SqlParameter[]{
-                    new SqlParameter("id",id),
-                    new SqlParameter("classId",classId),
-                    new SqlParameter("u_viewType",u_viewType),
-                    new SqlParameter("title",title),
-                    new SqlParameter("u_pinyin",chs2py.convert(title,'0')),
-                    new SqlParameter("u_html",u_html),
-                    new SqlParameter("u_editboxStatus",u_editboxStatus),
-                    new SqlParameter("u_datatypeId",u_datatypeId),
-                    new SqlParameter("u_parameterValue",u_parameterValue),
-                    new SqlParameter("createDate",System.DateTime.Now),
-                    new SqlParameter("updateDate",System.DateTime.Now)
-                };
+                new SqlParameter("id",id),
+                new SqlParameter("classId",classId),
+                new SqlParameter("u_viewType",u_viewType),
+                new SqlParameter("title",title),
+                new SqlParameter("u_pinyin",title.GetPinYin('0')),
+                new SqlParameter("u_html",u_html),
+                new SqlParameter("u_editboxStatus",u_editboxStatus),
+                new SqlParameter("u_datatypeId",u_datatypeId),
+                new SqlParameter("u_parameterValue",u_parameterValue),
+                new SqlParameter("createDate",System.DateTime.Now),
+                new SqlParameter("updateDate",System.DateTime.Now)
+            };
         if (id <1)
         {
             id = double.Parse(API.GetId());
             p[0].Value = id;
-            Sql.ExecuteNonQuery("insert into template_view (id,classId,u_viewType,title,u_pinyin,u_html,u_editboxStatus,u_datatypeId,u_parameterValue,createDate,updateDate)values(@id,@classId,@u_viewType,@title,@u_pinyin,@u_html,@u_editboxStatus,@u_datatypeId,@u_parameterValue,@createDate,@updateDate)", p);
+            Sql.ExecuteNonQuery("insert into dataview (id,classId,u_viewType,title,u_pinyin,u_html,u_editboxStatus,u_datatypeId,u_parameterValue,createDate,updateDate)values(@id,@classId,@u_viewType,@title,@u_pinyin,@u_html,@u_editboxStatus,@u_datatypeId,@u_parameterValue,@createDate,@updateDate)", p);
 
         }else{
-            Sql.ExecuteNonQuery("update template_view set updateDate=@updateDate,classId=@classId,u_viewType=@u_viewType,title=@title,u_pinyin=@u_pinyin,u_html=@u_html,u_editboxStatus=@u_editboxStatus,u_datatypeId=@u_datatypeId,u_parameterValue=@u_parameterValue where id=@id", p);
+            Sql.ExecuteNonQuery("update dataview set updateDate=@updateDate,classId=@classId,u_viewType=@u_viewType,title=@title,u_pinyin=@u_pinyin,u_html=@u_html,u_editboxStatus=@u_editboxStatus,u_datatypeId=@u_datatypeId,u_parameterValue=@u_parameterValue where id=@id", p);
         }
         info.userData = id;
         if (info.errNo > -1)
@@ -502,62 +474,38 @@ public class ajax : IHttpHandler
             code.compile();
             list[title] =new object[] { id,u_html };
         }
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        return info;
     }
-    void backupView(HttpContext context)
+    public ReturnValue  backupView()
     {
         ReturnValue info = new ReturnValue();
         double id = s_request.getDouble("id");
         string html = s_request.getString("html");
-        TemplateClass.backupView(id,html, login.value.username);
-        context.Response.Write(info.ToJson());
+        Template.Backup(id,html, loginUser.Username);
+        return info;
     }
     //备份模板
-    void backupTemplate(HttpContext context)
+    public ReturnValue backupTemplate()
     {
         ReturnValue info = new ReturnValue();
         double id = s_request.getDouble("id");
         string html = s_request.getString("html");
-        TemplateClass.backupTemplate(id,html, login.value.username);
-        context.Response.Write(info.ToJson());
+        Template.Backup(id,html, loginUser.Username);
+        return info;
     }
     //删除模板
     //参数1:模板ID
-    void delTemplate(HttpContext context)
+    public ReturnValue delTemplate()
     {
         ReturnValue info = new ReturnValue();
         double id = s_request.getDouble("id");
-        info = TemplateClass.del(id, login.value);
-        //double classId = s_request.getDouble("classId");
-        //int typeId = s_request.getInt("typeId");
-        //double datatypeId = s_request.getDouble("datatypeId");
-        //if (id > 0)
-        //{
-        //    Helper.Sql.ExecuteNonQuery("delete from template where id=@id",
-        //           new SqlParameter[]{
-        //            new SqlParameter("id",id)
-        //        });
-        //    info.userData = Helper.Sql.ExecuteNonQuery("delete from template where id=@id",
-        //        new SqlParameter[]{
-        //            new SqlParameter("id",id)
-        //        });
-        //}
-        //else
-        //{
-        //    info.userData = Helper.Sql.ExecuteNonQuery("delete from template where ClassID=@classId and u_datatypeid=@datatypeId and u_type=@typeId and u_webFAid=@webFAid",
-        //        new SqlParameter[]{
-        //            new SqlParameter("classId",classId),
-        //            new SqlParameter("datatypeid",datatypeId),
-        //            new SqlParameter("typeId",typeId),
-        //            new SqlParameter("webFAid" ,API.getWebFAId()?1:0),
-        //        });
-        //}
-        context.Response.Write(info.ToJson());
+        PageTemplate page = new PageTemplate(id);
+        page.Remove();
+        return info;
     }
     //读取模板
     //参数1:模板ID
-    void readTemplate(HttpContext context)
+    public ReturnValue readTemplate()
     {
         ReturnValue info = new ReturnValue();
         double id = s_request.getDouble("id");
@@ -567,72 +515,74 @@ public class ajax : IHttpHandler
         int defaultFlag = s_request.getInt("defaultFlag");
         string title = s_request.getString("title");
         int u_webFAid = s_request.getInt("u_webFAid");
+        PageTemplate pageTemplate = null;
         if (id > 0)
         {
-            info.userData = TemplateClass.get(id);
+            pageTemplate= new PageTemplate(id);
+            //info.userData = TemplateClass.get(id);
         }
         else
         {
-            info.userData = TemplateClass.get(classId, typeId, datatypeId, defaultFlag == 1, title, u_webFAid==1);
+            pageTemplate= new PageTemplate(classId,typeId,datatypeId,defaultFlag == 1,title,u_webFAid==1);
+            //info.userData = TemplateClass.get(classId, typeId, datatypeId, defaultFlag == 1, title, u_webFAid==1);
 
         }
-        context.Response.Write(info.ToJson());
+        info.userData= pageTemplate.Get("id,classId,u_datatypeId,title,u_type,u_content,u_editboxStatus,u_parameterValue,u_defaultFlag,u_webFAid");
+        return info;
     }
     /// <summary>
     /// 保存模板
     /// </summary>
     /// <param name="context"></param>
-    void saveTemplate(HttpContext context)
+    public ReturnValue saveTemplate()
     {
-        ReturnValue info = new ReturnValue();
-        TemplateInfo value = new TemplateInfo();
-        value.id = s_request.getDouble("id");
-        value.title = s_request.getString("title");
-        value.u_content = s_request.getString("u_content");
-        value.u_type= s_request.getInt("u_typeId");
-        value.u_defaultFlag = s_request.getInt("u_defaultFlag");
-        value.classId = s_request.getDouble("classId");
-        value.u_datatypeId = s_request.getDouble("u_datatypeId");
-        value.u_editboxStatus = s_request.getInt("u_editboxStatus");
-        value.u_parameterValue = s_request.getString("u_parameterValue");
-        value.u_webFAid = s_request.getInt("u_webFAid");
-        info = TemplateClass.edit(value, login.value);
-        if (info.errNo < 0)
-        {
-            context.Response.Write(info.ToJson());
-            return;
+        PageTemplate pageTemplate = null;
+        try {
+            pageTemplate=new PageTemplate(
+            s_request.getDouble("classId"),
+            s_request.getInt("u_typeId"),
+            s_request.getDouble("u_datatypeId"),
+            s_request.getInt("u_defaultFlag")==1,
+            s_request.getString("title"),
+            s_request.getInt("u_webFAid")==1
+            );
+            pageTemplate.TemplateName = s_request.getString("title");
+            pageTemplate.TemplateContent = s_request.getString("u_content");
+            pageTemplate.EditMode = (EditMode)s_request.getInt("u_editboxStatus");
+            pageTemplate.ParameterValue = s_request.getString("u_parameterValue");
         }
-        int count = 0;
-        IDataReader rs = Sql.ExecuteReader("select count(1) from backup_template where classid=@classid and u_type=@u_type and u_webFAid=@u_webFAid and u_defaultFlag=@u_defaultFlag and u_datatypeId=@u_datatypeId and title=@title and  getdate()<DATEADD(minute,200,updatedate)", new SqlParameter[]{
-            new SqlParameter("classid",value.classId ),
-            new SqlParameter("u_type",value.u_type),
-            new SqlParameter("u_webFAid",value.u_webFAid),
-            new SqlParameter("u_defaultFlag",value.u_defaultFlag),
-            new SqlParameter("u_datatypeId",value.u_datatypeId),
-            new SqlParameter("title",value.title)
-        });
-        if (rs.Read()) count = rs.GetInt32(0);
-        rs.Close();
-        if (count == 0) TemplateClass.backupTemplate((double)info.userData, login.value.username);
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        catch
+        {
+            pageTemplate = new PageTemplate() {
+                TemplateId=s_request.getDouble("id"),
+                TemplateName=s_request.getString("title"),
+                TemplateContent=s_request.getString("u_content"),
+                TemplateType=(TemplateType)s_request.getInt("u_typeId"),
+                IsDefault=s_request.getInt("u_defaultFlag")==1,
+                ColumnId=s_request.getDouble("classId"),
+                DatatypeId=s_request.getDouble("u_datatypeId"),
+                EditMode=(EditMode)s_request.getInt("u_editboxStatus"),
+                ParameterValue=s_request.getString("u_parameterValue"),
+                IsMobile=s_request.getInt("u_webFAid")==1
+            };
+        }
+        pageTemplate.Save(login.value.username);
+        return new ReturnValue();
     }
-    void readTemplateView(HttpContext context)
+    public ReturnValue readTemplateView()
     {
         ReturnValue info = new ReturnValue();
         double classId = s_request.getDouble("classId");
-        info.userData = Sql.ExecuteArray("select B.id,B.title text,6 type,B.u_pinyin from template_view B  where B.classid=@classId", new SqlParameter[] { new SqlParameter("classId", classId) });
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        info.userData = Sql.ExecuteArray("select B.id,B.title text,6 type,B.u_pinyin from dataview B  where B.classid=@classId", new SqlParameter[] { new SqlParameter("classId", classId) });
+        return info;
     }
-    void readTemplateViewClass(HttpContext context)
+    public ReturnValue readTemplateViewClass()
     {
         ReturnValue info = new ReturnValue();
         info.userData=Sql.ExecuteArray("select id,className text,5 type from class where classid=12");
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        return info;
     }
-    void readTemplateLable(HttpContext context)
+    public ReturnValue readTemplateLable()
     {
         double dataTypeId =  s_request.getDouble("dataTypeId");
         ReturnValue info = new ReturnValue();
@@ -652,10 +602,9 @@ public class ajax : IHttpHandler
         //Constant.systemVariables
         //"{\"systemVariables\": Constant.systemVariables.ToJson}
         info.userData = value;
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        return info;
     }
-    void templateList(HttpContext context)
+    public ReturnValue templateList()
     {
         ReturnValue info = new ReturnValue();
         double moduleId =s_request.getDouble("moduleId");
@@ -682,7 +631,7 @@ public class ajax : IHttpHandler
             list.Add(new object[] { 0, "全站", "站点通用模板", "", 1, 0,0 });
             if(moduleId>0)list.Add(new object[] { 0, "模块", "模块通用模板", "", 1, moduleId, 0 });
             if (moduleId>0 && faId != moduleId) list.Add(new object[] { 0, "频道", "频道页模板", "", 1, faId, 0 });
-            rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid from  template B  where B.u_type=0 and B.u_datatypeid=0 and B.u_defaultFlag=1 and B.u_webFAId=@webFAId and B.classid in (0,@moduleId,@id)",
+            rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid from  HtmlTemplate B  where B.u_type=0 and B.u_datatypeid=0 and B.u_defaultFlag=1 and B.u_webFAId=@webFAId and B.classid in (0,@moduleId,@id)",
                 new SqlParameter[] {
                     new SqlParameter("id", faId),
                     new SqlParameter("moduleId", moduleId),
@@ -705,7 +654,7 @@ public class ajax : IHttpHandler
             list.Add(new object[] { 0, "全站", "站点通用模板", "", 1, 0, 0 });
             if(moduleId>0)list.Add(new object[] { 0, "模块", "模块通用模板", "", 1, moduleId, 0 });
             if (faId != moduleId) list.Add(new object[] { 0, "频道", "频道页模板", "", 1, faId, 0 });
-            rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid,B.u_defaultFlag,B.title from  template B  where B.u_type=1 and B.u_datatypeid=0 and B.u_webFAId=@webFAId and B.classid in (0,@moduleId,@id) order by B.classid ",
+            rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid,B.u_defaultFlag,B.title from  HtmlTemplate B  where B.u_type=1 and B.u_datatypeid=0 and B.u_webFAId=@webFAId and B.classid in (0,@moduleId,@id) order by B.classid ",
                 new SqlParameter[] {
                     new SqlParameter("id", faId),
                     new SqlParameter("moduleId", moduleId),
@@ -714,7 +663,7 @@ public class ajax : IHttpHandler
             int index = 0;
             while (rs.Read())
             {
-                bool defaultFlag = rs.GetBoolean(3);
+                bool defaultFlag = rs.GetInt32(3)==1;
                 if (rs.GetDouble(2) == 0 ) index = 0;
                 else if (rs.GetDouble(2) == moduleId) index = 1;
                 else if (rs.GetDouble(2) == faId ) index = 2;
@@ -763,7 +712,7 @@ public class ajax : IHttpHandler
             #region 获取默认模板
             for (int i = 0; i < datatypeList.Count; i++)
             {
-                rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid,B.title,B.u_defaultFlag,B.u_datatypeId from  template B where B.u_type=2 and B.u_datatypeid=@datatypeId and B.u_webFAId=@webFAId and B.u_defaultFlag=1 and B.classid in (0,@moduleId,@id)",
+                rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid,B.title,B.u_defaultFlag,B.u_datatypeId from  HtmlTemplate B where B.u_type=2 and B.u_datatypeid=@datatypeId and B.u_webFAId=@webFAId and B.u_defaultFlag=1 and B.classid in (0,@moduleId,@id)",
                     new SqlParameter[] {
                     new SqlParameter("id", faId),
                     new SqlParameter("moduleId", moduleId),
@@ -789,7 +738,7 @@ public class ajax : IHttpHandler
                 rs.Close();
             }
             #endregion
-            rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid,B.title,B.u_defaultFlag,B.u_datatypeId from  template B where B.u_type=2 and B.u_webFAId=@webFAId and B.u_defaultFlag=0 and B.classid = @id",
+            rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid,B.title,B.u_defaultFlag,B.u_datatypeId from  HtmlTemplate B where B.u_type=2 and B.u_webFAId=@webFAId and B.u_defaultFlag=0 and B.classid = @id",
                 new SqlParameter[] {
                     new SqlParameter("id", faId),
                     new SqlParameter("webFAId",u_webFAid)
@@ -816,7 +765,7 @@ public class ajax : IHttpHandler
                 }
                 rs.Close();
             }
-            rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid,B.title,B.u_defaultFlag from   template B  where B.u_type=3 and B.u_webFAId=@webFAId  and B.classid = @id",
+            rs = Sql.ExecuteReader("select B.id,B.updatedate,B.classid,B.title,B.u_defaultFlag from   HtmlTemplate B  where B.u_type=3 and B.u_webFAId=@webFAId  and B.classid = @id",
             new SqlParameter[] {
                 new SqlParameter("id", faId),
                 new SqlParameter("webFAId",u_webFAid)
@@ -829,13 +778,12 @@ public class ajax : IHttpHandler
         }
 
         info.userData = list;
-        context.Response.Write(info.ToJson());
-        context.Response.End();
+        return info;
     }
-    public bool IsReusable {
-        get {
-            return false;
-        }
+    /*
+public bool IsReusable {
+    get {
+        return false;
     }
-
+}*/
 }

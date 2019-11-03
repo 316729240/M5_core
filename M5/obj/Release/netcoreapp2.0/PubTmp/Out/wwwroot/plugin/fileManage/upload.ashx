@@ -19,7 +19,7 @@ public class upload : IHttpHandler
     {
         login.checkLogin();
 
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         if (login.value == null || !login.value.isAdministrator)
         {
             info.errNo = -1;

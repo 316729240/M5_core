@@ -266,9 +266,9 @@ $M.templateManage.edit = function (S) {
         });
         tree.root.addItem([{ ico: "fa-folder-o", text: "页面参数", type: 1 }, { ico: "fa-folder-o", text: "网站变量", type: 1 }, { ico: "fa-folder-o", text: "页面变量", type: 2 }, { ico: "fa-folder-o", text: "自定义标签", type: 3 }, { ico: "fa-folder-o", text: "自定义视图", type: 4}]);
         if (S.typeId == 3) {
-            tree.root.items[0].addItem({ text: "参数1", name: "parameter1", type: 21 });
-            tree.root.items[0].addItem({ text: "参数2", name: "parameter2", type: 21 });
-            tree.root.items[0].addItem({ text: "参数3", name: "parameter3", type: 21 });
+            tree.root.items[0].addItem({ text: "参数1", name: "parameter[0]", type: 21 });
+            tree.root.items[0].addItem({ text: "参数2", name: "parameter[1]", type: 21 });
+            tree.root.items[0].addItem({ text: "参数3", name: "parameter[2]", type: 21 });
         }
         $M.comm([
                 ["templateManage.readTemplateLable", { dataTypeId: S.datatypeId}],
@@ -376,15 +376,15 @@ $M.templateManage.label = function (back) {
             html += "datatypeId=" + moduleJson[moduleId.attr("selectedIndex")].saveDataType + "\n";
             html += "recordCount=" + recordCount.val() + "\n";
             html += "pageSize=" + (pageSize.val()=="1"?recordCount.val():"") + "\n";
-            html += "<template>";
+            html += "<htmlTemplate>";
             html += editBox.val();
-            html += "</template>";
+            html += "</htmlTemplate>";
             html += "-->";
             if (pageSize.val() > 0) {
                 html += "<!-- #PageBar#\n";
                 html += "pageBarId=" + labelId + "\n";
                 html += "showCount=12\n";
-                html += "<template>{LabelName=FirstPage Value=首页}&nbsp; {LabelName=Prev Value=上一页} &nbsp;{LabelName=PageNumber}&nbsp; {LabelName=Next Value=下一页} {LabelName=EndPage Value=尾页} 共[RecordCount]条记录 [PageNo]/[PageCount]</template>\n";
+                html += "<HtmlTemplate>{LabelName=FirstPage Value=首页}&nbsp; {LabelName=Prev Value=上一页} &nbsp;{LabelName=PageNumber}&nbsp; {LabelName=Next Value=下一页} {LabelName=EndPage Value=尾页} 共[RecordCount]条记录 [PageNo]/[PageCount]</HtmlTemplate>\n";
                 html += "-->";
             }
 
@@ -450,15 +450,15 @@ $M.templateManage.sqlLabel = function (back) {
             html += "sql=" + sqlBox.val() + "\n";
             html += "recordCount=" + recordCount.val() + "\n";
             html += "pageSize=" + (pageSize.val() == "1" ? recordCount.val() : "") + "\n";
-            html += "<template>";
+            html += "<htmlTemplate>";
             html += editBox.val();
-            html += "</template>";
+            html += "</htmlTemplate>";
             html += "-->";
             if (pageSize.val() > 0) {
                 html += "<!-- #PageBar#\n";
                 html += "pageBarId=" + labelId + "\n";
                 html += "showCount=12\n";
-                html += "<template>{LabelName=FirstPage Value=首页}&nbsp; {LabelName=Prev Value=上一页} &nbsp;{LabelName=PageNumber}&nbsp; {LabelName=Next Value=下一页} {LabelName=EndPage Value=尾页} 共[RecordCount]条记录 [PageNo]/[PageCount]</template>\n";
+                html += "<HtmlTemplate>{LabelName=FirstPage Value=首页}&nbsp; {LabelName=Prev Value=上一页} &nbsp;{LabelName=PageNumber}&nbsp; {LabelName=Next Value=下一页} {LabelName=EndPage Value=尾页} 共[RecordCount]条记录 [PageNo]/[PageCount]</HtmlTemplate>\n";
                 html += "-->";
             }
             back(html);

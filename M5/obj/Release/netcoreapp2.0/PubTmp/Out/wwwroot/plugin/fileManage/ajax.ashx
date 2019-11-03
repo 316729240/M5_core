@@ -1,4 +1,4 @@
-﻿1111<%@ WebHandler Language="C#" Class="ajax"%>
+﻿<%@ WebHandler Language="C#" Class="ajax"%>
 using System;
 using System.Web;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Xml;
 using System.Text.RegularExpressions;
 using System.IO;
 public class ajax : IHttpHandler
-{11
+{
     LoginInfo login = new LoginInfo();
     SafeReqeust s_request = new SafeReqeust(0, 0);
     public void ProcessRequest(HttpContext context)
@@ -29,7 +29,7 @@ public class ajax : IHttpHandler
         if (!login.value.isAdministrator) context.Response.End();
         if (m == "createDir")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             string path = s_request.getString("path");
             string name = s_request.getString("name");
             string rootPath = context.Server.MapPath(@"\" + Config.webPath);
@@ -53,7 +53,7 @@ public class ajax : IHttpHandler
         }
         else if (m == "editFileName")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             string path = s_request.getString("path");
             string oldName = s_request.getString("oldName");
             string name = s_request.getString("name");
@@ -71,7 +71,7 @@ public class ajax : IHttpHandler
         }
         else if (m == "editDir")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             string path = s_request.getString("path");
             string name = s_request.getString("name");
             string rootPath = context.Server.MapPath(@"\" + Config.webPath);
@@ -95,7 +95,7 @@ public class ajax : IHttpHandler
         }
         else if (m == "delDir")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             string path = "";
             path = context.Server.MapPath("~/" + s_request.getString("path")) + @"\";
             DirectoryInfo di = new DirectoryInfo(path);
@@ -112,7 +112,7 @@ public class ajax : IHttpHandler
         }
         else if (m == "delFile")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             string[] files = s_request.getString("files").Split(',');
             string path = s_request.getString("path");
             path = context.Server.MapPath("~/" + s_request.getString("path")) + @"\";
@@ -133,7 +133,7 @@ public class ajax : IHttpHandler
         }
         else if (m == "readDir")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             string path = s_request.getString("path");
             string rootPath = context.Server.MapPath(@"\" + Config.webPath);
             DirectoryInfo dir = new DirectoryInfo(rootPath + path);
@@ -152,7 +152,7 @@ public class ajax : IHttpHandler
         }
         else if (m == "readFiles")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             int pageNo = s_request.getInt("pageNo");
             if (pageNo == 0) pageNo = 1;
             string path = s_request.getString("path");
@@ -179,7 +179,7 @@ public class ajax : IHttpHandler
         }
         else if (m == "saveFile")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             Dictionary<string, object> value = new Dictionary<string, object>();
             string path = @"\" + Config.webPath + s_request.getString("path")+@"\";
             string fileName = s_request.getString("fileName");
@@ -199,7 +199,7 @@ public class ajax : IHttpHandler
         }
         else if (m == "getFile")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             Dictionary<string, object> value = new Dictionary<string, object>();
             string path = @"\" + Config.webPath + s_request.getString("path") + @"\";
             string fileName = s_request.getString("fileName");

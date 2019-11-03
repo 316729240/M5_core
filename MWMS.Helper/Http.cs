@@ -304,7 +304,7 @@ namespace Helper
                     cookiestr += cookies[i].Name;
                     cookiestr += "=";
 
-                    cookiestr += HttpContext.Current.Server.UrlEncode(cookies[i].Value);
+                    cookiestr += PageContext.Current.Server.UrlEncode(cookies[i].Value);
                     cookiestr += ";";
                 }
 

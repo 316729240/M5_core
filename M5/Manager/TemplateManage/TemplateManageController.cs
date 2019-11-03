@@ -54,7 +54,7 @@ namespace M5.Main.Manager
             {
                 if (viewName.Length > 1)
                 {
-                    double classId = (double)Sql.ExecuteScalar("select id from class where classId=12 and className=@className", new MySqlParameter[] { new MySqlParameter("className", viewName[0]) });
+                    double classId = (double)Sql.ExecuteScalar("select id from class where classId=12 and className=@className", new MySqlParameter[] { new MySqlParameter("className", _viewName[0]) });
                     info.userData = Sql.ExecuteDictionary("select B.id,B.title,B.u_html,B.u_editboxStatus,B.u_parameterValue,B.u_viewType,B.u_datatypeId,B.classId,B.u_p_form from template_view B where B.classId=@classId and B.title=@viewName",
                     new MySqlParameter[]{
                 new MySqlParameter("classId",classId),
@@ -155,7 +155,7 @@ namespace M5.Main.Manager
             string sql = "select id,classid,title,u_content,u_datatypeid,u_type,0 from template where  id=@id ", sql2 = "update template set u_content=@content where id=@id";
             if (mbType == 1)
             {
-                sql = "select B.id,B.classid,A.className+'.'+B.title,B.u_html,B.u_datatypeid,0,1,B.title from template_view B inner join Class A on B.classId=A.id where B.id=@id ";
+                sql = "select B.id,B.classid,A.className+'.'+B.title,B.u_html,B.u_datatypeid,0,1,B.title from template_view B inner join class A on B.classId=A.id where B.id=@id ";
                 sql2 = "update template_view set u_html=@content where id=@id";
             }
             MySqlDataReader rs = Sql.ExecuteReader(sql, new MySqlParameter[]{
@@ -243,7 +243,7 @@ namespace M5.Main.Manager
                 }
             }
             rs.Close();
-            rs = Sql.ExecuteReader("select B.id,B.classid,A.className+'.'+B.title,B.u_html,B.u_datatypeid,0,1 from template_view B inner join Class A on B.classId=A.id");
+            rs = Sql.ExecuteReader("select B.id,B.classid,A.className+'.'+B.title,B.u_html,B.u_datatypeid,0,1 from template_view B inner join class A on B.classId=A.id");
             while (rs.Read())
             {
                 string content = rs.GetString(3);

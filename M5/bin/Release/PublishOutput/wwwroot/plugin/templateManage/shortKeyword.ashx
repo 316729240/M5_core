@@ -13,7 +13,7 @@ public class shortKeyword : IHttpHandler {
         string m = context.Request.Form["_m"].ToString();
         if (m == "loadKeyword")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             List<key> list = new List<key>();
             loadDirict("sys",list,Config.systemVariables);
             loadDirict("config",list,Config.userConfig);

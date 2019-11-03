@@ -10,7 +10,7 @@
         },
         footer: [
             { xtype: "Button", text: "取 消", size: 2, onClick: function () { win.dialogResult = $M.dialogResult.cancel; win.remove(); return false; } }
-            ]
+        ]
     });
     var cancelFlag = false; //终止上传
     var label = win.append("<h2></h2>");
@@ -68,7 +68,9 @@
         xhr.open("POST", $M.config.appPath + "system/upload");
         xhr.send(fd);
     }
-    var inputFile = $("<input type='file' accept='image/*'  " + (S.isMultiple == false ? "" : "multiple='multiple'") + " style='display:none' >").appendTo($(document.body));
+    var accept = "image/*";
+    if (S.accept) accept = S.accept;
+    var inputFile = $("<input type='file' accept='" + accept + "'  " + (S.isMultiple == false ? "" : "multiple='multiple'") + " style='display:none' >").appendTo($(document.body));
     inputFile.on("change", function () {
         fileIndex = -1;
         win.show();

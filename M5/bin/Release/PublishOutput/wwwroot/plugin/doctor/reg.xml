@@ -1,0 +1,4 @@
+  <app title="医生信息" name="doctor" dataTypeId="22192242435" datetime="2015-9-5">
+    <include>edit.js</include>
+    <include>list.js</include>
+  </app>

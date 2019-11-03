@@ -24,13 +24,13 @@ public class ajax : IHttpHandler
         if (m == "read")
         {
             double id = s_request.getDouble("id");
-            ReturnValue info = new ReturnValue();
-            Dictionary<string,object> data=Helper.Sql.ExecuteDictionary("select A.title,A.classId,A.skinId,A.url,A.pic,B.* from maintable A inner join  article B on A.id=B.id where A.id=@id", new SqlParameter[] { new SqlParameter("id", id) });
+            ErrInfo info = new ErrInfo();
+            Dictionary<string,object> data=Helper.Sql.ExecuteDictionary("select A.title,A.classId,A.skinId,A.url,A.pic,B.* from mainTable A inner join  article B on A.id=B.id where A.id=@id", new SqlParameter[] { new SqlParameter("id", id) });
             data["url"] =TemplateEngine._replaceUrl(  Config.webPath + data["url"].ToString() + "." + BaseConfig.extension);
             info.userData = data;
             context.Response.Write(info.ToJson());
         }else if(m=="edit"){
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             RecordClass value = new RecordClass(22192428132,login.value);
             string keyword = s_request.getString("u_keyword");
             string u_defaultPic = s_request.getString("u_defaultPic");

@@ -1,0 +1,4 @@
+<app title="公告" name="announcement" type="1" datetime="2015-9-10 14:22:32" sn="AD63C35403B6D9DE9BBF283164DABF7D0E8933D6">
+  <include>announcement.js</include>
+  <cards color="2" size="6">card.html</cards>
+</app>

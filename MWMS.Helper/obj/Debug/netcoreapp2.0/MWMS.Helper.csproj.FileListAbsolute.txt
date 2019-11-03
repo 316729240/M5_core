@@ -49,3 +49,4 @@ E:\web\M5_core\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.AssemblyInfo.cs
 E:\web\M5_core\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.dll
 E:\web\M5_core\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.pdb
 E:\project\M5_core\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.csprojAssemblyReference.cache
+E:\web\M5_core\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.csprojResolveAssemblyReference.cache

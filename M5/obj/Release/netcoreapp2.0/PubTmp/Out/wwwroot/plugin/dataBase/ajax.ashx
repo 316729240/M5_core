@@ -44,9 +44,9 @@ public class ajax : IHttpHandler {
     }
     void getForm(HttpContext context)
     {
-        ReturnValue err = new ReturnValue();
+        ErrInfo err = new ErrInfo();
         string file = s_request.getString("file");
-        string configFile = HttpContext.Current.Server.MapPath("~" + Config.appPath +file);
+        string configFile = PageContext.Current.Server.MapPath("~" + Config.appPath +file);
         if (!System.IO.File.Exists(configFile))
         {
             err.errNo = -1;
@@ -59,14 +59,14 @@ public class ajax : IHttpHandler {
     }
     void readDatatype(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         double id=s_request.getFloat("id");
         info.userData=Sql.ExecuteDictionary("select tableName,tableStructure from datatype where id=@id", new SqlParameter[] { new SqlParameter("id", id) });
         context.Response.Write(info.ToJson());
     }
     void saveDatatype(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string data = s_request.getString("data");
         double id=s_request.getFloat("id");
         if (id == 0) id =double.Parse(API.GetId());
@@ -182,7 +182,7 @@ public class ajax : IHttpHandler {
     }
     void readBackupList(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         DirectoryInfo dir = new DirectoryInfo(context.Server.MapPath("~"+ Config.backupPath));
         List<string[]> list = new List<string[]>();
         if (dir.Exists) {
@@ -196,7 +196,7 @@ public class ajax : IHttpHandler {
     }
     void dataList(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string sql=s_request.getString("sql");
         int pageNo = s_request.getInt("pageNo");
         List<FieldInfo> flist =new List<FieldInfo>();
@@ -250,7 +250,7 @@ public class ajax : IHttpHandler {
     }
     void readTableList(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         List<string[]> list = new List<string[]>();
         DataSet rs1 = Sql.ExecuteDataset("select tablename,id,datatype from datatype where Attribute='N'");
         SqlDataReader rs = Sql.ExecuteReader("select name from sysobjects where (xtype = 'U') AND (name <> 'dtproperties')");
@@ -277,7 +277,7 @@ public class ajax : IHttpHandler {
     }
     void runScript(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string backName = s_request.getString("backName");
         string path = context.Server.MapPath("~" + Config.backupPath + backName);//备份文件
         string sqlScript = "";
@@ -339,7 +339,7 @@ public class ajax : IHttpHandler {
     }
     void readTableData(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string backName = s_request.getString("backName");
         string path = context.Server.MapPath("~" + Config.backupPath + backName);//备份文件
         string tableName = s_request.getString("tableName");
@@ -398,7 +398,7 @@ public class ajax : IHttpHandler {
     }
     void readTableStructure(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         if (!login.value.isAdministrator)
         {
             info.errNo = -1;
@@ -483,7 +483,7 @@ public class ajax : IHttpHandler {
     }
     void zipData(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
 
         string backName = s_request.getString("backName");
         string path = context.Server.MapPath("~" + Config.tempPath + "backDataBase/" + login.sessionId + "/");//临时文件夹
@@ -508,7 +508,7 @@ public class ajax : IHttpHandler {
     }
     void saveTableData(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string backName = s_request.getString("backName");
         string tableName = s_request.getString("tableName");
         int pageNo = s_request.getInt("pageNo");
@@ -537,7 +537,7 @@ public class ajax : IHttpHandler {
     }
     void saveTableStructure(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string path = context.Server.MapPath("~" + Config.tempPath + "backDataBase/" + login.sessionId + "/");//临时文件夹
         if (!System.IO.Directory.Exists(path)) System.IO.Directory.CreateDirectory(path);
         ArrayList tables = new ArrayList();

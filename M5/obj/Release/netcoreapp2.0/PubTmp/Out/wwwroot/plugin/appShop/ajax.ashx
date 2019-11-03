@@ -29,7 +29,7 @@ public class ajax : IHttpHandler {
         }
         if (!login.value.isAdministrator)
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             err.errNo = -1;
             err.errMsg = "没有权限";
             context.Response.Write(err.ToJson());
@@ -38,7 +38,7 @@ public class ajax : IHttpHandler {
         {
 
             List<string[]> list = new List<string[]>();
-            string appPath = HttpContext.Current.Server.MapPath("~" + Config.appPath);
+            string appPath = PageContext.Current.Server.MapPath("~" + Config.appPath);
             string[] f = Directory.GetDirectories(appPath);
             for (int i = 0; i < f.Length; i++)
             {
@@ -50,8 +50,8 @@ public class ajax : IHttpHandler {
                     list.Add(new string[] { name, datetime });
                 }
             }
-            ReturnValue err = new ReturnValue();
-            string http = Http.getUrl("http://upgrade5.mwms4.com/app/", System.Text.Encoding.UTF8);
+            ErrInfo err = new ErrInfo();
+            string http = Http.getUrl("http://"+ConfigurationManager.AppSettings["OfficialWeb"]+"app/", System.Text.Encoding.UTF8);
             JavaScriptSerializer ser = new JavaScriptSerializer();
             object[] arr = (object[])ser.DeserializeObject(http);
             int count = 0;
@@ -82,7 +82,7 @@ public class ajax : IHttpHandler {
         {
 
             List<string[]> list = new List<string[]>();
-    string appPath = HttpContext.Current.Server.MapPath("~" + Config.appPath);
+    string appPath = PageContext.Current.Server.MapPath("~" + Config.appPath);
     string[] f = Directory.GetDirectories(appPath);
             for (int i = 0; i < f.Length; i++)
             {
@@ -96,8 +96,8 @@ public class ajax : IHttpHandler {
                     //if (f[i] != null) appendFileXml(f[i], context);
                 }
             }
-            ReturnValue err = new ReturnValue();
-string http = Http.getUrl("http://upgrade5.mwms4.com/app/", System.Text.Encoding.UTF8);
+            ErrInfo err = new ErrInfo();
+string http = Http.getUrl("http://"+ConfigurationManager.AppSettings["OfficialWeb"]+"/app/", System.Text.Encoding.UTF8);
 JavaScriptSerializer ser = new JavaScriptSerializer();
 object[] arr = (object[])ser.DeserializeObject(http);
             for (int i = 0; i < arr.Length; i++)
@@ -124,20 +124,20 @@ bool installFlag = false;
         }
         else if (m == "uninstall")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
 string appName = s_request.getString("appName");
-string appPath = HttpContext.Current.Server.MapPath("~" + Config.appPath+appName+@"/");
+string appPath = PageContext.Current.Server.MapPath("~" + Config.appPath+appName+@"/");
             if (System.IO.Directory.Exists(appPath)) System.IO.Directory.Delete(appPath,true);
             context.Response.Write(err.ToJson());
         }
         else if (m == "setup")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
 string appName = s_request.getString("appName");
 string datetime= s_request.getString("datetime");
             try
             {
-                byte[] data = Http.getByte("http://upgrade5.mwms4.com/app/" + appName + ".zip");
+                byte[] data = Http.getByte("http://"+ConfigurationManager.AppSettings["OfficialWeb"]+"/app/" + appName + ".zip");
 string path = context.Server.MapPath("~" + Config.tempPath);
                 if (!System.IO.Directory.Exists(path)) System.IO.Directory.CreateDirectory(path);
                 System.IO.File.WriteAllBytes(path + appName + ".zip", data);

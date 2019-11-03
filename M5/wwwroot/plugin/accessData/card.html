@@ -1,0 +1,18 @@
+﻿<style>
+#onlinePayment_card{background-color: #45B6B0 !important;height:100px;
+    cursor:pointer;}
+#onlinePayment_card i {
+    font-size: 80px;
+    line-height: 35px;
+    display: inline-block;
+    text-align: center;
+    padding: 18px 0 0;
+    color: rgba(255, 255, 255, 0.9);
+    background-color: #45B6B0 !important;
+}
+#onlinePayment_card .message{color:#FFFFFF;position: relative;left:90px;top:0px;}
+</style>
+<div id="onlinePayment_card" onclick='$M.app.call("$M.accessData.list");'>
+<div><i  class="fa fa-list-ul"></i></div>
+<div class="message">访问记录</div>
+</div>

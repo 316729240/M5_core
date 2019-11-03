@@ -113,42 +113,42 @@
         public  void ERR301(string url)
         {
 
-       //     HttpContext.Current.Response.Status = "301 Moved Permanently";
-       //     HttpContext.Current.Response.AddHeader("Location", url);
-       //     HttpContext.Current.Response.End();
+       //     PageContext.Current.Response.Status = "301 Moved Permanently";
+       //     PageContext.Current.Response.AddHeader("Location", url);
+       //     PageContext.Current.Response.End();
         }
        // public HttpRequest Request = M5.PageContext.Current.Request;
-       // public HttpResponse Response = HttpContext.Current.Response;
+       // public HttpResponse Response = PageContext.Current.Response;
         public  void ERR404()
         {
-           // HttpContext.Current.Response.Status = "404 Not Found";
-           // HttpContext.Current.Response.End();
+           // PageContext.Current.Response.Status = "404 Not Found";
+           // PageContext.Current.Response.End();
         }
         public  void ERR404(string msg)
         {
             /*
-            HttpContext.Current.Response.Status = "404 Not Found";
+            PageContext.Current.Response.Status = "404 Not Found";
             if (M5.PageContext.Current.Request.Cookies["AdminClassID"] != null && M5.PageContext.Current.Request.Cookies["AdminClassID"].Value == "6") //管理员浏览网页时不使用缓存
             {
-                HttpContext.Current.Response.Write(msg);
+                PageContext.Current.Response.Write(msg);
             }
             else
             {
-                string file = HttpContext.Current.Server.MapPath("~/404.html");
+                string file = PageContext.Current.Server.MapPath("~/404.html");
                 if (File.Exists(file))
                 {
-                    HttpContext.Current.Response.Write(File.ReadAllText(file));
+                    PageContext.Current.Response.Write(File.ReadAllText(file));
                 }
                 else
                 {
-                    HttpContext.Current.Response.Write(msg);
+                    PageContext.Current.Response.Write(msg);
                 }
             }
-            HttpContext.Current.Response.End();*/
+            PageContext.Current.Response.End();*/
         }
         public void Redirect(string url)
         {
-            //HttpContext.Current.Response.Redirect(url);
+            //PageContext.Current.Response.Redirect(url);
         }
         /// <summary>
         /// Runs the template and returns the result.
@@ -234,7 +234,7 @@
         /// <param name="helper">The template writer helper.</param>
         public virtual void Write(TemplateWriter helper)
         {
-            helper.WriteTo(_context.CurrentWriter);
+            if(helper!=null) helper.WriteTo(_context.CurrentWriter);
         }
 
         /// <summary>

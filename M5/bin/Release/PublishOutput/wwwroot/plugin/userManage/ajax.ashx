@@ -36,7 +36,7 @@ public class ajax : IHttpHandler {
     }
     void editRole(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         double id = s_request.getDouble("id");
         string name = s_request.getString("name");
         if(id>-1 && id < 10)
@@ -64,7 +64,7 @@ public class ajax : IHttpHandler {
     }
     void delRole(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         double id = s_request.getDouble("id");
         if (id < 10) {
             info.errNo = -1;
@@ -84,7 +84,7 @@ public class ajax : IHttpHandler {
     }
     void editPassword(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string oldPassword = s_request.getString("oldPassword");
         string newPassword = s_request.getString("newPassword");
         info=UserClass.editPassword(login.value.id, oldPassword, newPassword, login.value);
@@ -92,14 +92,14 @@ public class ajax : IHttpHandler {
     }
     void setStatus(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         int status = s_request.getInt("status");
         info = UserClass.setState(s_request.getString("ids"), status==1);
         context.Response.Write(info.ToJson());
     }
     void resetPassword(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         double id = s_request.getDouble("id");
         string password = System.Guid.NewGuid().ToString().Replace("-", "").Substring(0, 8);
         info.userData = UserClass.editPassword(id,password,login.value);
@@ -108,7 +108,7 @@ public class ajax : IHttpHandler {
     }
     void getUser(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         double id = s_request.getDouble("id");
         info.userData = UserClass.get(id);
         context.Response.Write(info.ToJson());
@@ -116,13 +116,13 @@ public class ajax : IHttpHandler {
     }
     void delUser(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         info=UserClass.del(s_request.getString("ids"));
         context.Response.Write(info.ToJson());
     }
     void edit(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         UserInfo user = new UserInfo();
         user.id = s_request.getDouble("id");
         user.username = s_request.getString("uname");
@@ -144,7 +144,7 @@ public class ajax : IHttpHandler {
     }
     void readUserList(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         double roleId = s_request.getDouble("roleId");
         int pageNo = s_request.getInt("pageNo");
         int status = s_request.getInt("status");
@@ -175,7 +175,7 @@ public class ajax : IHttpHandler {
     }
     void readRole(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         info.userData = Sql.ExecuteArray("select id,name text from role ", null);
         context.Response.Write(info.ToJson());
     }

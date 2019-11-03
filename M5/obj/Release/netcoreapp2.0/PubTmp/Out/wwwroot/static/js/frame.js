@@ -110,6 +110,96 @@ $M.Control["Popover"] = function (BoxID, S) {
     $(document).on("mousedown", mousedown);
     if (S.style) A.css(S.style);
 };
+
+$M.Control["ToolTip"] = function (BoxID, S) {
+    var T = this;
+    var jiantou = "";
+    var A = $("<div class=\"tooltip\" tabindex=\"-1\" style=\"display:none;z-index:" + ($M.zIndex + 1) + "\"  ></div>").appendTo($(document.body));
+    var B = $("<div class=\"tooltip-arrow\" ></div>").appendTo(A);
+    var title = null;
+    //if (S.title) title = $("<h3 class=\"popover-title\" ></h3>").appendTo(A);
+    var content = $("<div class=\"tooltip-inner\"></div>").appendTo(A);
+    A.css({ "max-width": "1000px" });
+    T.container = content;
+    $M.BaseClass.apply(T, [S]);
+    T.show = function (obj) {
+        obj = $(obj);
+        var x1 = obj.offset().left, y1 = obj.offset().top, w1 = obj.width(), h1 = obj.height();
+        var x2 = A.offset().left, y2 = A.offset().top, w2 = A.width(), h2 = A.height();
+
+        var pageWidth = $(window).width(), pageHeight = $(window).height();
+        if (jiantou != "") A.removeClass(jiantou);
+        var x = 0, y = 0;
+        if (S.location == null) {
+            if (y1 > h2) { jiantou = "top"; }
+            else if ((pageWidth - x1 - w1) > w2) { jiantou = "right"; }
+            else if ((pageHeight - y1 - h1) > h2) { jiantou = "bottom"; }
+            else if (x1 > w2) { jiantou = "left"; }
+        } else {
+            jiantou = S.location;
+        }
+
+        switch (jiantou) {
+            case "top":
+                x = (x1 + w2) > pageWidth ? (x1 + w1 - w2) : x1;
+                y = y1 - h2;
+                //B.css({ left: x1 - x + w1 / 2 + "px", top: "" });
+                break;
+            case "right":
+                x = x1 + w1; y = y1; B.css({ top: h1 / 2 + "px", left: "" });
+                break;
+            case "bottom":
+                x = (x1 + w2) > pageWidth ? (x1 + w1 - w2) : x1;
+                y = y1 + h1;
+                //B.css({ left: x1 - x + w1 / 2 + "px", top: "" });
+                break;
+            case "left":
+                //alert([x1,w1,x1-w1]);
+                x = x1 - w2; y = (y1 - (h2 - h1) / 2 > 1) ? y1 - (h2 - h1) / 2 : 1; B.css({ top: y1 + h1 / 2 + "px", left: "" });
+                break;
+        }
+        if (jiantou != "") A.addClass(jiantou);
+        //$M.lock(A, true, T, false);
+        A.css({ left: x + "px", top: y + "px", opacity: 1, transition: '0.3s ease-out' });
+        A.show();
+        $M.focusElement = A[0];
+    };
+    T.close = function () {
+        A.hide();
+        A.css({ opacity: 0, transition: '0.3s ease-out' });
+        if (S.onClose) S.onClose(T, null);
+    };
+    T.dispose = function () {
+        if (T.controls) {
+            var count = T.controls.length;
+            for (var i = count - 1; i > -1; i--) {
+                T.controls[i].dispose();
+            }
+        }
+        $(document).unbind("keydown", keydown);
+        $(document).unbind("mousedown", mousedown);
+        A.remove();
+        if (A[0] == $M.focusElement || A.has($M.focusElement).length) $M.focusElement = null;
+        A = null;
+    };
+    T.loseFocus = function () {
+        T.remove();
+    };
+    var keydown = function (e) {
+        if (A[0] == $M.focusElement || A.has($M.focusElement).length) {
+            if (e.which == 27) {
+                T.remove();
+            }
+            if (S.onKeyDown) S.onKeyDown(T, e);
+        }
+    };
+    var mousedown = function (e) {
+        if (A.has(e.target).length == 0) T.close();
+    };
+    $(document).on("keydown", keydown);
+    $(document).on("mousedown", mousedown);
+    if (S.style) A.css(S.style);
+};
 $M.Control["ToolBar"] = function (BoxID, S) {
     var T = this;
     T.controls = [];
@@ -140,6 +230,7 @@ $M.Control["ToolBar"] = function (BoxID, S) {
 //事件
 //onLoad 模板加载完成
 //onSubmit 表单提交完成
+//onProgress 进度条
 //-----------------------------------------------------------
 $M.Control["Form"] = function(BoxID, S, CID) {
     var T = this;
@@ -175,21 +266,31 @@ $M.Control["Form"] = function(BoxID, S, CID) {
         }
     };
     var submitForm = function() {
-        if (S.onBeginSubmit) S.onBeginSubmit(T);
+        if (S.onBeginSubmit) {
+            if (S.onBeginSubmit(T) == false) return;
+        }
         data = {};
         var list = A.find("input");
 
         for (var i = 0; i < list.length; i++) {
+            var name = $(list[i]).attr("name");
             if ($(list[i]).attr("type") == "file") {
-                data[$(list[i]).attr("name")] = $(list[i])[0].files[0];
+                data[name] = $(list[i])[0].files;
             } else if ($(list[i]).attr("type") == "checkbox") {
-                data[$(list[i]).attr("name")] = $(list[i]).is(':checked') ? $(list[i]).val() : "";
+                if ($(list[i]).is(':checked')) {
+                    if (data[name] == null) {
+                        data[name] = [$(list[i]).val()];
+                    } else {
+                        data[name][data[name].length] = $(list[i]).val();
+                    }
+                }
+                //data[name] = $(list[i]).is(':checked') ? $(list[i]).val() : "";
             } else if ($(list[i]).attr("type") == "radio") {
                 if ($(list[i]).is(':checked')) {
-                    data[$(list[i]).attr("name")] = $(list[i]).val();
+                    data[name] = $(list[i]).val();
                 }
             } else {
-                data[$(list[i]).attr("name")] = $(list[i]).val();
+                data[name] = $(list[i]).val();
             }
         }
         list = A.find("select");
@@ -205,8 +306,24 @@ $M.Control["Form"] = function(BoxID, S, CID) {
         if (S.command) {
             $M.comm(S.command, data, function(userData) { if (S.onSubmit) S.onSubmit(T, { "formData": data, "returnData": userData }); }, S.onSubmitErr);
         } else if (S.url) {
+            /*if (A.attr("enctype") == "multipart/form-data") {
+            var fd = new FormData();
+            for (var o in data) {
+            fd.append(o, data[o]);
+            }
+            $M.ajax(S.url, fd, function(userData) {
+            if (S.onSubmit) S.onSubmit(T, { "formData": data, "returnData": userData });
+            });
+            } else {
+            $M.ajax(S.url, data, function(userData) {
+            if (S.onSubmit) S.onSubmit(T, { "formData": data, "returnData": userData });
+            });
+            }*/
             $M.ajax(S.url, data, function(userData) {
                 if (S.onSubmit) S.onSubmit(T, { "formData": data, "returnData": userData });
+            }, null, function(e) {
+                var percent = Math.round(e.loaded / e.total * 100);
+                if (S.onProgress != null) S.onProgress(T, { value: percent, loaded: e.loaded, total: e.total });
             });
         } else {
             S.onSubmit(T, { "formData": data });
@@ -234,19 +351,38 @@ $M.Control["Form"] = function(BoxID, S, CID) {
 
     if (A.validate) {
         A.validate({
-            errorClass: "help-block",
+            errorClass: "label-error",
             errorElement: "span",
             highlight: function(element) {
-                $(element).closest('div').addClass("has-error");
+                if (element._control) {
+                    $(element._control).closest('div').addClass("has-error");
+                } else {
+                    $(element).closest('div').addClass("has-error");
+                }
             },
             unhighlight: function(element) {
-                $(element).closest('div').removeClass("has-error");
+                if (element._control) {
+                    $(element._control).closest('div').removeClass("has-error");
+                } else {
+                    $(element).closest('div').removeClass("has-error");
+                }
 
             },
-            errorPlacement: errorPlacement,
+            errorPlacement: function(error, element) {
+                if (S.errshowtype != "0") {
+                    if (element[0]._control) {
+                        error.insertAfter($(element[0]._control));
+                    }
+                    else {
+                        error.insertAfter($(element[0]));
+                    }
+                }
+            },
             invalidHandler: invalidHandler,
             submitHandler: submitForm
         });
+    } else {
+        alert("没有加载插件jquery.validate.js");
     }
     T.submit = function() {
         A.submit();
@@ -605,6 +741,7 @@ $M.Control["Tab"] = function (BoxID, S, CID) {
                     dockC[0].css({ width: w + "px", height: (h - countHeight - marginHeight) + "px" });
                 }
             }
+            content.height(h);
         };
         T2.container = content;
         $M.BaseClass.apply(T2, [S2]);
@@ -620,7 +757,7 @@ $M.Control["Tab"] = function (BoxID, S, CID) {
             if (a == "text") caption.html(b);
             return (S2[a]);
         };
-
+		if(S2.style)content.css(S2.style);
     };
     T.addItem = function (S2) {
         if ($.isArray(S2)) {

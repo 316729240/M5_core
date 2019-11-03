@@ -1,0 +1,4 @@
+<app title="访问记录" name="accessData" type="1" datetime="2015-12-7 13:21:47" >
+  <include>accessData.js</include>
+  <cards color="2" size="2" >card.html</cards>
+</app>

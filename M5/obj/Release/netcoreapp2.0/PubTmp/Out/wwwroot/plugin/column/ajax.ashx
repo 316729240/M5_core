@@ -22,7 +22,7 @@ public class ajax : IHttpHandler
         string m = context.Request.Form["_m"].ToString();
         if (m == "editDirName")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             double id = s_request.getDouble("id");
             string dirName = s_request.getString("dirName");
             info = ColumnClass.editDirName(id, dirName, login.value);
@@ -30,7 +30,7 @@ public class ajax : IHttpHandler
         }
         else if (m == "editModuleDirName")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             double id = s_request.getDouble("id");
             string dirName = s_request.getString("dirName");
             info = ModuleClass.editDirName(id, dirName, login.value);
@@ -46,7 +46,7 @@ public class ajax : IHttpHandler
         }
         else if (m == "moduleInfo")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             double moduleId = s_request.getDouble("id");
             Permissions p = login.value.getModulePermissions(moduleId);
             if (!p.read)
@@ -70,7 +70,7 @@ public class ajax : IHttpHandler
         }
         else if (m == "columnInfo")
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
             ColumnInfo info = ColumnClass.get(s_request.getDouble("id"));
             if (info == null)
             {
@@ -97,7 +97,7 @@ public class ajax : IHttpHandler
 
     void setColumnStatus(HttpContext context)
     {
-        ReturnValue err = new ReturnValue();
+        ErrInfo err = new ErrInfo();
         double classId = s_request.getDouble("columnId");
         int status=s_request.getInt("status");
         Permissions p = login.value.getColumnPermissions(classId);
@@ -147,7 +147,7 @@ public class ajax : IHttpHandler
         info.info = s_request.getString("info");
         info.titleRepeat = s_request.getInt("titleRepeat");
 
-        ReturnValue err = new ReturnValue();
+        ErrInfo err = new ErrInfo();
         Permissions p = login.value.getModulePermissions(info.id);
         if (!p.all)
         {
@@ -191,7 +191,7 @@ public class ajax : IHttpHandler
         info._domainName = s_request.getString("_domainName");
 
         info.titleRepeat = s_request.getInt("titleRepeat");
-        ReturnValue err = new ReturnValue();
+        ErrInfo err = new ErrInfo();
         Permissions p = null;
         if (info.classId == 7 )
         {

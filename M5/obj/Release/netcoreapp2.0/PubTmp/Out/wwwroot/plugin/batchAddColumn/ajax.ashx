@@ -28,7 +28,7 @@ public class ajax : IHttpHandler
         }
         else if (m == "addColumn")
         {
-            ReturnValue errinfo = new ReturnValue();
+            ErrInfo errinfo = new ErrInfo();
             double moduleId = s_request.getDouble("moduleId");
             double classId = s_request.getDouble("classId");
             double dataTypeId = s_request.getDouble("dataTypeId");
@@ -79,7 +79,7 @@ public class ajax : IHttpHandler
                     info.moduleId =moduleId;
                     info.dirName = dirname;
                     info.saveDataType = dataTypeId;
-                    ReturnValue err = new ReturnValue();
+                    ErrInfo err = new ErrInfo();
                     if (classId <1)
                     {
                         err.errNo = -1;

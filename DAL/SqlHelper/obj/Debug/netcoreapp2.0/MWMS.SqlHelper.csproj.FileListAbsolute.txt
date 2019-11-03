@@ -47,3 +47,4 @@ E:\web\M5_core\DAL\SqlHelper\obj\Debug\netcoreapp2.0\MWMS.SqlHelper.AssemblyInfo
 E:\web\M5_core\DAL\SqlHelper\obj\Debug\netcoreapp2.0\MWMS.SqlHelper.AssemblyInfo.cs
 E:\web\M5_core\DAL\SqlHelper\obj\Debug\netcoreapp2.0\MWMS.SqlHelper.dll
 E:\web\M5_core\DAL\SqlHelper\obj\Debug\netcoreapp2.0\MWMS.SqlHelper.pdb
+E:\web\M5_core\DAL\SqlHelper\obj\Debug\netcoreapp2.0\MWMS.SqlHelper.csprojResolveAssemblyReference.cache

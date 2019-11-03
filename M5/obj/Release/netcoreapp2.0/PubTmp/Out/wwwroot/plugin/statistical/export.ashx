@@ -52,7 +52,7 @@ public class ajax : IHttpHandler {
             return;
         }
         
-        string sql = "select A.title,A.url from maintable A ";
+        string sql = "select A.title,A.url from mainTable A ";
         string mainWhere="";
         if (type == 0) mainWhere += " orderid>-1 ";
         else if (type == 1) mainWhere += " orderid==-1 ";

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29418.71
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M5.Main", "M5\M5.Main.csproj", "{5AB69CD9-FAB0-4A3E-8E89-D9F7D879A71F}"
 EndProject
@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Article", "MWMS.Plug
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.BatchAddColumn", "MWMS.Plugin\Plugin.BatchAddColumn\Plugin.BatchAddColumn.csproj", "{72B6D9D0-7D24-4256-8EBC-94DA6E167EF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MWMS.Template", "MWMS.Template\MWMS.Template\MWMS.Template.csproj", "{138517ED-C613-4EA4-90AD-6E109D4A6ABF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MWMS.Template", "MWMS.Template\MWMS.Template\MWMS.Template.csproj", "{138517ED-C613-4EA4-90AD-6E109D4A6ABF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Doctor", "Plugin.Doctor\Plugin.Doctor.csproj", "{1BF014A2-4EAA-4E5E-B4F3-C8E2FE8E4727}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +93,10 @@ Global
 		{138517ED-C613-4EA4-90AD-6E109D4A6ABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{138517ED-C613-4EA4-90AD-6E109D4A6ABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{138517ED-C613-4EA4-90AD-6E109D4A6ABF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BF014A2-4EAA-4E5E-B4F3-C8E2FE8E4727}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BF014A2-4EAA-4E5E-B4F3-C8E2FE8E4727}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BF014A2-4EAA-4E5E-B4F3-C8E2FE8E4727}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BF014A2-4EAA-4E5E-B4F3-C8E2FE8E4727}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -107,6 +113,7 @@ Global
 		{0A7EFE2A-8CD3-4E09-84B6-00942D3B93EF} = {96C454E5-8B9E-43F2-9340-54726C021493}
 		{72B6D9D0-7D24-4256-8EBC-94DA6E167EF9} = {96C454E5-8B9E-43F2-9340-54726C021493}
 		{138517ED-C613-4EA4-90AD-6E109D4A6ABF} = {0E7249C0-B020-448D-9BF8-8A069D6E30DA}
+		{1BF014A2-4EAA-4E5E-B4F3-C8E2FE8E4727} = {96C454E5-8B9E-43F2-9340-54726C021493}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B09C79E7-57DD-4DF7-ABE3-BB945B6DD0D8}

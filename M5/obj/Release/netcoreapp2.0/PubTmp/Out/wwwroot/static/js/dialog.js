@@ -26,6 +26,17 @@ $(document).on("focusin.M4.dialog", function (e) {
         }
     }
 });
+$M.msg = function(message, call) {
+    var win = null;
+    win = $(document.body).addControl({
+        xtype: "Window",
+        isModal: false,
+        onClose: function() { if (call) call(); }
+    });
+    win.append("<div class=\"alert\">" + message + "</div>");
+    win.show();
+    setTimeout(win.remove, 2000);
+};
 $M.alert = function (message, call, S) {
     var win = null;
     if (S == null) S = [];

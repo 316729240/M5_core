@@ -1,0 +1,4 @@
+<app title="公告通知" name="notice" type="1" dataTypeId="22192453435"  datetime="2015-9-5 21:23:59" sn="AD63C35403B6D9DE9BBF283164DABF7D0E8933D6">
+  <include>notice.js</include>
+  <cards size="2">card.html</cards>
+</app>

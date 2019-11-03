@@ -15,6 +15,8 @@ using M5;
 using M5.Common;
 using MWMS.SqlHelper;
 using MySql.Data.MySqlClient;
+using Helper;
+using M5.Base;
 
 namespace MWMS
 {

@@ -10,6 +10,7 @@ using System.Web;
 using System.Xml;
 using MySql.Data.MySqlClient;
 using Microsoft.AspNetCore.Http;
+using M5.Base;
 
 namespace M5.Common
 {

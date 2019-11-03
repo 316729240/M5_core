@@ -76,7 +76,7 @@ namespace M5.Main
                 return;
             }
             #endregion
-            HttpContext.Current.Response.ContentType = "text/html; charset=" + System.Text.Encoding.Default.HeaderName;
+            PageContext.Current.Response.ContentType = "text/html; charset=" + System.Text.Encoding.Default.HeaderName;
             //injection(Request);//注入过滤
             string acceptTypes = Request.Headers["Accept"];
             if (!string.IsNullOrEmpty(acceptTypes) && acceptTypes.ToLower().IndexOf("text/vnd.wap.wml") > -1)
@@ -125,8 +125,8 @@ namespace M5.Main
             /*
             if (BaseConfig.mobileRedirectType == 1)
             {
-                HttpContext.Current.Response.Write("<script>location.href='" + url + "';</script>");
-                HttpContext.Current.Response.End();
+                PageContext.Current.Response.Write("<script>location.href='" + url + "';</script>");
+                PageContext.Current.Response.End();
             }
             else if (BaseConfig.mobileRedirectType == 2)
             {
@@ -134,7 +134,7 @@ namespace M5.Main
             }
             else
             {
-                HttpContext.Current.Response.Redirect(url);
+                PageContext.Current.Response.Redirect(url);
             }*/
         }
         public static string urlZhuanyi(Uri rUrl, ref bool isMobilePage, ref string virtualWebDir)
@@ -295,8 +295,8 @@ namespace M5.Main
         public string getHtml(HttpRequest request, string virtualWebDir, string url, bool isMobile)
         {
             Config.systemVariables["webUrl"] = "http://" +request.Url();
-            //            Config.systemVariables["webUrl"] = "http://" + HttpContext.Current.Request.Url.Authority + Config.webPath;
-            //Config.systemVariables["pageUrl"] = HttpContext.Current.Request.Url.AbsoluteUri.ToString();// "http://" + HttpContext.Current.Request.Url.Authority +""+ Config.webPath;
+            //            Config.systemVariables["webUrl"] = "http://" + PageContext.Current.Request.Url.Authority + Config.webPath;
+            //Config.systemVariables["pageUrl"] = PageContext.Current.Request.Url.AbsoluteUri.ToString();// "http://" + PageContext.Current.Request.Url.Authority +""+ Config.webPath;
 
             Regex r = new Regex(@"(?<=/)((.[^/]*)_((\d){1,5}))(." + BaseConfig.extension + ")", RegexOptions.IgnoreCase);
             string newUrl = r.Replace(url, new MatchEvaluator(_replaceUrl));
@@ -336,7 +336,7 @@ namespace M5.Main
                 /*
                 TemplateServiceConfiguration templateConfig = new TemplateServiceConfiguration
                 {
-                    CatchPath = HttpContext.Current.Server.MapPath("~" + Config.cachePath + "assembly/")
+                    CatchPath = PageContext.Current.Server.MapPath("~" + Config.cachePath + "assembly/")
                 };
                 Razor.SetTemplateService(new TemplateService(templateConfig));
                 RazorEngine.Razor.Compile(info.u_content, typeof(object[]), info.id.ToString(),false);

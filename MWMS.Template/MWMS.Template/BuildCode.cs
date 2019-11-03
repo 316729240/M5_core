@@ -17,6 +17,8 @@ using M5;
 using M5.Common;
 using System.Collections;
 using MWMS.DAL.Datatype;
+using Helper;
+using M5.Base;
 
 namespace MWMS.Template
 {
@@ -51,21 +53,7 @@ namespace MWMS.Template
         }
         string compile(string code, bool flag)
         {
-
-            Regex r = new Regex(@"(\b(sys|config))\.((\w|\.|\[|\]){1,30})(\(|)", RegexOptions.IgnoreCase);
-            code = r.Replace(code, new MatchEvaluator(_variable2));
-
-            r = new Regex(@"\bpage\.(\w*)", RegexOptions.IgnoreCase);
-            code = r.Replace(code, new MatchEvaluator(_variable5));
-            r = new Regex(@"view\.(.*?)\)", RegexOptions.IgnoreCase);
-            code = r.Replace(code, new MatchEvaluator(_variable3));
-
-
-            // TemplateServiceConfiguration templateConfig = new TemplateServiceConfiguration
-            // {
-            //     CatchPath = PageContext.Current.Server.MapPath("~" + Config.cachePath + "assembly/")
-            // };
-            //Razor.SetTemplateService(new TemplateService(templateConfig));
+            if (code == null) code = "";
             TemplateServiceConfiguration templateConfig = new TemplateServiceConfiguration
             {
                 CatchPath = Tools.MapPath("~" + Config.cachePath + "assembly/"),
@@ -82,6 +70,15 @@ namespace MWMS.Template
 
             };
             Razor.SetTemplateService(new TemplateService(templateConfig));
+            if (flag) { 
+             Regex r = new Regex(@"(\b(sys|config))\.((\w|\.|\[|\]){1,30})(\(|)", RegexOptions.IgnoreCase);
+            code = r.Replace(code, new MatchEvaluator(_variable2));
+
+            r = new Regex(@"\bpage\.(\w*)", RegexOptions.IgnoreCase);
+            code = r.Replace(code, new MatchEvaluator(_variable5));
+            r = new Regex(@"view\.(.*?)\)", RegexOptions.IgnoreCase);
+            code = r.Replace(code, new MatchEvaluator(_variable3));
+            
             LoginInfo user = new LoginInfo();
             string headCode = "@using System.Collections\r\n" +
                 "@using MWMS.Template\r\n" +
@@ -94,8 +91,8 @@ namespace MWMS.Template
 
             r = new Regex(@"(<|&lt;)!-- #(.*?)#[\s\S]*?--(>|&gt;)", RegexOptions.IgnoreCase);
             code = r.Replace(code, new MatchEvaluator(_variable4));
-            //DateTime beforDT = System.DateTime.Now;
-
+                //DateTime beforDT = System.DateTime.Now;
+            }
             RazorEngine.Razor.Compile(code, typeof(object[]), _fileName, flag);
             //TimeSpan ts = DateTime.Now - beforDT;
             //double l = ts.TotalMilliseconds;
@@ -113,6 +110,7 @@ namespace MWMS.Template
         {
             string[] item = viewPath.Split('.');
             Dictionary<string, object> list = (Dictionary<string, object>)Config.viewVariables[item[0]];
+            if (!list.ContainsKey(item[1])) return "'"+ viewPath + "'没有找到";
             object[] obj = (object[])list[item[1]];
             TemplateServiceConfiguration templateConfig = new TemplateServiceConfiguration
             {
@@ -427,7 +425,7 @@ namespace MWMS.Template
         public static List<Dictionary<string, dynamic>> getLabel(string labelId, string html, object _moduleId, object _classId, int pageSize, int recordCount, object _datatypeId, int orderBy, string _fields, string attribute, object _addWhere, bool debug, Hashtable p1, ref Dictionary<string, object> page)
         {
             double moduleId = _moduleId.ToDouble(), classId = _classId.ToDouble(), datatypeId = _datatypeId.ToDouble();
-            string addWhere = _addWhere.ToStr();
+            string addWhere = _addWhere.ToStr().Trim();
             StringBuilder _sql = new StringBuilder("");
             object temp_sql = addWhere;
             if (temp_sql != null) addWhere = temp_sql.ToString();
@@ -603,7 +601,7 @@ namespace MWMS.Template
             if (pageSize > 0)
             {
                 PageBar p = new PageBar();
-                p.RecordCount = (int)Sql.ExecuteScalar(countSql + where, sql_p);
+                p.RecordCount = int.Parse(Sql.ExecuteScalar(countSql + where, sql_p).ToString());
                 SafeReqeust request = new SafeReqeust(0, 0);
                 pageNo = page["_pageNo"] == null ? 1 : (int)page["_pageNo"];
                 p.PageSize = pageSize;
@@ -638,7 +636,12 @@ namespace MWMS.Template
                 //rs1 = Sql.ExecuteReader(sql + where.ToString() + " " + orderByStr);
                 //rs1 = Sql.ExecuteArray(sql, sql_p);
             }
-            return GetDataList(tableInfo, sql, sql_p);
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+            sw.Start();
+            List<Dictionary<string, dynamic>> list= GetDataList(tableInfo, sql, sql_p);
+            sw.Stop();
+            Console.WriteLine("时间为：" + sw.Elapsed.TotalMilliseconds);
+            return list;
         }
         static List<Dictionary<string, dynamic>> GetDataList(TableStructure table, string sql, MySqlParameter[] p)
         {
@@ -651,30 +654,39 @@ namespace MWMS.Template
                 {
                     string name = rs.GetName(i);
                     Field field = null;
-                    try
+                    if (table.Fields.ContainsKey(name))
                     {
+
                         field = table.Fields[name];
-                    }
-                    catch { }
-                    if (name == "url")
-                    {
-                        string url = rs[i].ToStr();
-                        if (url.Length > 0 && url.Substring(url.Length - 1) == @"/")
+
+                        if (field == null)
                         {
-                            attr[name] = Config.webPath + url;
+                            attr[name] = rs[i];
                         }
                         else
                         {
-                            attr[name] = Config.webPath + url + "." + BaseConfig.extension;
+                            attr[name] = field.Convert(rs[i], Field.ConvertType.UserData);
                         }
-                    }
-                    else if (field == null)
-                    {
-                        attr[name] = rs[i];
                     }
                     else
                     {
-                        attr[name] = field.Convert(rs[i], Field.ConvertType.UserData);
+
+                        if (name == "url")
+                        {
+                            string url = rs[i].ToStr();
+                            if (url.Length > 0 && url.Substring(url.Length - 1) == @"/")
+                            {
+                                attr[name] = Config.webPath + url;
+                            }
+                            else
+                            {
+                                attr[name] = Config.webPath + url + "." + BaseConfig.extension;
+                            }
+                        }
+                        else
+                        {
+                            attr[name] = rs[i];
+                        }
                     }
                 }
                 list.Add(attr);
@@ -697,8 +709,8 @@ namespace MWMS.Template
             }
             if (type == 0)
             {
-                value = value.Replace("\"", "\\\"");
-                value = "\"" + value + "\"";
+                //value = value.Replace("\"", "\\\"");
+                value = "\"" + value + " \"";
             }
             else if (type == 1)
             {
@@ -850,11 +862,12 @@ namespace MWMS.Template
                 str = str.Replace("@", "");
                 return code.ToString();
             }
-            Regex r = new Regex(@"\@((\w|\.|\[|\]){1,30})", RegexOptions.IgnoreCase);
+            //Regex r = new Regex(@"\@((\w|\.|\[|\]){1,30})", RegexOptions.IgnoreCase);
+            Regex r = new Regex(@"@([^ ]*)", RegexOptions.IgnoreCase);
             int index = 0;
             str = r.Replace(str, new MatchEvaluator((Match m) => {
                 string key = m.Value.Substring(1);
-                code.Append(String.Format("p[\"p{0}\"]=@{1};\r\n", index, key));
+                code.Append(String.Format("p[\"p{0}\"]={1};\r\n", index, key));
                 string r1 = "@p" + index.ToString();
                 index++;
                 return r1;

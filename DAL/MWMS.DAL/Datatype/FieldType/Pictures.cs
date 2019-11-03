@@ -1,4 +1,4 @@
-﻿
+﻿using Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +10,14 @@ using MWMS.Helper;
 
 namespace MWMS.DAL.Datatype.FieldType
 {
-    public class Picture:File
+    public class Picture : File
     {
         /// <summary>
         /// 缩略图路径
         /// </summary>
         public string minPath = "";
     }
-    public class Pictures : Picture,IList<Picture>
+    public class Pictures : Picture, IList<Picture>
     {
         List<Picture> _list = new List<Picture>();
         /// <summary>
@@ -27,23 +27,28 @@ namespace MWMS.DAL.Datatype.FieldType
         /// <returns></returns>
         public static Pictures Parse(string data)
         {
+            if (data == "") return null;
             Pictures files = new Pictures();
             List<Picture> list = new List<Picture>();
-
-            try
+            if (data.Substring(0, 1) == "[")
             {
-                
                 list = data.ParseJson<List<Picture>>();
+            }
+            else if (data.Substring(0, 1) == "{")
+            {
+                Picture pic = data.ParseJson<Picture>();
                 if (list == null) return null;
-            }catch { return null; }
-            if (list.Count == 0) { 
-                try {
+            }
+            if (list == null) return null;
+            if (list.Count == 0)
+            {
+                try
+                {
                     list.Add(data.ParseJson<Picture>());
-                } catch { }
+                }
+                catch { }
             }
             //
-            try
-            {
                 foreach (Picture file in list)
                 {
                     if (file.isDel == 0)
@@ -53,25 +58,16 @@ namespace MWMS.DAL.Datatype.FieldType
                     else
                     {
                         #region 删除无效文件 
-                        try
-                        {
-                            string path =  Tools.MapPath(file.path);
+                            string path = Tools.MapPath("~" + file.path);
                             if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
-                            string minpath = Tools.MapPath(file.minPath);
+                            string minpath = Tools.MapPath("~" + file.minPath);
                             if (System.IO.File.Exists(minpath)) System.IO.File.Delete(minpath);
-                        }
-                        catch
-                        {
 
-                        }
                         #endregion
                     }
                 }
-            }
-            catch
+            if (files.Count > 0)
             {
-            }
-            if (files.Count > 0) {
                 #region 设置默认值
                 files.title = files[0].title;
                 files.path = files[0].path;
@@ -95,7 +91,7 @@ namespace MWMS.DAL.Datatype.FieldType
         {
             return path;
         }
-        public int Count {get{return _list.Count;} }
+        public int Count { get { return _list.Count; } }
 
         public bool IsReadOnly
         {

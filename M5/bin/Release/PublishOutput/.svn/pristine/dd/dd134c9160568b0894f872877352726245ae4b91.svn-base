@@ -1,0 +1,36 @@
+﻿<style>
+    #notice_card {
+        background-color: #45B6B0 !important;
+        height: 100px;
+        cursor: pointer;
+    }
+
+        #notice_card i {
+            font-size: 80px;
+            line-height: 35px;
+            display: inline-block;
+            text-align: center;
+            padding: 18px 0 0;
+            color: rgba(255, 255, 255, 0.9);
+            background-color: #45B6B0 !important;
+        }
+
+        #notice_card .message {
+            color: #FFFFFF;
+            position: relative;
+            left: 90px;
+            top: 0px;
+        }
+    #notice_card .badge {position: absolute;left:82px;top:5px;display:none;   }
+</style>
+<div id="notice_card" onclick='$M.app.call("$M.notice.messageList");'>
+    <div><span class="badge badge-danger" title="未读消息">3</span><i class="fa fa-envelope-o"></i></div>
+    <div class="message">我的消息</div>
+</div>
+<script>
+    $M.comm("notice.messageCount", null, function (json) {
+        if (json == 0) return;
+        $("#notice_card .badge").show(200);
+        $("#notice_card .badge").html(json);
+    })
+</script>

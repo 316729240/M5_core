@@ -201,7 +201,7 @@ namespace M5.Common
         {
             Config.systemVariables.Clear();
             XmlNodeList list = Config.loadFile("systemVariables.config");
-            //string xml = API.GetFileText(HttpContext.Current.Server.MapPath("~" + Config.configPath + "systemVariables.config"));
+            //string xml = API.GetFileText(PageContext.Current.Server.MapPath("~" + Config.configPath + "systemVariables.config"));
             for (int i = 0; i < list.Count; i++)
             {
                 Config.systemVariables[list[i].Attributes["name"].Value] = list[i].InnerText;

@@ -1,5 +1,5 @@
-F:\web\my\MWMS\M5_core\M5
+E:\web\M5_core\M5
 --output-path=obj\Any CPU\Release\netcoreapp2.0\
 --application-name=M5.Main
---content-root=F:\web\my\MWMS\M5_core\M5
+--content-root=E:\web\M5_core\M5
 --file=

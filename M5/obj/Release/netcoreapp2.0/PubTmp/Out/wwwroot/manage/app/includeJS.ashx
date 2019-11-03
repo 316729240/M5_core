@@ -17,7 +17,7 @@ public class api : IHttpHandler {
         context.Response.Write("$M.config.appPath=\"" + Config.webPath + Config.appPath + "\";\r\n");
         context.Response.Write("$M.config.sysAppPath=\"" + Config.webPath + Config.appPath + "system/\""+";\r\n");
         context.Response.Write("$M.config.backupDay=" + BaseConfig.backupDay.ToString() + ";\r\n");
-        string appPath =  HttpContext.Current.Server.MapPath("~" +Config.appPath);
+        string appPath =  PageContext.Current.Server.MapPath("~" +Config.appPath);
         string[] f = Directory.GetDirectories(appPath);
         doc = new XmlDocument();
         interfaceDoc = new XmlDocument();

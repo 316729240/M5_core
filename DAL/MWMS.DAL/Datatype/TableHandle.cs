@@ -50,7 +50,7 @@ namespace MWMS.DAL.Datatype
                 fieldList += ((count > 0) ? "A." : "B.") + _fields[i];
             }
             MySqlParameter[] _p = GetParameter(p);
-            MySqlDataReader rs = Sql.ExecuteReader("select " + fields + " from [mainTable] A inner join [" + TableName + "] B on A.id=B.id where " + where + " " + desc, _p);
+            MySqlDataReader rs = Sql.ExecuteReader("select " + fields + " from maintable A inner join " + TableName + " B on A.id=B.id where " + where + " " + desc, _p);
             bool flag = false;
             if (rs.Read())
             {
@@ -100,8 +100,9 @@ namespace MWMS.DAL.Datatype
             Dictionary<string, object> columnModel = column.GetModel(columnId, "dirPath,dirName,rootId");
             Dictionary<string, object> channelModel = column.GetModel(columnModel["rootId"].ToDouble(), "dirName");
             //StringBuilder url = new StringBuilder(BaseConfig.contentUrlTemplate);
-            StringBuilder url = new StringBuilder("");
-            url.Replace("$id", "'+convert(varchar(20),convert(decimal(18,0),id))+'");
+            StringBuilder url = new StringBuilder("/$column.dirPath/$id.$extension");
+            //url.Replace("$id", "'+convert(varchar(20),convert(decimal(18,0),id))+'");
+            url.Replace("$id", "',id,'");
             url.Replace("$create.year", "'+convert(varchar(4),year(createdate))+'");
             url.Replace("$create.month", "'+right('00'+cast(month(createdate) as varchar),2)+'");
             url.Replace("$create.day", "'+right('00'+cast(day(createdate) as varchar),2)+'");
@@ -109,7 +110,7 @@ namespace MWMS.DAL.Datatype
             url.Replace("$column.dirName", columnModel["dirName"].ToStr());
             url.Replace("$channel.dirName", channelModel["dirName"].ToStr());
             url.Replace(".$extension", "");
-            string sql = "update mainTable set url='" + url + "' where id=@id";
+            string sql = "update maintable set url=CONCAT('" + url + "') where id=@id";
             Sql.ExecuteNonQuery(sql, new MySqlParameter[] { new MySqlParameter("id", dataId) });
         }
         /*

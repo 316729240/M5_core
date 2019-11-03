@@ -106,7 +106,7 @@ $M.Control["Editor"] = function (BoxID, S, CID) {
         }
         value = value.replace(/(<|&lt;)(IMG|INPUT)([^>]*)SystemPic_(\d+)([^>]*)(>|&gt;)/gi, _replace);
         //value = value.replace(/?/, "&copy;");
-		value = value.replace(/®/gi,"&reg;");
+value = value.replace(/®/gi,"&reg;");
         return (value);
     };
     T.replaceLabel = function (value) {
@@ -123,16 +123,7 @@ $M.Control["Editor"] = function (BoxID, S, CID) {
 	        /(<[^>]*|){[\s\S]*?ViewID=[\s\S]*?}/gi
         ];
         var Img = ['AspIco', 'LabelIco', 'ClassLabelIco', 'PageBarIco', 'SqlIco', 'SearchIco', 'ObjectIco', 'PageSpacerIco', 'ScriptIco', 'ViewIco'];
-        var getLabelValue=function(html,name){
-			var r, re; // 声明变量。
-									r = html.match("("+name+")=([^ ]*)( |})","gi"); // 在字符串 s 中查找匹配。
-									if (r != null) {
-										
-										return (r[2]);
-									}
-			};
-
-		var _replace = function (protectedSource) {
+        var _replace = function (protectedSource) {
             var tag = true;
             if (i == 9) {
                 var m = protectedSource.match(new RegExp(/^<[^>]*/gi));
@@ -155,14 +146,7 @@ $M.Control["Editor"] = function (BoxID, S, CID) {
                     }
                     return ('<input id="SystemPic_' + Index + '" class="ViewBox" type=button value="' + getValue() + '" />');
                 } else {
-						var customLabel=$(protectedSource);
-						var lableName=customLabel.attr("customLabel");
-						if(lableName){
-							var labelSet=S.customLabel[lableName];
-							return ('<img id="SystemPic_' + Index + '" src="'+labelSet.ico+'" class="Label"\/>');
-						}
-						return ('<img id="SystemPic_' + Index + '" src="\/static\/img\/blank.gif" class="Label ' + Img[i] + '"\/>');
-				
+                    return ('<img id="SystemPic_' + Index + '" src="\/static\/img\/blank.gif" class="Label ' + Img[i] + '"\/>');
                 }
             } else {
                 return (protectedSource);
@@ -185,16 +169,9 @@ $M.Control["Editor"] = function (BoxID, S, CID) {
             T.insertHtml(html);
         }
     };
-	//更新工具栏状态
-	var updateToolsStatus=function(){
-        for (var i = 0; i < toolbar.controls.length ; i++) {
-			var buttonEnable=toolbar.controls[i].attr("buttonEnable");
-			toolbar.controls[i].enabled((buttonEnable!=null && buttonEnable.isCodeMode==isCodeMode)||(buttonEnable==null && !isCodeMode));
-		}
-	};
-	//设置编辑模式
     var setCodeMode = function (flag) {
         if (flag == isCodeMode) return;
+        for (var i = 0; i < toolbar.controls.length - 1; i++) toolbar.controls[i].enabled(!flag);
         if (flag) {
             ifr.hide();
             codeBox.show();
@@ -227,8 +204,6 @@ $M.Control["Editor"] = function (BoxID, S, CID) {
         }
         S.sourceMode = flag;
         isCodeMode = flag;
-		//更新工具栏状态
-		//updateToolsStatus();
     };
     var fontSizeMenu = $(document.body).addControl({
         xtype: "Menu", items: [
@@ -348,17 +323,13 @@ $M.Control["Editor"] = function (BoxID, S, CID) {
             { ico: "fa-link", name: "createLink", onClick: toolButtonClick },
             { name: "colorC", ico: "fa-font", menu: colorMenu, onClick: toolButtonClick }],
         pageBar: [{ ico: "fa-bookmark-o", tip: "分页标签", name: "pageSpacer", onClick: toolButtonClick }],
-        code: [{ ico: "fa-code", name: "code", onClick: toolButtonClick ,buttonEnable:{isCodeMode:true}}]
+        code: [{ ico: "fa-code", name: "code", onClick: toolButtonClick }]
     };
 
     var buttons = [];
-    if (S.customTool) {
-        for (var i = 0; i < S.customTool.length; i++) {
-			if($.isArray(S.customTool[i])){
-				buttons[i] = S.customTool[i];
-			}else{
-				buttons[i] = toolButton[S.customTool[i]];
-			}
+    if (S.customItem) {
+        for (var i = 0; i < S.customItem.length; i++) {
+            buttons[i] = toolButton[S.customItem[i]];
         }
     }else{
         buttons=[
@@ -389,7 +360,22 @@ $M.Control["Editor"] = function (BoxID, S, CID) {
             execComm('formatblock', '<p>');
         }
     });
+    /*
+    content.click(function (e) {
+        if (e.target.tagName == "IMG") {
+            //alert(document.body.createRange)
+            var range = content[0].createRange();
+            var s = window.getSelection();
+            s.collapse(document.body, 0);
+            var a = ifr[0].contentWindow.find('img');
+            alert(e.target.createRange)
 
+            //alert(window.getSelection)
+            //range.moveToElementText(e.target);
+            //range.select();
+            //e.target.focus();
+        }
+    });*/
     var codeBox = $("<div/>").appendTo(A);
     var textarea = null;
     var prebox =null;
@@ -446,7 +432,7 @@ $M.Control["Editor"] = function (BoxID, S, CID) {
             //	            setCaret(codeBox, DocumentCodeFocus);
             //}
         } else {
-            if (documentFocus != null && documentFocus.range!=null) {
+            if (documentFocus != null) {
                 var sel = content[0].getSelection();
                 sel.removeAllRanges();
                 sel.addRange(documentFocus.range);
@@ -454,39 +440,7 @@ $M.Control["Editor"] = function (BoxID, S, CID) {
             } else { content.focus(); }
         }
     };
-	//设置右键菜单
-	var contextMenuStrip=$(document.body).addControl({xtype:"Menu"});
-	content.on("contextmenu",function(){return false;});
-	content.mouseup(function(e){
-		var menuitem=[];
-		if (e.which == 3) {
-			var ifrxy=ifr.offset();
-			var focus=T.getFocus();
-			if(focus.type=="Control"){
-				var obj=$(focus.obj);
-				var labelController=T.customLabel.getValue(obj);
-				if(labelController==null)return;
-				if(labelController.edit==null)return;
-				menuitem[menuitem.length]={text:"属性",onClick:function(){
-					labelController.edit(labelController);
-				}};
-			}
-			if(menuitem.length==0)return;
-			contextMenuStrip.attr("items",menuitem);
-			contextMenuStrip.open(e.pageX+ifrxy.left, e.pageY+ifrxy.top);
-		}
-	});
-	//点击编辑器中对象时
-	content.click(function(e){
-		var tagName=e.target.tagName;
-		if(tagName=="IMG"){
-			var oRange = content[0].createRange();
-			oRange.selectNode(e.target);  
-			var sel = content[0].getSelection();
-			sel.removeAllRanges();
-			sel.addRange(oRange );
-		}
-	});
+
     T.getFocus = function () {
         documentFocus = null;
         documentCodeFocus = null;
@@ -523,18 +477,17 @@ $M.Control["Editor"] = function (BoxID, S, CID) {
                 }
             } else {
                 //documentFocus.sel = window.getSelection();
-				if(content[0].getSelection().rangeCount==0)return null;
                 documentFocus.sel = content[0].getSelection();
+                documentFocus.range = documentFocus.sel.getRangeAt(0);
                 if (documentFocus.sel.getRangeAt.length > 0) {
-					documentFocus.range = documentFocus.sel.getRangeAt(0);
-                    var range = documentFocus.range;
+                    var range = documentFocus.sel.getRangeAt(0);
                     if (range.startContainer.nodeType == 1) {
                         documentFocus.type = "Control";
-						//documentFocus.html=range.startContainer.innerHTML;
-                        documentFocus.obj =range.commonAncestorContainer.childNodes[range.startOffset];// documentFocus.sel.anchorNode.childNodes[documentFocus.sel.anchorOffset];
+                        documentFocus.obj = documentFocus.sel.anchorNode.childNodes[documentFocus.sel.anchorOffset];
                         if (documentFocus.obj && documentFocus.obj.tagName) documentFocus.html = getOuterHTML(documentFocus.obj);
                     } else {
                         documentFocus.type = "Html";
+                        var range = documentFocus.sel.getRangeAt(0);
                         var container = content[0].createElement('div');
                         container.appendChild(range.cloneContents());
                         documentFocus.text = documentFocus.sel.toString();
@@ -542,6 +495,7 @@ $M.Control["Editor"] = function (BoxID, S, CID) {
                     }
                 } else {
                     documentFocus.type = "Html";
+                    var range = documentFocus.sel.getRangeAt(0);
                     var container = content[0].createElement('div');
                     container.appendChild(range.cloneContents());
                     documentFocus.text = documentFocus.sel.toString();
@@ -552,7 +506,7 @@ $M.Control["Editor"] = function (BoxID, S, CID) {
                 //documentFocus.sel = ifr.contentWindow.getSelection();
             }
         }
-        return documentFocus;
+        return V;
     };
     var getOuterHTML = function (obj) {
         var canHaveChildren = function (obj) {
@@ -593,33 +547,11 @@ $M.Control["Editor"] = function (BoxID, S, CID) {
             if (isCodeMode) {
                 insertText(html);
             } else {
-				html=T.replaceLabel(html);
                 execComm("InsertHtml", html);
             }
         }
 
     };
-	T.customLabel=S.customLabel==null?{}:S.customLabel;
-	//插入自定义标签
-	//标签名称
-	//插入内容
-	T.customLabel.insert=function(labelName,html){
-		html="<script type=text/html customLabel="+labelName+" >"+html+"</script>";
-		T.insertHtml(html);
-	};
-	//获取字定义标签对象
-	//obj 标签dom
-	T.customLabel.getValue=function(obj){
-		if(obj.attr("class")!="Label")return;
-		var index=obj.attr("id").replace("SystemPic_","");
-		var html=Labels[index].html;
-		var label=$(html);
-		var labelName=label.attr("customLabel");
-		var labelController =S.customLabel[labelName];
-		if(labelController==null)return;
-		labelController.html=label.html();
-		return labelController;
-	};
     T.container = A;
     $M.BaseClass.apply(T, [S]);
     T.css = function (style) {
@@ -635,6 +567,10 @@ $M.Control["Editor"] = function (BoxID, S, CID) {
             else {
                 textarea.css({ "width": A.width() + "px", "height": (A.height() - toolbar.container.outerHeight()) + "px" });
             }
+            //codeBox.setSize(A.width(), content.height());
+
+            //if (style && style.height) {
+            //}
         }
     };
     T.css(S.style);

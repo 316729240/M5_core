@@ -25,7 +25,7 @@ public class ajax : IHttpHandler
         else if (m == "getContentData") getContentData(context);
         else if (m == "save")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             string url = s_request.getString("url");
             string html=s_request.getString("html");
             Uri u = new Uri(url);
@@ -46,7 +46,7 @@ public class ajax : IHttpHandler
             mc = r.Matches(html);
             for(int i = 0; i < mc.Count; i++)
             {
-                string value =HttpContext.Current.Server.HtmlDecode(  mc[i].Value.SubString("viewvalue=\"", "\""));
+                string value =PageContext.Current.Server.HtmlDecode(  mc[i].Value.SubString("viewvalue=\"", "\""));
                 html = html.Replace(mc[i].Value,"${"+value+"}");
             }
             html = head+ html+foot;
@@ -57,7 +57,7 @@ public class ajax : IHttpHandler
     }
     void getContentData(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string url = s_request.getString("url");
         TemplateInfo v = TemplateClass.get(url, false);
         info.userData = v.variable;
@@ -65,7 +65,7 @@ public class ajax : IHttpHandler
     }
     void renderView(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string html ="${"+ s_request.getString("viewName")+"}";
         TE_statistical TE_statistical = new TE_statistical();
         TemplateEngine page = new TemplateEngine();

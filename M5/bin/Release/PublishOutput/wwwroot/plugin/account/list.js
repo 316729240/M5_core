@@ -14,7 +14,8 @@
     var toolBar = T.addControl({
         xtype: "ToolBar",
         items: [
-            [{
+            [{ xtype: "Button", tip: "添加", name: "appendButton", ico: "fa-plus", onClick: function () { addData(); } } ,
+            {
                 text: "删除所选会员", onClick: function () { delData(); }
             }], [{
                 xtype: "InputGroup", name: "searchGroup", style: { width: "300px" }, items: [
@@ -25,6 +26,9 @@
         ]
     });
 
+    var addData = function () {
+        $M.app.call("$M.account.edit", { classId: $._account._classId, back: reload });
+    };
     var searchGroup = toolBar.find("searchGroup");
     var searchF = searchGroup.find("searchF");
     var searchButton = searchGroup.find("searchButton");

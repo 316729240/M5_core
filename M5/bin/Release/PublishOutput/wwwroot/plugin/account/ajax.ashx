@@ -24,9 +24,54 @@ public class ajax :  IHttpHandler,System.Web.SessionState.IRequiresSessionState 
         else if (m == "read") read(context);
         else if (m == "delData") delData(context);
         else if (m == "shenhezizhi") shenhezizhi(context);
+        else if (m == "edit") edit(context);
+    }
+    void edit(HttpContext context){
+        ErrInfo info = new ErrInfo();
+        login.value.id = s_request.getDouble("id");
+        login.value.classId = s_request.getDouble("classId");
+        login.value.name = s_request.getString("name");
+        login.value.phone = s_request.getString("phone");
+        login.value.mobile = s_request.getString("mobile");
+        login.value.email= s_request.getString("email");
+        login.value.sex = s_request.getInt("sex")==1;
+        login.value.icon = s_request.getString("icon");
+        if (login.value.id > 0) {
+            info=UserClass.edit(login.value);
+            Sql.ExecuteNonQuery("update u_account set u_zhicheng=@u_zhicheng,u_xueli=@u_xueli,u_shanchang=@u_shanchang,u_price=@u_price where id=@id", new SqlParameter[] {
+                new SqlParameter("u_zhicheng",s_request.getString("u_zhicheng")),
+                new SqlParameter("id",s_request.getDouble("id")),
+                new SqlParameter("u_xueli",s_request.getString("u_xueli")),
+                new SqlParameter("u_shanchang",s_request.getString("u_shanchang")),
+                new SqlParameter("u_price",s_request.getDouble("u_price")),
+            });
+            if(s_request.getString("password") != "")
+            {
+                UserClass.editPassword(login.value.id, s_request.getString("password"),login.value);
+            }
+        }else {
+            login.value.username = s_request.getString("uname");
+            login.value.password = s_request.getString("password");
+            info=UserClass.add(login.value,login.value);
+            Sql.ExecuteNonQuery("insert into u_account (id,u_zhicheng,u_shanchang,u_xueli,u_price)values(@id,@u_zhicheng,@u_shanchang,@u_xueli,@u_price)", new SqlParameter[] {
+                new SqlParameter("u_zhicheng",s_request.getString("u_zhicheng")),
+                new SqlParameter("u_shanchang",s_request.getString("u_shanchang")),
+                new SqlParameter("u_xueli",s_request.getString("u_xueli")),
+                new SqlParameter("u_price",s_request.getDouble("u_price")),
+                new SqlParameter("id",(double)info.userData),
+            });
+        }
+        if (info.errNo > -1  && login.value.icon!="")
+        {
+            UserInfo userinfo = UserClass.get((double)info.userData);
+
+            login.value.icon=MWMS.DAL.Datatype.FieldType.Files.Parse(login.value.icon).ToJson();
+            UserClass.setIcon(login.value.icon, userinfo);
+        }
+        context.Response.Write(info.ToJson());
     }
     void shenhezizhi(HttpContext context){
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         double id = s_request.getDouble("id");
         int type = s_request.getInt("type");
         Sql.ExecuteNonQuery("update u_account set audit=@audit where id=@id",new SqlParameter[] {
@@ -58,7 +103,7 @@ public class ajax :  IHttpHandler,System.Web.SessionState.IRequiresSessionState 
             rs.Close();
             p = login.value.getColumnPermissions(classId);
         }
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         if (p.delete)
         {
             info = TableInfo.delData(dataTypeId, ids, true, login.value);
@@ -73,30 +118,23 @@ public class ajax :  IHttpHandler,System.Web.SessionState.IRequiresSessionState 
     void read(HttpContext context)
     {
         double id = s_request.getDouble("id");
-        ReturnValue info = new ReturnValue();
-        Dictionary<string,object> data=Helper.Sql.ExecuteDictionary("select A.uname,A.sex,A.name,email,phone,mobile,B.* from m_admin A inner join  u_account B on A.id=B.id where A.id=@id", new SqlParameter[] { new SqlParameter("id", id) });
+        ErrInfo info = new ErrInfo();
+        Dictionary<string,object> data=Helper.Sql.ExecuteDictionary("select A.uname,A.sex,A.name,email,phone,mobile,icon,B.* from m_admin A inner join  u_account B on A.id=B.id where A.id=@id", new SqlParameter[] { new SqlParameter("id", id) });
         info.userData = data;
         context.Response.Write(info.ToJson());
     }
     void list(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         int[] width = null;
         double classId=s_request.getDouble("classId");
         string keyword = s_request.getString("keyword");
         string sql = "";
         string keywordWhere = "";
         if (keyword != "") keywordWhere = " and uname like '%'+@keyword+'%'";
-        if (classId == 9896847028)
-        {
-            width = new int[] { 120,100,200,200,180,100}; 
-            sql = "select id,uname 用户名,email 邮箱,mobile 手机,createDate 注册时间 from m_admin where classId=@classId "+keywordWhere+" order by updatedate desc";
-        }
-        else
-        {
-            width = new int[] { 120,100,200,200,120,180,100};
-            sql = "select A.id,uname 用户名,B.companyName 公司名称,A.email 邮箱,A.mobile 手机,A.createDate 注册时间,B.audit 资质状态 from m_admin A inner join u_account B on A.id=b.id  where A.classId=@classId "+keywordWhere+" order by updatedate desc";
-        }
+        width = new int[] { 120,100,100,200,220,180,100};
+        sql = "select A.id,uname 用户名,A.name 姓名,B.u_zhicheng 职称,B.u_price 咨询费用,A.createDate 注册时间 from m_admin A inner join u_account B on A.id=b.id  where A.classId=@classId "+keywordWhere+" order by updatedate desc";
+
         int pageNo = s_request.getInt("pageNo");
         List<FieldInfo> flist =new List<FieldInfo>();
         ReturnPageData r = new ReturnPageData();

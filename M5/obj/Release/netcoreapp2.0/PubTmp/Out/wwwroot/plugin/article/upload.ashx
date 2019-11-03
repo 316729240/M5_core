@@ -19,12 +19,12 @@ public class upload : IHttpHandler
     {
         login.checkLogin();
 
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         context.Response.ContentType = "text/plain";
 
         string[] fp = new string[context.Request.Files.Count];
         for(int i=0;i<context.Request.Files.Count;i++){
-            ReturnValue e =saveFile(context.Request.Files[0], "/enclosure/");
+            ErrInfo e =saveFile(context.Request.Files[0], "/enclosure/");
             if (e.errNo >-1)fp[i] = e.userData.ToString();
         }
         info.userData = fp;
@@ -32,15 +32,15 @@ public class upload : IHttpHandler
         context.Response.End();
     }
     
-          ReturnValue saveFile(HttpPostedFile file,string filePath)
+          ErrInfo saveFile(HttpPostedFile file,string filePath)
         {
-            ReturnValue err = new ReturnValue();
+            ErrInfo err = new ErrInfo();
 
             try
             {
 
-                string path = Config.webPath + filePath + System.DateTime.Now.ToString("yyyy-MM/");
-                if (!System.IO.Directory.Exists(HttpContext.Current.Server.MapPath(path))) System.IO.Directory.CreateDirectory(HttpContext.Current.Server.MapPath(path));
+                string path = Config.webPath + filePath + System.DateTime.Now.ToString("yyyy-MM")+"/";
+                if (!System.IO.Directory.Exists(PageContext.Current.Server.MapPath(path))) System.IO.Directory.CreateDirectory(PageContext.Current.Server.MapPath(path));
                 string kzm = "";
                 if (file.FileName.LastIndexOf(".") > -1) kzm = file.FileName.Substring(file.FileName.LastIndexOf(".") + 1).ToLower();
                 if (Regex.IsMatch(kzm, "(exe|asp|php)"))
@@ -50,7 +50,7 @@ public class upload : IHttpHandler
                     return err;
                 }
                 string fileName = API.GetId() + "." + kzm;
-                file.SaveAs(HttpContext.Current.Server.MapPath(path + fileName));
+                file.SaveAs(PageContext.Current.Server.MapPath(path + fileName));
                 err.userData = path + fileName;
                 return err;
             }catch(Exception ex)

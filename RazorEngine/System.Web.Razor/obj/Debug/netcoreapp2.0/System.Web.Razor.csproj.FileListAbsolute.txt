@@ -78,3 +78,4 @@ E:\web\M5_core\RazorEngine\System.Web.Razor\obj\Debug\netcoreapp2.0\System.Web.R
 E:\web\M5_core\RazorEngine\System.Web.Razor\obj\Debug\netcoreapp2.0\System.Web.Razor.AssemblyInfo.cs
 E:\web\M5_core\RazorEngine\System.Web.Razor\obj\Debug\netcoreapp2.0\System.Web.Razor.dll
 E:\web\M5_core\RazorEngine\System.Web.Razor\obj\Debug\netcoreapp2.0\System.Web.Razor.pdb
+E:\web\M5_core\RazorEngine\System.Web.Razor\obj\Debug\netcoreapp2.0\System.Web.Razor.csprojResolveAssemblyReference.cache

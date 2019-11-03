@@ -37,7 +37,7 @@
     var cList = tab.items[0].addControl([
         { xtype: "TextBox", name: "className", labelText: "栏目名称", labelWidth: 3, vtype: { required: true }, onChange: function (sender, e) {
             if (dirName.val() == "") {
-                $M.comm("api.getDirName", { name: sender.val() }, function (json) {
+                $M.comm("system.api.getDirName", { name: sender.val() }, function (json) {
                     dirName.val(json);
                 });
             }
@@ -53,6 +53,7 @@
         //{ xtype: "SelectBox", name: "contentSkinId", labelText: "内容模板", labelWidth: 3 },
         { xtype: "TextBox", name: "info", labelText: "说明", labelWidth: 3 }
         ]);
+
     var dirName = cList[1];
     if (S.id != null) dirName = dirName.find("dirName");
     var editDirName = function () {
@@ -112,6 +113,7 @@
     div.addControl({ xtype: "CheckBox", name: "watermark", labelText: "加水印", labelWidth: 3, items: [{ text: "", value: 1 }], value: 1 });
     div.addControl({ xtype: "CheckBox", name: "titleRepeat", labelText: "允许标题重复", labelWidth: 3, items: [{ text: "", value: 1 }], value: 1 });
     obj.show();
+    tab.items[0].resize();
     var commandList = [
             ["dataTypeList", null],
             ["templateList", { classId: S.id, type: 1, isMobile: 0 }],

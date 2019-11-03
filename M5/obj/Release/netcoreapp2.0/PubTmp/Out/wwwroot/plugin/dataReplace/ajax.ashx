@@ -28,7 +28,7 @@ public class ajax : IHttpHandler
         }
         else if (m == "fieldList")
         {
-            ReturnValue info = new ReturnValue();
+            ErrInfo info = new ErrInfo();
             double id = s_request.getDouble("id");
             TableInfo t = new TableInfo(id);
             info.userData = t.fields;
@@ -40,7 +40,7 @@ public class ajax : IHttpHandler
     }
     void replace(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         double dataTypeId = s_request.getDouble("dataTypeId");
         string keyword1 = s_request.getString("keyword1");
         string keyword2 = s_request.getString("keyword2");
@@ -86,7 +86,7 @@ public class ajax : IHttpHandler
                 }
             }
         }
-        if (isTitle) Sql.ExecuteNonQuery("update maintable set title=replace(title,@keyword1,@keyword2) where id in (" + ids + ")", new SqlParameter[]{
+        if (isTitle) Sql.ExecuteNonQuery("update mainTable set title=replace(title,@keyword1,@keyword2) where id in (" + ids + ")", new SqlParameter[]{
             new SqlParameter("keyword1",keyword1),
             new SqlParameter("keyword2",keyword2)
         });
@@ -94,7 +94,7 @@ public class ajax : IHttpHandler
     }
     void findReplace(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         double dataTypeId = s_request.getDouble("dataTypeId");
         double moduleId=s_request.getDouble("moduleId");
         double classId = s_request.getDouble("classId");
@@ -190,7 +190,7 @@ public class ajax : IHttpHandler
         where += userWhere;
         if (where != "") where += " and ";
         where += " (" + flist + ") ";
-        string sql = "select top 100000 A.id from maintable A left join "+tableName+" B on A.id=B.id where "+where;
+        string sql = "select top 100000 A.id from mainTable A left join "+tableName+" B on A.id=B.id where "+where;
         ArrayList list = Sql.ExecuteArrayObj(sql, new SqlParameter[]{
             new SqlParameter("keyword",keyword),
             new SqlParameter("userId",login.value.id)

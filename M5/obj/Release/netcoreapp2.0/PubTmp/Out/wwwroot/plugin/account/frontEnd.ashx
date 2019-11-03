@@ -41,9 +41,22 @@ public class frontEnd : IHttpHandler, System.Web.SessionState.IRequiresSessionSt
         }
 
     }
+    public static string getCity(string ip){
+            
+        string text=API.readUrl("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=txt&ip="+ip);
+        string [] item=text.Split('\n');
+        string cid = "";
+        SqlDataReader rs = Sql.ExecuteReader("select top 1 cid from region where name like '"+item[4]+"%' or name like '"+item[5]+"%' order by cid desc");
+        if (rs.Read())
+        {
+            cid = rs[0].ToStr();
+        }
+        rs.Close();
+        return cid;
+    }
     void editApply(HttpContext context)
     {
-        ReturnValue err = new ReturnValue();
+        ErrInfo err = new ErrInfo();
         LoginInfo login = new LoginInfo();
         if (login.value == null)
         {
@@ -52,22 +65,21 @@ public class frontEnd : IHttpHandler, System.Web.SessionState.IRequiresSessionSt
             context.Response.Write(err.ToJson());
             return;
         }
-            
-value = new RecordClass(22592528442,login.value);
-            double id=s_request.getDouble("id");
-            double classId = s_request.getDouble("u_bzqy");
-            value.addField("classid",classId);
-            TableInfo table = new TableInfo(22592528442);
-            for(int i = 0; i < table.fields.Count; i++) {
-                    if(context.Request.Form[table.fields[i].name]!=null)value.addField(table.fields[i].name,s_request.getString(table.fields[i].name));
-            }
-            if (id > 0)err = value.update(id);
-            else err = value.insert();
-            context.Response.Write(err.ToJson());
+        RecordClass value = new RecordClass(22592528442,login.value);
+        double id=s_request.getDouble("id");
+        double classId = s_request.getDouble("u_bzqy");
+        value.addField("classid",classId);
+        TableInfo table = new TableInfo(22592528442);
+        for(int i = 0; i < table.fields.Count; i++) {
+            if(context.Request.Form[table.fields[i].name]!=null)value.addField(table.fields[i].name,s_request.getString(table.fields[i].name));
+        }
+        if (id > 0)err = value.update(id);
+        else err = value.insert();
+        context.Response.Write(err.ToJson());
     }
     void passwordRecovery(HttpContext context)
     {
-        ReturnValue err = new ReturnValue();
+        ErrInfo err = new ErrInfo();
         string verification = s_request.getString("verification");
         if (context.Session["CheckCode"] == null || context.Session["CheckCode"].ToString().ToLower() != verification.ToLower()) {
             err.errNo = -1;
@@ -115,7 +127,7 @@ value = new RecordClass(22592528442,login.value);
     }
     void getMobileCode(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string mobile= s_request.getString("mobile");
         int count=(int)Sql.ExecuteScalar("select count(1) from m_admin where mobile=@mobile",new SqlParameter[] {
                 new SqlParameter("mobile",mobile)
@@ -165,7 +177,7 @@ value = new RecordClass(22592528442,login.value);
     }
     void editIcon(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         LoginInfo login = new LoginInfo();
         if (login.value == null)
         {
@@ -193,10 +205,10 @@ value = new RecordClass(22592528442,login.value);
                 return;
             }
             string newdir = Config.uploadPath +"icon/";
-            DirectoryInfo d = new DirectoryInfo(HttpContext.Current.Server.MapPath("~"+newdir));
+            DirectoryInfo d = new DirectoryInfo(PageContext.Current.Server.MapPath("~"+newdir));
             if (!d.Exists) d.Create();
             string file =newdir+ login.value.id.ToString() + context.Request.Files[0].FileName.Substring(index);
-            context.Request.Files[0].SaveAs(HttpContext.Current.Server.MapPath("~"+file));
+            context.Request.Files[0].SaveAs(PageContext.Current.Server.MapPath("~"+file));
             info=UserClass.setIcon(file, login.value);
             if (info.errNo <0)
             {
@@ -208,7 +220,7 @@ value = new RecordClass(22592528442,login.value);
         }
     }void editPic(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         LoginInfo login = new LoginInfo();
         if (login.value == null)
         {
@@ -236,10 +248,10 @@ value = new RecordClass(22592528442,login.value);
                 return;
             }
             string newdir = Config.uploadPath +"avatar/";
-            DirectoryInfo d = new DirectoryInfo(HttpContext.Current.Server.MapPath("~"+newdir));
+            DirectoryInfo d = new DirectoryInfo(PageContext.Current.Server.MapPath("~"+newdir));
             if (!d.Exists) d.Create();
             string file =newdir+ login.value.id.ToString() + context.Request.Files[0].FileName.Substring(index);
-            context.Request.Files[0].SaveAs(HttpContext.Current.Server.MapPath("~"+file));
+            context.Request.Files[0].SaveAs(PageContext.Current.Server.MapPath("~"+file));
             Sql.ExecuteNonQuery("update u_account set pic=@pic,audit=0 where id=@id",new SqlParameter[] { new SqlParameter("id",login.value.id),new SqlParameter("pic",file)});
 
             string url = context.Request.ServerVariables["http_referer"];
@@ -248,7 +260,7 @@ value = new RecordClass(22592528442,login.value);
     }
     void editPassword(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         LoginInfo login = new LoginInfo();
         if (login.value == null)
         {
@@ -264,7 +276,7 @@ value = new RecordClass(22592528442,login.value);
     }
     void editBase(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         LoginInfo login = new LoginInfo();
         if (login.value == null)
         {
@@ -301,7 +313,7 @@ value = new RecordClass(22592528442,login.value);
     void login(HttpContext context)
     {
 
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string username = s_request.getString("username");
         string password = s_request.getString("password");
         string remember= s_request.getString("remember");
@@ -328,19 +340,19 @@ value = new RecordClass(22592528442,login.value);
         }else{
             info= UserClass.login(username, password);
         }
-        HttpContext.Current.Response.Cookies["up1"].Value="";
-        HttpContext.Current.Response.Cookies["up2"].Value="";
+        PageContext.Current.Response.Cookies["up1"].Value="";
+        PageContext.Current.Response.Cookies["up2"].Value="";
         if(info.errNo>-1 && remember=="1"){
-            HttpContext.Current.Response.Cookies["up1"].Value =HttpContext.Current.Server.UrlEncode(username);
-            HttpContext.Current.Response.Cookies["up1"].Expires = System.DateTime.Now.AddYears(1);
-            HttpContext.Current.Response.Cookies["up2"].Value =HttpContext.Current.Server.UrlEncode(password);
-            HttpContext.Current.Response.Cookies["up2"].Expires = System.DateTime.Now.AddYears(1);
+            PageContext.Current.Response.Cookies["up1"].Value =PageContext.Current.Server.UrlEncode(username);
+            PageContext.Current.Response.Cookies["up1"].Expires = System.DateTime.Now.AddYears(1);
+            PageContext.Current.Response.Cookies["up2"].Value =PageContext.Current.Server.UrlEncode(password);
+            PageContext.Current.Response.Cookies["up2"].Expires = System.DateTime.Now.AddYears(1);
         }
         context.Response.Write(info.ToJson());
         return;
     }
     void connect_login(HttpContext context) {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string qq_id=context.Session["qq_id"]+"",sina_id= context.Session["sina_id"]+"";
         if (qq_id == "" && sina_id=="") {
             info.errNo = -1;
@@ -359,9 +371,9 @@ value = new RecordClass(22592528442,login.value);
         }
         context.Response.Write(info.ToJson());
     }
-    ReturnValue bindSina(double id, string sina_id)
+    ErrInfo bindSina(double id, string sina_id)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         int count=(int)Sql.ExecuteScalar("select count(1) from u_account where sina_id=@sina_id",new SqlParameter[] {
                 new SqlParameter("sina_id",sina_id)
             });
@@ -376,9 +388,9 @@ value = new RecordClass(22592528442,login.value);
             });
         return info;
     }
-    ReturnValue bindQQ(double id,string qq_id)
+    ErrInfo bindQQ(double id,string qq_id)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         int count=(int)Sql.ExecuteScalar("select count(1) from u_account where qq_id=@qq_id",new SqlParameter[] {
                 new SqlParameter("qq_id",qq_id)
             });
@@ -395,7 +407,7 @@ value = new RecordClass(22592528442,login.value);
     }
     void connect_create(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string username = s_request.getString("username");
         string email = s_request.getString("email");
         if (context.Session["qq_id"] == null) {
@@ -441,7 +453,7 @@ value = new RecordClass(22592528442,login.value);
     }
     void reg(HttpContext context)
     {
-        ReturnValue info = new ReturnValue();
+        ErrInfo info = new ErrInfo();
         string verification = s_request.getString("verification");
         if (context.Session["CheckCode"] == null || context.Session["CheckCode"].ToString().ToLower() != verification.ToLower()) {
             info.errNo = -1;
@@ -478,7 +490,7 @@ value = new RecordClass(22592528442,login.value);
         {
             string sId=info.userData.ToString().Encryption(Config.webId).MD5();
             string backUrl = "http://" + context.Request.Url.Authority  + context.Request.Url.AbsolutePath+"?_m=activation_account&sid="+sId;
-            string html = System.IO.File.ReadAllText(HttpContext.Current.Server.MapPath("mail.html"));
+            string html = System.IO.File.ReadAllText(PageContext.Current.Server.MapPath("mail.html"));
             TemplateEngine page = new TemplateEngine();
             page.TE_statistical = new TE_statistical();
             page.addVariable("sys", Config.systemVariables);

@@ -372,6 +372,7 @@ namespace MWMS.Template
         /// <returns></returns>
         string SetContent(string u_content)
         {
+            u_content = u_content + "";
             MatchCollection mc, mc2;
             Regex r = new Regex(@"(</title>).*?(</head>)", RegexOptions.Singleline | RegexOptions.IgnoreCase); //定义一个Regex对象实例
             mc = r.Matches(u_content);

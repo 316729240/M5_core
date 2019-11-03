@@ -20,7 +20,7 @@ namespace M5.Common
             try
             {
                 //XmlDocument xmlDoc = new XmlDocument();
-                //xmlDoc.Load(HttpContext.Current.Server.MapPath("~/config/link.config"));
+                //xmlDoc.Load(PageContext.Current.Server.MapPath("~/config/link.config"));
                 //XmlNode xn = xmlDoc.SelectSingleNode("Link");
                 XmlNodeList xnl = Config.userConfig["link"][0].ChildNodes;
                 if (xnl != null && xnl.Count > 0)
