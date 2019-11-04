@@ -90,23 +90,35 @@
                         list
                 );
             // 编译到内存流中。
+            byte [] buff =null;
             using (var ms = new MemoryStream())
             {
                 var result = compilation.Emit(ms);
                 if (result.Success)
                 {
                     ms.Seek(0, SeekOrigin.Begin);
-                    return ms.ToArray();
+                    buff = ms.ToArray();
                 }
-                string errmsg = "";
-                for(int i1=0;i1< result.Diagnostics.Length;i1++)
+                else
                 {
-                    errmsg += result.Diagnostics[i1]+"\r\n";
-                }
-                throw new Exception(errmsg);
-            }
+                    string errmsg = "";
+                    for (int i1 = 0; i1 < result.Diagnostics.Length; i1++)
+                    {
+                        errmsg += result.Diagnostics[i1] + "\r\n";
+                    }
+                    throw new Exception(errmsg);
 
-           // }
+                }
+                ms.Close();
+            }
+            for (int i1=0;i1< list.Length;i1++)
+            {
+                list[i1] = null;
+            }
+            
+            return buff;
+
+            // }
             //catch (Exception e)
             //{
 

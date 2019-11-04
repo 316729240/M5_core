@@ -71,9 +71,7 @@ namespace M5.Common
             }).ToString());
             if (count > 0)
             {
-                err.errNo = -1;
-                err.errMsg = "频道目录名已存在";
-                return err;
+                throw new Exception("频道目录名已存在");
             }
 
             if (info.type)
@@ -92,8 +90,7 @@ namespace M5.Common
                 column.dirName = info.dirName;
                 column.saveDataType = info.saveDataType;
                 column.titleRepeat = info.titleRepeat;
-                err = ColumnClass.add(column, user);
-                if (err.errNo < 0) return err;
+                ColumnClass.add(column, user);
             }
             Sql.ExecuteNonQuery("insert into module " +
                 "(id,moduleName,type,saveDataType,dirName,createDate,updateDate,custom,thumbnailWidth,thumbnailHeight,thumbnailForce,saveRemoteImages,orderId,titleRepeat,watermark)" +

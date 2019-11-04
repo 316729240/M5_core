@@ -116,7 +116,7 @@ namespace MWMS.Template
             {
                 CatchPath = Tools.MapPath("~" + Config.cachePath + "assembly/")
             };
-            BuildCode build = new BuildCode(obj[0].ToString(), obj[1].ToString());
+            BuildCode build = new BuildCode(obj[0]+"", obj[1]+"");
             build.compile(false);
             //Razor.SetTemplateService(new TemplateService(templateConfig));
             /*
@@ -645,11 +645,11 @@ namespace MWMS.Template
         }
         static List<Dictionary<string, dynamic>> GetDataList(TableStructure table, string sql, MySqlParameter[] p)
         {
-            List<Dictionary<string, dynamic>> list = new List<Dictionary<string, object>>();
+            List<Dictionary<string, dynamic>> list = new List<Dictionary<string, dynamic>>();
             MySqlDataReader rs = Sql.ExecuteReader(sql, p);
             while (rs.Read())
             {
-                Dictionary<string, object> attr = new Dictionary<string, object>();
+                Dictionary<string, dynamic> attr = new Dictionary<string, dynamic>();
                 for (int i = 0; i < rs.FieldCount; i++)
                 {
                     string name = rs.GetName(i);
@@ -710,7 +710,7 @@ namespace MWMS.Template
             if (type == 0)
             {
                 //value = value.Replace("\"", "\\\"");
-                value = "\"" + value + " \"";
+                value = "\"" + value + "\"";
             }
             else if (type == 1)
             {
@@ -862,16 +862,18 @@ namespace MWMS.Template
                 str = str.Replace("@", "");
                 return code.ToString();
             }
+            string _sql = str.Substring(1, str.Length - 2);
             //Regex r = new Regex(@"\@((\w|\.|\[|\]){1,30})", RegexOptions.IgnoreCase);
-            Regex r = new Regex(@"@([^ ]*)", RegexOptions.IgnoreCase);
+            Regex r = new Regex(@"@([^ |$]*)", RegexOptions.IgnoreCase);
             int index = 0;
-            str = r.Replace(str, new MatchEvaluator((Match m) => {
+            str = r.Replace(_sql, new MatchEvaluator((Match m) => {
                 string key = m.Value.Substring(1);
                 code.Append(String.Format("p[\"p{0}\"]={1};\r\n", index, key));
                 string r1 = "@p" + index.ToString();
                 index++;
                 return r1;
             }));
+            str = "\"" + str + "\"";
             return code.ToString();
         }
         string getLabel(string html)

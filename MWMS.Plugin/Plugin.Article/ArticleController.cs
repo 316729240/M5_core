@@ -19,7 +19,7 @@ namespace MWMS.Plugin
     [LoginAuthorzation]
     public class ArticleController : ManagerBase
     {
-        public ReturnValue read(double id = 0)
+        public override ReturnValue read(double id = 0)
         {
             ReturnValue info = new ReturnValue();
             Dictionary<string, object> data = Sql.ExecuteDictionary("select A.title,A.classId,A.skinId,A.url,A.pic,B.* from maintable A inner join  article B on A.id=B.id where A.id=@id", new MySqlParameter[] { new MySqlParameter("id", id) });
@@ -27,7 +27,18 @@ namespace MWMS.Plugin
             info.userData = data;
             return info;
         }
-        public ReturnValue edit(string u_keyword,string u_defaultPic,double id,double classId,string u_custom,string u_content,string u_info, string u_fromWeb,string pic,string title,double skinId) { 
+        public override ReturnValue edit(double classId)
+        {
+            double skinId = s_request.getDouble("skinId");
+            double id = s_request.getDouble("id");
+            string u_custom = s_request.getString("u_custom");
+            string u_content = s_request.getString("u_content");
+            string u_info = s_request.getString("u_info");
+            string u_fromWeb = s_request.getString("u_fromWeb");
+            string pic = s_request.getString("pic");
+            string title = s_request.getString("title");
+            string u_keyword = s_request.getString("u_keyword");
+            //string u_keyword,string u_defaultPic,double id,double classId,string u_custom,string u_content,string u_info, string u_fromWeb,string pic,string title,double skinId
             ReturnValue info = new ReturnValue();
     RecordClass value = new RecordClass(22192428132, loginInfo.value);
     string keyword = u_keyword;

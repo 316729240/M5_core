@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 
 namespace M5.Common
 {
-
     public class ColumnClass
     {
         public static ReturnValue del(double id, UserInfo user)
@@ -65,7 +64,7 @@ namespace M5.Common
                     object tablename = Sql.ExecuteScalar("select tablename from datatype where id=@id", new MySqlParameter[] { new MySqlParameter("id", rs.GetDouble(0)) });
                     if (tablename != null)
                     {
-                        Sql.ExecuteNonQuery("delete from " + (string)tablename + " where id in (select id from maintable where classid=@id )", new MySqlParameter[] { new MySqlParameter("id", rs.GetDouble(1)) });
+                        Sql.ExecuteNonQuery("delete from [" + (string)tablename + "] where id in (select id from maintable where classid=@id )", new MySqlParameter[] { new MySqlParameter("id", rs.GetDouble(1)) });
                         Sql.ExecuteNonQuery("delete from maintable where classid=@id", new MySqlParameter[] { new MySqlParameter("id", rs.GetDouble(1)) });
                     }
                 }
@@ -79,7 +78,7 @@ namespace M5.Common
                     }
                     else
                     {
-                        Sql.ExecuteNonQuery("delete from template where classid=@id",
+                        Sql.ExecuteNonQuery("delete from htmltemplate where classid=@id",
                             new MySqlParameter[] { new MySqlParameter("id", id) });
                     }
                 }
@@ -141,11 +140,11 @@ namespace M5.Common
         {
             ReturnValue err = new ReturnValue();
             ColumnInfo info = ColumnClass.get(id);
-            int count = int.Parse( Sql.ExecuteScalar("select count(1) from class where id<>@id and classId=@classId and dirName=@dirName", new MySqlParameter[]{
+            int count = (int)Sql.ExecuteScalar("select count(1) from class where id<>@id and classId=@classId and dirName=@dirName", new MySqlParameter[]{
                 new MySqlParameter("id",info.id),
                 new MySqlParameter("classId",info.classId),
                 new MySqlParameter("dirName",dirName.ToLower())
-            }).ToString());
+            });
             if (count > 0)
             {
                 err.errNo = -1;
@@ -180,12 +179,7 @@ namespace M5.Common
 
                         Sql.ExecuteNonQuery("update class set dirpath='" + Path + "',childid='" + dataId.ToString() + "',parentId='" + rs1[2].ToString() + "," + dataId.ToString() + "',layer=" + rs1[4].ToString() + "+1,pddir='" + rs1[5].ToString() + "',rootid=" + rootId.ToString() + ",url='" + url + "',moduleId=" + rs1[6].ToString() + " where id=" + dataId.ToString());
 
-                        if (rs1[2].ToString() != "") {
-                        //sqlserver
-//                            Sql.ExecuteNonQuery("update class set childid=childid+'," + dataId.ToString() + "',moduleId=" + rs1[6].ToString() + " where id in (" + rs1[2].ToString() + ")");
-
-                            Sql.ExecuteNonQuery("update class set childid=CONCAT(childid,',','" + dataId.ToString() + "'),moduleId=" + rs1[6].ToString() + " where id in (" + rs1[2].ToString() + ")");
-                        }
+                        if (rs1[2].ToString() != "") Sql.ExecuteNonQuery("update class set childid=childid+'," + dataId.ToString() + "',moduleId=" + rs1[6].ToString() + " where id in (" + rs1[2].ToString() + ")");
                     }
                     rs1.Close();
 
@@ -226,7 +220,7 @@ namespace M5.Common
             url.Replace("$column.dirPath", column.dirPath);
             url.Replace("$column.dirName", column.dirName);
             url.Replace("$channel.dirName", channel.dirName);
-            string sql = "update maintable set url='" + url + "',rootId=@rootId,moduleId=@moduleId where classId=@classId";
+            string sql = "update mainTable set url='" + url + "',rootId=@rootId,moduleId=@moduleId where classId=@classId";
             Sql.ExecuteNonQuery(sql, new MySqlParameter[] {
                 new MySqlParameter("classId", id),
                 new MySqlParameter("rootId",column.rootId),
@@ -236,7 +230,6 @@ namespace M5.Common
 
         static int downFiles(ref string Content)
         {
-            if (Content == null) return 0;
             int count = 0;
             Regex r = new Regex(Config.tempPath + @"(\d){4}-(\d){2}\/(\d){5,20}.(.){3,3}", RegexOptions.IgnoreCase); //定义一个Regex对象实例
             MatchCollection mc = r.Matches(Content);
@@ -245,7 +238,7 @@ namespace M5.Common
                 FileInfo f = new FileInfo(Tools.MapPath("~" + mc[n].Value));
                 if (f.Exists)
                 {
-                    string newdir = Config.uploadPath + System.DateTime.Now.ToString("yyyy-MM/");
+                    string newdir = Config.uploadPath + System.DateTime.Now.ToString("yyyy-MM") + "/";
                     DirectoryInfo d = new DirectoryInfo(Tools.MapPath("~" + newdir));
                     if (!d.Exists) d.Create();
                     f.MoveTo(d.FullName + f.Name);
@@ -257,36 +250,30 @@ namespace M5.Common
 
             return (count);
         }
-        public static ReturnValue add(ColumnInfo info, UserInfo user)
+        public static void add(ColumnInfo info, UserInfo user)
         {
             ReturnValue err = new ReturnValue();
             #region 验证
             if (info.className.Trim() == "")
             {
-                err.errNo = -1;
-                err.errMsg = "栏目名不能为空";
-                return err;
+                throw new Exception("栏目名不能为空");
             }
             if (info.dirName == "")
             {
-                err.errNo = -1;
-                err.errMsg = "目录名不能为空";
-                return err;
+                throw new Exception("目录名不能为空");
             }
 
 
             #endregion
             if (info.id < 1) info.id = double.Parse(Tools.GetId());
-            int count =int.Parse( Sql.ExecuteScalar("select count(1) from class where classId=@classId and (dirName=@dirName or className=@className)", new MySqlParameter[]{
+            int count = (int)Sql.ExecuteScalar("select count(1) from class where classId=@classId and (dirName=@dirName or className=@className)", new MySqlParameter[]{
                 new MySqlParameter("classId",info.classId),
                 new MySqlParameter("dirName",info.dirName.ToLower()),
                 new MySqlParameter("className",info.className)
-            }).ToString());
+            });
             if (count > 0)
             {
-                err.errNo = -1;
-                err.errMsg = "所在栏目下栏目名或目录名已存在";
-                return err;
+                throw new Exception("所在栏目下栏目名或目录名已存在");
             }
 
             downFiles(ref info.maxIco);
@@ -326,8 +313,6 @@ namespace M5.Common
                 new MySqlParameter("watermark",info.watermark)
                 });
             reset(info.id);
-            err.userData = info.id;
-            return err;
         }
         public static ReturnValue edit(ColumnInfo info, UserInfo user)
         {
@@ -367,12 +352,12 @@ namespace M5.Common
                 new MySqlParameter("watermark",info.watermark)
 
                 });
-                reset(info.id);
+                //reset(info.id);
                 err.userData = info.id;
             }
             else
             {
-                err = add(info, user);
+                add(info, user);
             }
             return err;
         }
@@ -478,7 +463,7 @@ namespace M5.Common
             double classId = 0, moduleId = 0;
             string parentId = "";
             ColumnConfig config = new ColumnConfig();
-            MySqlDataReader rs = Sql.ExecuteReader("select thumbnailWidth,thumbnailHeight,thumbnailForce,saveRemoteImages,inherit,classId,parentId,moduleId,titleRepeat,watermark from class where id=@id", new MySqlParameter[]{
+            MySqlDataReader rs = Sql.ExecuteReader("select thumbnailWidth,thumbnailHeight,thumbnailForce,saveRemoteImages,inherit,classId,parentId,moduleId,titleRepeat,watermark,childId from class where id=@id", new MySqlParameter[]{
                 new MySqlParameter("id",id)
             });
             if (rs.Read())
@@ -497,6 +482,7 @@ namespace M5.Common
                 config.isModule = false;
                 config.pId = id;
                 config.watermarkFlag = rs.IsDBNull(9) || rs.GetInt32(9) == 1;
+                config.childId = rs.GetString(10);
             }
             rs.Close();
             if (inherit)

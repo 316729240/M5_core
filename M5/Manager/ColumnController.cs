@@ -120,7 +120,7 @@ namespace M5.Main.Manager
                 err.errMsg = "没有编辑该栏目的权限";
                 return err;
             }
-            err = ColumnClass.edit(columnInfo, this.loginInfo.value);
+            ColumnClass.edit(columnInfo, this.loginInfo.value);
             Config.loadDomain();
             return err;
         }

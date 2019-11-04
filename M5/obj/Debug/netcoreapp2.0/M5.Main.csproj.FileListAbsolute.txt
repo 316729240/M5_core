@@ -124,3 +124,5 @@ E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\MWMS.Template.dll
 E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\MWMS.Template.pdb
 E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\Plugin.Doctor.dll
 E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\Plugin.Doctor.pdb
+E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\Plugin.Doctor.dll
+E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\Plugin.Doctor.pdb

@@ -50,10 +50,9 @@ namespace M5.Main.Manager
         /// 数据信息读取
         /// </summary>
         /// <returns></returns>
-        public virtual ReturnValue read()
+        public virtual ReturnValue read(double id)
         {
             ReturnValue returnValue = new ReturnValue();
-            double id = s_request.getDouble("id");
             Dictionary<string, object> data = table.GetModel(id);
             data["url"] = TemplateEngine._replaceUrl(Config.webPath + data["url"].ToString() + "." + BaseConfig.extension);
             returnValue.userData = data;
@@ -62,7 +61,7 @@ namespace M5.Main.Manager
         /// <summary>
         /// 数据列表
         /// </summary>
-        public ReturnValue dataList(double moduleId = 0, double classId = 0, int pageNo = 0, string orderBy = "", int sortDirection = 0, string type = "", string searchField = "", string keyword = "")
+        public virtual ReturnValue dataList(double moduleId = 0, double classId = 0, int pageNo = 0, string orderBy = "", int sortDirection = 0, string type = "", string searchField = "", string keyword = "")
         {
             LoginInfo login = new LoginInfo();
             ReturnValue returnValue = new ReturnValue();
@@ -163,7 +162,7 @@ namespace M5.Main.Manager
         /// 数据编辑
         /// </summary>
         /// <returns></returns>
-        public ReturnValue edit(double  classId)
+        public virtual ReturnValue edit(double  classId)
         {
             ReturnValue returnValue = new ReturnValue();
             LoginInfo login = new LoginInfo();

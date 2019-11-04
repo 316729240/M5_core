@@ -97,6 +97,7 @@ namespace MWMS.Template
             skinId = variable["skinId"] == null ? 0 : (double)variable["skinId"];
             if (isMobile) skinId = variable["_SkinID"] == null ? 0 : (double)variable["_SkinID"];
             if ((double)variable["classId"] == 7) typeId = 0;
+            variable["maxIco"]= DAL.Datatype.FieldType.Pictures.Parse(variable["maxIco"].ToString());
             this.Variable = variable;
             #endregion
             if (skinId > 0)

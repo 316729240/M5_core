@@ -442,8 +442,15 @@ obj.Add("permissions", p);
 
         public ReturnValue columnDel(double classId)
         {
-            ReturnValue info = new ReturnValue();
-            return (ColumnClass.del(classId, loginInfo.value));
+            try
+            {
+                ColumnClass.del(classId, loginInfo.value);
+                return ReturnValue.Success(null);
+
+            } catch (Exception e)
+            {
+                return ReturnValue.Err(e.Message);
+            };
         }
         public ReturnValue templateList(double classId,int type,int isMobile)
         {

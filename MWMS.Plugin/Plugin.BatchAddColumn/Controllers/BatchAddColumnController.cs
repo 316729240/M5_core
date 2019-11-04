@@ -74,7 +74,7 @@ namespace MWMS.Plugin
                     }
                     else
                     {
-                        err = ColumnClass.edit(info, loginInfo.value);
+                         ColumnClass.edit(info, loginInfo.value);
                     }
                     if (err.errNo > -1)
                     {

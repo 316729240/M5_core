@@ -67,7 +67,6 @@ E:\project\M5_core\M5\bin\Release\netcoreapp2.0\M5.Main.dll
 E:\project\M5_core\M5\bin\Release\netcoreapp2.0\M5.Main.pdb
 E:\project\M5_core\M5\bin\Release\netcoreapp2.0\M5.Base.dll
 E:\project\M5_core\M5\bin\Release\netcoreapp2.0\MWMS.DAL.dll
-E:\project\M5_core\M5\bin\Release\netcoreapp2.0\MWMS.DataExtensions.dll
 E:\project\M5_core\M5\bin\Release\netcoreapp2.0\MWMS.Helper.dll
 E:\project\M5_core\M5\bin\Release\netcoreapp2.0\MWMS.SqlHelper.dll
 E:\project\M5_core\M5\bin\Release\netcoreapp2.0\MWMS.Template.dll
@@ -83,7 +82,6 @@ E:\project\M5_core\M5\bin\Release\netcoreapp2.0\Plugin.Article.pdb
 E:\project\M5_core\M5\bin\Release\netcoreapp2.0\Plugin.BatchAddColumn.pdb
 E:\project\M5_core\M5\bin\Release\netcoreapp2.0\Plugin.FileManage.pdb
 E:\project\M5_core\M5\bin\Release\netcoreapp2.0\M5.Base.pdb
-E:\project\M5_core\M5\bin\Release\netcoreapp2.0\MWMS.DataExtensions.pdb
 E:\project\M5_core\M5\bin\Release\netcoreapp2.0\MWMS.Template.pdb
 E:\project\M5_core\M5\bin\Release\netcoreapp2.0\RazorEngine.Core.pdb
 E:\project\M5_core\M5\bin\Release\netcoreapp2.0\System.Web.Razor.pdb
@@ -126,3 +124,5 @@ E:\web\M5_core\M5\obj\Release\netcoreapp2.0\M5.Main.dll
 E:\web\M5_core\M5\obj\Release\netcoreapp2.0\M5.Main.pdb
 E:\web\M5_core\M5\bin\Release\netcoreapp2.0\Plugin.Doctor.dll
 E:\web\M5_core\M5\bin\Release\netcoreapp2.0\Plugin.Doctor.pdb
+E:\project\M5_core\M5\bin\Release\netcoreapp2.0\Plugin.Doctor.dll
+E:\project\M5_core\M5\bin\Release\netcoreapp2.0\Plugin.Doctor.pdb
