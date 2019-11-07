@@ -67,210 +67,210 @@
 $.metadata.setType("attr", "vtype");
 
 /*****************************************************************
-                  jQuery ValidateÀ©Õ¹ÑéÖ¤·½·¨  (linjq)       
+                  jQuery Validateæ‰©å±•éªŒè¯æ–¹æ³•  (linjq)       
 *****************************************************************/
 $(function () {
-    // ÅĞ¶ÏÕûÊıvalueÊÇ·ñµÈÓÚ0 
+    // åˆ¤æ–­æ•´æ•°valueæ˜¯å¦ç­‰äº0 
     jQuery.validator.addMethod("isIntEqZero", function (value, element) {
         value = parseInt(value);
         return this.optional(element) || value == 0;
-    }, "ÕûÊı±ØĞëÎª0");
+    }, "æ•´æ•°å¿…é¡»ä¸º0");
 
-    // ÅĞ¶ÏÕûÊıvalueÊÇ·ñ´óÓÚ0
+    // åˆ¤æ–­æ•´æ•°valueæ˜¯å¦å¤§äº0
     jQuery.validator.addMethod("isIntGtZero", function (value, element) {
         value = parseInt(value);
         return this.optional(element) || value > 0;
-    }, "ÕûÊı±ØĞë´óÓÚ0");
+    }, "æ•´æ•°å¿…é¡»å¤§äº0");
 
-    // ÅĞ¶ÏÕûÊıvalueÊÇ·ñ´óÓÚ»òµÈÓÚ0
+    // åˆ¤æ–­æ•´æ•°valueæ˜¯å¦å¤§äºæˆ–ç­‰äº0
     jQuery.validator.addMethod("isIntGteZero", function (value, element) {
         value = parseInt(value);
         return this.optional(element) || value >= 0;
-    }, "ÕûÊı±ØĞë´óÓÚ»òµÈÓÚ0");
+    }, "æ•´æ•°å¿…é¡»å¤§äºæˆ–ç­‰äº0");
 
-    // ÅĞ¶ÏÕûÊıvalueÊÇ·ñ²»µÈÓÚ0 
+    // åˆ¤æ–­æ•´æ•°valueæ˜¯å¦ä¸ç­‰äº0 
     jQuery.validator.addMethod("isIntNEqZero", function (value, element) {
         value = parseInt(value);
         return this.optional(element) || value != 0;
-    }, "ÕûÊı±ØĞë²»µÈÓÚ0");
+    }, "æ•´æ•°å¿…é¡»ä¸ç­‰äº0");
 
-    // ÅĞ¶ÏÕûÊıvalueÊÇ·ñĞ¡ÓÚ0 
+    // åˆ¤æ–­æ•´æ•°valueæ˜¯å¦å°äº0 
     jQuery.validator.addMethod("isIntLtZero", function (value, element) {
         value = parseInt(value);
         return this.optional(element) || value < 0;
-    }, "ÕûÊı±ØĞëĞ¡ÓÚ0");
+    }, "æ•´æ•°å¿…é¡»å°äº0");
 
-    // ÅĞ¶ÏÕûÊıvalueÊÇ·ñĞ¡ÓÚ»òµÈÓÚ0 
+    // åˆ¤æ–­æ•´æ•°valueæ˜¯å¦å°äºæˆ–ç­‰äº0 
     jQuery.validator.addMethod("isIntLteZero", function (value, element) {
         value = parseInt(value);
         return this.optional(element) || value <= 0;
-    }, "ÕûÊı±ØĞëĞ¡ÓÚ»òµÈÓÚ0");
+    }, "æ•´æ•°å¿…é¡»å°äºæˆ–ç­‰äº0");
 
-    // ÅĞ¶Ï¸¡µãÊıvalueÊÇ·ñµÈÓÚ0 
+    // åˆ¤æ–­æµ®ç‚¹æ•°valueæ˜¯å¦ç­‰äº0 
     jQuery.validator.addMethod("isFloatEqZero", function (value, element) {
         value = parseFloat(value);
         return this.optional(element) || value == 0;
-    }, "¸¡µãÊı±ØĞëÎª0");
+    }, "æµ®ç‚¹æ•°å¿…é¡»ä¸º0");
 
-    // ÅĞ¶Ï¸¡µãÊıvalueÊÇ·ñ´óÓÚ0
+    // åˆ¤æ–­æµ®ç‚¹æ•°valueæ˜¯å¦å¤§äº0
     jQuery.validator.addMethod("isFloatGtZero", function (value, element) {
         value = parseFloat(value);
         return this.optional(element) || value > 0;
-    }, "¸¡µãÊı±ØĞë´óÓÚ0");
+    }, "æµ®ç‚¹æ•°å¿…é¡»å¤§äº0");
 
-    // ÅĞ¶Ï¸¡µãÊıvalueÊÇ·ñ´óÓÚ»òµÈÓÚ0
+    // åˆ¤æ–­æµ®ç‚¹æ•°valueæ˜¯å¦å¤§äºæˆ–ç­‰äº0
     jQuery.validator.addMethod("isFloatGteZero", function (value, element) {
         value = parseFloat(value);
         return this.optional(element) || value >= 0;
-    }, "¸¡µãÊı±ØĞë´óÓÚ»òµÈÓÚ0");
+    }, "æµ®ç‚¹æ•°å¿…é¡»å¤§äºæˆ–ç­‰äº0");
 
-    // ÅĞ¶Ï¸¡µãÊıvalueÊÇ·ñ²»µÈÓÚ0 
+    // åˆ¤æ–­æµ®ç‚¹æ•°valueæ˜¯å¦ä¸ç­‰äº0 
     jQuery.validator.addMethod("isFloatNEqZero", function (value, element) {
         value = parseFloat(value);
         return this.optional(element) || value != 0;
-    }, "¸¡µãÊı±ØĞë²»µÈÓÚ0");
+    }, "æµ®ç‚¹æ•°å¿…é¡»ä¸ç­‰äº0");
 
-    // ÅĞ¶Ï¸¡µãÊıvalueÊÇ·ñĞ¡ÓÚ0 
+    // åˆ¤æ–­æµ®ç‚¹æ•°valueæ˜¯å¦å°äº0 
     jQuery.validator.addMethod("isFloatLtZero", function (value, element) {
         value = parseFloat(value);
         return this.optional(element) || value < 0;
-    }, "¸¡µãÊı±ØĞëĞ¡ÓÚ0");
+    }, "æµ®ç‚¹æ•°å¿…é¡»å°äº0");
 
-    // ÅĞ¶Ï¸¡µãÊıvalueÊÇ·ñĞ¡ÓÚ»òµÈÓÚ0 
+    // åˆ¤æ–­æµ®ç‚¹æ•°valueæ˜¯å¦å°äºæˆ–ç­‰äº0 
     jQuery.validator.addMethod("isFloatLteZero", function (value, element) {
         value = parseFloat(value);
         return this.optional(element) || value <= 0;
-    }, "¸¡µãÊı±ØĞëĞ¡ÓÚ»òµÈÓÚ0");
+    }, "æµ®ç‚¹æ•°å¿…é¡»å°äºæˆ–ç­‰äº0");
 
-    // ÅĞ¶Ï¸¡µãĞÍ  
+    // åˆ¤æ–­æµ®ç‚¹å‹  
     jQuery.validator.addMethod("isFloat", function (value, element) {
         return this.optional(element) || /^[-\+]?\d+(\.\d+)?$/.test(value);
-    }, "Ö»ÄÜ°üº¬Êı×Ö¡¢Ğ¡ÊıµãµÈ×Ö·û");
+    }, "åªèƒ½åŒ…å«æ•°å­—ã€å°æ•°ç‚¹ç­‰å­—ç¬¦");
 
-    // Æ¥Åäinteger
+    // åŒ¹é…integer
     jQuery.validator.addMethod("isInteger", function (value, element) {
         return this.optional(element) || (/^[-\+]?\d+$/.test(value) && parseInt(value) >= 0);
-    }, "Æ¥Åäinteger");
+    }, "åŒ¹é…integer");
 
-    // ÅĞ¶ÏÊıÖµÀàĞÍ£¬°üÀ¨ÕûÊıºÍ¸¡µãÊı
+    // åˆ¤æ–­æ•°å€¼ç±»å‹ï¼ŒåŒ…æ‹¬æ•´æ•°å’Œæµ®ç‚¹æ•°
     jQuery.validator.addMethod("isNumber", function (value, element) {
         return this.optional(element) || /^[-\+]?\d+$/.test(value) || /^[-\+]?\d+(\.\d+)?$/.test(value);
-    }, "Æ¥ÅäÊıÖµÀàĞÍ£¬°üÀ¨ÕûÊıºÍ¸¡µãÊı");
+    }, "åŒ¹é…æ•°å€¼ç±»å‹ï¼ŒåŒ…æ‹¬æ•´æ•°å’Œæµ®ç‚¹æ•°");
 
-    // Ö»ÄÜÊäÈë[0-9]Êı×Ö
+    // åªèƒ½è¾“å…¥[0-9]æ•°å­—
     jQuery.validator.addMethod("isDigits", function (value, element) {
         return this.optional(element) || /^\d+$/.test(value);
-    }, "Ö»ÄÜÊäÈë0-9Êı×Ö");
+    }, "åªèƒ½è¾“å…¥0-9æ•°å­—");
 
-    // ÅĞ¶ÏÖĞÎÄ×Ö·û 
+    // åˆ¤æ–­ä¸­æ–‡å­—ç¬¦ 
     jQuery.validator.addMethod("isChinese", function (value, element) {
         return this.optional(element) || /^[\u0391-\uFFE5]+$/.test(value);
-    }, "Ö»ÄÜ°üº¬ÖĞÎÄ×Ö·û¡£");
+    }, "åªèƒ½åŒ…å«ä¸­æ–‡å­—ç¬¦ã€‚");
 
-    // ÅĞ¶ÏÓ¢ÎÄ×Ö·û 
+    // åˆ¤æ–­è‹±æ–‡å­—ç¬¦ 
     jQuery.validator.addMethod("isEnglish", function (value, element) {
         return this.optional(element) || /^[A-Za-z]+$/.test(value);
-    }, "Ö»ÄÜ°üº¬Ó¢ÎÄ×Ö·û¡£");
+    }, "åªèƒ½åŒ…å«è‹±æ–‡å­—ç¬¦ã€‚");
 
-    // ÊÖ»úºÅÂëÑéÖ¤    
+    // æ‰‹æœºå·ç éªŒè¯    
     jQuery.validator.addMethod("isMobile", function (value, element) {
         var length = value.length;
         return this.optional(element) || (length == 11 && /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/.test(value));
-    }, "ÇëÕıÈ·ÌîĞ´ÄúµÄÊÖ»úºÅÂë¡£");
+    }, "è¯·æ­£ç¡®å¡«å†™æ‚¨çš„æ‰‹æœºå·ç ã€‚");
 
-    // ÓÊÏäÊÖ»úºÅÂëÑéÖ¤    
+    // é‚®ç®±æ‰‹æœºå·ç éªŒè¯    
     jQuery.validator.addMethod("isME", function (value, element) {
         var length = value.length;
         var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
         return this.optional(element) || reg.test(value) || (length == 11 && /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/.test(value));
-    }, "ÇëÕıÈ·ÌîĞ´Ò»¸öÄúµÄÊÖ»úºÅÂë»òÓÊÏäµØÖ·¡£");
-    // µç»°ºÅÂëÑéÖ¤    
+    }, "è¯·æ­£ç¡®å¡«å†™ä¸€ä¸ªæ‚¨çš„æ‰‹æœºå·ç æˆ–é‚®ç®±åœ°å€ã€‚");
+    // ç”µè¯å·ç éªŒè¯    
     jQuery.validator.addMethod("isPhone", function (value, element) {
         var tel = /^(\d{3,4}-?)?\d{7,9}$/g;
         return this.optional(element) || (tel.test(value));
-    }, "ÇëÕıÈ·ÌîĞ´ÄúµÄµç»°ºÅÂë¡£");
+    }, "è¯·æ­£ç¡®å¡«å†™æ‚¨çš„ç”µè¯å·ç ã€‚");
 
-    // ÁªÏµµç»°(ÊÖ»ú/µç»°½Ô¿É)ÑéÖ¤   
+    // è”ç³»ç”µè¯(æ‰‹æœº/ç”µè¯çš†å¯)éªŒè¯   
     jQuery.validator.addMethod("isTel", function (value, element) {
         var length = value.length;
         var mobile = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
         var tel = /^(\d{3,4}-?)?\d{7,9}$/g;
         return this.optional(element) || tel.test(value) || (length == 11 && mobile.test(value));
-    }, "ÇëÕıÈ·ÌîĞ´ÄúµÄÁªÏµ·½Ê½");
+    }, "è¯·æ­£ç¡®å¡«å†™æ‚¨çš„è”ç³»æ–¹å¼");
 
-    // Æ¥Åäqq      
+    // åŒ¹é…qq      
     jQuery.validator.addMethod("isQq", function (value, element) {
         return this.optional(element) || /^[1-9]\d{4,12}$/;
-    }, "Æ¥ÅäQQ");
+    }, "åŒ¹é…QQ");
 
-    // ÓÊÕş±àÂëÑéÖ¤    
+    // é‚®æ”¿ç¼–ç éªŒè¯    
     jQuery.validator.addMethod("isZipCode", function (value, element) {
         var zip = /^[0-9]{6}$/;
         return this.optional(element) || (zip.test(value));
-    }, "ÇëÕıÈ·ÌîĞ´ÄúµÄÓÊÕş±àÂë¡£");
+    }, "è¯·æ­£ç¡®å¡«å†™æ‚¨çš„é‚®æ”¿ç¼–ç ã€‚");
 
-    // Æ¥ÅäÃÜÂë£¬ÒÔ×ÖÄ¸¿ªÍ·£¬³¤¶ÈÔÚ6-12Ö®¼ä£¬Ö»ÄÜ°üº¬×Ö·û¡¢Êı×ÖºÍÏÂ»®Ïß¡£      
+    // åŒ¹é…å¯†ç ï¼Œä»¥å­—æ¯å¼€å¤´ï¼Œé•¿åº¦åœ¨6-12ä¹‹é—´ï¼Œåªèƒ½åŒ…å«å­—ç¬¦ã€æ•°å­—å’Œä¸‹åˆ’çº¿ã€‚      
     jQuery.validator.addMethod("isPwd", function (value, element) {
         return this.optional(element) || /^[a-zA-Z]\\w{6,12}$/.test(value);
-    }, "ÒÔ×ÖÄ¸¿ªÍ·£¬³¤¶ÈÔÚ6-12Ö®¼ä£¬Ö»ÄÜ°üº¬×Ö·û¡¢Êı×ÖºÍÏÂ»®Ïß¡£");
+    }, "ä»¥å­—æ¯å¼€å¤´ï¼Œé•¿åº¦åœ¨6-12ä¹‹é—´ï¼Œåªèƒ½åŒ…å«å­—ç¬¦ã€æ•°å­—å’Œä¸‹åˆ’çº¿ã€‚");
 
-    // Éí·İÖ¤ºÅÂëÑéÖ¤
+    // èº«ä»½è¯å·ç éªŒè¯
     jQuery.validator.addMethod("isIdCardNo", function (value, element) {
         //var idCard = /^(\d{6})()?(\d{4})(\d{2})(\d{2})(\d{3})(\w)$/;   
         return this.optional(element) || isIdCardNo(value);
-    }, "ÇëÊäÈëÕıÈ·µÄÉí·İÖ¤ºÅÂë¡£");
+    }, "è¯·è¾“å…¥æ­£ç¡®çš„èº«ä»½è¯å·ç ã€‚");
 
-    // IPµØÖ·ÑéÖ¤   
+    // IPåœ°å€éªŒè¯   
     jQuery.validator.addMethod("ip", function (value, element) {
         return this.optional(element) || /^(([1-9]|([1-9]\d)|(1\d\d)|(2([0-4]\d|5[0-5])))\.)(([1-9]|([1-9]\d)|(1\d\d)|(2([0-4]\d|5[0-5])))\.){2}([1-9]|([1-9]\d)|(1\d\d)|(2([0-4]\d|5[0-5])))$/.test(value);
-    }, "ÇëÌîĞ´ÕıÈ·µÄIPµØÖ·¡£");
+    }, "è¯·å¡«å†™æ­£ç¡®çš„IPåœ°å€ã€‚");
 
-    // ×Ö·ûÑéÖ¤£¬Ö»ÄÜ°üº¬ÖĞÎÄ¡¢Ó¢ÎÄ¡¢Êı×Ö¡¢ÏÂ»®ÏßµÈ×Ö·û¡£    
+    // å­—ç¬¦éªŒè¯ï¼Œåªèƒ½åŒ…å«ä¸­æ–‡ã€è‹±æ–‡ã€æ•°å­—ã€ä¸‹åˆ’çº¿ç­‰å­—ç¬¦ã€‚    
     jQuery.validator.addMethod("stringCheck", function (value, element) {
         return this.optional(element) || /^[a-zA-Z0-9\u4e00-\u9fa5-_]+$/.test(value);
-    }, "Ö»ÄÜ°üº¬ÖĞÎÄ¡¢Ó¢ÎÄ¡¢Êı×Ö¡¢ÏÂ»®ÏßµÈ×Ö·û");
+    }, "åªèƒ½åŒ…å«ä¸­æ–‡ã€è‹±æ–‡ã€æ•°å­—ã€ä¸‹åˆ’çº¿ç­‰å­—ç¬¦");
 
-    // Æ¥Åäenglish  
+    // åŒ¹é…english  
     jQuery.validator.addMethod("isEnglish", function (value, element) {
         return this.optional(element) || /^[A-Za-z]+$/.test(value);
-    }, "Æ¥Åäenglish");
+    }, "åŒ¹é…english");
 
-    // Æ¥Åäºº×Ö  
+    // åŒ¹é…æ±‰å­—  
     jQuery.validator.addMethod("isChinese", function (value, element) {
         return this.optional(element) || /^[\u4e00-\u9fa5]+$/.test(value);
-    }, "Æ¥Åäºº×Ö");
+    }, "åŒ¹é…æ±‰å­—");
 
-    // Æ¥ÅäÖĞÎÄ(°üÀ¨ºº×ÖºÍ×Ö·û) 
+    // åŒ¹é…ä¸­æ–‡(åŒ…æ‹¬æ±‰å­—å’Œå­—ç¬¦) 
     jQuery.validator.addMethod("isChineseChar", function (value, element) {
         return this.optional(element) || /^[\u0391-\uFFE5]+$/.test(value);
-    }, "Æ¥ÅäÖĞÎÄ(°üÀ¨ºº×ÖºÍ×Ö·û) ");
+    }, "åŒ¹é…ä¸­æ–‡(åŒ…æ‹¬æ±‰å­—å’Œå­—ç¬¦) ");
 
-    // ÅĞ¶ÏÊÇ·ñÎªºÏ·¨×Ö·û(a-zA-Z0-9-_)
+    // åˆ¤æ–­æ˜¯å¦ä¸ºåˆæ³•å­—ç¬¦(a-zA-Z0-9-_)
     jQuery.validator.addMethod("isRightfulString", function (value, element) {
         return this.optional(element) || /^[A-Za-z0-9]+$/.test(value);
-    }, "Ö»ÄÜ°üº¬Ó¢ÎÄ×ÖÄ¸¼°Êı×Ö");
-    // ÅĞ¶ÏÊÇ·ñÎªºÏ·¨×Ö·û(a-zA-Z0-9-_)
+    }, "åªèƒ½åŒ…å«è‹±æ–‡å­—æ¯åŠæ•°å­—");
+    // åˆ¤æ–­æ˜¯å¦ä¸ºåˆæ³•å­—ç¬¦(a-zA-Z0-9-_)
     jQuery.validator.addMethod("isPassword", function (value, element) {
         return this.optional(element) || /(?=.*[0-9])(?=.*[a-zA-Z]).{6,20}$/.test(value);
-    }, "ÃÜÂë±ØĞë°üº¬ÖÁÉÙÒ»¸ö×ÖÄ¸»òÊı×ÖµÄ6ÖÁ20¸ö×Ö·û");
+    }, "å¯†ç å¿…é¡»åŒ…å«è‡³å°‘ä¸€ä¸ªå­—æ¯æˆ–æ•°å­—çš„6è‡³20ä¸ªå­—ç¬¦");
 
-    // ÅĞ¶ÏÊÇ·ñ°üº¬ÖĞÓ¢ÎÄÌØÊâ×Ö·û£¬³ıÓ¢ÎÄ"-_"×Ö·ûÍâ
+    // åˆ¤æ–­æ˜¯å¦åŒ…å«ä¸­è‹±æ–‡ç‰¹æ®Šå­—ç¬¦ï¼Œé™¤è‹±æ–‡"-_"å­—ç¬¦å¤–
     jQuery.validator.addMethod("isContainsSpecialChar", function (value, element) {
-        var reg = RegExp(/[(\ )(\`)(\~)(\!)(\@)(\#)(\$)(\%)(\^)(\&)(\*)(\()(\))(\+)(\=)(\|)(\{)(\})(\')(\:)(\;)(\')(',)(\[)(\])(\.)(\<)(\>)(\/)(\?)(\~)(\£¡)(\@)(\#)(\£¤)(\%)(\¡­)(\&)(\*)(\£¨)(\£©)(\¡ª)(\+)(\|)(\{)(\})(\¡¾)(\¡¿)(\¡®)(\£»)(\£º)(\¡±)(\¡°)(\¡¯)(\¡£)(\£¬)(\¡¢)(\£¿)]+/);
+        var reg = RegExp(/[(\ )(\`)(\~)(\!)(\@)(\#)(\$)(\%)(\^)(\&)(\*)(\()(\))(\+)(\=)(\|)(\{)(\})(\')(\:)(\;)(\')(',)(\[)(\])(\.)(\<)(\>)(\/)(\?)(\~)(\ï¼)(\@)(\#)(\ï¿¥)(\%)(\â€¦)(\&)(\*)(\ï¼ˆ)(\ï¼‰)(\â€”)(\+)(\|)(\{)(\})(\ã€)(\ã€‘)(\â€˜)(\ï¼›)(\ï¼š)(\â€)(\â€œ)(\â€™)(\ã€‚)(\ï¼Œ)(\ã€)(\ï¼Ÿ)]+/);
         return this.optional(element) || !reg.test(value);
-    }, "º¬ÓĞÖĞÓ¢ÎÄÌØÊâ×Ö·û");
+    }, "å«æœ‰ä¸­è‹±æ–‡ç‰¹æ®Šå­—ç¬¦");
 
 
-    //Éí·İÖ¤ºÅÂëµÄÑéÖ¤¹æÔò
+    //èº«ä»½è¯å·ç çš„éªŒè¯è§„åˆ™
     function isIdCardNo(num) {
-        //if (isNaN(num)) {alert("ÊäÈëµÄ²»ÊÇÊı×Ö£¡"); return false;} 
+        //if (isNaN(num)) {alert("è¾“å…¥çš„ä¸æ˜¯æ•°å­—ï¼"); return false;} 
         var len = num.length, re;
         if (len == 15)
             re = new RegExp(/^(\d{6})()?(\d{2})(\d{2})(\d{2})(\d{2})(\w)$/);
         else if (len == 18)
             re = new RegExp(/^(\d{6})()?(\d{4})(\d{2})(\d{2})(\d{3})(\w)$/);
         else {
-            //alert("ÊäÈëµÄÊı×ÖÎ»Êı²»¶Ô¡£"); 
+            //alert("è¾“å…¥çš„æ•°å­—ä½æ•°ä¸å¯¹ã€‚"); 
             return false;
         }
         var a = num.match(re);
@@ -284,12 +284,12 @@ $(function () {
                 var B = D.getFullYear() == a[3] && (D.getMonth() + 1) == a[4] && D.getDate() == a[5];
             }
             if (!B) {
-                //alert("ÊäÈëµÄÉí·İÖ¤ºÅ "+ a[0] +" Àï³öÉúÈÕÆÚ²»¶Ô¡£"); 
+                //alert("è¾“å…¥çš„èº«ä»½è¯å· "+ a[0] +" é‡Œå‡ºç”Ÿæ—¥æœŸä¸å¯¹ã€‚"); 
                 return false;
             }
         }
         if (!re.test(num)) {
-            //alert("Éí·İÖ¤×îºóÒ»Î»Ö»ÄÜÊÇÊı×ÖºÍ×ÖÄ¸¡£");
+            //alert("èº«ä»½è¯æœ€åä¸€ä½åªèƒ½æ˜¯æ•°å­—å’Œå­—æ¯ã€‚");
             return false;
         }
         return true;

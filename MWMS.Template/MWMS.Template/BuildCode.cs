@@ -607,13 +607,14 @@ namespace MWMS.Template
                 p.PageSize = pageSize;
                 p.PageNo = pageNo;
                 int pageCount = (p.RecordCount - 1) / p.PageSize + 1;
+                Console.Write("页码"+pageNo.ToString());
                 if (pageNo < 1 || pageNo > pageCount)
                 {
                     Page.ERR404("页码不正确");
                 }
                 page["pagebar_" + labelId] = p;
                 //sql = "select top " + pageSize.ToString() + " * from (" + sql + where.ToString() + ")L where L.row_number>" + (pageSize * (pageNo - 1)).ToString();
-                sql += where +" limit "+ (pageSize * (pageNo - 1)).ToString() + ","+ (pageSize * (pageNo - 1)+pageSize).ToString();
+                sql += where +" limit "+ (pageSize * (pageNo - 1)).ToString() + ","+ pageSize.ToString();
                 //sql = sql + " where A.id in (" + tempsql + ")";
                 //sql = "select top " +pageSize.ToString() + " * from (" +
                 //sql +where+
@@ -839,7 +840,7 @@ namespace MWMS.Template
                 //sql = "select top " + pageSize.ToString() + " * from (" +
                 //sql +
                 //")L where L.row_number>" + (pageSize * (pageNo - 1)).ToString();
-                sql += " limit "+ (pageSize * (pageNo - 1)).ToString() + "," + (pageSize * (pageNo - 1)+pageSize).ToString();
+                sql += " limit "+ (pageSize * (pageNo - 1)).ToString() + "," + pageSize.ToString();
             }
             else if (recordCount > 0 && (sql.IndexOf(" top ") == -1 && sql.IndexOf(" limit ") == -1))
             {

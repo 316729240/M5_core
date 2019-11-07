@@ -73,13 +73,13 @@ namespace MWMS.Template
         {
             if (TemplateType == TemplateType.视图)
             {
-                Sql.ExecuteNonQuery("delete  template_view where id=@id", new MySqlParameter[] {
+                Sql.ExecuteNonQuery("delete  from template_view where id=@id", new MySqlParameter[] {
                     new MySqlParameter("id",TemplateId)
                 });
             }
             else
             {
-                Sql.ExecuteNonQuery("delete  template where id=@id", new MySqlParameter[] {
+                Sql.ExecuteNonQuery("delete  from template where id=@id", new MySqlParameter[] {
                     new MySqlParameter("id",TemplateId)
                 });
             }

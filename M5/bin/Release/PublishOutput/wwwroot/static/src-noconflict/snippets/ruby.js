@@ -793,7 +793,8 @@ snippet tcb\n\
 	t.boolean :${1:title}\n\
 	${2}\n\
 snippet tcbi\n\
-	t.binary :${1:title}, :limit => ${2:2}.megabytes\n\
+	t.binary :${1:title}, :
+=> ${2:2}.megabytes\n\
 	${3}\n\
 snippet tcd\n\
 	t.decimal :${1:title}, :precision => ${2:10}, :scale => ${3:2}\n\

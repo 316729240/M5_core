@@ -489,8 +489,16 @@ namespace M5.Main.Manager
                     IsMobile = u_webFAid == 1
                 };
             }
-            pageTemplate.Save(loginInfo.value.username);
-            return new ReturnValue();
+            try
+            {
+                pageTemplate.Save(loginInfo.value.username);
+                return new ReturnValue();
+
+            }
+            catch (Exception e)
+            {
+                return ReturnValue.Err(e.Message);
+            }
         }
         public ReturnValue readTemplateView(double classId)
         {

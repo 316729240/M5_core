@@ -101,6 +101,7 @@
         /// <param name="name">The name of the template.</param>
         public void Compile(string razorTemplate, Type modelType, string name,bool flag)
         {
+            
             //需重新加载或内存中没有加载程序集时
             if (flag || !_cache.ContainsKey(name)) { 
 

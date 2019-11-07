@@ -1,6 +1,7 @@
 ﻿using Helper;
 using M5.Common;
 using MWMS.DAL;
+using MWMS.Helper.Extensions;
 using MWMS.SqlHelper;
 using MySql.Data.MySqlClient;
 using System;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Xml;
 
 namespace MWMS.Template
 {
@@ -88,7 +90,7 @@ namespace MWMS.Template
 
             #region 栏目数据
             TableHandle table = new TableHandle("class");
-            Dictionary<string, object> p = new Dictionary<string, object>();
+            Dictionary<string, dynamic> p = new Dictionary<string, dynamic>();
             p.Add("url", url);
             Dictionary<string, object> variable = table.GetModel("rootId,moduleId,skinId,classId,id,className,info,orderId,createDate,saveDataType,maxIco,updatedate,dirName,keyword,dirPath,childId,parentId,layer,attribute,custom,url,_SkinID", "url=@url", p);
             if (variable == null) throw new Exception("栏目不存在");
@@ -97,6 +99,14 @@ namespace MWMS.Template
             skinId = variable["skinId"] == null ? 0 : (double)variable["skinId"];
             if (isMobile) skinId = variable["_SkinID"] == null ? 0 : (double)variable["_SkinID"];
             if ((double)variable["classId"] == 7) typeId = 0;
+            XmlDocument custom = new XmlDocument();
+            custom.LoadXml(variable["custom"].ToString());
+            Dictionary<string, string> customList = new Dictionary<string, string>();
+            for (int i=0;i< custom.DocumentElement.ChildNodes.Count;i++)
+            {
+                customList.Add(custom.DocumentElement.ChildNodes[i].Attributes["name"].Value.Trim(), custom.DocumentElement.ChildNodes[i].InnerText);
+            }
+            variable["custom"] = customList;
             variable["maxIco"]= DAL.Datatype.FieldType.Pictures.Parse(variable["maxIco"].ToString());
             this.Variable = variable;
             #endregion

@@ -231,6 +231,7 @@ namespace M5.Common
         static int downFiles(ref string Content)
         {
             int count = 0;
+            if (Content == null) return count;
             Regex r = new Regex(Config.tempPath + @"(\d){4}-(\d){2}\/(\d){5,20}.(.){3,3}", RegexOptions.IgnoreCase); //定义一个Regex对象实例
             MatchCollection mc = r.Matches(Content);
             for (int n = 0; n < mc.Count; n++)

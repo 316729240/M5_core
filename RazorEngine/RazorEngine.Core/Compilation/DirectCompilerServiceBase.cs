@@ -22,6 +22,7 @@
     /// </summary>
     public abstract class DirectCompilerServiceBase : CompilerServiceBase, IDisposable
     {
+        public static MetadataReference[] assemblieslist = null;
         #region Fields
         private readonly CodeDomProvider _codeDomProvider;
         private bool _disposed;
@@ -50,45 +51,49 @@
         }
         #endregion
 
-        private  byte [] CompileByte(string originalClassName, string originalText)
+        private byte[] CompileByte(string originalClassName, string originalText)
         {
+            GC.Collect();
+            CSharpCompilation compilation = null;
             var syntaxTree = CSharpSyntaxTree.ParseText(originalText);
             // 指定编译选项。
             var assemblyName = $"{originalClassName}.g";
+            if (assemblieslist == null) {
             //try
             //{
-            string replstr = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)?"file:///": "file://";
-                var assemblies = CompilerServicesUtility
-                    .GetLoadedAssemblies()
-                    .Where(a => !a.IsDynamic && File.Exists(a.CodeBase.Replace(replstr, "")))
-                    .Select(a => (a.CodeBase.Replace(replstr, "")));
+            string replstr = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "file:///" : "file://";
+            var assemblies = CompilerServicesUtility
+                .GetLoadedAssemblies()
+                .Where(a => !a.IsDynamic && File.Exists(a.CodeBase.Replace(replstr, "")))
+                .Select(a => (a.CodeBase.Replace(replstr, "")));
             /*var assemblies = CompilerServicesUtility
                     .GetLoadedAssemblies()
                     .Where(a => !a.IsDynamic && File.Exists(a.Location))
                     .Select(a => a.Location);*/
-           
-             /*   var includeAssemblies = (IncludeAssemblies() ?? Enumerable.Empty<string>());
-                assemblies = assemblies.Concat(includeAssemblies)
-                    .Select(a => a.ToUpperInvariant())
-                    .Where(a => !string.IsNullOrWhiteSpace(a) )
-                    .Distinct();*/
-                int c=assemblies.Count();
-                MetadataReference[] list = new MetadataReference[c];
-                int i = 0;
-            foreach (string item in assemblies)
-                {
-                    list[i]=(MetadataReference.CreateFromFile(item));
-                    i++;
-                }
 
-                var compilation = CSharpCompilation.Create(assemblyName, new[] { syntaxTree },
-                        options: new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary))
-                    .AddReferences(
-                        // 这算是偷懒了吗？我把 .NET Core 运行时用到的那些引用都加入到引用了。
-                        // 加入引用是必要的，不然连 object 类型都是没有的，肯定编译不通过。
-                        //AppDomain.CurrentDomain.GetAssemblies().Select(x => MetadataReference.CreateFromFile(x.Location))
-                        list
-                );
+            /*   var includeAssemblies = (IncludeAssemblies() ?? Enumerable.Empty<string>());
+               assemblies = assemblies.Concat(includeAssemblies)
+                   .Select(a => a.ToUpperInvariant())
+                   .Where(a => !string.IsNullOrWhiteSpace(a) )
+                   .Distinct();*/
+            int c = assemblies.Count();
+            //  MetadataReference[] list = new MetadataReference[c];
+            assemblieslist = new MetadataReference[c];
+            int i = 0;
+            foreach (string item in assemblies)
+            {
+                assemblieslist[i] = (MetadataReference.CreateFromFile(item));
+                i++;
+            }
+            }
+            compilation = CSharpCompilation.Create(assemblyName, new[] { syntaxTree },
+                   options: new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary))
+               .AddReferences(
+                   // 这算是偷懒了吗？我把 .NET Core 运行时用到的那些引用都加入到引用了。
+                   // 加入引用是必要的，不然连 object 类型都是没有的，肯定编译不通过。
+                   //AppDomain.CurrentDomain.GetAssemblies().Select(x => MetadataReference.CreateFromFile(x.Location))
+                   assemblieslist
+           );
             // 编译到内存流中。
             byte [] buff =null;
             using (var ms = new MemoryStream())
@@ -111,11 +116,12 @@
                 }
                 ms.Close();
             }
+            /*
             for (int i1=0;i1< list.Length;i1++)
             {
                 list[i1] = null;
             }
-            
+            */
             return buff;
 
             // }

@@ -84,9 +84,16 @@ namespace M5.Main
                 Response.Cache.SetCacheability(HttpCacheability.NoCache);
             }
             */
-            string html = RewriteUrl(context);//载入映射规则
-            //Response.ContentType = "html/plain; charset="+System.Text.Encoding.Default.HeaderName;
-            if (html!=null)Response.WriteAsync(html);
+            try
+            {
+                string html = RewriteUrl(context);//载入映射规则
+                                                  //Response.ContentType = "html/plain; charset="+System.Text.Encoding.Default.HeaderName;
+                if (html != null) Response.WriteAsync(html);
+
+            } catch (Exception ex)
+            {
+                Response.WriteAsync(ex.Message);
+            }
 
 
         }
@@ -212,7 +219,6 @@ namespace M5.Main
             if (System.IO.File.Exists(Tools.MapPath(file))) return (null);
             #endregion
            
-            //mobileAccess(Response, Request);//手机访问
             bool isMobilePage = false;
             string virtualWebDir = "/";//虚拟站点目录
             string newUrl = urlZhuanyi(request.Url(), ref isMobilePage, ref virtualWebDir);
@@ -343,6 +349,7 @@ namespace M5.Main
                 */
                 string html = RazorEngine.Razor.Run(pageTemplate.TemplateId.ToString(), new object[] { Config.systemVariables, pageTemplate.Variable, pageTemplate.Parameter });
                 SubDomains subDomains = new SubDomains();
+                subDomains.isMobile = isMobile;
                 subDomains.replaceUrl(ref html);
                 return html;
             }

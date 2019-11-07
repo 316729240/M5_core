@@ -170,7 +170,7 @@ namespace M5.Common
                 sql2 +
                 " ) as A where rowNum> " + ((pageNo - 1) * r.pageSize).ToString() + " and rowNum<" + (pageNo * r.pageSize + 1).ToString();
             //mysql
-            sql = sql2+" limit " + ((pageNo - 1) * r.pageSize).ToString() + "," + (pageNo * r.pageSize + 1).ToString();
+            sql = sql2+" limit " + ((pageNo - 1) * r.pageSize).ToString() + "," + r.pageSize.ToString();
             r.data = Sql.ExecuteArrayObj(sql);
             r.pageNo = pageNo;
             return r;
