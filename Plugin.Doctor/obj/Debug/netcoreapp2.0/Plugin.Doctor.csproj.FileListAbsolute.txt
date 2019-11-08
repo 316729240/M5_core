@@ -47,3 +47,5 @@ E:\project\M5_core\Plugin.Doctor\obj\Debug\netcoreapp2.0\Plugin.Doctor.AssemblyI
 E:\project\M5_core\Plugin.Doctor\obj\Debug\netcoreapp2.0\Plugin.Doctor.csproj.CopyComplete
 E:\project\M5_core\Plugin.Doctor\obj\Debug\netcoreapp2.0\Plugin.Doctor.dll
 E:\project\M5_core\Plugin.Doctor\obj\Debug\netcoreapp2.0\Plugin.Doctor.pdb
+E:\project\M5_core\Plugin.Doctor\bin\Debug\netcoreapp2.0\PinyinForCore.dll
+E:\project\M5_core\Plugin.Doctor\bin\Debug\netcoreapp2.0\PinyinForCore.pdb

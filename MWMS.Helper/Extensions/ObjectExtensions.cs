@@ -12,6 +12,7 @@ using System.Security.Cryptography;
 using NETCore.Encrypt;
 using System.Dynamic;
 using Helper;
+using PinyinForCore;
 
 namespace MWMS.Helper.Extensions
 {
@@ -80,21 +81,16 @@ namespace MWMS.Helper.Extensions
             }
             return "";
         }
-        public static string GetPinYin(this string str)
-        {
-            string pinyin = Chs2py.convert(str, '0');
-            return pinyin;
-        }
         /// <summary>
         /// 转换字符串成拼音
         /// </summary>
         /// <param name="str"></param>
         /// <param name="type">转换为全部小写 1首字母大写 2只取第一个字母</param>
         /// <returns></returns>
-        public static string GetPinYin(this string str, char type)
+        public static string GetPinYin(this string str, int type=1)
         {
-            string pinyin = Chs2py.convert(str, type);
-            return pinyin;
+            if(type==1)return Pinyin.GetPinyin(str);
+            else return Pinyin.GetInitials(str).ToLower();
         }
         public static string RemoveHtml(this string str)
         {

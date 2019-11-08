@@ -5045,6 +5045,7 @@
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
           "NETCore.Encrypt": "2.0.8",
+          "PinyinForCore": "1.0.0",
           "System.Drawing.Common": "4.5.0"
         },
         "compile": {
@@ -5082,6 +5083,29 @@
         },
         "runtime": {
           "bin/placeholder/MWMS.Template.dll": {}
+        }
+      },
+      "PinyinForCore/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/PinyinForCore.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PinyinForCore.dll": {}
+        }
+      },
+      "Plugin.AD/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "M5.Base": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Plugin.AD.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Plugin.AD.dll": {}
         }
       },
       "Plugin.Article/1.0.0": {
@@ -10501,6 +10525,7 @@
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
           "NETCore.Encrypt": "2.0.8",
+          "PinyinForCore": "1.0.0",
           "System.Drawing.Common": "4.5.0"
         },
         "compile": {
@@ -10538,6 +10563,29 @@
         },
         "runtime": {
           "bin/placeholder/MWMS.Template.dll": {}
+        }
+      },
+      "PinyinForCore/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/PinyinForCore.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PinyinForCore.dll": {}
+        }
+      },
+      "Plugin.AD/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "M5.Base": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Plugin.AD.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Plugin.AD.dll": {}
         }
       },
       "Plugin.Article/1.0.0": {
@@ -15974,6 +16022,7 @@
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
           "NETCore.Encrypt": "2.0.8",
+          "PinyinForCore": "1.0.0",
           "System.Drawing.Common": "4.5.0"
         },
         "compile": {
@@ -16011,6 +16060,29 @@
         },
         "runtime": {
           "bin/placeholder/MWMS.Template.dll": {}
+        }
+      },
+      "PinyinForCore/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/PinyinForCore.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PinyinForCore.dll": {}
+        }
+      },
+      "Plugin.AD/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "M5.Base": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Plugin.AD.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Plugin.AD.dll": {}
         }
       },
       "Plugin.Article/1.0.0": {
@@ -25742,6 +25814,16 @@
       "path": "../MWMS.Template/MWMS.Template/MWMS.Template.csproj",
       "msbuildProject": "../MWMS.Template/MWMS.Template/MWMS.Template.csproj"
     },
+    "PinyinForCore/1.0.0": {
+      "type": "project",
+      "path": "../PinyinForCore/PinyinForCore.csproj",
+      "msbuildProject": "../PinyinForCore/PinyinForCore.csproj"
+    },
+    "Plugin.AD/1.0.0": {
+      "type": "project",
+      "path": "../MWMS.Plugin/Plugin.AD/Plugin.AD.csproj",
+      "msbuildProject": "../MWMS.Plugin/Plugin.AD/Plugin.AD.csproj"
+    },
     "Plugin.Article/1.0.0": {
       "type": "project",
       "path": "../MWMS.Plugin/Plugin.Article/Plugin.Article.csproj",
@@ -25783,6 +25865,7 @@
       "Microsoft.AspNetCore.All >= 2.0.3",
       "Microsoft.NETCore.App >= 2.0.0",
       "MySql.Data >= 8.0.17",
+      "Plugin.AD >= 1.0.0",
       "Plugin.Article >= 1.0.0",
       "Plugin.BatchAddColumn >= 1.0.0",
       "Plugin.Doctor >= 1.0.0",
@@ -25831,6 +25914,9 @@
             },
             "E:\\project\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj": {
               "projectPath": "E:\\project\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj"
+            },
+            "E:\\project\\M5_core\\MWMS.Plugin\\Plugin.AD\\Plugin.AD.csproj": {
+              "projectPath": "E:\\project\\M5_core\\MWMS.Plugin\\Plugin.AD\\Plugin.AD.csproj"
             },
             "E:\\project\\M5_core\\MWMS.Plugin\\Plugin.Article\\Plugin.Article.csproj": {
               "projectPath": "E:\\project\\M5_core\\MWMS.Plugin\\Plugin.Article\\Plugin.Article.csproj"

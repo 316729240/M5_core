@@ -146,3 +146,5 @@ E:\web\M5_core\DAL\MWMS.DAL\obj\Debug\netcoreapp2.0\MWMS.DAL.AssemblyInfoInputs.
 E:\web\M5_core\DAL\MWMS.DAL\obj\Debug\netcoreapp2.0\MWMS.DAL.AssemblyInfo.cs
 E:\web\M5_core\DAL\MWMS.DAL\obj\Debug\netcoreapp2.0\MWMS.DAL.dll
 E:\web\M5_core\DAL\MWMS.DAL\obj\Debug\netcoreapp2.0\MWMS.DAL.pdb
+E:\project\M5_core\DAL\MWMS.DAL\bin\Debug\netcoreapp2.0\PinyinForCore.dll
+E:\project\M5_core\DAL\MWMS.DAL\bin\Debug\netcoreapp2.0\PinyinForCore.pdb

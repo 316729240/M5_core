@@ -92,7 +92,7 @@ $M.dataBase.tableStructure = function (S) {
                 var value = sender.rows[e.y].cells[0].val();
                 var value2 = sender.rows[e.y].cells[1].val();
                 if (value != "" && value2 == "") {
-                    $M.comm("system.api.getDirName", { name: value }, function (json) {
+                    $M.comm("api.getDirName", { name: value }, function (json) {
                         sender.rows[e.y].cells[1].val("u_" + json);
                     });
                     if (e.y == sender.rows.length - 1) fieldList.addRow(["", "", "string",255]);

@@ -4505,6 +4505,7 @@
       "MWMS.Helper/1.0.0": {
         "dependencies": {
           "NETCore.Encrypt": "2.0.8",
+          "PinyinForCore": "1.0.0",
           "System.Drawing.Common": "4.5.0"
         },
         "runtime": {
@@ -4525,6 +4526,14 @@
         },
         "compile": {
           "MWMS.SqlHelper.dll": {}
+        }
+      },
+      "PinyinForCore/1.0.0": {
+        "runtime": {
+          "PinyinForCore.dll": {}
+        },
+        "compile": {
+          "PinyinForCore.dll": {}
         }
       },
       "RazorEngine.Core/1.0.0": {
@@ -6834,6 +6843,11 @@
       "sha512": ""
     },
     "MWMS.SqlHelper/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PinyinForCore/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

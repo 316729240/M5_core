@@ -121,3 +121,5 @@ E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\obj\Debug\netcoreapp2.0\Plugin.File
 E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\obj\Debug\netcoreapp2.0\Plugin.FileManage.AssemblyInfo.cs
 E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\obj\Debug\netcoreapp2.0\Plugin.FileManage.dll
 E:\web\M5_core\MWMS.Plugin\Plugin.FileManage\obj\Debug\netcoreapp2.0\Plugin.FileManage.pdb
+E:\project\M5_core\MWMS.Plugin\Plugin.FileManage\bin\Debug\netcoreapp2.0\PinyinForCore.dll
+E:\project\M5_core\MWMS.Plugin\Plugin.FileManage\bin\Debug\netcoreapp2.0\PinyinForCore.pdb

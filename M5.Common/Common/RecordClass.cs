@@ -12,6 +12,7 @@ using System.Configuration;
 using MWMS.SqlHelper;
 using MWMS.Helper;
 using MySql.Data.MySqlClient;
+using MWMS.Helper.Extensions;
 
 namespace M5.Common
 {
@@ -556,8 +557,8 @@ namespace M5.Common
                 k[i] = k[i].Trim();
                 if (k[i] != "" && k[i].Length < 50)
                 {
-                    string pinyin = Chs2py.convert(k[i], '0');
-                    if (pinyin.Length > 10) { pinyin = Chs2py.convert(k[i], '2'); }
+                    string pinyin = k[i].GetPinYin();
+                    if (pinyin.Length > 10) { pinyin = k[i].GetPinYin( 2); }
                     if (pinyin.Length < 50)
                     {
                         pinyin = Regex.Replace(pinyin, @"[ .~!@#$%\^\+\*&\\\/\?\|:\.{}()';=\[\]" + "\"]", "");

@@ -1,0 +1,4 @@
+  <app title="广告位" name="ad" dataTypeId="22192243235" datetime="2015-9-5">
+    <include>edit.js</include>
+    <include>list.js</include>
+  </app>

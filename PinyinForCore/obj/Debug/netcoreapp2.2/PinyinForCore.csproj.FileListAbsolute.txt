@@ -1,0 +1,8 @@
+E:\project\M5_core\PinyinForCore\bin\Debug\netcoreapp2.2\PinyinForCore.deps.json
+E:\project\M5_core\PinyinForCore\bin\Debug\netcoreapp2.2\PinyinForCore.dll
+E:\project\M5_core\PinyinForCore\bin\Debug\netcoreapp2.2\PinyinForCore.pdb
+E:\project\M5_core\PinyinForCore\obj\Debug\netcoreapp2.2\PinyinForCore.csprojAssemblyReference.cache
+E:\project\M5_core\PinyinForCore\obj\Debug\netcoreapp2.2\PinyinForCore.AssemblyInfoInputs.cache
+E:\project\M5_core\PinyinForCore\obj\Debug\netcoreapp2.2\PinyinForCore.AssemblyInfo.cs
+E:\project\M5_core\PinyinForCore\obj\Debug\netcoreapp2.2\PinyinForCore.dll
+E:\project\M5_core\PinyinForCore\obj\Debug\netcoreapp2.2\PinyinForCore.pdb

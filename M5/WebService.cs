@@ -2,6 +2,7 @@
 using M5.Common;
 using Microsoft.AspNetCore.Http;
 using MWMS.Helper;
+using MWMS.Helper.Extensions;
 using MWMS.SqlHelper;
 using MWMS.Template;
 using MySql.Data.MySqlClient;
@@ -250,7 +251,9 @@ namespace M5.Main
                     if (!Regex.IsMatch(newUrl, "^" + virtualWebDir + BaseConfig.mobileUrl))
                     {
                         string _murl = Regex.Replace(newUrl, "^" + virtualWebDir, virtualWebDir + BaseConfig.mobileUrl, RegexOptions.IgnoreCase);
-                        murl = new Uri(request.Url(), Config.webPath + _murl).ToString() + request.Url().Query;
+                        Uri nowurl = request.Url();
+                        if (BaseConfig.mainUrl != null) nowurl = BaseConfig.mainUrl;
+                        murl = new Uri(nowurl, Config.webPath + _murl).ToString() + request.Url().Query;
                         if (BaseConfig.mobileRedirectType == 1)
                         {
                             context.Response.WriteAsync("<script>location.href='" + Config.webPath + _murl + "';</script>");

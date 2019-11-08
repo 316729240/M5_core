@@ -97,3 +97,5 @@ E:\web\M5_core\MWMS.Plugin\Plugin.Article\obj\Release\netcoreapp2.0\Plugin.Artic
 E:\web\M5_core\MWMS.Plugin\Plugin.Article\obj\Release\netcoreapp2.0\Plugin.Article.AssemblyInfo.cs
 E:\web\M5_core\MWMS.Plugin\Plugin.Article\obj\Release\netcoreapp2.0\Plugin.Article.dll
 E:\web\M5_core\MWMS.Plugin\Plugin.Article\obj\Release\netcoreapp2.0\Plugin.Article.pdb
+E:\project\M5_core\MWMS.Plugin\Plugin.Article\bin\Release\netcoreapp2.0\PinyinForCore.dll
+E:\project\M5_core\MWMS.Plugin\Plugin.Article\bin\Release\netcoreapp2.0\PinyinForCore.pdb

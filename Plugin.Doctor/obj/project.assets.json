@@ -5045,6 +5045,7 @@
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
           "NETCore.Encrypt": "2.0.8",
+          "PinyinForCore": "1.0.0",
           "System.Drawing.Common": "4.5.0"
         },
         "compile": {
@@ -5067,6 +5068,16 @@
         },
         "runtime": {
           "bin/placeholder/MWMS.SqlHelper.dll": {}
+        }
+      },
+      "PinyinForCore/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/PinyinForCore.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PinyinForCore.dll": {}
         }
       },
       "RazorEngine.Core/1.0.0": {
@@ -13246,6 +13257,11 @@
       "type": "project",
       "path": "../DAL/SqlHelper/MWMS.SqlHelper.csproj",
       "msbuildProject": "../DAL/SqlHelper/MWMS.SqlHelper.csproj"
+    },
+    "PinyinForCore/1.0.0": {
+      "type": "project",
+      "path": "../PinyinForCore/PinyinForCore.csproj",
+      "msbuildProject": "../PinyinForCore/PinyinForCore.csproj"
     },
     "RazorEngine.Core/1.0.0": {
       "type": "project",

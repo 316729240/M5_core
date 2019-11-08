@@ -32,6 +32,7 @@
           "Microsoft.AspNetCore.All": "2.0.3",
           "Microsoft.NETCore.App": "2.0.0",
           "MySql.Data": "8.0.17",
+          "Plugin.AD": "1.0.0",
           "Plugin.Article": "1.0.0",
           "Plugin.BatchAddColumn": "1.0.0",
           "Plugin.Doctor": "1.0.0",
@@ -4515,6 +4516,7 @@
       "MWMS.Helper/1.0.0": {
         "dependencies": {
           "NETCore.Encrypt": "2.0.8",
+          "PinyinForCore": "1.0.0",
           "System.Drawing.Common": "4.5.0"
         },
         "runtime": {
@@ -4548,6 +4550,25 @@
         },
         "compile": {
           "MWMS.Template.dll": {}
+        }
+      },
+      "PinyinForCore/1.0.0": {
+        "runtime": {
+          "PinyinForCore.dll": {}
+        },
+        "compile": {
+          "PinyinForCore.dll": {}
+        }
+      },
+      "Plugin.AD/1.0.0": {
+        "dependencies": {
+          "M5.Base": "1.0.0"
+        },
+        "runtime": {
+          "Plugin.AD.dll": {}
+        },
+        "compile": {
+          "Plugin.AD.dll": {}
         }
       },
       "Plugin.Article/1.0.0": {
@@ -6915,6 +6936,16 @@
       "sha512": ""
     },
     "MWMS.Template/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PinyinForCore/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Plugin.AD/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -47,3 +47,5 @@ E:\web\M5_core\MWMS.Plugin\Plugin.BatchAddColumn\obj\Debug\netcoreapp2.0\Plugin.
 E:\web\M5_core\MWMS.Plugin\Plugin.BatchAddColumn\obj\Debug\netcoreapp2.0\Plugin.BatchAddColumn.AssemblyInfo.cs
 E:\web\M5_core\MWMS.Plugin\Plugin.BatchAddColumn\obj\Debug\netcoreapp2.0\Plugin.BatchAddColumn.dll
 E:\web\M5_core\MWMS.Plugin\Plugin.BatchAddColumn\obj\Debug\netcoreapp2.0\Plugin.BatchAddColumn.pdb
+E:\project\M5_core\MWMS.Plugin\Plugin.BatchAddColumn\bin\Debug\netcoreapp2.0\PinyinForCore.dll
+E:\project\M5_core\MWMS.Plugin\Plugin.BatchAddColumn\bin\Debug\netcoreapp2.0\PinyinForCore.pdb

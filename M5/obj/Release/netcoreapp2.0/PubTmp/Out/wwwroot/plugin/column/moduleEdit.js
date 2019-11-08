@@ -36,7 +36,7 @@
     var cList = tab.items[0].addControl([
         { xtype: "TextBox", name: "moduleName", labelText: "模块名称", labelWidth: 3, vtype: { required: true }, onChange: function (sender, e) {
             if (dirName.val() == "") {
-                $M.comm("system.api.getDirName", { name: sender.val() }, function (json) {
+                $M.comm("api.getDirName", { name: sender.val() }, function (json) {
                     dirName.val(json);
                 });
             }

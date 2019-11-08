@@ -17,7 +17,6 @@ E:\project\M5_core\WebApplication1\bin\Debug\netcoreapp2.0\WebApplication1.runti
 E:\project\M5_core\WebApplication1\bin\Debug\netcoreapp2.0\WebApplication1.runtimeconfig.dev.json
 E:\project\M5_core\WebApplication1\bin\Debug\netcoreapp2.0\WebApplication1.dll
 E:\project\M5_core\WebApplication1\bin\Debug\netcoreapp2.0\WebApplication1.pdb
-E:\project\M5_core\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.csprojAssemblyReference.cache
 E:\project\M5_core\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.AssemblyInfoInputs.cache
 E:\project\M5_core\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.AssemblyInfo.cs
 E:\project\M5_core\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.dll
