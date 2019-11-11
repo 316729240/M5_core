@@ -43,13 +43,15 @@ E:\project\M5_core\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.pdb
 E:\web\M5_core\MWMS.Helper\bin\Debug\netcoreapp2.0\MWMS.Helper.deps.json
 E:\web\M5_core\MWMS.Helper\bin\Debug\netcoreapp2.0\MWMS.Helper.dll
 E:\web\M5_core\MWMS.Helper\bin\Debug\netcoreapp2.0\MWMS.Helper.pdb
-E:\web\M5_core\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.csproj.CoreCompileInputs.cache
 E:\web\M5_core\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.AssemblyInfoInputs.cache
 E:\web\M5_core\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.AssemblyInfo.cs
 E:\web\M5_core\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.dll
 E:\web\M5_core\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.pdb
-E:\web\M5_core\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.csprojResolveAssemblyReference.cache
 E:\project\M5_core\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.csprojAssemblyReference.cache
 E:\project\M5_core\MWMS.Helper\bin\Debug\netcoreapp2.0\PinyinForCore.dll
 E:\project\M5_core\MWMS.Helper\bin\Debug\netcoreapp2.0\PinyinForCore.pdb
 E:\project\M5_core\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.csproj.CopyComplete
+E:\web\M5_core\MWMS.Helper\bin\Debug\netcoreapp2.0\PinyinForCore.dll
+E:\web\M5_core\MWMS.Helper\bin\Debug\netcoreapp2.0\PinyinForCore.pdb
+E:\web\M5_core\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.csprojAssemblyReference.cache
+E:\web\M5_core\MWMS.Helper\obj\Debug\netcoreapp2.0\MWMS.Helper.csproj.CopyComplete

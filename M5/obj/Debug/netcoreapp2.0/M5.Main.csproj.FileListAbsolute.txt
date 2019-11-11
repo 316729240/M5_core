@@ -112,8 +112,6 @@ E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\Plugin.FileManage.pdb
 E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\M5.Base.pdb
 E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\RazorEngine.Core.pdb
 E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\System.Web.Razor.pdb
-E:\web\M5_core\M5\obj\Debug\netcoreapp2.0\M5.Main.csprojResolveAssemblyReference.cache
-E:\web\M5_core\M5\obj\Debug\netcoreapp2.0\M5.Main.csproj.CoreCompileInputs.cache
 E:\web\M5_core\M5\obj\Debug\netcoreapp2.0\M5.Main.AssemblyInfoInputs.cache
 E:\web\M5_core\M5\obj\Debug\netcoreapp2.0\M5.Main.AssemblyInfo.cs
 E:\web\M5_core\M5\obj\Debug\netcoreapp2.0\M5.Main.dll
@@ -130,3 +128,15 @@ E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\PinyinForCore.dll
 E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\PinyinForCore.pdb
 E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\Plugin.AD.dll
 E:\project\M5_core\M5\bin\Debug\netcoreapp2.0\Plugin.AD.pdb
+E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\appsettings.json
+E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\Properties\launchSettings.json
+E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\appsettings.Development.json
+E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\web.config
+E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\PinyinForCore.dll
+E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\Plugin.AD.dll
+E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\Plugin.AD.pdb
+E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\PinyinForCore.pdb
+E:\web\M5_core\M5\obj\Debug\netcoreapp2.0\M5.Main.csprojAssemblyReference.cache
+E:\web\M5_core\M5\obj\Debug\netcoreapp2.0\M5.Main.csproj.CopyComplete
+E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\Plugin.QuestionManage.dll
+E:\web\M5_core\M5\bin\Debug\netcoreapp2.0\Plugin.QuestionManage.pdb

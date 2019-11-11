@@ -37,14 +37,14 @@ public class ajax : IHttpHandler {
         ErrInfo info = new ErrInfo();
         double id = s_request.getDouble("id");
         double answerId = s_request.getDouble("answerId");
-        Sql.ExecuteNonQuery("update u_question set u_answerId=@answerId where id=@id",new SqlParameter[] { new SqlParameter("answerId", answerId), new SqlParameter("id", id) });
+        Sql.ExecuteNonQuery("update u_question set u_question_answerId=@answerId where id=@id",new SqlParameter[] { new SqlParameter("answerId", answerId), new SqlParameter("id", id) });
         context.Response.Write(info.ToJson());
     }
     void readAnswer(HttpContext context)
     {
         double id = s_request.getDouble("id");
         ErrInfo info = new ErrInfo();
-        Dictionary<string,object> data=Helper.Sql.ExecuteDictionary("select content,dataId,id from u_answer where id=@id", new SqlParameter[] { new SqlParameter("id", id) });
+        Dictionary<string,object> data=Helper.Sql.ExecuteDictionary("select content,dataId,id from u_question_answer where id=@id", new SqlParameter[] { new SqlParameter("id", id) });
         info.userData = data;
         context.Response.Write(info.ToJson());
     }
@@ -82,7 +82,7 @@ public class ajax : IHttpHandler {
             {
                 info = TableInfo.delData(dataTypeId, ids, tag == 1, login.value);
             }
-            if (tag == 1)Sql.ExecuteNonQuery("delete from u_answer where dataId in ("+ids+")");
+            if (tag == 1)Sql.ExecuteNonQuery("delete from u_question_answer where dataId in ("+ids+")");
 
         }
         else{
@@ -111,8 +111,8 @@ public class ajax : IHttpHandler {
             context.Response.Write(info.ToJson());
             context.Response.End();
         }
-        Sql.ExecuteNonQuery("delete from u_answer where id in ("+ids+")");
-        Sql.ExecuteNonQuery("update u_question set u_answerCount=(select count(1) from u_answer where u_question.id=dataId) where id=@dataId",new SqlParameter[] {
+        Sql.ExecuteNonQuery("delete from u_question_answer where id in ("+ids+")");
+        Sql.ExecuteNonQuery("update u_question set u_question_answerCount=(select count(1) from u_question_answer where u_question.id=dataId) where id=@dataId",new SqlParameter[] {
             new SqlParameter("dataId",dataId)
         });
         context.Response.Write(info.ToJson());
@@ -121,7 +121,7 @@ public class ajax : IHttpHandler {
     {
         double dataId = s_request.getDouble("dataId");
         ErrInfo info = new ErrInfo();
-        ArrayList data=Helper.Sql.ExecuteArray("select id,content,createDate from u_answer where dataId=@dataId order by createDate desc", new SqlParameter[] { new SqlParameter("dataId", dataId) });
+        ArrayList data=Helper.Sql.ExecuteArray("select id,content,createDate from u_question_answer where dataId=@dataId order by createDate desc", new SqlParameter[] { new SqlParameter("dataId", dataId) });
         info.userData = data;
         context.Response.Write(info.ToJson());
     }
@@ -129,7 +129,7 @@ public class ajax : IHttpHandler {
     {
         double id = s_request.getDouble("id");
         ErrInfo info = new ErrInfo();
-        Dictionary<string,object> data=Helper.Sql.ExecuteDictionary("select A.title,A.classId,A.skinId,A.url,B.* from mainTable A inner join  u_question B on A.id=B.id where A.id=@id", new SqlParameter[] { new SqlParameter("id", id) });
+        Dictionary<string,object> data=Helper.Sql.ExecuteDictionary("select A.title,A.classId,A.skinId,A.url,B.* from maintable A inner join  u_question B on A.id=B.id where A.id=@id", new SqlParameter[] { new SqlParameter("id", id) });
         info.userData = data;
         context.Response.Write(info.ToJson());
     }
@@ -140,7 +140,7 @@ public class ajax : IHttpHandler {
         double id= s_request.getDouble("id");
         string content= s_request.getString("content");
         if (id > 0) {
-            Sql.ExecuteNonQuery("update u_answer set content=@content where id=@id",new SqlParameter[] {
+            Sql.ExecuteNonQuery("update u_question_answer set content=@content where id=@id",new SqlParameter[] {
                 new SqlParameter("id",id),
                 new SqlParameter("dataId",dataId),
                 new SqlParameter("content",content)
@@ -148,7 +148,7 @@ public class ajax : IHttpHandler {
         }
         else
         {
-            Sql.ExecuteNonQuery("insert into  u_answer  (id,dataId,content,userId,createDate)values(@id,@dataId,@content,@userId,getDate()) ",new SqlParameter[] {
+            Sql.ExecuteNonQuery("insert into  u_question_answer  (id,dataId,content,userId,createDate)values(@id,@dataId,@content,@userId,getDate()) ",new SqlParameter[] {
                 new SqlParameter("id",double.Parse(API.GetId())),
                 new SqlParameter("dataId",dataId),
                 new SqlParameter("content",content),
@@ -156,7 +156,7 @@ public class ajax : IHttpHandler {
             });
         }
         
-        Sql.ExecuteNonQuery("update u_question set u_answerCount=(select count(1) from u_answer where u_question.id=dataId) where id=@dataId",new SqlParameter[] {
+        Sql.ExecuteNonQuery("update u_question set u_question_answerCount=(select count(1) from u_question_answer where u_question.id=dataId) where id=@dataId",new SqlParameter[] {
             new SqlParameter("dataId",dataId)
         });
         context.Response.Write(info.ToJson());
@@ -180,7 +180,7 @@ public class ajax : IHttpHandler {
         value.addField("title", s_request.getString("title"));
         string u_content=s_request.getString("u_content");
         value.addField("u_content", u_content);
-        value.addField("u_answerCount", 0);
+        value.addField("u_question_answerCount", 0);
         if (id > 0)
         {
             info = value.update(id);

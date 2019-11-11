@@ -124,17 +124,17 @@ namespace M5.Main.Manager
             Config.loadDomain();
             return err;
         }
-        public ReturnValue moduleInfo(double moduleId)
+        public ReturnValue moduleInfo(double id)
         {
             ReturnValue err = new ReturnValue();
-            Permissions p = this.loginInfo.value.getModulePermissions(moduleId);
+            Permissions p = this.loginInfo.value.getModulePermissions(id);
             if (!p.read)
             {
                 err.errNo = -1;
                 err.errMsg = "没有查看该栏目的权限";
                 return err;
             }
-            ModuleInfo info = ModuleClass.get(moduleId);
+            ModuleInfo info = ModuleClass.get(id);
             if (info == null)
             {
                 err.errNo = -1;
