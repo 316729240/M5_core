@@ -39,9 +39,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MWMS.Template", "MWMS.Templ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Doctor", "Plugin.Doctor\Plugin.Doctor.csproj", "{1BF014A2-4EAA-4E5E-B4F3-C8E2FE8E4727}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.AD", "MWMS.Plugin\Plugin.AD\Plugin.AD.csproj", "{5C65C9A8-9CFF-4C26-A699-42A149711C8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.AD", "MWMS.Plugin\Plugin.AD\Plugin.AD.csproj", "{5C65C9A8-9CFF-4C26-A699-42A149711C8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinyinForCore", "PinyinForCore\PinyinForCore.csproj", "{F8B545C6-4FBF-479D-B70A-17867E0587B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PinyinForCore", "PinyinForCore\PinyinForCore.csproj", "{F8B545C6-4FBF-479D-B70A-17867E0587B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.QuestionManage", "MWMS.Plugin\Plugin.QuestionManage\Plugin.QuestionManage.csproj", "{74975540-54F4-423B-9C10-8DE917B545B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,6 +111,10 @@ Global
 		{F8B545C6-4FBF-479D-B70A-17867E0587B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8B545C6-4FBF-479D-B70A-17867E0587B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8B545C6-4FBF-479D-B70A-17867E0587B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74975540-54F4-423B-9C10-8DE917B545B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74975540-54F4-423B-9C10-8DE917B545B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74975540-54F4-423B-9C10-8DE917B545B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74975540-54F4-423B-9C10-8DE917B545B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -128,6 +134,7 @@ Global
 		{1BF014A2-4EAA-4E5E-B4F3-C8E2FE8E4727} = {96C454E5-8B9E-43F2-9340-54726C021493}
 		{5C65C9A8-9CFF-4C26-A699-42A149711C8E} = {96C454E5-8B9E-43F2-9340-54726C021493}
 		{F8B545C6-4FBF-479D-B70A-17867E0587B6} = {E7CCF764-9ACE-4F7F-9391-4E71D6EED1A1}
+		{74975540-54F4-423B-9C10-8DE917B545B4} = {96C454E5-8B9E-43F2-9340-54726C021493}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B09C79E7-57DD-4DF7-ABE3-BB945B6DD0D8}

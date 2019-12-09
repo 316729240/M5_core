@@ -140,11 +140,11 @@ namespace M5.Common
         {
             ReturnValue err = new ReturnValue();
             ColumnInfo info = ColumnClass.get(id);
-            int count = (int)Sql.ExecuteScalar("select count(1) from class where id<>@id and classId=@classId and dirName=@dirName", new MySqlParameter[]{
+            int count = int.Parse( Sql.ExecuteScalar("select count(1) from class where id<>@id and classId=@classId and dirName=@dirName", new MySqlParameter[]{
                 new MySqlParameter("id",info.id),
                 new MySqlParameter("classId",info.classId),
                 new MySqlParameter("dirName",dirName.ToLower())
-            });
+            }).ToString());
             if (count > 0)
             {
                 err.errNo = -1;
@@ -213,14 +213,18 @@ namespace M5.Common
             ColumnInfo channel = column.classId == 7 ? column : ColumnClass.get(column.classId);
             StringBuilder url = new StringBuilder(BaseConfig.contentUrlTemplate);
             url.Replace(".$extension", "");
-            url.Replace("$id", "'+convert(varchar(20),convert(decimal(18,0),id))+'");
-            url.Replace("$create.year", "'+convert(varchar(4),year(createdate))+'");
-            url.Replace("$create.month", "'+right('00'+cast(month(createdate) as varchar),2)+'");
-            url.Replace("$create.day", "'+right('00'+cast(day(createdate) as varchar),2)+'");
+            //url.Replace("$id", "'+convert(varchar(20),convert(decimal(18,0),id))+'");
+            //url.Replace("$create.year", "'+convert(varchar(4),year(createdate))+'");
+            //url.Replace("$create.month", "'+right('00'+cast(month(createdate) as varchar),2)+'");
+            //url.Replace("$create.day", "'+right('00'+cast(day(createdate) as varchar),2)+'");
+            url.Replace("$id", "',id,'");
+            url.Replace("$create.year", "',DATE_FORMAT(createdate,'%Y'),'");
+            url.Replace("$create.month", "',DATE_FORMAT(createdate,'%m'),'");
+            url.Replace("$create.day", "',DATE_FORMAT(createdate,'%d'),'");
             url.Replace("$column.dirPath", column.dirPath);
             url.Replace("$column.dirName", column.dirName);
             url.Replace("$channel.dirName", channel.dirName);
-            string sql = "update mainTable set url='" + url + "',rootId=@rootId,moduleId=@moduleId where classId=@classId";
+            string sql = "update maintable set url=CONCAT('" + url + "'),rootId=@rootId,moduleId=@moduleId where classId=@classId";
             Sql.ExecuteNonQuery(sql, new MySqlParameter[] {
                 new MySqlParameter("classId", id),
                 new MySqlParameter("rootId",column.rootId),

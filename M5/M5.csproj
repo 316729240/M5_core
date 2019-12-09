@@ -16,5 +16,4 @@
     <ProjectReference Include="..\MWMS.Helper\MWMS.Helper.csproj" />
     <ProjectReference Include="..\RazorEngine\RazorEngine.Core\RazorEngine.Core.csproj" />
   </ItemGroup>
-
 </Project>

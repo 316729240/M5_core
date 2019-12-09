@@ -25,6 +25,17 @@ namespace M5.Main.Manager
     [LoginAuthorzation]
     public class SystemController : ManagerBase
     {
+        public ReturnValue test()
+        {
+            MySqlDataReader rs = Sql.ExecuteReader("select  id,u_keyword from article ");
+            while (rs.Read())
+            {
+
+                RecordClass.addKeyword(rs.GetDouble("id"), rs[1]+"");
+            }
+            rs.Close();
+            return new ReturnValue();
+        }
         //loginInfo.checkLogin();
         public ReturnValue exit()
         {

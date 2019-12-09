@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>MWMS.Template</id>
+    <version>1.0.0</version>
+    <authors>MWMS.Template</authors>
+    <owners>MWMS.Template</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETCoreApp2.0">
+        <dependency id="MWMS.DAL" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="M5.Base" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="RazorEngine.Core" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="E:\web\M5_core\MWMS.Template\MWMS.Template\bin\Debug\netcoreapp2.0\MWMS.Template.dll" target="lib\netcoreapp2.0\MWMS.Template.dll" />
+  </files>
+</package>

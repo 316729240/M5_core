@@ -130,7 +130,7 @@ namespace M5.Common
             #endregion
             if (info.id > 0)
             {
-                Sql.ExecuteNonQuery("update [module] " +
+                Sql.ExecuteNonQuery("update module " +
                 "set id=@id,moduleName=@moduleName,saveDataType=@saveDataType,updateDate=@updateDate,custom=@custom,thumbnailWidth=@thumbnailWidth,thumbnailHeight=@thumbnailHeight,thumbnailForce=@thumbnailForce,saveRemoteImages=@saveRemoteImages,titleRepeat=@titleRepeat,watermark=@watermark" +
                 " where id=@id"
                 , new MySqlParameter[]{

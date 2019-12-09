@@ -1,30 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "E:\\project\\M5_core\\WebApplication1\\WebApplication1.csproj": {}
+    "E:\\web\\M5_core\\WebApplication1\\WebApplication1.csproj": {}
   },
   "projects": {
-    "E:\\project\\M5_core\\WebApplication1\\WebApplication1.csproj": {
+    "E:\\web\\M5_core\\WebApplication1\\WebApplication1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\project\\M5_core\\WebApplication1\\WebApplication1.csproj",
+        "projectUniqueName": "E:\\web\\M5_core\\WebApplication1\\WebApplication1.csproj",
         "projectName": "WebApplication1",
-        "projectPath": "E:\\project\\M5_core\\WebApplication1\\WebApplication1.csproj",
-        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
-        "outputPath": "E:\\project\\M5_core\\WebApplication1\\obj\\",
+        "projectPath": "E:\\web\\M5_core\\WebApplication1\\WebApplication1.csproj",
+        "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
+        "outputPath": "E:\\web\\M5_core\\WebApplication1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wang\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "c:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
