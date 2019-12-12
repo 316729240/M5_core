@@ -86,7 +86,7 @@ public class ajax : IHttpHandler
                 }
             }
         }
-        if (isTitle) Sql.ExecuteNonQuery("update mainTable set title=replace(title,@keyword1,@keyword2) where id in (" + ids + ")", new SqlParameter[]{
+        if (isTitle) Sql.ExecuteNonQuery("update maintable set title=replace(title,@keyword1,@keyword2) where id in (" + ids + ")", new SqlParameter[]{
             new SqlParameter("keyword1",keyword1),
             new SqlParameter("keyword2",keyword2)
         });
@@ -190,7 +190,7 @@ public class ajax : IHttpHandler
         where += userWhere;
         if (where != "") where += " and ";
         where += " (" + flist + ") ";
-        string sql = "select top 100000 A.id from mainTable A left join "+tableName+" B on A.id=B.id where "+where;
+        string sql = "select top 100000 A.id from maintable A left join "+tableName+" B on A.id=B.id where "+where;
         ArrayList list = Sql.ExecuteArrayObj(sql, new SqlParameter[]{
             new SqlParameter("keyword",keyword),
             new SqlParameter("userId",login.value.id)

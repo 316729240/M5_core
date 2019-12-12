@@ -37,6 +37,7 @@
           "Plugin.BatchAddColumn": "1.0.0",
           "Plugin.Doctor": "1.0.0",
           "Plugin.FileManage": "1.0.0",
+          "Plugin.QuestionManage": "1.0.0",
           "RazorEngine.Core": "1.0.0"
         },
         "runtime": {
@@ -4624,6 +4625,18 @@
           "Plugin.FileManage.dll": {}
         }
       },
+      "Plugin.QuestionManage/1.0.0": {
+        "dependencies": {
+          "M5.Base": "1.0.0",
+          "Microsoft.AspNetCore.All": "2.0.3"
+        },
+        "runtime": {
+          "Plugin.QuestionManage.dll": {}
+        },
+        "compile": {
+          "Plugin.QuestionManage.dll": {}
+        }
+      },
       "RazorEngine.Core/1.0.0": {
         "dependencies": {
           "Microsoft.CodeAnalysis.CSharp": "2.10.0",
@@ -6966,6 +6979,11 @@
       "sha512": ""
     },
     "Plugin.FileManage/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Plugin.QuestionManage/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

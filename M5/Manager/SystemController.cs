@@ -27,13 +27,24 @@ namespace M5.Main.Manager
     {
         public ReturnValue test()
         {
-            MySqlDataReader rs = Sql.ExecuteReader("select  id,u_keyword from article ");
-            while (rs.Read())
-            {
+            //      MySqlDataReader rs= Sql.ExecuteReader("select * from class");
+          
+            //    rs.Close();
+            MySqlDataReader rs = Sql.ExecuteReader("select * from class limit 0,1");
 
-                RecordClass.addKeyword(rs.GetDouble("id"), rs[1]+"");
-            }
             rs.Close();
+            Sql.ExecuteArray("select id,keyword from class");
+            /*
+            ArrayList rs = Sql.ExecuteArray("select id,keyword from class");
+            for(int i = 0; i < rs.Count; i++)
+            {
+                Dictionary<string, object> value = (Dictionary<string, object>)rs[i];
+
+                RecordClass.addKeyword(double.Parse( value["id"]+""),value["keyword"] +"",0);
+                //rs[i]
+            }
+;*/
+            Sql.ExecuteDataset("select id from class");
             return new ReturnValue();
         }
         //loginInfo.checkLogin();

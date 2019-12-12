@@ -140,13 +140,12 @@ namespace MWMS.Plugin
         });
             return info;
         }
-        public ReturnValue edit()
+        public override ReturnValue edit(double classId)
         {
             ReturnValue info = new ReturnValue();
-            RecordClass value = new RecordClass(loginInfo.value);
+            RecordClass value = new RecordClass(32123421234,loginInfo.value);
             value.tableName = "u_question";
             double id = s_request.getDouble("id");
-            double classId = s_request.getDouble("classId");
             Permissions p = loginInfo.value.getColumnPermissions(classId);
             if (!p.write)
             {
@@ -156,17 +155,21 @@ namespace MWMS.Plugin
             }
             value.addField("classId", classId);
             value.addField("title", s_request.getString("title"));
+            value.addField("u_keyword", s_request.getString("u_keyword"));
             string u_content = s_request.getString("u_content");
             value.addField("u_content", u_content);
-            value.addField("u_question_answerCount", 0);
+            value.addField("u_answerCount", 0);
             if (id > 0)
             {
                 info.userData = value.update(id);
+                RecordClass.addKeyword(id, s_request.getString("u_keyword"), 32123421234);
             }
             else
             {
                 if (!p.delete && !p.audit) value.addField("orderId", -1);
-                info.userData = value.insert();
+                double dataId = value.insert();
+                info.userData = dataId;
+                RecordClass.addKeyword(dataId, s_request.getString("u_keyword"), 32123421234);
             }
             return info;
         }

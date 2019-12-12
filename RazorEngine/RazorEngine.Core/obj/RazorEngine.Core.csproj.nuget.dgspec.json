@@ -1,37 +1,37 @@
 {
   "format": 1,
   "restore": {
-    "E:\\web\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj": {}
+    "E:\\project\\M5_core\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj": {}
   },
   "projects": {
-    "E:\\web\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj": {
+    "E:\\project\\M5_core\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\web\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
+        "projectUniqueName": "E:\\project\\M5_core\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
         "projectName": "RazorEngine.Core",
-        "projectPath": "E:\\web\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
-        "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
-        "outputPath": "E:\\web\\M5_core\\RazorEngine\\RazorEngine.Core\\obj\\",
+        "projectPath": "E:\\project\\M5_core\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\M5_core\\RazorEngine\\RazorEngine.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\wang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.0"
         ],
         "sources": {
-          "c:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp2.0": {
             "projectReferences": {
-              "E:\\web\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj": {
-                "projectPath": "E:\\web\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj"
+              "E:\\project\\M5_core\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj": {
+                "projectPath": "E:\\project\\M5_core\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj"
               }
             }
           }
@@ -74,27 +74,27 @@
         }
       }
     },
-    "E:\\web\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj": {
+    "E:\\project\\M5_core\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\web\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj",
+        "projectUniqueName": "E:\\project\\M5_core\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj",
         "projectName": "System.Web.Razor",
-        "projectPath": "E:\\web\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj",
-        "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
-        "outputPath": "E:\\web\\M5_core\\RazorEngine\\System.Web.Razor\\obj\\",
+        "projectPath": "E:\\project\\M5_core\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\M5_core\\RazorEngine\\System.Web.Razor\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\wang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.0"
         ],
         "sources": {
-          "c:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

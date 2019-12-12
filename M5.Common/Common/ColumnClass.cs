@@ -317,6 +317,7 @@ namespace M5.Common
                 new MySqlParameter("titleRepeat",info.titleRepeat),
                 new MySqlParameter("watermark",info.watermark)
                 });
+            RecordClass.addKeyword(info.id, info.keyword,0);
             reset(info.id);
         }
         public static ReturnValue edit(ColumnInfo info, UserInfo user)
@@ -358,6 +359,8 @@ namespace M5.Common
 
                 });
                 //reset(info.id);
+
+                RecordClass.addKeyword(info.id, info.keyword,0);
                 err.userData = info.id;
             }
             else

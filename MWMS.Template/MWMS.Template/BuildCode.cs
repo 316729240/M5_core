@@ -825,7 +825,7 @@ namespace MWMS.Template
                 //sql = "select" + fieldList + ",row_number() OVER(order by " + (orderBy == "" ? "(select 0)" : orderBy) + ") row_number " + tempsql;
                 sql = "select" + fieldList + " " + tempsql;
                 PageBar p = new PageBar();
-                p.RecordCount = (int)Sql.ExecuteScalar(countSql, sql_p);
+                p.RecordCount = int.Parse( Sql.ExecuteScalar(countSql, sql_p).ToString());
                 SafeReqeust request = new SafeReqeust(0, 0);
                 pageNo = page["_pageNo"] == null ? 1 : (int)page["_pageNo"];
                 p.PageSize = pageSize;

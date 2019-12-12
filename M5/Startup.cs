@@ -75,7 +75,8 @@ namespace M5.Main
             Sql.connectionString = @"server="+ ConfigurationManager.AppSettings["ServerIP"]
                 + ";uid=" + ConfigurationManager.AppSettings["Username"] 
                 + ";pwd=" + ConfigurationManager.AppSettings["Password"]
-                + ";database=" + ConfigurationManager.AppSettings["DataBaseName"] + ";";
+                + ";database=" + ConfigurationManager.AppSettings["DataBaseName"]
+                + ";min pool size=100;max pool size=500;connect timeout = 20;pooling=true;";
             /*
             TemplateServiceConfiguration templateConfig = new TemplateServiceConfiguration
             {

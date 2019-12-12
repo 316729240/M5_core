@@ -78,7 +78,7 @@ infoLength-=Tools.GetStringLength(html);
                     Sql.ExecuteNonQuery("delete from indextable where dataId=@dataId",new MySqlParameter[]{
                         new MySqlParameter("dataId", info.userData)
                     });
-                    RecordClass.addKeyword((double) info.userData, keyword);
+                    RecordClass.addKeyword((double) info.userData, keyword, 22192428132);
                 }
             }
             else
@@ -87,7 +87,7 @@ infoLength-=Tools.GetStringLength(html);
                 if (!p.delete && !p.audit) value.addField("orderId", -1);
 
                 info.userData = value.insert();
-                if (info.userData != null) RecordClass.addKeyword((double) info.userData, keyword);
+                if (info.userData != null) RecordClass.addKeyword((double) info.userData, keyword, 22192428132);
             }
             return info;
 

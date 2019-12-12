@@ -692,7 +692,7 @@ namespace MWMS
                 sql = "select" + fieldList + ",row_number() OVER(order by " + (orderBy == "" ? "(select 0)" : orderBy) + ") row_number " + tempsql;
                 //sql = sql.Replace(fieldList, fieldList + ",row_number() OVER(order by " + (orderBy == "" ? "(select 0)" : orderBy) + ") row_number ");
                 pageBar p = new pageBar();
-                p.recordCount = (int)Sql.ExecuteScalar(countSql, sql_p);
+                p.recordCount = int.Parse( Sql.ExecuteScalar(countSql, sql_p).ToString());
                 SafeReqeust request = new SafeReqeust(0, 0);
                // pageNo = (int)getVariable("public._pageNo");
                 pageNo = (pageNo == 0 ? 1 : pageNo);

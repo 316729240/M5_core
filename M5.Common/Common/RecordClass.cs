@@ -546,7 +546,7 @@ namespace M5.Common
             return (n);
         }
 
-        public static void addKeyword(double dataId, string keyword)
+        public static void addKeyword(double dataId, string keyword,double datatypeId)
         {
             if (keyword == null || keyword.Trim() == "") return;
            // keyword = keyword.Replace(" ", ",");
@@ -565,7 +565,8 @@ namespace M5.Common
                         Sql.ExecuteNonQuery("insert into indextable (dataId,keyword,pinyin)values(@dataId,@keyword,@pinyin)", new MySqlParameter[]{
                     new MySqlParameter("dataId",dataId),
                     new MySqlParameter("keyword",k[i]),
-                    new MySqlParameter("pinyin",pinyin)
+                    new MySqlParameter("pinyin",pinyin),
+                    new MySqlParameter("datatypeId",datatypeId),
                 });
                     }
                 }

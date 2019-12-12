@@ -1,40 +1,40 @@
 {
   "format": 1,
   "restore": {
-    "E:\\web\\M5_core\\Plugin.Doctor\\Plugin.Doctor.csproj": {}
+    "E:\\project\\M5_core\\M5_core\\Plugin.Doctor\\Plugin.Doctor.csproj": {}
   },
   "projects": {
-    "E:\\web\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj": {
+    "E:\\project\\M5_core\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\web\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj",
+        "projectUniqueName": "E:\\project\\M5_core\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj",
         "projectName": "MWMS.DAL",
-        "projectPath": "E:\\web\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj",
-        "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
-        "outputPath": "E:\\web\\M5_core\\DAL\\MWMS.DAL\\obj\\",
+        "projectPath": "E:\\project\\M5_core\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\M5_core\\DAL\\MWMS.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\wang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.0"
         ],
         "sources": {
-          "c:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp2.0": {
             "projectReferences": {
-              "E:\\web\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj": {
-                "projectPath": "E:\\web\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj"
+              "E:\\project\\M5_core\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj": {
+                "projectPath": "E:\\project\\M5_core\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj"
               },
-              "E:\\web\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj": {
-                "projectPath": "E:\\web\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj"
+              "E:\\project\\M5_core\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj": {
+                "projectPath": "E:\\project\\M5_core\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj"
               }
             }
           }
@@ -69,27 +69,27 @@
         }
       }
     },
-    "E:\\web\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj": {
+    "E:\\project\\M5_core\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\web\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj",
+        "projectUniqueName": "E:\\project\\M5_core\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj",
         "projectName": "MWMS.SqlHelper",
-        "projectPath": "E:\\web\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj",
-        "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
-        "outputPath": "E:\\web\\M5_core\\DAL\\SqlHelper\\obj\\",
+        "projectPath": "E:\\project\\M5_core\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\M5_core\\DAL\\SqlHelper\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\wang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.0"
         ],
         "sources": {
-          "c:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -114,7 +114,7 @@
             },
             "MySql.Data": {
               "target": "Package",
-              "version": "[8.0.17, )"
+              "version": "[8.0.18, )"
             },
             "System.Data.Common": {
               "target": "Package",
@@ -139,43 +139,43 @@
         }
       }
     },
-    "E:\\web\\M5_core\\M5.Common\\M5.Base.csproj": {
+    "E:\\project\\M5_core\\M5_core\\M5.Common\\M5.Base.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\web\\M5_core\\M5.Common\\M5.Base.csproj",
+        "projectUniqueName": "E:\\project\\M5_core\\M5_core\\M5.Common\\M5.Base.csproj",
         "projectName": "M5.Base",
-        "projectPath": "E:\\web\\M5_core\\M5.Common\\M5.Base.csproj",
-        "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
-        "outputPath": "E:\\web\\M5_core\\M5.Common\\obj\\",
+        "projectPath": "E:\\project\\M5_core\\M5_core\\M5.Common\\M5.Base.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\M5_core\\M5.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\wang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.0"
         ],
         "sources": {
-          "c:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp2.0": {
             "projectReferences": {
-              "E:\\web\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj": {
-                "projectPath": "E:\\web\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj"
+              "E:\\project\\M5_core\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj": {
+                "projectPath": "E:\\project\\M5_core\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj"
               },
-              "E:\\web\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj": {
-                "projectPath": "E:\\web\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj"
+              "E:\\project\\M5_core\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj": {
+                "projectPath": "E:\\project\\M5_core\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj"
               },
-              "E:\\web\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj": {
-                "projectPath": "E:\\web\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj"
+              "E:\\project\\M5_core\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj": {
+                "projectPath": "E:\\project\\M5_core\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj"
               },
-              "E:\\web\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj": {
-                "projectPath": "E:\\web\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj"
+              "E:\\project\\M5_core\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj": {
+                "projectPath": "E:\\project\\M5_core\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj"
               }
             }
           }
@@ -214,34 +214,34 @@
         }
       }
     },
-    "E:\\web\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj": {
+    "E:\\project\\M5_core\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\web\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj",
+        "projectUniqueName": "E:\\project\\M5_core\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj",
         "projectName": "MWMS.Helper",
-        "projectPath": "E:\\web\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj",
-        "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
-        "outputPath": "E:\\web\\M5_core\\MWMS.Helper\\obj\\",
+        "projectPath": "E:\\project\\M5_core\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\M5_core\\MWMS.Helper\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\wang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.0"
         ],
         "sources": {
-          "c:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp2.0": {
             "projectReferences": {
-              "E:\\web\\M5_core\\PinyinForCore\\PinyinForCore.csproj": {
-                "projectPath": "E:\\web\\M5_core\\PinyinForCore\\PinyinForCore.csproj"
+              "E:\\project\\M5_core\\M5_core\\PinyinForCore\\PinyinForCore.csproj": {
+                "projectPath": "E:\\project\\M5_core\\M5_core\\PinyinForCore\\PinyinForCore.csproj"
               }
             }
           }
@@ -284,27 +284,27 @@
         }
       }
     },
-    "E:\\web\\M5_core\\PinyinForCore\\PinyinForCore.csproj": {
+    "E:\\project\\M5_core\\M5_core\\PinyinForCore\\PinyinForCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\web\\M5_core\\PinyinForCore\\PinyinForCore.csproj",
+        "projectUniqueName": "E:\\project\\M5_core\\M5_core\\PinyinForCore\\PinyinForCore.csproj",
         "projectName": "PinyinForCore",
-        "projectPath": "E:\\web\\M5_core\\PinyinForCore\\PinyinForCore.csproj",
-        "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
-        "outputPath": "E:\\web\\M5_core\\PinyinForCore\\obj\\",
+        "projectPath": "E:\\project\\M5_core\\M5_core\\PinyinForCore\\PinyinForCore.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\M5_core\\PinyinForCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\wang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.0"
         ],
         "sources": {
-          "c:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -342,43 +342,43 @@
         }
       }
     },
-    "E:\\web\\M5_core\\Plugin.Doctor\\Plugin.Doctor.csproj": {
+    "E:\\project\\M5_core\\M5_core\\Plugin.Doctor\\Plugin.Doctor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\web\\M5_core\\Plugin.Doctor\\Plugin.Doctor.csproj",
+        "projectUniqueName": "E:\\project\\M5_core\\M5_core\\Plugin.Doctor\\Plugin.Doctor.csproj",
         "projectName": "Plugin.Doctor",
-        "projectPath": "E:\\web\\M5_core\\Plugin.Doctor\\Plugin.Doctor.csproj",
-        "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
-        "outputPath": "E:\\web\\M5_core\\Plugin.Doctor\\obj\\",
+        "projectPath": "E:\\project\\M5_core\\M5_core\\Plugin.Doctor\\Plugin.Doctor.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\M5_core\\Plugin.Doctor\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\wang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.0"
         ],
         "sources": {
-          "c:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp2.0": {
             "projectReferences": {
-              "E:\\web\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj": {
-                "projectPath": "E:\\web\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj"
+              "E:\\project\\M5_core\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj": {
+                "projectPath": "E:\\project\\M5_core\\M5_core\\DAL\\MWMS.DAL\\MWMS.DAL.csproj"
               },
-              "E:\\web\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj": {
-                "projectPath": "E:\\web\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj"
+              "E:\\project\\M5_core\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj": {
+                "projectPath": "E:\\project\\M5_core\\M5_core\\DAL\\SqlHelper\\MWMS.SqlHelper.csproj"
               },
-              "E:\\web\\M5_core\\M5.Common\\M5.Base.csproj": {
-                "projectPath": "E:\\web\\M5_core\\M5.Common\\M5.Base.csproj"
+              "E:\\project\\M5_core\\M5_core\\M5.Common\\M5.Base.csproj": {
+                "projectPath": "E:\\project\\M5_core\\M5_core\\M5.Common\\M5.Base.csproj"
               },
-              "E:\\web\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj": {
-                "projectPath": "E:\\web\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj"
+              "E:\\project\\M5_core\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj": {
+                "projectPath": "E:\\project\\M5_core\\M5_core\\MWMS.Helper\\MWMS.Helper.csproj"
               }
             }
           }
@@ -417,34 +417,34 @@
         }
       }
     },
-    "E:\\web\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj": {
+    "E:\\project\\M5_core\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\web\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
+        "projectUniqueName": "E:\\project\\M5_core\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
         "projectName": "RazorEngine.Core",
-        "projectPath": "E:\\web\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
-        "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
-        "outputPath": "E:\\web\\M5_core\\RazorEngine\\RazorEngine.Core\\obj\\",
+        "projectPath": "E:\\project\\M5_core\\M5_core\\RazorEngine\\RazorEngine.Core\\RazorEngine.Core.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\M5_core\\RazorEngine\\RazorEngine.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\wang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.0"
         ],
         "sources": {
-          "c:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp2.0": {
             "projectReferences": {
-              "E:\\web\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj": {
-                "projectPath": "E:\\web\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj"
+              "E:\\project\\M5_core\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj": {
+                "projectPath": "E:\\project\\M5_core\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj"
               }
             }
           }
@@ -487,27 +487,27 @@
         }
       }
     },
-    "E:\\web\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj": {
+    "E:\\project\\M5_core\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\web\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj",
+        "projectUniqueName": "E:\\project\\M5_core\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj",
         "projectName": "System.Web.Razor",
-        "projectPath": "E:\\web\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj",
-        "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
-        "outputPath": "E:\\web\\M5_core\\RazorEngine\\System.Web.Razor\\obj\\",
+        "projectPath": "E:\\project\\M5_core\\M5_core\\RazorEngine\\System.Web.Razor\\System.Web.Razor.csproj",
+        "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\M5_core\\M5_core\\RazorEngine\\System.Web.Razor\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\wang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.0"
         ],
         "sources": {
-          "c:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

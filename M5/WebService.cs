@@ -306,7 +306,7 @@ namespace M5.Main
             Config.systemVariables["webUrl"] = "http://" +request.Url();
             //            Config.systemVariables["webUrl"] = "http://" + PageContext.Current.Request.Url.Authority + Config.webPath;
             //Config.systemVariables["pageUrl"] = PageContext.Current.Request.Url.AbsoluteUri.ToString();// "http://" + PageContext.Current.Request.Url.Authority +""+ Config.webPath;
-
+            _pageNo = 1;
             Regex r = new Regex(@"(?<=/)((.[^/]*)_((\d){1,5}))(." + BaseConfig.extension + ")", RegexOptions.IgnoreCase);
             string newUrl = r.Replace(url, new MatchEvaluator(_replaceUrl));
 

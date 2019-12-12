@@ -676,30 +676,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\wang\\.nuget\\packages\\": {},
+    "C:\\Users\\h\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\web\\M5_core\\PinyinForCore\\PinyinForCore.csproj",
+      "projectUniqueName": "E:\\project\\M5_core\\M5_core\\PinyinForCore\\PinyinForCore.csproj",
       "projectName": "PinyinForCore",
-      "projectPath": "E:\\web\\M5_core\\PinyinForCore\\PinyinForCore.csproj",
-      "packagesPath": "C:\\Users\\wang\\.nuget\\packages\\",
-      "outputPath": "E:\\web\\M5_core\\PinyinForCore\\obj\\",
+      "projectPath": "E:\\project\\M5_core\\M5_core\\PinyinForCore\\PinyinForCore.csproj",
+      "packagesPath": "C:\\Users\\h\\.nuget\\packages\\",
+      "outputPath": "E:\\project\\M5_core\\M5_core\\PinyinForCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\wang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\h\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
-        "c:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

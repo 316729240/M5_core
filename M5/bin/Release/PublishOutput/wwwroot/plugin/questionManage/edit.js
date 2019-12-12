@@ -55,9 +55,10 @@ $M.questionManage.edit = function (S) {
         }
     });
     var dataId = form.append("<input name=id value='" + (S.dataId?S.dataId:"") + "' type='hidden'>");
-    var u_answerId = form.append("<input name=u_answerId type='hidden'>");
+    var u_question_answerId = form.append("<input name=u_question_answerId type='hidden'>");
     var classId = form.append("<input name=classId value='" + S.classId + "' type='hidden'>");
     form.addControl({ xtype: "TextBox", name: "title", labelText: "标题", labelWidth: 1, vtype: { required: true } });
+    form.addControl({ xtype: "TextBox", name: "u_keyword", labelText: "关键词", labelWidth: 1, vtype: { required: false } });
     form.addControl({ xtype: "Editor", name: "u_content", style: { height: 300 }, labelText: "内容", labelWidth: 1 });
     var footer=form.append("<div class=\"modal-footer\"></div>");
     footer.addControl({ xtype: "Button", color: 2, text: "保存修改" });
@@ -97,7 +98,7 @@ $M.questionManage.edit = function (S) {
     var setAnswerId = function () {
         if (grid.selectedRows.length == 0) return;
         $M.comm("questionManage.setAnswerId", { id: dataId.val(), answerId: grid.selectedRows[0].cells[0].val() }, function () {
-            u_answerId.val(grid.selectedRows[0].cells[0].val());
+            u_question_answerId.val(grid.selectedRows[0].cells[0].val());
             reload();
         });
     };
@@ -122,7 +123,7 @@ $M.questionManage.edit = function (S) {
         columns: [{ name: "id", width: 30 }, { name: "content", width: 600 }, { name: "createDate" }],
         onCellFormatting: function (sender, e) {
             if (e.columnIndex == 0) {
-                if (e.value == u_answerId.val()) {
+                if (e.value == u_question_answerId.val()) {
                     return "<i class='fa fa-thumbs-o-up' />";
                 } else {
                     return "";
