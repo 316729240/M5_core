@@ -51,13 +51,10 @@ namespace MWMS.Template
         {
             _html = compile(_html, flag);
         }
-        string compile(string code, bool flag)
+        public static TemplateService TemplateService = new TemplateService(new TemplateServiceConfiguration
         {
-            if (code == null) code = "";
-            TemplateServiceConfiguration templateConfig = new TemplateServiceConfiguration
-            {
-                CatchPath = Tools.MapPath("~" + Config.cachePath + "assembly/"),
-                Namespaces = new HashSet<string>
+            CatchPath = Tools.MapPath("~" + Config.cachePath + "assembly/"),
+            Namespaces = new HashSet<string>
                              {
                                  "System",
                                  "MWMS",
@@ -66,33 +63,38 @@ namespace MWMS.Template
                                  "MWMS.Helper.Extensions",
                                  "System.Collections.Generic",
                                  "System.Linq"
-                             }
+                             },
+            BaseNamespaces = Constant.BaseNamespaces
 
-            };
-            Razor.SetTemplateService(new TemplateService(templateConfig));
-            if (flag) { 
-             Regex r = new Regex(@"(\b(sys|config))\.((\w|\.|\[|\]){1,30})(\(|)", RegexOptions.IgnoreCase);
-            code = r.Replace(code, new MatchEvaluator(_variable2));
+        });
+        string compile(string code, bool flag)
+        {
+            if (code == null) code = "";
 
-            r = new Regex(@"\bpage\.(\w*)", RegexOptions.IgnoreCase);
-            code = r.Replace(code, new MatchEvaluator(_variable5));
-            r = new Regex(@"view\.(.*?)\)", RegexOptions.IgnoreCase);
-            code = r.Replace(code, new MatchEvaluator(_variable3));
+            Razor.SetTemplateService(TemplateService);
+            //if (flag) { 
+                 Regex r = new Regex(@"(\b(sys|config))\.((\w|\.|\[|\]){1,30})(\(|)", RegexOptions.IgnoreCase);
+                code = r.Replace(code, new MatchEvaluator(_variable2));
+
+                r = new Regex(@"\bpage\.(\w*)", RegexOptions.IgnoreCase);
+                code = r.Replace(code, new MatchEvaluator(_variable5));
+                r = new Regex(@"view\.(.*?)\)", RegexOptions.IgnoreCase);
+                code = r.Replace(code, new MatchEvaluator(_variable3));
             
-            LoginInfo user = new LoginInfo();
-            string headCode = "@using System.Collections\r\n" +
-                "@using MWMS.Template\r\n" +
-                    "@using Helper\r\n" +
-                    "@{ Dictionary<string, string> sys=( Dictionary<string, string>)Model[0];\r\n" +
-                    "Dictionary<string, dynamic> _page=( Dictionary<string, object>)Model[1];\r\n" +
-                    "dynamic [] parameter= Model[2]==null?null:(dynamic [])Model[2];\r\n" +
-                    "var loginUser = new LoginInfo();}";
-            code = headCode + code;
+                LoginInfo user = new LoginInfo();
+                string headCode = "@using System.Collections\r\n" +
+                    "@using MWMS.Template\r\n" +
+                        "@using Helper\r\n" +
+                        "@{ Dictionary<string, string> sys=( Dictionary<string, string>)Model[0];\r\n" +
+                        "Dictionary<string, dynamic> _page=( Dictionary<string, object>)Model[1];\r\n" +
+                        "dynamic [] parameter= Model[2]==null?null:(dynamic [])Model[2];\r\n" +
+                        "var loginUser = new LoginInfo();}";
+                code = headCode + code;
 
-            r = new Regex(@"(<|&lt;)!-- #(.*?)#[\s\S]*?--(>|&gt;)", RegexOptions.IgnoreCase);
-            code = r.Replace(code, new MatchEvaluator(_variable4));
-                //DateTime beforDT = System.DateTime.Now;
-            }
+                r = new Regex(@"(<|&lt;)!-- #(.*?)#[\s\S]*?--(>|&gt;)", RegexOptions.IgnoreCase);
+                code = r.Replace(code, new MatchEvaluator(_variable4));
+                    //DateTime beforDT = System.DateTime.Now;
+           // }
             RazorEngine.Razor.Compile(code, typeof(object[]), _fileName, flag);
             //TimeSpan ts = DateTime.Now - beforDT;
             //double l = ts.TotalMilliseconds;

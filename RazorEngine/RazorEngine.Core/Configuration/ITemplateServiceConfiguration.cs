@@ -7,6 +7,7 @@
     using Compilation.Inspectors;
     using Templating;
     using Text;
+    using Microsoft.CodeAnalysis;
 
     /// <summary>
     /// Defines the required contract for implementing template service configuration.
@@ -58,6 +59,7 @@
         /// </summary>
         ITemplateResolver Resolver { get; }
         string CatchPath { get; }
+        MetadataReference [] BaseNamespaces { get; }
         #endregion
     }
 }

@@ -1,18 +1,22 @@
 ﻿using M5.Base.Common;
 using M5.Common;
 using Microsoft.AspNetCore.Http;
+using Microsoft.CodeAnalysis;
 using MWMS.Helper;
 using MWMS.Helper.Extensions;
 using MWMS.SqlHelper;
 using MWMS.Template;
 using MySql.Data.MySqlClient;
 using RazorEngine;
+using RazorEngine.Compilation;
 using RazorEngine.Configuration;
 using RazorEngine.Templating;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
@@ -62,7 +66,7 @@ namespace M5.Main
         }
         public void BeginRequest(HttpContext context)
         {
-            HttpRequest Request = context.Request;
+               HttpRequest Request = context.Request;
             HttpResponse Response = context.Response;
             if (!allowAccessManagementIP(Request)) Page.ERR404("非法访问");
             /*#region 非系统网页扩展名时处理方式(非文件跳转目录否则不再处理)
@@ -85,16 +89,13 @@ namespace M5.Main
                 Response.Cache.SetCacheability(HttpCacheability.NoCache);
             }
             */
-            try
-            {
+
+            injection(Request);//注入过滤
                 string html = RewriteUrl(context);//载入映射规则
                                                   //Response.ContentType = "html/plain; charset="+System.Text.Encoding.Default.HeaderName;
                 if (html != null) Response.WriteAsync(html);
 
-            } catch (Exception ex)
-            {
-                Response.WriteAsync(ex.Message);
-            }
+
 
 
         }
@@ -116,9 +117,21 @@ namespace M5.Main
         /// 防止sql注入请求
         /// </summary>
         void injection(HttpRequest Request)
-        {/*
-            for (int n = 0; n < Request.QueryString.Count; n++)
+        {
+            if (!Page.safetyVerification(Request.Path.Value))
             {
+                Page.ERR301("/");
+            }
+            /* if (!Tools.safetyVerification(Request.QueryString[n]))
+             {
+                 string UName = "-1";
+                 if (Request.Cookies["AdminUserID"] != null) UName = Request.Cookies["AdminUserID"].Value;
+                 Tools.writeLog("3", "危险请求" + Request.Path.ToString());
+                 Page.ERR301("/");
+             }*/
+            /*for (int n = 0; n < Request.QueryString.Count; n++)
+            {
+                
                 if (!API.safetyVerification(Request.QueryString[n]))
                 {
                     string UName = "-1";
@@ -126,8 +139,9 @@ namespace M5.Main
                     Tools.writeLog("3", "危险请求" + Request.RawUrl);
                     API.ERR301("/");
                 }
-            }*/
+        }*/
         }
+
         static void mobileRedirect(string url, ref bool isMobilePage)
         {
             /*
@@ -213,17 +227,19 @@ namespace M5.Main
             HttpRequest request = context.Request;
             HttpResponse response = context.Response;
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-            sw.Start();;
+            sw.Start();
             #region 已存在文件处理方式
             string file = request.Path;
             if (file.Substring(file.Length - 1) == "/") file += "index." + BaseConfig.extension;
             if (System.IO.File.Exists(Tools.MapPath(file))) return (null);
             #endregion
-           
+
             bool isMobilePage = false;
             string virtualWebDir = "/";//虚拟站点目录
             string newUrl = urlZhuanyi(request.Url(), ref isMobilePage, ref virtualWebDir);
-            if (Page.isMobileAccess() && !isMobilePage)//手机访问 但非手机域名 转向
+            bool isMobileAccess =Page.isMobileAccess();
+  
+            if (isMobileAccess && !isMobilePage)//手机访问 但非手机域名 转向
             {
                 string murl = "";
                 if (BaseConfig.mobileUrl.IndexOf("http") > -1)
@@ -234,15 +250,16 @@ namespace M5.Main
                         if (BaseConfig.mobileRedirectType == 1)
                         {
                             context.Response.WriteAsync("<script>location.href='" + murl + "';</script>");
-                            //Response.End();
+                            return "";
                         }
                         else if (BaseConfig.mobileRedirectType == 2)
                         {
-                            isMobilePage = true;
+                            //isMobilePage = true;
                         }
                         else
                         {
                             response.Redirect(murl);
+                            return "";
                         }
                     }
                 }
@@ -261,16 +278,42 @@ namespace M5.Main
                         }
                         else if (BaseConfig.mobileRedirectType == 2)
                         {
-                            isMobilePage = true;
+                            //isMobilePage = true;
                         }
                         else
                         {
                             response.Redirect(murl);
+                            return "";
                         }
                     }
                 }
             }
-            return getHtml(request, virtualWebDir, newUrl, isMobilePage);
+            string M5_Login = (request.Cookies["M5_Login"] == null) ? "" : request.Cookies["M5_Login"];
+            bool isLogin = M5_Login == "true";
+            string cachePath=Tools.MapPath(Config.cachePath + (isMobilePage ? "mobile" : "default")+"/");
+            PageCache pageCache = new PageCache(cachePath);
+            string html = null;
+            if(!isLogin) html=pageCache.Get(newUrl);
+            if (html==null)
+            {
+                try
+                {
+                    html = getHtml(request, virtualWebDir, newUrl, isMobilePage);
+                    pageCache.Set(newUrl, html);
+                }
+                catch (Exception ex)
+                {
+                    if (isLogin)
+                    {
+                        html = ex.Message;
+                    }
+                    else
+                    {
+                        html = pageCache.Get(newUrl);
+                    }
+                }
+            }
+            return html;
             /*
             PageCache pageCache = new PageCache();
             string html = pageCache.getCache(virtualWebDir, newUrl, isMobilePage);
@@ -309,12 +352,9 @@ namespace M5.Main
             _pageNo = 1;
             Regex r = new Regex(@"(?<=/)((.[^/]*)_((\d){1,5}))(." + BaseConfig.extension + ")", RegexOptions.IgnoreCase);
             string newUrl = r.Replace(url, new MatchEvaluator(_replaceUrl));
-
             PageTemplate pageTemplate = null;
             pageTemplate = new PageTemplate(newUrl, isMobile);
             pageTemplate.Build();
-
-
             //TemplateInfo info = TemplateClass.get(newUrl, isMobile);
             if (pageTemplate == null)
             {
@@ -342,15 +382,8 @@ namespace M5.Main
                 pageTemplate.Variable.Add("_pageNo", _pageNo);
                 pageTemplate.Variable.Add("_url", request.Url());
                 pageTemplate.Variable.Add("_fileName", _fileName);
-                /*
-                TemplateServiceConfiguration templateConfig = new TemplateServiceConfiguration
-                {
-                    CatchPath = PageContext.Current.Server.MapPath("~" + Config.cachePath + "assembly/")
-                };
-                Razor.SetTemplateService(new TemplateService(templateConfig));
-                RazorEngine.Razor.Compile(info.u_content, typeof(object[]), info.id.ToString(),false);
-                */
                 string html = RazorEngine.Razor.Run(pageTemplate.TemplateId.ToString(), new object[] { Config.systemVariables, pageTemplate.Variable, pageTemplate.Parameter });
+
                 SubDomains subDomains = new SubDomains();
                 subDomains.isMobile = isMobile;
                 subDomains.replaceUrl(ref html);

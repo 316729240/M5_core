@@ -4,6 +4,8 @@
     using System.Collections.Generic;
     using System.Reflection;
 
+    using Microsoft.CodeAnalysis;
+    using Microsoft.CodeAnalysis.CSharp;
     using Inspectors;
 
     /// <summary>
@@ -18,6 +20,7 @@
         IEnumerable<ICodeInspector> CodeInspectors { get; set; }
 
         string CatchPath { get; set; }
+        MetadataReference [] BaseNamespaces { get; set; }
         /// <summary>
         /// Gets or sets whether the compiler service is operating in debug mode.
         /// </summary>

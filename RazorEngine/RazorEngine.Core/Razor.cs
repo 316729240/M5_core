@@ -15,7 +15,10 @@
         private static ITemplateService _service = new TemplateService();
         private static readonly object _sync = new object();
         #endregion
+        public static void _test()
+        {
 
+        }
         #region Properties
         /// <summary>
         /// Gets the template service.

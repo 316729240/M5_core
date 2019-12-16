@@ -1,0 +1,3031 @@
+<!doctype html>
+<html data-n-head>
+
+<head data-n-head>
+<title data-n-head="true">疾病百科_疾病查询_常见疾病大全_微医疾病百科</title>
+<meta data-n-head="true" charset="utf-8">
+<meta data-n-head="true" name="viewport" content="width=device-width, initial-scale=1">
+<meta data-n-head="true" data-hid="description" name="description" content="微医疾病百科,为您提供最专业、全面的疾病大全查询工具，包括疾病查询,疾病分析,疾病就医,疾病治疗,疾病预防,疾病诊断,疾病概述">
+<meta data-n-head="true" data-hid="keywords" name="keywords" content="疾病百科,疾病大全,疾病查询,疾病治疗,疾病症状">
+<link data-n-head="true" rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preload" href="/_nuxt/79e4bcfe85ec5ebd3313.css" as="style">
+<link rel="preload" href="/_nuxt/c2f210b57a58a9c6e225.css" as="style">
+<link rel="preload" href="/_nuxt/5720253c6962a8966848.css" as="style">
+
+<link rel="stylesheet" href="/_nuxt/79e4bcfe85ec5ebd3313.css">
+<link rel="stylesheet" href="/_nuxt/c2f210b57a58a9c6e225.css">
+<link rel="stylesheet" href="/_nuxt/5720253c6962a8966848.css">
+<script src="/page/js/jquery-1.5.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/static/m5_public.js"></script>
+<link rel="stylesheet" type="text/css" href="/_nuxt/1bec0b3f71a5f171d6fc.css">
+<link rel="stylesheet" type="text/css" href="/_nuxt/49900b803c00df6d48ed.css">
+<link rel="stylesheet" type="text/css" href="/_nuxt/b2f1876a03b0cfaf1edb.css">
+<link rel="stylesheet" type="text/css" href="/_nuxt/cd3f8f63dca265056850.css">
+<link rel="stylesheet" type="text/css" href="/_nuxt/2c12deeb6b194f83d736.css">
+</head>
+
+<body data-n-head>
+
+<div id="__nuxt">
+	<!---->
+	<div id="__layout">
+		<section class="el-container global-container is-vertical"><header class="el-header global-header" style="height:auto;">
+		<a href="/" class="app-header">
+		<img src="/_nuxt/img/cf1bb59.png" class="logo"><h1 class="site-name">
+		微医疾病百科</h1>
+		</a>
+		<div class="app-header-nav illness" data-v-5b9a3639>
+			<div class="link-container dynamic" data-v-5b9a3639>
+				<div class="label" data-v-5b9a3639>
+					<div data-v-5b9a3639>
+						疾病</div>
+					<div data-v-5b9a3639>
+						百科</div>
+				</div>
+				<div class="links" style="max-width:500px;" data-v-5b9a3639>
+					<div style="margin-right:20px;" data-v-5b9a3639>
+						<a href="/keshi/neike/" data-v-5b9a3639>内科</a><a href="/keshi/nanke/" data-v-5b9a3639>男科</a></div>
+					<div style="margin-right:20px;" data-v-5b9a3639>
+						<a href="/keshi/waike/" data-v-5b9a3639>外科</a><a href="/keshi/fuchanke/" data-v-5b9a3639>妇产科</a></div>
+					<div style="margin-right:20px;" data-v-5b9a3639>
+						<a href="/keshi/shenjingke/" data-v-5b9a3639>神经科</a><a href="/keshi/zhongliu/" data-v-5b9a3639>肿瘤科</a></div>
+					<div style="margin-right:20px;" data-v-5b9a3639>
+						<a href="/keshi/pifuke/" data-v-5b9a3639>皮肤科</a><a href="/keshi/guke/" data-v-5b9a3639>骨科</a></div>
+					<div style="margin-right:20px;" data-v-5b9a3639>
+						<a href="/keshi/yanke/" data-v-5b9a3639>眼科</a><a href="/keshi/ebhk/" data-v-5b9a3639>耳鼻喉科</a></div>
+					<div style="margin-right:20px;" data-v-5b9a3639>
+						<a href="/keshi/kouqiang/" data-v-5b9a3639>口腔科</a><a href="/keshi/zxmr/" data-v-5b9a3639>整形美容</a></div>
+				</div>
+			</div>
+			<div class="link-container static" data-v-5b9a3639>
+				<div class="label" data-v-5b9a3639>
+					<div data-v-5b9a3639>
+						疾病</div>
+					<div data-v-5b9a3639>
+						诊疗</div>
+				</div>
+				<div class="links" data-v-5b9a3639>
+					<a href="/hospital/" data-v-5b9a3639>找医院</a><a href="/video/" data-v-5b9a3639>疾病微视</a><a href="/doctorTalk/" data-v-5b9a3639>医生说</a><a href="/question/" data-v-5b9a3639>疾病问答</a></div>
+			</div>
+			<div class="link-container static" data-v-5b9a3639>
+				<div class="label" data-v-5b9a3639>
+					<div data-v-5b9a3639>
+						新闻</div>
+					<div data-v-5b9a3639>
+						资讯</div>
+				</div>
+				<div class="links" data-v-5b9a3639>
+					<a href="/weiyitongxueshe/" data-v-5b9a3639>微医通讯社</a><a href="/yangshengbaojian/" data-v-5b9a3639>养生保健</a><a href="/yiliaozhengce/" data-v-5b9a3639>医疗政策</a><a href="/jianfeishoushen/" data-v-5b9a3639>减肥瘦身</a></div>
+			</div>
+			<div class="links" data-v-5b9a3639>
+				<a href="/index_old.html" data-v-5b9a3639>进入旧版</a></div>
+		</div>
+		</header> <main class="el-main">
+		<div class="illness-ency">
+			<div class="el-row block" style="margin-left: -8px; margin-right: -8px;">
+				<div class="el-col el-col-7" style="padding-left: 8px; padding-right: 8px;">
+					<div class="image-container" style="height: 396px; border-radius: 0px;">
+						<div class="el-image" style="height: 396px; border-radius: 0px;">
+							<img src="img/illness-home.png" class="el-image__inner" style="object-fit: cover;"></div>
+						<div class="image-mask">
+							<div style="text-align: left;">
+								<div class="bhc-fontsize-l bhc-color-white">
+									健康专科联盟</div>
+								<div>
+									天气炎热怎么样减肥最快 女生减肥是先减脂还是…</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="el-col el-col-10" style="padding-left: 8px; padding-right: 8px; display: flex; flex-direction: column; justify-content: space-between;">
+					<div class="list-component bullet-list">
+						<div class="el-row list-component-content">
+							<div class="list-item" >
+								<div class="list-item-main">
+										<a href="/shenyan/yf/495435.html" target="_blank" class="bhc-fontsize-xl ellipsis bhc-color-level2" style="line-height: 28px; padding: 0px 20px;">
+										<span class="bhc-tag tangerine small reverse">
+										NEW</span> 如何预防肾盂肾炎</a>
+								</div>
+							</div>
+							<div class="list-item">
+								<div class="list-item-main">
+										<a href="/zwsjjb/zl/1275339.html" target="_blank">
+										<li class="bullet-item bhc-fontsize-m" style="line-height: 28px;">
+										文章 |  中医怎么治疗植物神经疾病</li>
+										</a>
+								</div>
+							</div>
+							<div class="list-item">
+								<div class="list-item-main">
+										<a href="/tangniaobing/zz/494448.html" target="_blank">
+										<li class="bullet-item bhc-fontsize-m" style="line-height: 28px;">
+										文章 |  糖尿病症状及日常注意事项。</li>
+										</a>
+								</div>
+							</div>
+							<div class="list-item">
+								<div class="list-item-main">
+										<a href="/jzxjb/zz/494385.html" target="_blank">
+										<li class="bullet-item bhc-fontsize-m" style="line-height: 28px;">
+										文章 |  一图看懂你的甲功报告</li>
+										</a>
+								</div>
+							</div>
+							<div class="list-item">
+								<div class="list-item-main">
+										<a href="/gzss/by/494028.html" target="_blank">
+										<li class="bullet-item bhc-fontsize-m" style="line-height: 28px;">
+										文章 |  骨质疏松的发病率</li>
+										</a>
+								</div>
+							</div>
+							<div class="list-item" >
+								<div class="list-item-main">
+										<a href="/gouloubing/zl/494013.html" target="_blank" class="bhc-fontsize-xl ellipsis bhc-color-level2" style="line-height: 28px; padding: 0px 20px;">
+										<span class="bhc-tag tangerine small reverse">
+										NEW</span> 如何预防佝偻病？</a>
+								</div>
+							</div>
+							<div class="list-item">
+								<div class="list-item-main">
+										<a href="/yzjptc/zz/493977.html" target="_blank">
+										<li class="bullet-item bhc-fontsize-m" style="line-height: 28px;">
+										文章 |  腰椎病有哪些症状表现</li>
+										</a>
+								</div>
+							</div>
+							<div class="list-item">
+								<div class="list-item-main">
+										<a href="/gzss/zl/493956.html" target="_blank">
+										<li class="bullet-item bhc-fontsize-m" style="line-height: 28px;">
+										文章 |  这3种治疗骨质疏松的方法是错误的</li>
+										</a>
+								</div>
+							</div>
+							<div class="list-item">
+								<div class="list-item-main">
+										<a href="/shizhen/yf/493812.html" target="_blank">
+										<li class="bullet-item bhc-fontsize-m" style="line-height: 28px;">
+										文章 |  怎么预防肛门湿疹复发</li>
+										</a>
+								</div>
+							</div>
+							<div class="list-item">
+								<div class="list-item-main">
+										<a href="/ganglie/zz/493806.html" target="_blank">
+										<li class="bullet-item bhc-fontsize-m" style="line-height: 28px;">
+										文章 |  肛裂你知道多少？</li>
+										</a>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="el-col el-col-7" style="padding-left: 8px; padding-right: 8px;">
+					<div class="el-card is-never-shadow">
+						<!---->
+						<div class="el-card__body" style="background: rgba(216, 216, 216, 0.08); max-height: 396px;">
+							<div class="list-component video-list sidebar">
+								<div class="list-component-header">
+									<div>
+										<div class="common-header">
+											<div>
+												<i class="el-icon-delete"></i>
+												<span class="title">疾病微视</span></div>
+											<a href="/video/" class="more" target="_blank">
+											更多</a></div>
+									</div>
+								</div>
+								<div class="el-row list-component-content">
+									<div class="list-item">
+										<div class="list-item-prefix">
+												<a href="/video/296580.html" class target="_blank">
+<div class="image-container" style="height: 83px; width: 122px; border-radius: 0px;">
+        <div class="el-image" style="height: 83px; width: 122px; border-radius: 0px;"><img src="https://kano.guahao.cn/2n038985058" class="el-image__inner"></div>
+	    <img src="/img/play.png" class="play-btn"/>
+	</div></a>
+</div>
+										<div class="list-item-main">
+											<div class="list-item-main--title">
+													<a href="/video/296580.html" class="bhc-subtitle2 ellipsis sidebar-title" target="_blank">
+													切除子宫对女性有什么影响？</a>
+											</div>
+											<div class="list-item-main--description">
+													<div style="overflow: hidden;">
+														<span style="box-shadow: transparent 0px 0px;">
+														<span >有时候，面对疾病，权衡利弊，医生会给出...</span></span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="list-item">
+										<div class="list-item-prefix">
+												<a href="/video/296187.html" class target="_blank">
+<div class="image-container" style="height: 83px; width: 122px; border-radius: 0px;">
+        <div class="el-image" style="height: 83px; width: 122px; border-radius: 0px;"><img src="https://kano.guahao.cn/4QX31901945" class="el-image__inner"></div>
+	    <img src="/img/play.png" class="play-btn"/>
+	</div></a>
+</div>
+										<div class="list-item-main">
+											<div class="list-item-main--title">
+													<a href="/video/296187.html" class="bhc-subtitle2 ellipsis sidebar-title" target="_blank">
+													不孕不育因素之女性子宫因素</a>
+											</div>
+											<div class="list-item-main--description">
+													<div style="overflow: hidden;">
+														<span style="box-shadow: transparent 0px 0px;">
+														<span >对于女性来说，多达130余种疾病都可能引起...</span></span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="list-item">
+										<div class="list-item-prefix">
+												<a href="/video/295197.html" class target="_blank">
+<div class="image-container" style="height: 83px; width: 122px; border-radius: 0px;">
+        <div class="el-image" style="height: 83px; width: 122px; border-radius: 0px;"><img src="https://kano.guahao.cn/xrd16810538" class="el-image__inner"></div>
+	    <img src="/img/play.png" class="play-btn"/>
+	</div></a>
+</div>
+										<div class="list-item-main">
+											<div class="list-item-main--title">
+													<a href="/video/295197.html" class="bhc-subtitle2 ellipsis sidebar-title" target="_blank">
+													如何治愈宝宝中耳炎？</a>
+											</div>
+											<div class="list-item-main--description">
+													<div style="overflow: hidden;">
+														<span style="box-shadow: transparent 0px 0px;">
+														<span >中耳炎的治疗原则是什么？有哪些治疗药物...</span></span>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="image-container block" style="height: 140px; border-radius: 0px;">
+				<div class="el-image" style="height: 140px; border-radius: 0px;">
+					<img src="img/banner.jpg" class="el-image__inner" style="object-fit: cover;"></div>
+			</div>
+			<div class="el-row block" style="margin-left: -16px; margin-right: -16px;">
+			    <div class="el-col el-col-16" style="padding-left: 16px; padding-right: 16px;" id="chajibing">
+					<div class="bhc-fontsize-xl bhc-color-brand" style="margin-bottom: 16px;">
+						查疾病</div>
+					<div data-v-142bf316="" class="disease_list tabs-wrapper" type="card">
+						<div class="el-tabs el-tabs--card el-tabs--top">
+							<div class="el-tabs__header is-top">
+								<div class="el-tabs__nav-wrap is-top">
+									<div class="el-tabs__nav-scroll">
+										<div role="tablist" class="el-tabs__nav is-top" style="transform: translateX(0px);">
+											<div id="tab-0" aria-controls="pane-0" role="tab" aria-selected="true" tabindex="0" class="el-tabs__item is-top is-active">
+												常见病</div>
+											<div id="tab-1" aria-controls="pane-1" role="tab" tabindex="-1" class="el-tabs__item is-top">
+												流行病</div>
+											<div id="tab-2" aria-controls="pane-2" role="tab" tabindex="-1" class="el-tabs__item is-top">
+												疑难病</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="el-tabs__content">
+								<div data-v-142bf316="" role="tabpanel" id="pane-0" aria-labelledby="tab-0" class="el-tab-pane" style="">
+									<a data-v-142bf316="" href="/tangniaobing/" target="_blank">
+									糖尿病 </a>
+									<a data-v-142bf316="" href="/jiakang/" target="_blank">
+									甲亢 </a>
+									<a data-v-142bf316="" href="/zhifanggan/" target="_blank">
+									脂肪肝 </a>
+									<a data-v-142bf316="" href="/dannangyan/" target="_blank">
+									胆囊炎 </a>
+									<a data-v-142bf316="" href="/weiyan/" target="_blank">
+									胃炎 </a>
+									<a data-v-142bf316="" href="/xiaochuan/" target="_blank">
+									哮喘 </a>
+									<a data-v-142bf316="" href="/guanxinbing/" target="_blank">
+									冠心病 </a>
+									<a data-v-142bf316="" href="/gaoxueya/" target="_blank">
+									高血压 </a>
+									<a data-v-142bf316="" href="/biyan/" target="_blank">
+									鼻炎 </a>
+									<a data-v-142bf316="" href="/quchi/" target="_blank">
+									龋齿 </a>
+									<a data-v-142bf316="" href="/yayinyan/" target="_blank">
+									牙龈炎 </a>
+									<a href="/ganyanzheng/" target="_blank" data-v-142bf316="">
+									干眼症 </a>
+									<a data-v-142bf316="" href="/jinshiyan/" target="_blank">
+									近视眼 </a>
+									<a data-v-142bf316="" href="/cuochuang/" target="_blank">
+									痤疮 </a>
+									<a data-v-142bf316="" href="/shizhen/" target="_blank">
+									湿疹 </a>
+									<a data-v-142bf316="" href="/sjsr/" target="_blank">
+									神经衰弱 </a>
+									<a data-v-142bf316="" href="/zgjl/" target="_blank">
+									子宫肌瘤 </a>
+									<a data-v-142bf316="" href="/penqiangyan/" target="_blank">
+									盆腔炎 </a>
+									<a data-v-142bf316="" href="/qlxzs/" target="_blank">
+									前列腺增生 </a>
+									<a data-v-142bf316="" href="/xunmazhen/" target="_blank">
+									荨麻疹 </a>
+									<a data-v-142bf316="" href="/baixuebing/" target="_blank">
+									白血病 </a>
+									<a data-v-142bf316="" href="/xinzangbing/" target="_blank">
+									心脏病 </a>
+									<a data-v-142bf316="" href="/niaoduzheng/" target="_blank">
+									尿毒症 </a>
+									<a data-v-142bf316="" href="/ganai/" target="_blank">
+									肝癌 </a>
+									<a data-v-142bf316="" href="/feiai/" target="_blank">
+									肺癌 </a>
+									<a data-v-142bf316="" href="/yiyuzheng/" target="_blank">
+									抑郁症 </a>
+									<a data-v-142bf316="" href="/feijiehe/" target="_blank">
+									肺结核 </a>
+									<a data-v-142bf316="" href="/yigan/" target="_blank">
+									乙肝 </a>
+									<a data-v-142bf316="" href="/yindaoyan/" target="_blank">
+									阴道炎 </a>
+									<a data-v-142bf316="" href="/shenjieshi/" target="_blank">
+									肾结石 </a>
+									<a data-v-142bf316="" href="/qlxzs/" target="_blank">
+									前列腺增生 </a>
+									<a data-v-142bf316="" href="/bpgc/" target="_blank">
+									包皮过长 </a>
+									<a data-v-142bf316="" href="/danjieshi/" target="_blank">
+									胆结石 </a>
+									<a data-v-142bf316="" href="/jianzhouyan/" target="_blank">
+									肩周炎 </a>
+									<a data-v-142bf316="" href="/kqky/" target="_blank">
+									口腔溃疡 </a>
+									<a data-v-142bf316="" href="/bidouyan/" target="_blank">
+									鼻窦炎 </a>
+									<a data-v-142bf316="" href="/mailizhong/" target="_blank">
+									麦粒肿 </a>
+									<a data-v-142bf316="" href="/dianxian/" target="_blank">
+									癫痫 </a>
+									<a data-v-142bf316="" href="/zaoxie/" target="_blank">
+									早泄 </a>
+									<a data-v-142bf316="" href="/jsjmqz/" target="_blank">
+									精索静脉曲张 </a></div>
+								<div data-v-142bf316="" role="tabpanel" aria-hidden="true" id="pane-1" aria-labelledby="tab-1" class="el-tab-pane tab-pane-box" style="display: none;">
+									<a data-v-142bf316="" href="/gxcb/" target="_blank">
+									弓形虫 </a>
+									<a data-v-142bf316="" href="/baixuezheng/" target="_blank">
+									病败血症 </a>
+									<a data-v-142bf316="" href="/bairike/" target="_blank">
+									百日咳 </a>
+									<a data-v-142bf316="" href="/poshangfeng/" target="_blank">
+									破伤风 </a>
+									<a data-v-142bf316="" href="/aizibing/" target="_blank">
+									艾滋病 </a>
+									<a data-v-142bf316="" href="/ganyan/" target="_blank">
+									乙肝 </a>
+									<a data-v-142bf316="" href="/ganyan/" target="_blank">
+									肝炎 </a>
+									<a data-v-142bf316="" href="/fumoyan/" target="_blank">
+									腹膜炎 </a>
+									<a data-v-142bf316="" href="/feijiehe/" target="_blank">
+									肺结核 </a>
+									<a data-v-142bf316="" href="/liugan/" target="_blank">
+									流感 </a>
+									<a data-v-142bf316="" href="/ganmao/" target="_blank">
+									感冒 </a>
+									<a data-v-142bf316="" href="/feiyan//" target="_blank">
+									肺炎 </a>
+									<a data-v-142bf316="" href="/jiaoqi/" target="_blank">
+									脚气 </a>
+									<a data-v-142bf316="" href="/huizhijia/" target="_blank">
+									灰指甲 </a>
+									<a data-v-142bf316="" href="/naomoyan/" target="_blank">
+									脑膜炎 </a>
+									<a data-v-142bf316="" href="/naoyan/" target="_blank">
+									脑炎 </a>
+									<a data-v-142bf316="" href="/fujianyan/" target="_blank">
+									附件炎 </a>
+									<a data-v-142bf316="" href="/gongjingyan/" target="_blank">
+									宫颈炎 </a>
+									<a data-v-142bf316="" href="/qlxy/" target="_blank">
+									前列腺炎 </a>
+									<a data-v-142bf316="" href="/bpgty/" target="_blank">
+									包皮龟头炎 </a>
+									<a data-v-142bf316="" href="/penqiangyan/" target="_blank">
+									盆腔炎 </a>
+									<a data-v-142bf316="" href="/qlxzs/" target="_blank">
+									前列腺增生 </a>
+									<a data-v-142bf316="" href="/xunmazhen/" target="_blank">
+									荨麻疹 </a>
+									<a data-v-142bf316="" href="/jianzhouyan/" target="_blank">
+									肩周炎 </a>
+									<a data-v-142bf316="" href="/kqky/" target="_blank">
+									口腔溃疡 </a>
+									<a data-v-142bf316="" href="/maonangyan/" target="_blank">
+									毛囊炎 </a>
+									<a data-v-142bf316="" href="/yinxiebing/" target="_blank">
+									银屑病 </a>
+									<a data-v-142bf316="" href="/bskz/" target="_blank">
+									白色糠疹 </a>
+									<a data-v-142bf316="" href="/jiuzhabi/" target="_blank">
+									酒渣鼻 </a>
+									<a data-v-142bf316="" href="/jiaoqi/" target="_blank">
+									脚气 </a>
+									<a data-v-142bf316="" href="/bantu/" target="_blank">
+									斑秃 </a>
+									<a data-v-142bf316="" href="/tuofa/" target="_blank">
+									脱发 </a>
+									<a data-v-142bf316="" href="/pfgm/" target="_blank">
+									皮肤过敏 </a>
+									<a data-v-142bf316="" href="/jinshiyan/" target="_blank">
+									近视眼 </a>
+									<a data-v-142bf316="" href="/cuochuang/" target="_blank">
+									痤疮 </a>
+									<a data-v-142bf316="" href="/shizhen/" target="_blank">
+									湿疹 </a>
+									<a data-v-142bf316="" href="/baidianfeng/" target="_blank">
+									白癜风 </a>
+									<a data-v-142bf316="" href="/huizhijia/" target="_blank">
+									灰指甲 </a>
+									<a data-v-142bf316="" href="/bahen/" target="_blank">
+									疤痕 </a>
+									<a data-v-142bf316="" href="/dzpz/" target="_blank">
+									带状疱疹 </a></div>
+								<div data-v-142bf316="" role="tabpanel" aria-hidden="true" id="pane-2" aria-labelledby="tab-2" class="el-tab-pane tab-pane-box" style="display: none;">
+									<a data-v-142bf316="" href="/gzzhz/" target="_blank">
+									干燥综合征 </a>
+									<a data-v-142bf316="" href="/tongfeng/" target="_blank">
+									痛风 </a>
+									<a data-v-142bf316="" href="/niaoduzheng/" target="_blank">
+									尿毒症 </a>
+									<a data-v-142bf316="" href="/ganyinghua/" target="_blank">
+									肝硬化 </a>
+									<a data-v-142bf316="" href="/xinjiyan/" target="_blank">
+									心肌炎 </a>
+									<a data-v-142bf316="" href="/xlsc/" target="_blank">
+									心律失常 </a>
+									<a data-v-142bf316="" href="/feiai/" target="_blank">
+									肺癌 </a>
+									<a data-v-142bf316="" href="/shidaoai/" target="_blank">
+									食道癌 </a>
+									<a data-v-142bf316="" href="/linbaliu/" target="_blank">
+									淋巴瘤 </a>
+									<a data-v-142bf316="" href="/qingguangyan/" target="_blank">
+									青光眼 </a>
+									<a data-v-142bf316="" href="/gmxzd/" target="_blank">
+									过敏性紫癜 </a>
+									<a data-v-142bf316="" href="/niupixuan/" target="_blank">
+									牛皮癣 </a>
+									<a data-v-142bf316="" href="/baidianfeng/" target="_blank">
+									白癜风 </a>
+									<a data-v-142bf316="" href="/scsjt/" target="_blank">
+									三叉神经痛 </a>
+									<a data-v-142bf316="" href="/pajinsen/" target="_blank">
+									帕金森 </a>
+									<a data-v-142bf316="" href="/dianxian/" target="_blank">
+									癫痫 </a>
+									<a data-v-142bf316="" href="/xgxlc/" target="_blank">
+									习惯性流产 </a>
+									<a data-v-142bf316="" href="/dnlczhz/" target="_blank">
+									多囊卵巢综合征 </a>
+									<a data-v-142bf316="" href="/sijing/" target="_blank">
+									死精症 </a>
+									<a data-v-142bf316="" href="/jsjmqz/" target="_blank">
+									精索静脉曲张 </a>
+									<a data-v-142bf316="" href="/xianweiliu/" target="_blank">
+									纤维瘤 </a>
+									<a data-v-142bf316="" href="/dannangai/" target="_blank">
+									胆囊癌 </a>
+									<a data-v-142bf316="" href="/jitailiu/" target="_blank">
+									畸胎瘤 </a>
+									<a data-v-142bf316="" href="/kouqiangai/" target="_blank">
+									口腔癌 </a>
+									<a data-v-142bf316="" href="/dfxgsl/" target="_blank">
+									多发性骨髓瘤 </a>
+									<a data-v-142bf316="" href="/baixuebing/" target="_blank">
+									白血病 </a>
+									<a data-v-142bf316="" href="/linbaliu/" target="_blank">
+									淋巴瘤 </a>
+									<a data-v-142bf316="" href="/guai/" target="_blank">
+									骨癌 </a>
+									<a data-v-142bf316="" href="/guzhongliu/" target="_blank">
+									骨肿瘤 </a>
+									<a data-v-142bf316="" href="/zgjl/" target="_blank">
+									子宫肌瘤 </a>
+									<a data-v-142bf316="" href="/luanchaoai/" target="_blank">
+									卵巢癌 </a>
+									<a data-v-142bf316="" href="/hssl/" target="_blank">
+									黑色素瘤 </a>
+									<a data-v-142bf316="" href="/sjpfzhz/" target="_blank">
+									神经皮肤综合症 </a>
+									<a data-v-142bf316="" href="/naoxueshuan/" target="_blank">
+									脑血栓 </a>
+									<a data-v-142bf316="" href="/naochuxue/" target="_blank">
+									脑出血 </a>
+									<a data-v-142bf316="" href="/naoshuizhong/" target="_blank">
+									脑水肿 </a>
+									<a data-v-142bf316="" href="/nxgb/" target="_blank">
+									脑血管病 </a>
+									<a data-v-142bf316="" href="/naoweisuo/" target="_blank">
+									脑萎缩 </a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="el-col el-col-8" style="padding-left: 16px; padding-right: 16px; margin-top: 16px;">
+					<div class="el-card is-never-shadow">
+						<!---->
+						<div class="el-card__body" style="background: rgba(216, 216, 216, 0.08); height: 268px;">
+							<div class="list-component bullet-list">
+								<div class="list-component-header">
+										<div class="common-header">
+											<div>
+												<i class="el-icon-delete"></i>
+												<span class="title">医生说</span></div>
+											<a href="/doctorTalk/" class="more" target="_blank">
+											更多</a></div>
+								</div>
+								<div class="el-row list-component-content">
+									<div class="list-item">
+										<div class="list-item-main">
+											<div class="list-item-main--description">
+													<a href="/video/296580.html" class="bullet-item ellipsis">
+													切除子宫对女性有什么影响？</a>
+											</div>
+										</div>
+									</div>
+									<div class="list-item">
+										<div class="list-item-main">
+											<div class="list-item-main--description">
+													<a href="/video/296187.html" class="bullet-item ellipsis">
+													不孕不育因素之女性子宫因素</a>
+											</div>
+										</div>
+									</div>
+									<div class="list-item">
+										<div class="list-item-main">
+											<div class="list-item-main--description">
+													<a href="/video/295197.html" class="bullet-item ellipsis">
+													如何治愈宝宝中耳炎？</a>
+											</div>
+										</div>
+									</div>
+									<div class="list-item">
+										<div class="list-item-main">
+											<div class="list-item-main--description">
+													<a href="/video/295200.html" class="bullet-item ellipsis">
+													急性化脓性中耳炎竟然是这样？</a>
+											</div>
+										</div>
+									</div>
+									<div class="list-item">
+										<div class="list-item-main">
+											<div class="list-item-main--description">
+													<a href="/video/295194.html" class="bullet-item ellipsis">
+													宝宝患有中耳炎？这些检查助你诊断</a>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+<div class="block">					<div class="label">
+						内科</div>
+					<div class="el-divider el-divider--horizontal">
+					</div>
+					<div class="diseases">
+<a href="/nfmst/" target=_blank  class="disease">内分泌失调</a>
+<a href="/guanxinbing/" target=_blank  class="disease">冠心病</a>
+<a href="/yiyuzheng/" target=_blank  class="disease">抑郁症</a>
+<a href="/jiakang/" target=_blank  class="disease">甲亢</a>
+<a href="/tongfeng/" target=_blank  class="disease">痛风</a>
+<a href="/tangniaobing/" target=_blank  class="disease">糖尿病</a>
+<a href="/ganyan/" target=_blank  class="disease">肝炎</a>
+<a href="/ganyinghua/" target=_blank  class="disease">肝硬化</a>
+<a href="/feiyan/" target=_blank  class="disease">肺炎</a>
+<a href="/shenyan/" target=_blank  class="disease">肾炎</a>
+<a href="/weiyan/" target=_blank  class="disease">胃炎</a>
+<a href="/fsxgjy/" target=_blank  class="disease">风湿性关节炎</a>
+<a href="/gaoxueya/" target=_blank  class="disease">高血压</a>
+</div>
+					<div class="el-row" style="margin-left: -16px; margin-right: -16px; height: 288px;">
+						<div class="el-col el-col-17 article-qa-box" style="padding-left: 16px; padding-right: 16px;">
+							<div class="article-qa-row">
+								<div class="item-box">
+									<img src="/img/jordan1.png" alt=""><div>
+										<div class="list-component article-list sidebar sidebar-article-list">
+											<div class="el-row list-component-content">
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/shenyan/yf/495435.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>如何预防肾盂肾炎</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/tangniaobing/zz/494448.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>糖尿病症状及日常注意事项。</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/jiakang/zl/494400.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>你的甲状腺还好吗-之甲状腺功能亢进症</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/ganyinghua/zl/494406.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>如何诊治肝硬化？</a>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="item-box">
+									<img src="/img/jordan2.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/tangniaobing/zl/494460.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>糖尿病的化验单，怎么看最准确，之二</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/tangniaobing/by/494463.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>中国的大型研究发现糖尿病与许多癌症有关</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/tangniaobing/zl/494526.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>治疗糖尿病的基础药物，二甲双胍的若干问题你都清楚吗？</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/tangniaobing/zl/494475.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>2型糖尿病最全用药攻略，原来如此简单</a>
+														</div>
+													</div>
+												</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="article-qa-row">
+								<div class="item-box">
+									<img src="/img/jordan3.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+
+										</div>
+									</div>
+								</div>
+								<div class="item-box">
+									<img src="/img/jordan4.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="el-col el-col-7 clear-fix" style="padding-left: 16px; padding-right: 16px;">
+							<div class="tabs-wrapper" type="card">
+								<div class="el-tabs el-tabs--card el-tabs--top">
+									<div class="el-tabs__header is-top">
+										<div class="el-tabs__nav-wrap is-top">
+											<div class="el-tabs__nav-scroll">
+												<div role="tablist" class="el-tabs__nav is-top" style="transform: translateX(0px);">
+													<div id="tab-0" aria-controls="pane-0" role="tab" aria-selected="true" tabindex="0" class="el-tabs__item is-top is-active">
+														相关医院</div>
+													<div id="tab-1" aria-controls="pane-1" role="tab" tabindex="-1" class="el-tabs__item is-top">
+														相关医生</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="el-tabs__content">
+										<div role="tabpanel" id="pane-0" aria-labelledby="tab-0" class="el-tab-pane" style>
+											<div class="list-component hospital-list sidebar hospital-list-sidebar">
+												<div class="el-row list-component-content">
+<div class="list-item">
+														<div class="list-item-prefix">
+																<a href="/hospital/780/neike/" class target="_blank">
+																<div class="image-container" style="height: 88px; width: 115px; border-radius: 0px;">
+																	<div class="el-image" style="height: 88px; width: 115px; border-radius: 0px;">
+																		<img src="/img/default-hospital.png" class="el-image__inner"></div>
+																</div>
+																</a>
+														</div>
+														<div class="list-item-main">
+															<div class="list-item-main--title">
+																	<div class="title-box">
+																		<span class="hospital-name">
+																		<a href="/hospital/780/neike/" class target="_blank">
+																		静宁县雷大乡卫生院</a></span><div class="hospital-address sidebar-hospital-address ellipsis">
+																			地址：雷大乡合岘村 
+																		</div>
+																		<div class="yuyue_button_div">
+																			<a href="https://www.guahao.com/hospital/391c0166-965c-49df-a7cf-f27be9c55ba0000" target="_blank" class="bookbtn">
+																			立即预约</a></div>
+																	</div>
+															</div>
+														</div>
+													</div>
+<div class="list-item">
+														<div class="list-item-prefix">
+																<a href="/hospital/789/xiaohuaneike/" class target="_blank">
+																<div class="image-container" style="height: 88px; width: 115px; border-radius: 0px;">
+																	<div class="el-image" style="height: 88px; width: 115px; border-radius: 0px;">
+																		<img src="https://kano.guahao.cn/29m2954606.jpg	" class="el-image__inner"></div>
+																</div>
+																</a>
+														</div>
+														<div class="list-item-main">
+															<div class="list-item-main--title">
+																	<div class="title-box">
+																		<span class="hospital-name">
+																		<a href="/hospital/789/xiaohuaneike/" class target="_blank">
+																		北京航天总医院</a></span><div class="hospital-address sidebar-hospital-address ellipsis">
+																			地址：北京市丰台区东高地万源北路7号	 
+																		</div>
+																		<div class="yuyue_button_div">
+																			<a href="https://www.guahao.com/hospital/73985f38-5b7f-424a-b424-e63fb18bdf65000" target="_blank" class="bookbtn">
+																			立即预约</a></div>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div role="tabpanel" aria-hidden="true" id="pane-1" aria-labelledby="tab-1" class="el-tab-pane" style="display: none;">
+											<div class="list-component doctor-list sidebar doctor-list-sidebar">
+												<div class="el-row list-component-content">
+<div class="list-item">
+														<div class="list-item-prefix">
+															<div>
+																<a href="/hospital/2928/zhongliuke/98213171.html" class target="_blank">
+																<img src="https://kano.guahao.cn/tAX2584501.jpg" alt="谢勋鹏" class="doctor-avatar"></a></div>
+														</div>
+														<div class="list-item-main">
+															<div>
+																<div class="title-box">
+																	<p class="name-box">
+																	<a href="/hospital/2928/zhongliuke/98213171.html" class="doctor-name bhc-fontsize-m" target="_blank">
+																	谢勋鹏</a><span class="doctor-title">主任医师</span></p>
+																	<p class="doctor-specialty bhc-color-level3 bhc-fontsize-xs">
+																	<span class="ellipsis specialty">
+																	擅长：恶性肿瘤化疗及免疫治疗，特别是肺癌、乳腺癌、胃癌、大肠癌、晚期肿瘤的姑息治疗等。</span></p>
+																	<p class="doctor-numbers bhc-color-level3 bhc-fontsize-xs">
+																	<span>访问：共 0 次</span></p>
+																	<div class="yuyue_button_div">
+																		<a href="https://www.guahao.com/expert/a416fb13-3c3d-4805-bc01-9799f194d969000" target="_blank" class="bookbtn">
+																		立即预约</a></div>
+																</div>
+															</div>
+														</div>
+													</div>
+<div class="list-item">
+														<div class="list-item-prefix">
+															<div>
+																<a href="/hospital/3090/waike/98213169.html" class target="_blank">
+																<img src="https://kano.guahao.cn/AbH2624908.jpg" alt="雷振华" class="doctor-avatar"></a></div>
+														</div>
+														<div class="list-item-main">
+															<div>
+																<div class="title-box">
+																	<p class="name-box">
+																	<a href="/hospital/3090/waike/98213169.html" class="doctor-name bhc-fontsize-m" target="_blank">
+																	雷振华</a><span class="doctor-title">主治医师</span></p>
+																	<p class="doctor-specialty bhc-color-level3 bhc-fontsize-xs">
+																	<span class="ellipsis specialty">
+																	擅长：　　　不育症、前列腺疾病、性功能障碍、早泄等男科疾病，以及泌尿系疾病（如泌尿系结石、肿瘤、膀胱膀胱过度活动症等）的中西医结合诊治及泌尿外科腔镜微创诊疗技术。</span></p>
+																	<p class="doctor-numbers bhc-color-level3 bhc-fontsize-xs">
+																	<span>访问：共 0 次</span></p>
+																	<div class="yuyue_button_div">
+																		<a href="https://www.guahao.com/expert/50a523f9-3142-4952-9ec4-9429f1d61645000" target="_blank" class="bookbtn">
+																		立即预约</a></div>
+																</div>
+															</div>
+														</div>
+													</div>
+
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tabs-extra-content">
+									<a href="/hospital/search/23212172719-0.html" class="more" target="_blank">
+									更多</a></div>
+							</div>
+						</div>
+					</div>
+</div>
+<div class="block">					<div class="label">
+						外科</div>
+					<div class="el-divider el-divider--horizontal">
+					</div>
+					<div class="diseases">
+<a href="/zdml/" target=_blank  class="disease">主动脉瘤</a>
+<a href="/rxzs/" target=_blank  class="disease">乳腺增生</a>
+<a href="/chunelie/" target=_blank  class="disease">唇腭裂</a>
+<a href="/xjgs/" target=_blank  class="disease">心肌梗死</a>
+<a href="/xhdcx/" target=_blank  class="disease">消化道出血</a>
+<a href="/zhichuang/" target=_blank  class="disease">痔疮</a>
+<a href="/changxirou/" target=_blank  class="disease">肠息肉</a>
+<a href="/weichuankong/" target=_blank  class="disease">胃穿孔</a>
+<a href="/dnxr/" target=_blank  class="disease">胆囊息肉</a>
+<a href="/danjieshi/" target=_blank  class="disease">胆结石</a>
+<a href="/jzcw/" target=_blank  class="disease">脊柱侧弯</a>
+<a href="/xueguanliu/" target=_blank  class="disease">血管瘤</a>
+<a href="/slgds/" target=_blank  class="disease">输卵管堵塞</a>
+</div>
+					<div class="el-row" style="margin-left: -16px; margin-right: -16px; height: 288px;">
+						<div class="el-col el-col-17 article-qa-box" style="padding-left: 16px; padding-right: 16px;">
+							<div class="article-qa-row">
+								<div class="item-box">
+									<img src="/img/jordan1.png" alt=""><div>
+										<div class="list-component article-list sidebar sidebar-article-list">
+											<div class="el-row list-component-content">
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/changxirou/yf/493920.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>预防肠息肉：日常饮食你吃对了吗？</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/zhichuang/yf/493755.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>痔疮术后怎么预防复发</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/zhichuang/zl/493764.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>痔疮排便难受怎么办</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/zhichuang/zl/493767.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>哪些异常排便症状是因为患痔疮了</a>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="item-box">
+									<img src="/img/jordan2.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/zhichuang/zl/493776.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>如何应对痔疮</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/changxirou/yf/493779.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>怎么预防肠息肉呢？</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/zhichuang/zl/493794.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>痔疮术后护理</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/zhichuang/by/493800.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>孕妇患痔疮的原因</a>
+														</div>
+													</div>
+												</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="article-qa-row">
+								<div class="item-box">
+									<img src="/img/jordan3.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+
+										</div>
+									</div>
+								</div>
+								<div class="item-box">
+									<img src="/img/jordan4.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="el-col el-col-7 clear-fix" style="padding-left: 16px; padding-right: 16px;">
+							<div class="tabs-wrapper" type="card">
+								<div class="el-tabs el-tabs--card el-tabs--top">
+									<div class="el-tabs__header is-top">
+										<div class="el-tabs__nav-wrap is-top">
+											<div class="el-tabs__nav-scroll">
+												<div role="tablist" class="el-tabs__nav is-top" style="transform: translateX(0px);">
+													<div id="tab-0" aria-controls="pane-0" role="tab" aria-selected="true" tabindex="0" class="el-tabs__item is-top is-active">
+														相关医院</div>
+													<div id="tab-1" aria-controls="pane-1" role="tab" tabindex="-1" class="el-tabs__item is-top">
+														相关医生</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="el-tabs__content">
+										<div role="tabpanel" id="pane-0" aria-labelledby="tab-0" class="el-tab-pane" style>
+											<div class="list-component hospital-list sidebar hospital-list-sidebar">
+												<div class="el-row list-component-content">
+<div class="list-item">
+														<div class="list-item-prefix">
+																<a href="/hospital/786/miniaowaike/" class target="_blank">
+																<div class="image-container" style="height: 88px; width: 115px; border-radius: 0px;">
+																	<div class="el-image" style="height: 88px; width: 115px; border-radius: 0px;">
+																		<img src="https://kano.guahao.cn/iAD2956961.jpg	" class="el-image__inner"></div>
+																</div>
+																</a>
+														</div>
+														<div class="list-item-main">
+															<div class="list-item-main--title">
+																	<div class="title-box">
+																		<span class="hospital-name">
+																		<a href="/hospital/786/miniaowaike/" class target="_blank">
+																		娄底市中心医院</a></span><div class="hospital-address sidebar-hospital-address ellipsis">
+																			地址：湖南省娄底市长青中街51号	 
+																		</div>
+																		<div class="yuyue_button_div">
+																			<a href="https://www.guahao.com/hospital/986d7dbc-c720-11e1-913c-5cf9dd2e7135000" target="_blank" class="bookbtn">
+																			立即预约</a></div>
+																	</div>
+															</div>
+														</div>
+													</div>
+<div class="list-item">
+														<div class="list-item-prefix">
+																<a href="/hospital/792/waike/" class target="_blank">
+																<div class="image-container" style="height: 88px; width: 115px; border-radius: 0px;">
+																	<div class="el-image" style="height: 88px; width: 115px; border-radius: 0px;">
+																		<img src="https://kano.guahao.cn/Qeo2954320.jpg	" class="el-image__inner"></div>
+																</div>
+																</a>
+														</div>
+														<div class="list-item-main">
+															<div class="list-item-main--title">
+																	<div class="title-box">
+																		<span class="hospital-name">
+																		<a href="/hospital/792/waike/" class target="_blank">
+																		威县妇幼保健院</a></span><div class="hospital-address sidebar-hospital-address ellipsis">
+																			地址：河北省邢台市威县326省道	 
+																		</div>
+																		<div class="yuyue_button_div">
+																			<a href="https://www.guahao.com/hospital/5ae3393b-c513-4c63-9b08-2f588d3339fe000" target="_blank" class="bookbtn">
+																			立即预约</a></div>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div role="tabpanel" aria-hidden="true" id="pane-1" aria-labelledby="tab-1" class="el-tab-pane" style="display: none;">
+											<div class="list-component doctor-list sidebar doctor-list-sidebar">
+												<div class="el-row list-component-content">
+<div class="list-item">
+														<div class="list-item-prefix">
+															<div>
+																<a href="/hospital/2928/zhongliuke/98213171.html" class target="_blank">
+																<img src="https://kano.guahao.cn/tAX2584501.jpg" alt="谢勋鹏" class="doctor-avatar"></a></div>
+														</div>
+														<div class="list-item-main">
+															<div>
+																<div class="title-box">
+																	<p class="name-box">
+																	<a href="/hospital/2928/zhongliuke/98213171.html" class="doctor-name bhc-fontsize-m" target="_blank">
+																	谢勋鹏</a><span class="doctor-title">主任医师</span></p>
+																	<p class="doctor-specialty bhc-color-level3 bhc-fontsize-xs">
+																	<span class="ellipsis specialty">
+																	擅长：恶性肿瘤化疗及免疫治疗，特别是肺癌、乳腺癌、胃癌、大肠癌、晚期肿瘤的姑息治疗等。</span></p>
+																	<p class="doctor-numbers bhc-color-level3 bhc-fontsize-xs">
+																	<span>访问：共 0 次</span></p>
+																	<div class="yuyue_button_div">
+																		<a href="https://www.guahao.com/expert/a416fb13-3c3d-4805-bc01-9799f194d969000" target="_blank" class="bookbtn">
+																		立即预约</a></div>
+																</div>
+															</div>
+														</div>
+													</div>
+<div class="list-item">
+														<div class="list-item-prefix">
+															<div>
+																<a href="/hospital/3090/waike/98213169.html" class target="_blank">
+																<img src="https://kano.guahao.cn/AbH2624908.jpg" alt="雷振华" class="doctor-avatar"></a></div>
+														</div>
+														<div class="list-item-main">
+															<div>
+																<div class="title-box">
+																	<p class="name-box">
+																	<a href="/hospital/3090/waike/98213169.html" class="doctor-name bhc-fontsize-m" target="_blank">
+																	雷振华</a><span class="doctor-title">主治医师</span></p>
+																	<p class="doctor-specialty bhc-color-level3 bhc-fontsize-xs">
+																	<span class="ellipsis specialty">
+																	擅长：　　　不育症、前列腺疾病、性功能障碍、早泄等男科疾病，以及泌尿系疾病（如泌尿系结石、肿瘤、膀胱膀胱过度活动症等）的中西医结合诊治及泌尿外科腔镜微创诊疗技术。</span></p>
+																	<p class="doctor-numbers bhc-color-level3 bhc-fontsize-xs">
+																	<span>访问：共 0 次</span></p>
+																	<div class="yuyue_button_div">
+																		<a href="https://www.guahao.com/expert/50a523f9-3142-4952-9ec4-9429f1d61645000" target="_blank" class="bookbtn">
+																		立即预约</a></div>
+																</div>
+															</div>
+														</div>
+													</div>
+
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tabs-extra-content">
+									<a href="/hospital/search/23212172820-0.html" class="more" target="_blank">
+									更多</a></div>
+							</div>
+						</div>
+					</div>
+</div>
+<div class="block">					<div class="label">
+						男科</div>
+					<div class="el-divider el-divider--horizontal">
+					</div>
+					<div class="diseases">
+<a href="/qlxzs/" target=_blank  class="disease">前列腺增生</a>
+<a href="/qlxy/" target=_blank  class="disease">前列腺炎</a>
+<a href="/bpgc/" target=_blank  class="disease">包皮过长</a>
+<a href="/bpgty/" target=_blank  class="disease">包皮龟头炎</a>
+<a href="/naodaoyan/" target=_blank  class="disease">尿道炎</a>
+<a href="/ruojing/" target=_blank  class="disease">弱精症</a>
+<a href="/zaoxie/" target=_blank  class="disease">早泄</a>
+<a href="/gaowanyan/" target=_blank  class="disease">睾丸炎</a>
+<a href="/jingnangyan/" target=_blank  class="disease">精囊炎</a>
+<a href="/jybyh/" target=_blank  class="disease">精液不液化</a>
+<a href="/jsjmqz/" target=_blank  class="disease">精索静脉曲张</a>
+<a href="/yangwei/" target=_blank  class="disease">阳痿</a>
+<a href="/fugaoyan/" target=_blank  class="disease">附睾炎</a>
+</div>
+					<div class="el-row" style="margin-left: -16px; margin-right: -16px; height: 288px;">
+						<div class="el-col el-col-17 article-qa-box" style="padding-left: 16px; padding-right: 16px;">
+							<div class="article-qa-row">
+								<div class="item-box">
+									<img src="/img/jordan1.png" alt=""><div>
+										<div class="list-component article-list sidebar sidebar-article-list">
+											<div class="el-row list-component-content">
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/ruojing/by/472773.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>润滑剂影响精子活力吗？</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/qlxy/zz/494115.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>前列腺导浊按摩法价格要变更啦！</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/zaoxie/zl/494160.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>早泄的行为治疗</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/jybyh/zl/494163.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>你想知道的关于精液常规的问题</a>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="item-box">
+									<img src="/img/jordan2.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/yangwei/zl/494169.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>什么是NPT，为什么勃起功能障碍要做NPT检查</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/qlxy/by/494172.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>为什么大学生也会得前列腺炎</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/yangwei/yf/494175.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>情人节了，男人应该对自己有个清醒的认识</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/bpgc/zl/494199.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>包皮环切术后会影响性生活的感觉吗</a>
+														</div>
+													</div>
+												</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="article-qa-row">
+								<div class="item-box">
+									<img src="/img/jordan3.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/question/207234.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>久坐或者喝水少的时候尿黄，浑浊，最后会尿白，也不疼，感觉尿道中有点热，想咨询这是什么。乳糜尿？还是前列腺炎。能不能治疗。是不是会引起性功能退化</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/question/195528.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>慢性前列腺炎吃什么药好</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/question/195471.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>慢性前列腺炎吃什么药</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/question/235887.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>早泄，举而不坚，有慢性前列腺炎。	</a>
+														</div>
+													</div>
+												</div>
+
+										</div>
+									</div>
+								</div>
+								<div class="item-box">
+									<img src="/img/jordan4.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/question/227940.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>去医院检查的，前列腺炎，医生取前列腺液时，前列腺液少是什么原因？忘记问医生了。	</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/question/224307.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>最近生殖器上方一直难受，有时有点疼。（11.25体检前列腺钙化，彩超肝胆脾肾都没有问题，彩超后就感觉疼，去医院看，说前列腺炎，配了点盐酸坦索罗辛缓释胶囊和宁泌泰胶囊吃了点好点就停了。过了几天又疼，又开</a>
+														</div>
+													</div>
+												</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="el-col el-col-7 clear-fix" style="padding-left: 16px; padding-right: 16px;">
+							<div class="tabs-wrapper" type="card">
+								<div class="el-tabs el-tabs--card el-tabs--top">
+									<div class="el-tabs__header is-top">
+										<div class="el-tabs__nav-wrap is-top">
+											<div class="el-tabs__nav-scroll">
+												<div role="tablist" class="el-tabs__nav is-top" style="transform: translateX(0px);">
+													<div id="tab-0" aria-controls="pane-0" role="tab" aria-selected="true" tabindex="0" class="el-tabs__item is-top is-active">
+														相关医院</div>
+													<div id="tab-1" aria-controls="pane-1" role="tab" tabindex="-1" class="el-tabs__item is-top">
+														相关医生</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="el-tabs__content">
+										<div role="tabpanel" id="pane-0" aria-labelledby="tab-0" class="el-tab-pane" style>
+											<div class="list-component hospital-list sidebar hospital-list-sidebar">
+												<div class="el-row list-component-content">
+<div class="list-item">
+														<div class="list-item-prefix">
+																<a href="/hospital/930/nanke/" class target="_blank">
+																<div class="image-container" style="height: 88px; width: 115px; border-radius: 0px;">
+																	<div class="el-image" style="height: 88px; width: 115px; border-radius: 0px;">
+																		<img src="/img/default-hospital.png" class="el-image__inner"></div>
+																</div>
+																</a>
+														</div>
+														<div class="list-item-main">
+															<div class="list-item-main--title">
+																	<div class="title-box">
+																		<span class="hospital-name">
+																		<a href="/hospital/930/nanke/" class target="_blank">
+																		微医网络医院</a></span><div class="hospital-address sidebar-hospital-address ellipsis">
+																			地址：西斗门路3号天堂软件园D幢14楼	 
+																		</div>
+																		<div class="yuyue_button_div">
+																			<a href="https://www.guahao.com/hospital/f0ec96c2-2d58-41b2-b185-9b78c278a70c000" target="_blank" class="bookbtn">
+																			立即预约</a></div>
+																	</div>
+															</div>
+														</div>
+													</div>
+<div class="list-item">
+														<div class="list-item-prefix">
+																<a href="/hospital/1119/nanke/" class target="_blank">
+																<div class="image-container" style="height: 88px; width: 115px; border-radius: 0px;">
+																	<div class="el-image" style="height: 88px; width: 115px; border-radius: 0px;">
+																		<img src="https://kano.guahao.cn/DH02956114.jpg	" class="el-image__inner"></div>
+																</div>
+																</a>
+														</div>
+														<div class="list-item-main">
+															<div class="list-item-main--title">
+																	<div class="title-box">
+																		<span class="hospital-name">
+																		<a href="/hospital/1119/nanke/" class target="_blank">
+																		聊城市人民医院</a></span><div class="hospital-address sidebar-hospital-address ellipsis">
+																			地址：山东省聊城市东昌西路67号	 
+																		</div>
+																		<div class="yuyue_button_div">
+																			<a href="https://www.guahao.com/hospital/9869f227-c720-11e1-913c-5cf9dd2e7135000" target="_blank" class="bookbtn">
+																			立即预约</a></div>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div role="tabpanel" aria-hidden="true" id="pane-1" aria-labelledby="tab-1" class="el-tab-pane" style="display: none;">
+											<div class="list-component doctor-list sidebar doctor-list-sidebar">
+												<div class="el-row list-component-content">
+<div class="list-item">
+														<div class="list-item-prefix">
+															<div>
+																<a href="/hospital/2928/zhongliuke/98213171.html" class target="_blank">
+																<img src="https://kano.guahao.cn/tAX2584501.jpg" alt="谢勋鹏" class="doctor-avatar"></a></div>
+														</div>
+														<div class="list-item-main">
+															<div>
+																<div class="title-box">
+																	<p class="name-box">
+																	<a href="/hospital/2928/zhongliuke/98213171.html" class="doctor-name bhc-fontsize-m" target="_blank">
+																	谢勋鹏</a><span class="doctor-title">主任医师</span></p>
+																	<p class="doctor-specialty bhc-color-level3 bhc-fontsize-xs">
+																	<span class="ellipsis specialty">
+																	擅长：恶性肿瘤化疗及免疫治疗，特别是肺癌、乳腺癌、胃癌、大肠癌、晚期肿瘤的姑息治疗等。</span></p>
+																	<p class="doctor-numbers bhc-color-level3 bhc-fontsize-xs">
+																	<span>访问：共 0 次</span></p>
+																	<div class="yuyue_button_div">
+																		<a href="https://www.guahao.com/expert/a416fb13-3c3d-4805-bc01-9799f194d969000" target="_blank" class="bookbtn">
+																		立即预约</a></div>
+																</div>
+															</div>
+														</div>
+													</div>
+<div class="list-item">
+														<div class="list-item-prefix">
+															<div>
+																<a href="/hospital/3090/waike/98213169.html" class target="_blank">
+																<img src="https://kano.guahao.cn/AbH2624908.jpg" alt="雷振华" class="doctor-avatar"></a></div>
+														</div>
+														<div class="list-item-main">
+															<div>
+																<div class="title-box">
+																	<p class="name-box">
+																	<a href="/hospital/3090/waike/98213169.html" class="doctor-name bhc-fontsize-m" target="_blank">
+																	雷振华</a><span class="doctor-title">主治医师</span></p>
+																	<p class="doctor-specialty bhc-color-level3 bhc-fontsize-xs">
+																	<span class="ellipsis specialty">
+																	擅长：　　　不育症、前列腺疾病、性功能障碍、早泄等男科疾病，以及泌尿系疾病（如泌尿系结石、肿瘤、膀胱膀胱过度活动症等）的中西医结合诊治及泌尿外科腔镜微创诊疗技术。</span></p>
+																	<p class="doctor-numbers bhc-color-level3 bhc-fontsize-xs">
+																	<span>访问：共 0 次</span></p>
+																	<div class="yuyue_button_div">
+																		<a href="https://www.guahao.com/expert/50a523f9-3142-4952-9ec4-9429f1d61645000" target="_blank" class="bookbtn">
+																		立即预约</a></div>
+																</div>
+															</div>
+														</div>
+													</div>
+
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tabs-extra-content">
+									<a href="/hospital/search/23212171852-0.html" class="more" target="_blank">
+									更多</a></div>
+							</div>
+						</div>
+					</div>
+</div>
+<div class="block">					<div class="label">
+						妇产科</div>
+					<div class="el-divider el-divider--horizontal">
+					</div>
+					<div class="diseases">
+<a href="/renliu/" target=_blank  class="disease">人流</a>
+<a href="/lcnz/" target=_blank  class="disease">卵巢囊肿</a>
+<a href="/dnlczhz/" target=_blank  class="disease">多囊卵巢综合征</a>
+<a href="/zgjl/" target=_blank  class="disease">子宫肌瘤</a>
+<a href="/gjxr/" target=_blank  class="disease">宫颈息肉</a>
+<a href="/gongjingyan/" target=_blank  class="disease">宫颈炎</a>
+<a href="/qklnz/" target=_blank  class="disease">巧克力囊肿</a>
+<a href="/gnqzhz/" target=_blank  class="disease">更年期综合症</a>
+<a href="/yjbt/" target=_blank  class="disease">月经不调</a>
+<a href="/tongjing/" target=_blank  class="disease">痛经</a>
+<a href="/penqiangyan/" target=_blank  class="disease">盆腔炎</a>
+<a href="/yindaoyan/" target=_blank  class="disease">阴道炎</a>
+</div>
+					<div class="el-row" style="margin-left: -16px; margin-right: -16px; height: 288px;">
+						<div class="el-col el-col-17 article-qa-box" style="padding-left: 16px; padding-right: 16px;">
+							<div class="article-qa-row">
+								<div class="item-box">
+									<img src="/img/jordan1.png" alt=""><div>
+										<div class="list-component article-list sidebar sidebar-article-list">
+											<div class="el-row list-component-content">
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/tongjing/zl/494379.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>痛经，我该拿你怎么办？</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/qklnz/zl/494988.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>“巧囊”巧治</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/qklnz/yf/3789.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>巧克力囊肿的预防方法</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/qklnz/zl/3783.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>巧克力囊肿要如何治疗</a>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="item-box">
+									<img src="/img/jordan2.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/zgjl/zl/3435.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>子宫肌瘤的治疗</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/zgjl/yf/3429.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>子宫肌瘤预防</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/zgjl/zz/3426.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>子宫肌瘤症状都有哪些</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/yjbt/zl/3420.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>月经不调的治疗</a>
+														</div>
+													</div>
+												</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="article-qa-row">
+								<div class="item-box">
+									<img src="/img/jordan3.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+
+										</div>
+									</div>
+								</div>
+								<div class="item-box">
+									<img src="/img/jordan4.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="el-col el-col-7 clear-fix" style="padding-left: 16px; padding-right: 16px;">
+							<div class="tabs-wrapper" type="card">
+								<div class="el-tabs el-tabs--card el-tabs--top">
+									<div class="el-tabs__header is-top">
+										<div class="el-tabs__nav-wrap is-top">
+											<div class="el-tabs__nav-scroll">
+												<div role="tablist" class="el-tabs__nav is-top" style="transform: translateX(0px);">
+													<div id="tab-0" aria-controls="pane-0" role="tab" aria-selected="true" tabindex="0" class="el-tabs__item is-top is-active">
+														相关医院</div>
+													<div id="tab-1" aria-controls="pane-1" role="tab" tabindex="-1" class="el-tabs__item is-top">
+														相关医生</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="el-tabs__content">
+										<div role="tabpanel" id="pane-0" aria-labelledby="tab-0" class="el-tab-pane" style>
+											<div class="list-component hospital-list sidebar hospital-list-sidebar">
+												<div class="el-row list-component-content">
+<div class="list-item">
+														<div class="list-item-prefix">
+																<a href="/hospital/780/fuke/" class target="_blank">
+																<div class="image-container" style="height: 88px; width: 115px; border-radius: 0px;">
+																	<div class="el-image" style="height: 88px; width: 115px; border-radius: 0px;">
+																		<img src="/img/default-hospital.png" class="el-image__inner"></div>
+																</div>
+																</a>
+														</div>
+														<div class="list-item-main">
+															<div class="list-item-main--title">
+																	<div class="title-box">
+																		<span class="hospital-name">
+																		<a href="/hospital/780/fuke/" class target="_blank">
+																		静宁县雷大乡卫生院</a></span><div class="hospital-address sidebar-hospital-address ellipsis">
+																			地址：雷大乡合岘村 
+																		</div>
+																		<div class="yuyue_button_div">
+																			<a href="https://www.guahao.com/hospital/391c0166-965c-49df-a7cf-f27be9c55ba0000" target="_blank" class="bookbtn">
+																			立即预约</a></div>
+																	</div>
+															</div>
+														</div>
+													</div>
+<div class="list-item">
+														<div class="list-item-prefix">
+																<a href="/hospital/783/fuchanke/" class target="_blank">
+																<div class="image-container" style="height: 88px; width: 115px; border-radius: 0px;">
+																	<div class="el-image" style="height: 88px; width: 115px; border-radius: 0px;">
+																		<img src="/img/default-hospital.png" class="el-image__inner"></div>
+																</div>
+																</a>
+														</div>
+														<div class="list-item-main">
+															<div class="list-item-main--title">
+																	<div class="title-box">
+																		<span class="hospital-name">
+																		<a href="/hospital/783/fuchanke/" class target="_blank">
+																		济源市卫生学校附属医院</a></span><div class="hospital-address sidebar-hospital-address ellipsis">
+																			地址：健康街50号 
+																		</div>
+																		<div class="yuyue_button_div">
+																			<a href="https://www.guahao.com/hospital/b2ff958c-3ad7-47c5-a5f5-3ea3eaea5317000" target="_blank" class="bookbtn">
+																			立即预约</a></div>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div role="tabpanel" aria-hidden="true" id="pane-1" aria-labelledby="tab-1" class="el-tab-pane" style="display: none;">
+											<div class="list-component doctor-list sidebar doctor-list-sidebar">
+												<div class="el-row list-component-content">
+<div class="list-item">
+														<div class="list-item-prefix">
+															<div>
+																<a href="/hospital/2928/zhongliuke/98213171.html" class target="_blank">
+																<img src="https://kano.guahao.cn/tAX2584501.jpg" alt="谢勋鹏" class="doctor-avatar"></a></div>
+														</div>
+														<div class="list-item-main">
+															<div>
+																<div class="title-box">
+																	<p class="name-box">
+																	<a href="/hospital/2928/zhongliuke/98213171.html" class="doctor-name bhc-fontsize-m" target="_blank">
+																	谢勋鹏</a><span class="doctor-title">主任医师</span></p>
+																	<p class="doctor-specialty bhc-color-level3 bhc-fontsize-xs">
+																	<span class="ellipsis specialty">
+																	擅长：恶性肿瘤化疗及免疫治疗，特别是肺癌、乳腺癌、胃癌、大肠癌、晚期肿瘤的姑息治疗等。</span></p>
+																	<p class="doctor-numbers bhc-color-level3 bhc-fontsize-xs">
+																	<span>访问：共 0 次</span></p>
+																	<div class="yuyue_button_div">
+																		<a href="https://www.guahao.com/expert/a416fb13-3c3d-4805-bc01-9799f194d969000" target="_blank" class="bookbtn">
+																		立即预约</a></div>
+																</div>
+															</div>
+														</div>
+													</div>
+<div class="list-item">
+														<div class="list-item-prefix">
+															<div>
+																<a href="/hospital/3090/waike/98213169.html" class target="_blank">
+																<img src="https://kano.guahao.cn/AbH2624908.jpg" alt="雷振华" class="doctor-avatar"></a></div>
+														</div>
+														<div class="list-item-main">
+															<div>
+																<div class="title-box">
+																	<p class="name-box">
+																	<a href="/hospital/3090/waike/98213169.html" class="doctor-name bhc-fontsize-m" target="_blank">
+																	雷振华</a><span class="doctor-title">主治医师</span></p>
+																	<p class="doctor-specialty bhc-color-level3 bhc-fontsize-xs">
+																	<span class="ellipsis specialty">
+																	擅长：　　　不育症、前列腺疾病、性功能障碍、早泄等男科疾病，以及泌尿系疾病（如泌尿系结石、肿瘤、膀胱膀胱过度活动症等）的中西医结合诊治及泌尿外科腔镜微创诊疗技术。</span></p>
+																	<p class="doctor-numbers bhc-color-level3 bhc-fontsize-xs">
+																	<span>访问：共 0 次</span></p>
+																	<div class="yuyue_button_div">
+																		<a href="https://www.guahao.com/expert/50a523f9-3142-4952-9ec4-9429f1d61645000" target="_blank" class="bookbtn">
+																		立即预约</a></div>
+																</div>
+															</div>
+														</div>
+													</div>
+
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tabs-extra-content">
+									<a href="/hospital/search/23212171980-0.html" class="more" target="_blank">
+									更多</a></div>
+							</div>
+						</div>
+					</div>
+</div>
+<div class="block">					<div class="label">
+						神经科</div>
+					<div class="el-divider el-divider--horizontal">
+					</div>
+					<div class="diseases">
+<a href="/scsjt/" target=_blank  class="disease">三叉神经痛</a>
+<a href="/piantan/" target=_blank  class="disease">偏瘫</a>
+<a href="/chuitiliu/" target=_blank  class="disease">垂体瘤</a>
+<a href="/pajinsen/" target=_blank  class="disease">帕金森</a>
+<a href="/dianxian/" target=_blank  class="disease">癫痫</a>
+<a href="/sjsr/" target=_blank  class="disease">神经衰弱</a>
+<a href="/jiwuli/" target=_blank  class="disease">肌无力</a>
+<a href="/jskdz/" target=_blank  class="disease">脊髓空洞症</a>
+<a href="/naochuxue/" target=_blank  class="disease">脑出血</a>
+<a href="/naotan/" target=_blank  class="disease">脑瘫</a>
+<a href="/naoxueshuan/" target=_blank  class="disease">脑血栓</a>
+<a href="/nxgb/" target=_blank  class="disease">脑血管病</a>
+<a href="/miantan/" target=_blank  class="disease">面瘫</a>
+</div>
+					<div class="el-row" style="margin-left: -16px; margin-right: -16px; height: 288px;">
+						<div class="el-col el-col-17 article-qa-box" style="padding-left: 16px; padding-right: 16px;">
+							<div class="article-qa-row">
+								<div class="item-box">
+									<img src="/img/jordan1.png" alt=""><div>
+										<div class="list-component article-list sidebar sidebar-article-list">
+											<div class="el-row list-component-content">
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/chuitiliu/zl/494805.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>影像片子如何拍给医生</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/chuitiliu/zz/494808.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>认识垂体瘤</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/pajinsen/zl/495033.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>梦中喊叫和拳打脚踢是&amp;quot;鬼上身&amp;quot;?</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/pajinsen/zz/495039.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>程丰      梦中喊叫和拳打脚踢是&amp;quot;鬼上身&amp;quot;?</a>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="item-box">
+									<img src="/img/jordan2.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/chuitiliu/yf/4122.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>垂体瘤如何预防</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/chuitiliu/zz/4116.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>垂体瘤有什么样的症状表现</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/chuitiliu/by/4110.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>垂体瘤的病因有什么</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/sjsr/zl/3453.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>神经衰弱的治疗方法</a>
+														</div>
+													</div>
+												</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="article-qa-row">
+								<div class="item-box">
+									<img src="/img/jordan3.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+
+										</div>
+									</div>
+								</div>
+								<div class="item-box">
+									<img src="/img/jordan4.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="el-col el-col-7 clear-fix" style="padding-left: 16px; padding-right: 16px;">
+							<div class="tabs-wrapper" type="card">
+								<div class="el-tabs el-tabs--card el-tabs--top">
+									<div class="el-tabs__header is-top">
+										<div class="el-tabs__nav-wrap is-top">
+											<div class="el-tabs__nav-scroll">
+												<div role="tablist" class="el-tabs__nav is-top" style="transform: translateX(0px);">
+													<div id="tab-0" aria-controls="pane-0" role="tab" aria-selected="true" tabindex="0" class="el-tabs__item is-top is-active">
+														相关医院</div>
+													<div id="tab-1" aria-controls="pane-1" role="tab" tabindex="-1" class="el-tabs__item is-top">
+														相关医生</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="el-tabs__content">
+										<div role="tabpanel" id="pane-0" aria-labelledby="tab-0" class="el-tab-pane" style>
+											<div class="list-component hospital-list sidebar hospital-list-sidebar">
+												<div class="el-row list-component-content">
+<div class="list-item">
+														<div class="list-item-prefix">
+																<a href="/hospital/909/shenjingneike/" class target="_blank">
+																<div class="image-container" style="height: 88px; width: 115px; border-radius: 0px;">
+																	<div class="el-image" style="height: 88px; width: 115px; border-radius: 0px;">
+																		<img src="https://kano.guahao.cn/j4D2956952.jpg	" class="el-image__inner"></div>
+																</div>
+																</a>
+														</div>
+														<div class="list-item-main">
+															<div class="list-item-main--title">
+																	<div class="title-box">
+																		<span class="hospital-name">
+																		<a href="/hospital/909/shenjingneike/" class target="_blank">
+																		锦州市中心医院</a></span><div class="hospital-address sidebar-hospital-address ellipsis">
+																			地址：中国辽宁市锦州市古塔区上海路二段51号	 
+																		</div>
+																		<div class="yuyue_button_div">
+																			<a href="https://www.guahao.com/hospital/986d7543-c720-11e1-913c-5cf9dd2e7135000" target="_blank" class="bookbtn">
+																			立即预约</a></div>
+																	</div>
+															</div>
+														</div>
+													</div>
+<div class="list-item">
+														<div class="list-item-prefix">
+																<a href="/hospital/984/shenjingneike/" class target="_blank">
+																<div class="image-container" style="height: 88px; width: 115px; border-radius: 0px;">
+																	<div class="el-image" style="height: 88px; width: 115px; border-radius: 0px;">
+																		<img src="/img/default-hospital.png" class="el-image__inner"></div>
+																</div>
+																</a>
+														</div>
+														<div class="list-item-main">
+															<div class="list-item-main--title">
+																	<div class="title-box">
+																		<span class="hospital-name">
+																		<a href="/hospital/984/shenjingneike/" class target="_blank">
+																		莘县第三人民医院</a></span><div class="hospital-address sidebar-hospital-address ellipsis">
+																			地址：观城镇桥下村 
+																		</div>
+																		<div class="yuyue_button_div">
+																			<a href="https://www.guahao.com/hospital/4ce0dd32-0165-4b76-b250-3db39ce87ba9000" target="_blank" class="bookbtn">
+																			立即预约</a></div>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div role="tabpanel" aria-hidden="true" id="pane-1" aria-labelledby="tab-1" class="el-tab-pane" style="display: none;">
+											<div class="list-component doctor-list sidebar doctor-list-sidebar">
+												<div class="el-row list-component-content">
+<div class="list-item">
+														<div class="list-item-prefix">
+															<div>
+																<a href="/hospital/2928/zhongliuke/98213171.html" class target="_blank">
+																<img src="https://kano.guahao.cn/tAX2584501.jpg" alt="谢勋鹏" class="doctor-avatar"></a></div>
+														</div>
+														<div class="list-item-main">
+															<div>
+																<div class="title-box">
+																	<p class="name-box">
+																	<a href="/hospital/2928/zhongliuke/98213171.html" class="doctor-name bhc-fontsize-m" target="_blank">
+																	谢勋鹏</a><span class="doctor-title">主任医师</span></p>
+																	<p class="doctor-specialty bhc-color-level3 bhc-fontsize-xs">
+																	<span class="ellipsis specialty">
+																	擅长：恶性肿瘤化疗及免疫治疗，特别是肺癌、乳腺癌、胃癌、大肠癌、晚期肿瘤的姑息治疗等。</span></p>
+																	<p class="doctor-numbers bhc-color-level3 bhc-fontsize-xs">
+																	<span>访问：共 0 次</span></p>
+																	<div class="yuyue_button_div">
+																		<a href="https://www.guahao.com/expert/a416fb13-3c3d-4805-bc01-9799f194d969000" target="_blank" class="bookbtn">
+																		立即预约</a></div>
+																</div>
+															</div>
+														</div>
+													</div>
+<div class="list-item">
+														<div class="list-item-prefix">
+															<div>
+																<a href="/hospital/3090/waike/98213169.html" class target="_blank">
+																<img src="https://kano.guahao.cn/AbH2624908.jpg" alt="雷振华" class="doctor-avatar"></a></div>
+														</div>
+														<div class="list-item-main">
+															<div>
+																<div class="title-box">
+																	<p class="name-box">
+																	<a href="/hospital/3090/waike/98213169.html" class="doctor-name bhc-fontsize-m" target="_blank">
+																	雷振华</a><span class="doctor-title">主治医师</span></p>
+																	<p class="doctor-specialty bhc-color-level3 bhc-fontsize-xs">
+																	<span class="ellipsis specialty">
+																	擅长：　　　不育症、前列腺疾病、性功能障碍、早泄等男科疾病，以及泌尿系疾病（如泌尿系结石、肿瘤、膀胱膀胱过度活动症等）的中西医结合诊治及泌尿外科腔镜微创诊疗技术。</span></p>
+																	<p class="doctor-numbers bhc-color-level3 bhc-fontsize-xs">
+																	<span>访问：共 0 次</span></p>
+																	<div class="yuyue_button_div">
+																		<a href="https://www.guahao.com/expert/50a523f9-3142-4952-9ec4-9429f1d61645000" target="_blank" class="bookbtn">
+																		立即预约</a></div>
+																</div>
+															</div>
+														</div>
+													</div>
+
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tabs-extra-content">
+									<a href="/hospital/search/23212172043-0.html" class="more" target="_blank">
+									更多</a></div>
+							</div>
+						</div>
+					</div>
+</div>
+<div class="block">					<div class="label">
+						皮肤科</div>
+					<div class="el-divider el-divider--horizontal">
+					</div>
+					<div class="diseases">
+<a href="/dzpz/" target=_blank  class="disease">带状疱疹</a>
+<a href="/bianpingyou/" target=_blank  class="disease">扁平疣</a>
+<a href="/maonangyan/" target=_blank  class="disease">毛囊炎</a>
+<a href="/shizhen/" target=_blank  class="disease">湿疹</a>
+<a href="/niupixuan/" target=_blank  class="disease">牛皮癣</a>
+<a href="/cuochuang/" target=_blank  class="disease">痤疮</a>
+<a href="/baidianfeng/" target=_blank  class="disease">白癜风</a>
+<a href="/pfgm/" target=_blank  class="disease">皮肤过敏</a>
+<a href="/tuofa/" target=_blank  class="disease">脱发</a>
+<a href="/xunmazhen/" target=_blank  class="disease">荨麻疹</a>
+<a href="/yinxiebing/" target=_blank  class="disease">银屑病</a>
+<a href="/huangheban/" target=_blank  class="disease">黄褐斑</a>
+</div>
+					<div class="el-row" style="margin-left: -16px; margin-right: -16px; height: 288px;">
+						<div class="el-col el-col-17 article-qa-box" style="padding-left: 16px; padding-right: 16px;">
+							<div class="article-qa-row">
+								<div class="item-box">
+									<img src="/img/jordan1.png" alt=""><div>
+										<div class="list-component article-list sidebar sidebar-article-list">
+											<div class="el-row list-component-content">
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/shizhen/yf/493812.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>怎么预防肛门湿疹复发</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/baidianfeng/by/493140.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>是什么原因导致病发白癜风的?</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/baidianfeng/by/493143.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>白癜风是怎么形成的</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/baidianfeng/by/493146.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>白癜风是由什么引起的</a>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="item-box">
+									<img src="/img/jordan2.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/baidianfeng/by/493152.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>不好的生活习惯会导致白癜风病情加重</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/baidianfeng/yf/493155.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>护理白癜风时要注意哪些误区?</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/baidianfeng/by/493161.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>白癜风发病初期治疗需要多久？</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/baidianfeng/yf/493164.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>夏季得了白癜风有哪些禁忌呢？</a>
+														</div>
+													</div>
+												</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="article-qa-row">
+								<div class="item-box">
+									<img src="/img/jordan3.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+
+										</div>
+									</div>
+								</div>
+								<div class="item-box">
+									<img src="/img/jordan4.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="el-col el-col-7 clear-fix" style="padding-left: 16px; padding-right: 16px;">
+							<div class="tabs-wrapper" type="card">
+								<div class="el-tabs el-tabs--card el-tabs--top">
+									<div class="el-tabs__header is-top">
+										<div class="el-tabs__nav-wrap is-top">
+											<div class="el-tabs__nav-scroll">
+												<div role="tablist" class="el-tabs__nav is-top" style="transform: translateX(0px);">
+													<div id="tab-0" aria-controls="pane-0" role="tab" aria-selected="true" tabindex="0" class="el-tabs__item is-top is-active">
+														相关医院</div>
+													<div id="tab-1" aria-controls="pane-1" role="tab" tabindex="-1" class="el-tabs__item is-top">
+														相关医生</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="el-tabs__content">
+										<div role="tabpanel" id="pane-0" aria-labelledby="tab-0" class="el-tab-pane" style>
+											<div class="list-component hospital-list sidebar hospital-list-sidebar">
+												<div class="el-row list-component-content">
+<div class="list-item">
+														<div class="list-item-prefix">
+																<a href="/hospital/795/pifuke/" class target="_blank">
+																<div class="image-container" style="height: 88px; width: 115px; border-radius: 0px;">
+																	<div class="el-image" style="height: 88px; width: 115px; border-radius: 0px;">
+																		<img src="https://kano.guahao.cn/eIl2957900.jpg	" class="el-image__inner"></div>
+																</div>
+																</a>
+														</div>
+														<div class="list-item-main">
+															<div class="list-item-main--title">
+																	<div class="title-box">
+																		<span class="hospital-name">
+																		<a href="/hospital/795/pifuke/" class target="_blank">
+																		金昌市中心医院</a></span><div class="hospital-address sidebar-hospital-address ellipsis">
+																			地址：北京路53号 
+																		</div>
+																		<div class="yuyue_button_div">
+																			<a href="https://www.guahao.com/hospital/cb581ef8-f4eb-4167-b004-857414d41e77000" target="_blank" class="bookbtn">
+																			立即预约</a></div>
+																	</div>
+															</div>
+														</div>
+													</div>
+<div class="list-item">
+														<div class="list-item-prefix">
+																<a href="/hospital/900/pifuke/" class target="_blank">
+																<div class="image-container" style="height: 88px; width: 115px; border-radius: 0px;">
+																	<div class="el-image" style="height: 88px; width: 115px; border-radius: 0px;">
+																		<img src="https://kano.guahao.cn/nXz2956100.jpg	" class="el-image__inner"></div>
+																</div>
+																</a>
+														</div>
+														<div class="list-item-main">
+															<div class="list-item-main--title">
+																	<div class="title-box">
+																		<span class="hospital-name">
+																		<a href="/hospital/900/pifuke/" class target="_blank">
+																		聊城市第二人民医院</a></span><div class="hospital-address sidebar-hospital-address ellipsis">
+																			地址：山东临清市健康街306号	 
+																		</div>
+																		<div class="yuyue_button_div">
+																			<a href="https://www.guahao.com/hospital/9869f3dc-c720-11e1-913c-5cf9dd2e7135000" target="_blank" class="bookbtn">
+																			立即预约</a></div>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div role="tabpanel" aria-hidden="true" id="pane-1" aria-labelledby="tab-1" class="el-tab-pane" style="display: none;">
+											<div class="list-component doctor-list sidebar doctor-list-sidebar">
+												<div class="el-row list-component-content">
+<div class="list-item">
+														<div class="list-item-prefix">
+															<div>
+																<a href="/hospital/2928/zhongliuke/98213171.html" class target="_blank">
+																<img src="https://kano.guahao.cn/tAX2584501.jpg" alt="谢勋鹏" class="doctor-avatar"></a></div>
+														</div>
+														<div class="list-item-main">
+															<div>
+																<div class="title-box">
+																	<p class="name-box">
+																	<a href="/hospital/2928/zhongliuke/98213171.html" class="doctor-name bhc-fontsize-m" target="_blank">
+																	谢勋鹏</a><span class="doctor-title">主任医师</span></p>
+																	<p class="doctor-specialty bhc-color-level3 bhc-fontsize-xs">
+																	<span class="ellipsis specialty">
+																	擅长：恶性肿瘤化疗及免疫治疗，特别是肺癌、乳腺癌、胃癌、大肠癌、晚期肿瘤的姑息治疗等。</span></p>
+																	<p class="doctor-numbers bhc-color-level3 bhc-fontsize-xs">
+																	<span>访问：共 0 次</span></p>
+																	<div class="yuyue_button_div">
+																		<a href="https://www.guahao.com/expert/a416fb13-3c3d-4805-bc01-9799f194d969000" target="_blank" class="bookbtn">
+																		立即预约</a></div>
+																</div>
+															</div>
+														</div>
+													</div>
+<div class="list-item">
+														<div class="list-item-prefix">
+															<div>
+																<a href="/hospital/3090/waike/98213169.html" class target="_blank">
+																<img src="https://kano.guahao.cn/AbH2624908.jpg" alt="雷振华" class="doctor-avatar"></a></div>
+														</div>
+														<div class="list-item-main">
+															<div>
+																<div class="title-box">
+																	<p class="name-box">
+																	<a href="/hospital/3090/waike/98213169.html" class="doctor-name bhc-fontsize-m" target="_blank">
+																	雷振华</a><span class="doctor-title">主治医师</span></p>
+																	<p class="doctor-specialty bhc-color-level3 bhc-fontsize-xs">
+																	<span class="ellipsis specialty">
+																	擅长：　　　不育症、前列腺疾病、性功能障碍、早泄等男科疾病，以及泌尿系疾病（如泌尿系结石、肿瘤、膀胱膀胱过度活动症等）的中西医结合诊治及泌尿外科腔镜微创诊疗技术。</span></p>
+																	<p class="doctor-numbers bhc-color-level3 bhc-fontsize-xs">
+																	<span>访问：共 0 次</span></p>
+																	<div class="yuyue_button_div">
+																		<a href="https://www.guahao.com/expert/50a523f9-3142-4952-9ec4-9429f1d61645000" target="_blank" class="bookbtn">
+																		立即预约</a></div>
+																</div>
+															</div>
+														</div>
+													</div>
+
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tabs-extra-content">
+									<a href="/hospital/search/23212172196-0.html" class="more" target="_blank">
+									更多</a></div>
+							</div>
+						</div>
+					</div>
+</div>
+<div class="block">					<div class="label">
+						眼科</div>
+					<div class="el-divider el-divider--horizontal">
+					</div>
+					<div class="diseases">
+<a href="/ganyanzheng/" target=_blank  class="disease">干眼症</a>
+<a href="/ruoshi/" target=_blank  class="disease">弱视</a>
+<a href="/xieshi/" target=_blank  class="disease">斜视</a>
+<a href="/shayan/" target=_blank  class="disease">沙眼</a>
+<a href="/blthz/" target=_blank  class="disease">玻璃体混浊</a>
+<a href="/baineizhang/" target=_blank  class="disease">白内障</a>
+<a href="/yandibing/" target=_blank  class="disease">眼底病</a>
+<a href="/tnbswmbb/" target=_blank  class="disease">糖尿病视网膜病变</a>
+<a href="/jiemoyan/" target=_blank  class="disease">结膜炎</a>
+<a href="/ssjws/" target=_blank  class="disease">视神经萎缩</a>
+<a href="/jiaomoyan/" target=_blank  class="disease">角膜炎</a>
+<a href="/jinshiyan/" target=_blank  class="disease">近视眼</a>
+<a href="/qingguangyan/" target=_blank  class="disease">青光眼</a>
+</div>
+					<div class="el-row" style="margin-left: -16px; margin-right: -16px; height: 288px;">
+						<div class="el-col el-col-17 article-qa-box" style="padding-left: 16px; padding-right: 16px;">
+							<div class="article-qa-row">
+								<div class="item-box">
+									<img src="/img/jordan1.png" alt=""><div>
+										<div class="list-component article-list sidebar sidebar-article-list">
+											<div class="el-row list-component-content">
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/jinshiyan/yf/473274.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>怀疑孩子近视了，家长该怎么做？</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/jinshiyan/zl/473271.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>为啥近视手术后，两只眼睛恢复有快有慢？</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/jinshiyan/zl/473265.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>近视手术后再次近视，还要做二次手术吗?</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/tnbswmbb/yf/494796.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>眼科医生对于糖尿病患者的建议</a>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="item-box">
+									<img src="/img/jordan2.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/yandibing/zl/468.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>眼底病的治疗用药</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/yandibing/zz/465.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>小儿眼底病症状</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/yandibing/yf/459.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>眼底病变的日常预防</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/yandibing/by/456.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>小儿眼底病的病因</a>
+														</div>
+													</div>
+												</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="article-qa-row">
+								<div class="item-box">
+									<img src="/img/jordan3.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+
+										</div>
+									</div>
+								</div>
+								<div class="item-box">
+									<img src="/img/jordan4.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="el-col el-col-7 clear-fix" style="padding-left: 16px; padding-right: 16px;">
+							<div class="tabs-wrapper" type="card">
+								<div class="el-tabs el-tabs--card el-tabs--top">
+									<div class="el-tabs__header is-top">
+										<div class="el-tabs__nav-wrap is-top">
+											<div class="el-tabs__nav-scroll">
+												<div role="tablist" class="el-tabs__nav is-top" style="transform: translateX(0px);">
+													<div id="tab-0" aria-controls="pane-0" role="tab" aria-selected="true" tabindex="0" class="el-tabs__item is-top is-active">
+														相关医院</div>
+													<div id="tab-1" aria-controls="pane-1" role="tab" tabindex="-1" class="el-tabs__item is-top">
+														相关医生</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="el-tabs__content">
+										<div role="tabpanel" id="pane-0" aria-labelledby="tab-0" class="el-tab-pane" style>
+											<div class="list-component hospital-list sidebar hospital-list-sidebar">
+												<div class="el-row list-component-content">
+<div class="list-item">
+														<div class="list-item-prefix">
+																<a href="/hospital/915/yanke/" class target="_blank">
+																<div class="image-container" style="height: 88px; width: 115px; border-radius: 0px;">
+																	<div class="el-image" style="height: 88px; width: 115px; border-radius: 0px;">
+																		<img src="https://kano.guahao.cn/dSR2956400.jpg	" class="el-image__inner"></div>
+																</div>
+																</a>
+														</div>
+														<div class="list-item-main">
+															<div class="list-item-main--title">
+																	<div class="title-box">
+																		<span class="hospital-name">
+																		<a href="/hospital/915/yanke/" class target="_blank">
+																		临邑县中医院</a></span><div class="hospital-address sidebar-hospital-address ellipsis">
+																			地址：临邑县临邑镇广场大街220号	 
+																		</div>
+																		<div class="yuyue_button_div">
+																			<a href="https://www.guahao.com/hospital/986afd99-c720-11e1-913c-5cf9dd2e7135000" target="_blank" class="bookbtn">
+																			立即预约</a></div>
+																	</div>
+															</div>
+														</div>
+													</div>
+<div class="list-item">
+														<div class="list-item-prefix">
+																<a href="/hospital/1149/yanke/" class target="_blank">
+																<div class="image-container" style="height: 88px; width: 115px; border-radius: 0px;">
+																	<div class="el-image" style="height: 88px; width: 115px; border-radius: 0px;">
+																		<img src="/img/default-hospital.png" class="el-image__inner"></div>
+																</div>
+																</a>
+														</div>
+														<div class="list-item-main">
+															<div class="list-item-main--title">
+																	<div class="title-box">
+																		<span class="hospital-name">
+																		<a href="/hospital/1149/yanke/" class target="_blank">
+																		齐河县大黄乡卫生院</a></span><div class="hospital-address sidebar-hospital-address ellipsis">
+																			地址：大黄乡大黄村 
+																		</div>
+																		<div class="yuyue_button_div">
+																			<a href="https://www.guahao.com/hospital/55e50cce-e332-4ac2-a42e-7c20667badaf000" target="_blank" class="bookbtn">
+																			立即预约</a></div>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div role="tabpanel" aria-hidden="true" id="pane-1" aria-labelledby="tab-1" class="el-tab-pane" style="display: none;">
+											<div class="list-component doctor-list sidebar doctor-list-sidebar">
+												<div class="el-row list-component-content">
+<div class="list-item">
+														<div class="list-item-prefix">
+															<div>
+																<a href="/hospital/2928/zhongliuke/98213171.html" class target="_blank">
+																<img src="https://kano.guahao.cn/tAX2584501.jpg" alt="谢勋鹏" class="doctor-avatar"></a></div>
+														</div>
+														<div class="list-item-main">
+															<div>
+																<div class="title-box">
+																	<p class="name-box">
+																	<a href="/hospital/2928/zhongliuke/98213171.html" class="doctor-name bhc-fontsize-m" target="_blank">
+																	谢勋鹏</a><span class="doctor-title">主任医师</span></p>
+																	<p class="doctor-specialty bhc-color-level3 bhc-fontsize-xs">
+																	<span class="ellipsis specialty">
+																	擅长：恶性肿瘤化疗及免疫治疗，特别是肺癌、乳腺癌、胃癌、大肠癌、晚期肿瘤的姑息治疗等。</span></p>
+																	<p class="doctor-numbers bhc-color-level3 bhc-fontsize-xs">
+																	<span>访问：共 0 次</span></p>
+																	<div class="yuyue_button_div">
+																		<a href="https://www.guahao.com/expert/a416fb13-3c3d-4805-bc01-9799f194d969000" target="_blank" class="bookbtn">
+																		立即预约</a></div>
+																</div>
+															</div>
+														</div>
+													</div>
+<div class="list-item">
+														<div class="list-item-prefix">
+															<div>
+																<a href="/hospital/3090/waike/98213169.html" class target="_blank">
+																<img src="https://kano.guahao.cn/AbH2624908.jpg" alt="雷振华" class="doctor-avatar"></a></div>
+														</div>
+														<div class="list-item-main">
+															<div>
+																<div class="title-box">
+																	<p class="name-box">
+																	<a href="/hospital/3090/waike/98213169.html" class="doctor-name bhc-fontsize-m" target="_blank">
+																	雷振华</a><span class="doctor-title">主治医师</span></p>
+																	<p class="doctor-specialty bhc-color-level3 bhc-fontsize-xs">
+																	<span class="ellipsis specialty">
+																	擅长：　　　不育症、前列腺疾病、性功能障碍、早泄等男科疾病，以及泌尿系疾病（如泌尿系结石、肿瘤、膀胱膀胱过度活动症等）的中西医结合诊治及泌尿外科腔镜微创诊疗技术。</span></p>
+																	<p class="doctor-numbers bhc-color-level3 bhc-fontsize-xs">
+																	<span>访问：共 0 次</span></p>
+																	<div class="yuyue_button_div">
+																		<a href="https://www.guahao.com/expert/50a523f9-3142-4952-9ec4-9429f1d61645000" target="_blank" class="bookbtn">
+																		立即预约</a></div>
+																</div>
+															</div>
+														</div>
+													</div>
+
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tabs-extra-content">
+									<a href="/hospital/search/23212172289-0.html" class="more" target="_blank">
+									更多</a></div>
+							</div>
+						</div>
+					</div>
+</div>
+<div class="block">					<div class="label">
+						口腔科</div>
+					<div class="el-divider el-divider--horizontal">
+					</div>
+					<div class="diseases">
+<a href="/kqxf/" target=_blank  class="disease">口腔修复</a>
+<a href="/kqky/" target=_blank  class="disease">口腔溃疡</a>
+<a href="/shsy/" target=_blank  class="disease">四环素牙</a>
+<a href="/gjzy/" target=_blank  class="disease">根尖周炎</a>
+<a href="/kaociya/" target=_blank  class="disease">烤瓷牙</a>
+<a href="/yatibing/" target=_blank  class="disease">牙体病</a>
+<a href="/yazhouyan/" target=_blank  class="disease">牙周炎</a>
+<a href="/yazhoubing/" target=_blank  class="disease">牙周病</a>
+<a href="/ycjz/" target=_blank  class="disease">牙齿矫正</a>
+<a href="/yczz/" target=_blank  class="disease">牙齿种植</a>
+<a href="/yayinyan/" target=_blank  class="disease">牙龈炎</a>
+<a href="/yyws/" target=_blank  class="disease">牙龈萎缩</a>
+<a href="/quchi/" target=_blank  class="disease">龋齿</a>
+</div>
+					<div class="el-row" style="margin-left: -16px; margin-right: -16px; height: 288px;">
+						<div class="el-col el-col-17 article-qa-box" style="padding-left: 16px; padding-right: 16px;">
+							<div class="article-qa-row">
+								<div class="item-box">
+									<img src="/img/jordan1.png" alt=""><div>
+										<div class="list-component article-list sidebar sidebar-article-list">
+											<div class="el-row list-component-content">
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/yczz/zl/494784.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>种牙如买车，张博教您追求&amp;ldquo;信价比&amp;rdquo;</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/yazhouyan/zl/2889.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>牙周炎治疗方法有哪些?</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/yazhouyan/zz/2886.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>牙周炎的症状是什么</a>
+														</div>
+													</div>
+												</div>
+												<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/yazhouyan/yf/2880.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>怎么样才能有效预防牙周炎</a>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="item-box">
+									<img src="/img/jordan2.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/yazhoubing/yf/2868.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>牙周病的预防方法</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/yazhoubing/by/2862.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>牙周病的病因都有哪些呢</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/yayinyan/zz/2856.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>牙龈炎的症状有哪些</a>
+														</div>
+													</div>
+												</div>
+    										<div class="list-item">
+													<div class="list-item-main">
+														<div class="list-item-main--title">
+																<a target="_blank" href='/yayinyan/yf/2847.html' class="article-title ellipsis bhc-color-level2">
+																<i>·</i>牙龈炎的预防方法</a>
+														</div>
+													</div>
+												</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="article-qa-row">
+								<div class="item-box">
+									<img src="/img/jordan3.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+
+										</div>
+									</div>
+								</div>
+								<div class="item-box">
+									<img src="/img/jordan4.png" alt=""><div class="list-component article-list sidebar sidebar-article-list">
+										<div class="el-row list-component-content">
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="el-col el-col-7 clear-fix" style="padding-left: 16px; padding-right: 16px;">
+							<div class="tabs-wrapper" type="card">
+								<div class="el-tabs el-tabs--card el-tabs--top">
+									<div class="el-tabs__header is-top">
+										<div class="el-tabs__nav-wrap is-top">
+											<div class="el-tabs__nav-scroll">
+												<div role="tablist" class="el-tabs__nav is-top" style="transform: translateX(0px);">
+													<div id="tab-0" aria-controls="pane-0" role="tab" aria-selected="true" tabindex="0" class="el-tabs__item is-top is-active">
+														相关医院</div>
+													<div id="tab-1" aria-controls="pane-1" role="tab" tabindex="-1" class="el-tabs__item is-top">
+														相关医生</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="el-tabs__content">
+										<div role="tabpanel" id="pane-0" aria-labelledby="tab-0" class="el-tab-pane" style>
+											<div class="list-component hospital-list sidebar hospital-list-sidebar">
+												<div class="el-row list-component-content">
+<div class="list-item">
+														<div class="list-item-prefix">
+																<a href="/hospital/792/kouqiangke/" class target="_blank">
+																<div class="image-container" style="height: 88px; width: 115px; border-radius: 0px;">
+																	<div class="el-image" style="height: 88px; width: 115px; border-radius: 0px;">
+																		<img src="https://kano.guahao.cn/Qeo2954320.jpg	" class="el-image__inner"></div>
+																</div>
+																</a>
+														</div>
+														<div class="list-item-main">
+															<div class="list-item-main--title">
+																	<div class="title-box">
+																		<span class="hospital-name">
+																		<a href="/hospital/792/kouqiangke/" class target="_blank">
+																		威县妇幼保健院</a></span><div class="hospital-address sidebar-hospital-address ellipsis">
+																			地址：河北省邢台市威县326省道	 
+																		</div>
+																		<div class="yuyue_button_div">
+																			<a href="https://www.guahao.com/hospital/5ae3393b-c513-4c63-9b08-2f588d3339fe000" target="_blank" class="bookbtn">
+																			立即预约</a></div>
+																	</div>
+															</div>
+														</div>
+													</div>
+<div class="list-item">
+														<div class="list-item-prefix">
+																<a href="/hospital/984/kouqiangke/" class target="_blank">
+																<div class="image-container" style="height: 88px; width: 115px; border-radius: 0px;">
+																	<div class="el-image" style="height: 88px; width: 115px; border-radius: 0px;">
+																		<img src="/img/default-hospital.png" class="el-image__inner"></div>
+																</div>
+																</a>
+														</div>
+														<div class="list-item-main">
+															<div class="list-item-main--title">
+																	<div class="title-box">
+																		<span class="hospital-name">
+																		<a href="/hospital/984/kouqiangke/" class target="_blank">
+																		莘县第三人民医院</a></span><div class="hospital-address sidebar-hospital-address ellipsis">
+																			地址：观城镇桥下村 
+																		</div>
+																		<div class="yuyue_button_div">
+																			<a href="https://www.guahao.com/hospital/4ce0dd32-0165-4b76-b250-3db39ce87ba9000" target="_blank" class="bookbtn">
+																			立即预约</a></div>
+																	</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div role="tabpanel" aria-hidden="true" id="pane-1" aria-labelledby="tab-1" class="el-tab-pane" style="display: none;">
+											<div class="list-component doctor-list sidebar doctor-list-sidebar">
+												<div class="el-row list-component-content">
+<div class="list-item">
+														<div class="list-item-prefix">
+															<div>
+																<a href="/hospital/2928/zhongliuke/98213171.html" class target="_blank">
+																<img src="https://kano.guahao.cn/tAX2584501.jpg" alt="谢勋鹏" class="doctor-avatar"></a></div>
+														</div>
+														<div class="list-item-main">
+															<div>
+																<div class="title-box">
+																	<p class="name-box">
+																	<a href="/hospital/2928/zhongliuke/98213171.html" class="doctor-name bhc-fontsize-m" target="_blank">
+																	谢勋鹏</a><span class="doctor-title">主任医师</span></p>
+																	<p class="doctor-specialty bhc-color-level3 bhc-fontsize-xs">
+																	<span class="ellipsis specialty">
+																	擅长：恶性肿瘤化疗及免疫治疗，特别是肺癌、乳腺癌、胃癌、大肠癌、晚期肿瘤的姑息治疗等。</span></p>
+																	<p class="doctor-numbers bhc-color-level3 bhc-fontsize-xs">
+																	<span>访问：共 0 次</span></p>
+																	<div class="yuyue_button_div">
+																		<a href="https://www.guahao.com/expert/a416fb13-3c3d-4805-bc01-9799f194d969000" target="_blank" class="bookbtn">
+																		立即预约</a></div>
+																</div>
+															</div>
+														</div>
+													</div>
+<div class="list-item">
+														<div class="list-item-prefix">
+															<div>
+																<a href="/hospital/3090/waike/98213169.html" class target="_blank">
+																<img src="https://kano.guahao.cn/AbH2624908.jpg" alt="雷振华" class="doctor-avatar"></a></div>
+														</div>
+														<div class="list-item-main">
+															<div>
+																<div class="title-box">
+																	<p class="name-box">
+																	<a href="/hospital/3090/waike/98213169.html" class="doctor-name bhc-fontsize-m" target="_blank">
+																	雷振华</a><span class="doctor-title">主治医师</span></p>
+																	<p class="doctor-specialty bhc-color-level3 bhc-fontsize-xs">
+																	<span class="ellipsis specialty">
+																	擅长：　　　不育症、前列腺疾病、性功能障碍、早泄等男科疾病，以及泌尿系疾病（如泌尿系结石、肿瘤、膀胱膀胱过度活动症等）的中西医结合诊治及泌尿外科腔镜微创诊疗技术。</span></p>
+																	<p class="doctor-numbers bhc-color-level3 bhc-fontsize-xs">
+																	<span>访问：共 0 次</span></p>
+																	<div class="yuyue_button_div">
+																		<a href="https://www.guahao.com/expert/50a523f9-3142-4952-9ec4-9429f1d61645000" target="_blank" class="bookbtn">
+																		立即预约</a></div>
+																</div>
+															</div>
+														</div>
+													</div>
+
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tabs-extra-content">
+									<a href="/hospital/search/23212172391-0.html" class="more" target="_blank">
+									更多</a></div>
+							</div>
+						</div>
+					</div>
+</div>
+			<div class="el-card is-never-shadow block">
+				<!---->
+				<div class="el-card__body">
+					<div class="list-component1">
+						<div class="list-component-header">
+							<div class="common-header">
+								<div>
+									医院专区</div>
+								<a href="/hospital/" class="more" target="_blank">
+								更多</a></div>
+						</div>
+						<div class="el-row list-component-content" style="margin-left: -5px; margin-right: -5px;">
+<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/780/" class target="_blank">
+											<div class="image-container" style="height: 139px; width: 224px; border-radius: 0px; margin-bottom: 24px;">
+												<div class="el-image" style="height: 139px; width: 224px; border-radius: 0px;">
+													<img alt="静宁县雷大乡卫生院" src="/img/default-hospital.png" class="el-image__inner"></div>
+												<div class="image-mask">
+													<span>静宁县雷大乡卫生院</span></div>
+											</div>
+											</a>
+									</div>
+								</div>
+							</div>
+<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/783/" class target="_blank">
+											<div class="image-container" style="height: 139px; width: 224px; border-radius: 0px; margin-bottom: 24px;">
+												<div class="el-image" style="height: 139px; width: 224px; border-radius: 0px;">
+													<img alt="济源市卫生学校附属医院" src="/img/default-hospital.png" class="el-image__inner"></div>
+												<div class="image-mask">
+													<span>济源市卫生学校附属医院</span></div>
+											</div>
+											</a>
+									</div>
+								</div>
+							</div>
+<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/786/" class target="_blank">
+											<div class="image-container" style="height: 139px; width: 224px; border-radius: 0px; margin-bottom: 24px;">
+												<div class="el-image" style="height: 139px; width: 224px; border-radius: 0px;">
+													<img alt="娄底市中心医院" src="https://kano.guahao.cn/iAD2956961.jpg	" class="el-image__inner"></div>
+												<div class="image-mask">
+													<span>娄底市中心医院</span></div>
+											</div>
+											</a>
+									</div>
+								</div>
+							</div>
+<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/789/" class target="_blank">
+											<div class="image-container" style="height: 139px; width: 224px; border-radius: 0px; margin-bottom: 24px;">
+												<div class="el-image" style="height: 139px; width: 224px; border-radius: 0px;">
+													<img alt="北京航天总医院" src="https://kano.guahao.cn/29m2954606.jpg	" class="el-image__inner"></div>
+												<div class="image-mask">
+													<span>北京航天总医院</span></div>
+											</div>
+											</a>
+									</div>
+								</div>
+							</div>
+							<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/792/" class="bullet-item" target="_blank">
+											威县妇幼保健院</a>
+									</div>
+								</div>
+							</div>
+							<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/795/" class="bullet-item" target="_blank">
+											金昌市中心医院</a>
+									</div>
+								</div>
+							</div>
+							<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/798/" class="bullet-item" target="_blank">
+											江西省长征医院</a>
+									</div>
+								</div>
+							</div>
+							<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/801/" class="bullet-item" target="_blank">
+											太仓市浮桥镇老闸卫生院</a>
+									</div>
+								</div>
+							</div>
+							<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/804/" class="bullet-item" target="_blank">
+											三台县鲁班镇卫生院</a>
+									</div>
+								</div>
+							</div>
+							<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/807/" class="bullet-item" target="_blank">
+											阜新蒙古族自治县沙拉镇卫生院	</a>
+									</div>
+								</div>
+							</div>
+							<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/810/" class="bullet-item" target="_blank">
+											朝阳县第六人民医院</a>
+									</div>
+								</div>
+							</div>
+							<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/813/" class="bullet-item" target="_blank">
+											太康县人民医院</a>
+									</div>
+								</div>
+							</div>
+							<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/816/" class="bullet-item" target="_blank">
+											秦皇岛市海港医院</a>
+									</div>
+								</div>
+							</div>
+							<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/819/" class="bullet-item" target="_blank">
+											安阳县第一人民医院</a>
+									</div>
+								</div>
+							</div>
+							<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/822/" class="bullet-item" target="_blank">
+											广东省农垦中心医院</a>
+									</div>
+								</div>
+							</div>
+							<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/825/" class="bullet-item" target="_blank">
+											濮阳市中医院</a>
+									</div>
+								</div>
+							</div>
+							<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/828/" class="bullet-item" target="_blank">
+											武警辽宁总队医院</a>
+									</div>
+								</div>
+							</div>
+							<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/831/" class="bullet-item" target="_blank">
+											曹县梁堤头中心卫生院</a>
+									</div>
+								</div>
+							</div>
+							<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/834/" class="bullet-item" target="_blank">
+											曹县青岗集乡卫生院</a>
+									</div>
+								</div>
+							</div>
+							<div class="el-col el-col-6" style="padding-left: 5px; padding-right: 5px;">
+								<div class="list-item">
+									<div class="list-item-main">
+											<a href="/hospital/837/" class="bullet-item" target="_blank">
+											稷山县化峪镇中心卫生院</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="el-row block" style="margin-left: -10px; margin-right: -10px;">
+				<div class="el-col el-col-8" style="padding-left: 10px; padding-right: 10px;">
+					<div class="el-card is-never-shadow" style="height: 276px;">
+						<!---->
+						<div class="el-card__body">
+							<div class="list-component bullet-list">
+								<div class="list-component-header">
+									<div>
+										<div class="common-header">
+											<span class="title">养生保健</span><a href="/yangshengbaojian/" class="more" target="_blank">更多</a></div>
+									</div>
+								</div>
+								<div class="el-row list-component-content">
+	<div class="list-item">
+										<div class="list-item-main">
+												<a href="/yangshengbaojian/1275335.html" class="bullet-item ellipsis">你真的会洗脸吗 洗脸最容易犯9个错</a>
+										</div>
+									</div>
+	<div class="list-item">
+										<div class="list-item-main">
+												<a href="/yangshengbaojian/1275334.html" class="bullet-item ellipsis">没胃口多吃酸 山楂醋酸奶西红柿都能开胃</a>
+										</div>
+									</div>
+	<div class="list-item">
+										<div class="list-item-main">
+												<a href="/yangshengbaojian/1275333.html" class="bullet-item ellipsis">人体每天要喝8杯水你信吗</a>
+										</div>
+									</div>
+	<div class="list-item">
+										<div class="list-item-main">
+												<a href="/yangshengbaojian/1275332.html" class="bullet-item ellipsis">生活里的养生常识</a>
+										</div>
+									</div>
+	<div class="list-item">
+										<div class="list-item-main">
+												<a href="/yangshengbaojian/1275331.html" class="bullet-item ellipsis">常用春季养生常识 做到这些保健康</a>
+										</div>
+									</div>
+	<div class="list-item">
+										<div class="list-item-main">
+												<a href="/yangshengbaojian/1275330.html" class="bullet-item ellipsis">身体这处别乱按可能出人命</a>
+										</div>
+									</div>
+	<div class="list-item">
+										<div class="list-item-main">
+												<a href="/yangshengbaojian/1275329.html" class="bullet-item ellipsis">身体这处青筋暴起竟说明肝坏了</a>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="el-col el-col-8" style="padding-left: 10px; padding-right: 10px;">
+					<div class="el-card is-never-shadow" style="height: 276px;">
+						<!---->
+						<div class="el-card__body">
+							<div class="list-component bullet-list">
+								<div class="list-component-header">
+									<div>
+										<div class="common-header">
+											<span class="title">减肥瘦身</span><a href="/jianfeishoushen/" class="more" target="_blank">更多</a></div>
+									</div>
+								</div>
+								<div class="el-row list-component-content">
+	<div class="list-item">
+										<div class="list-item-main">
+												<a href="/jianfeishoushen/476652.html" class="bullet-item ellipsis">怎么吃可以快速瘦身，甩掉肉肉</a>
+										</div>
+									</div>
+	<div class="list-item">
+										<div class="list-item-main">
+												<a href="/jianfeishoushen/473766.html" class="bullet-item ellipsis">按摩点穴减肥那些适用人群</a>
+										</div>
+									</div>
+	<div class="list-item">
+										<div class="list-item-main">
+												<a href="/jianfeishoushen/473793.html" class="bullet-item ellipsis">冬天怎样健康减肥 记住这6招拥有小蛮腰</a>
+										</div>
+									</div>
+	<div class="list-item">
+										<div class="list-item-main">
+												<a href="/jianfeishoushen/481680.html" class="bullet-item ellipsis">减肥，男人如何摆脱啤酒肚带来肥胖</a>
+										</div>
+									</div>
+	<div class="list-item">
+										<div class="list-item-main">
+												<a href="/jianfeishoushen/481893.html" class="bullet-item ellipsis">虐腹行动开始！睡前5分钟腹肌练出来</a>
+										</div>
+									</div>
+	<div class="list-item">
+										<div class="list-item-main">
+												<a href="/jianfeishoushen/481833.html" class="bullet-item ellipsis">手臂粗怎么办？ 五个动作帮你瘦手臂</a>
+										</div>
+									</div>
+	<div class="list-item">
+										<div class="list-item-main">
+												<a href="/jianfeishoushen/481935.html" class="bullet-item ellipsis">卧室健身 在卧室内也能甩掉一身肥肉</a>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="el-col el-col-8" style="padding-left: 10px; padding-right: 10px;">
+					<div class="image-container" style="height: auto; width: auto; border-radius: 0px;">
+						<div class="el-image" style="height: auto; width: auto; border-radius: 0px;">
+							<img src="/img/illness-bottom.png" class="el-image__inner"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</main><script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<footer class="el-footer" style="height:60px;">
+		<div class="global-footer">
+			<a href="/" target="_blank" class="nuxt-link-exact-active nuxt-link-active">
+			用户协议</a><a href="/" target="_blank" class="nuxt-link-exact-active nuxt-link-active">编辑规则</a><a href="/" target="_blank" class="nuxt-link-exact-active nuxt-link-active">帮助与反馈</a><a href="/map/" target="_blank">网站地图</a></div>
+		<div class="site-info">
+			声明：本站信息仅供参考不能作为诊断及医疗的依据如有转载或引用文章涉及版权问题请速与我们联系 <br />
+			网友、医生言论仅代表其个人观点，不代表本站同意其说法，本站不承担由此引起的法律责任 <br />
+			微医提供平台支持 Copyright 2011-2019 版权所有。 浙ICP备15034772号-2 </div>
+		</footer> 
+		</div>
+</div>
+
+
+</body>
+
+</html>

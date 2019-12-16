@@ -101,7 +101,6 @@
         /// <param name="name">The name of the template.</param>
         public void Compile(string razorTemplate, Type modelType, string name,bool flag)
         {
-            
             //需重新加载或内存中没有加载程序集时
             if (flag || !_cache.ContainsKey(name)) { 
 
@@ -318,7 +317,6 @@
         [Pure]
         public virtual Type CreateTemplateType(string razorTemplate, Type modelType,string name,bool flag)
         {
-
             var key = Common.StrToMD5(name);
             string className = "C" + key;
             var assemblyPath =_config.CatchPath + className + ".dll";
@@ -336,6 +334,7 @@
                 catch (Exception ex)
                 {
                     File.Delete(assemblyPath);
+                    
                     //Assembly.LoadFile()
                 }
             }else
@@ -361,6 +360,7 @@
             service.Debug = _config.Debug;
             service.CodeInspectors = _config.CodeInspectors ?? Enumerable.Empty<ICodeInspector>();
             service.CatchPath = _config.CatchPath;
+            service.BaseNamespaces = _config.BaseNamespaces;
             return service.GetCompileType(context, name);
             var result = service.CompileType2(context,name);
             _assemblies.Add(result.Item2);
@@ -1029,14 +1029,14 @@
             CachedTemplateItem item;
             if (!(_cache.TryGetValue(name, out item)))
                 throw new InvalidOperationException("No template exists with name '" + name + "'");
-            
-    //        IFormatter formatter = new BinaryFormatter();
-    //        string file = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(name, "MD5").ToLower();
-    //        Stream stream2 = new FileStream(_config.CatchPath +file+ ".c", FileMode.Open,
-    //FileAccess.Read, FileShare.None);
 
-    //         item = (CachedTemplateItem)formatter.Deserialize(stream2);
-    //        stream2.Close();
+            //        IFormatter formatter = new BinaryFormatter();
+            //        string file = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(name, "MD5").ToLower();
+            //        Stream stream2 = new FileStream(_config.CatchPath +file+ ".c", FileMode.Open,
+            //FileAccess.Read, FileShare.None);
+
+            //         item = (CachedTemplateItem)formatter.Deserialize(stream2);
+            //        stream2.Close();
             var template = CreateTemplate(item.TemplateType, model);
             return template.Run(new ExecuteContext());
         }

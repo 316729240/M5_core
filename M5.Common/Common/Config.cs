@@ -14,6 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
+using Microsoft.CodeAnalysis;
 
 namespace M5.Common
 {
@@ -41,6 +42,8 @@ namespace M5.Common
         public static int AddDataCounter = 0;//随机计数器
         public static int CacheDirType = 0;//0数据目录缓存结构  1随即目录缓存结构
         public static int SqlVersion = 0;//数据库版本
+
+        public static MetadataReference[] BaseNamespaces = null;
     }
     public class BaseConfig
     {

@@ -6,6 +6,7 @@
     using Compilation;
     using Compilation.Inspectors;
     using Templating;
+    using Microsoft.CodeAnalysis;
     using Text;
 
     /// <summary>
@@ -14,6 +15,7 @@
     public class TemplateServiceConfiguration : ITemplateServiceConfiguration
     {
         public string CatchPath { get; set; }
+        public MetadataReference [] BaseNamespaces { get; set; }
         #region Constructor
         /// <summary>
         /// Initialises a new instance of <see cref="TemplateServiceConfiguration"/>.

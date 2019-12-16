@@ -50,42 +50,35 @@
             _codeDomProvider = codeDomProvider;
         }
         #endregion
-
         private byte[] CompileByte(string originalClassName, string originalText)
         {
-            GC.Collect();
+            Console.WriteLine(assemblieslist);
+            if (assemblieslist == null)
+            {
+
+                string replstr = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "file:///" : "file://";
+                var assemblies = CompilerServicesUtility
+                    .GetLoadedAssemblies()
+                    .Where(a => !a.IsDynamic && File.Exists(a.CodeBase.Replace(replstr, "")))
+                    .Select(a => (a.CodeBase.Replace(replstr, "")));
+
+                int c = assemblies.Count();
+
+                assemblieslist = new MetadataReference[c];
+
+                int i = 0;
+                foreach (string item in assemblies)
+                {
+                    assemblieslist[i] = (MetadataReference.CreateFromFile(item));
+                    i++;
+                }
+
+
+            }
             CSharpCompilation compilation = null;
             var syntaxTree = CSharpSyntaxTree.ParseText(originalText);
             // 指定编译选项。
             var assemblyName = $"{originalClassName}.g";
-            if (assemblieslist == null) {
-            //try
-            //{
-            string replstr = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "file:///" : "file://";
-            var assemblies = CompilerServicesUtility
-                .GetLoadedAssemblies()
-                .Where(a => !a.IsDynamic && File.Exists(a.CodeBase.Replace(replstr, "")))
-                .Select(a => (a.CodeBase.Replace(replstr, "")));
-            /*var assemblies = CompilerServicesUtility
-                    .GetLoadedAssemblies()
-                    .Where(a => !a.IsDynamic && File.Exists(a.Location))
-                    .Select(a => a.Location);*/
-
-            /*   var includeAssemblies = (IncludeAssemblies() ?? Enumerable.Empty<string>());
-               assemblies = assemblies.Concat(includeAssemblies)
-                   .Select(a => a.ToUpperInvariant())
-                   .Where(a => !string.IsNullOrWhiteSpace(a) )
-                   .Distinct();*/
-            int c = assemblies.Count();
-            //  MetadataReference[] list = new MetadataReference[c];
-            assemblieslist = new MetadataReference[c];
-            int i = 0;
-            foreach (string item in assemblies)
-            {
-                assemblieslist[i] = (MetadataReference.CreateFromFile(item));
-                i++;
-            }
-            }
             compilation = CSharpCompilation.Create(assemblyName, new[] { syntaxTree },
                    options: new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary))
                .AddReferences(

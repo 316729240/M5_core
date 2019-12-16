@@ -6,6 +6,7 @@
 
     using Compilation;
     using Compilation.Inspectors;
+    using Microsoft.CodeAnalysis;
     using Templating;
     using Text;
 
@@ -15,6 +16,7 @@
     public class FluentTemplateServiceConfiguration : ITemplateServiceConfiguration
     {
         public string CatchPath { get; set; }
+        public MetadataReference[] BaseNamespaces { get; set; }
         #region Fields
         private readonly TemplateServiceConfiguration _innerConfig = new TemplateServiceConfiguration();
         #endregion

@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using M5.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using MWMS.Helper;
 using MWMS.SqlHelper;
 using MySql.Data.MySqlClient;
 using RazorEngine;
+using RazorEngine.Compilation;
 using RazorEngine.Configuration;
 using RazorEngine.Templating;
+using MWMS.Helper;
 
 namespace M5.Main
 {
@@ -67,67 +71,41 @@ namespace M5.Main
             {
                 // WebService.HttpContext = context;
                 //await 
+
                 service.BeginRequest(context);
             });
         }
-        public static   void MWMS_Init()
+        static   void MWMS_Init()
         {
             Sql.connectionString = @"server="+ ConfigurationManager.AppSettings["ServerIP"]
                 + ";uid=" + ConfigurationManager.AppSettings["Username"] 
                 + ";pwd=" + ConfigurationManager.AppSettings["Password"]
                 + ";database=" + ConfigurationManager.AppSettings["DataBaseName"]
-                + ";min pool size=100;max pool size=500;connect timeout = 20;pooling=true;";
-            /*
-            TemplateServiceConfiguration templateConfig = new TemplateServiceConfiguration
-            {
-                CatchPath = Tools.MapPath(@"/cache/"),// Tools.MapPath("assembly/"),
-                Namespaces = new HashSet<string>
-                             {
-                                 "System",
-                                 "MWMS",
-                                 "MWMS.Helper",
-                                 "System.Collections.Generic",
-                                 "System.Linq"
-                             }
-            };
-            Razor.SetTemplateService(new TemplateService(templateConfig));
-            RazorEngine.Razor.Compile("kkkkkak@{Raw(\"1111\");}kkkak", typeof(object[]), "test1", true);
-            string html = RazorEngine.Razor.Run("test1", new object[] { "","" });
-            context.Response.WriteAsync( html);*/
-            /*
-            UrlMapping u1 = new UrlMapping();
-            u1.Path = "2222";
-            Uri url = new Uri(context.Request.Scheme+"://"+context.Request.Host+context.Request.Path);
-            WebUri u = new WebUri()
-            {
-                MainMobileUrl="",
-            };
-            u.AddMapping(new UrlMapping()
-            {
-                Path = "/acf/",
-                PcDomain = "/pc2/",
-                MobileDomain = "/m/"
-            });
-            u.AddMapping(new UrlMapping() {
-                    Path="/",
-                    PcDomain="/",
-                    MobileDomain="/m/"
-            });
-            u.AddMapping(new UrlMapping()
-            {
-                Path = "mwms",
-                PcDomain = "www.mwms4.com",
-                MobileDomain = "m.mwms4.com"
-            });
-            RequestUrl requestUrl =u.Build(url, context.Request.Headers["User-Agent"]);
-            if(requestUrl.IsMobileBrowser && !requestUrl.IsMobileUrl)
-            {
-                //跳转至手机地址
-            } */
-            // context.Response.WriteAsync("");
-            //  context.Response.Clear
-            // SystemData.HttpContext.Response.WriteAsync
+                + ";min pool size=10;max pool size=100;connect timeout = 20;pooling=true;";
+            Razor.SetTemplateService(MWMS.Template.BuildCode.TemplateService);
+            RazorEngine.Razor.Compile("1", typeof(object[]),"_init_temp_code", true);
+          // LoadMetadataReference();
+        }
+        static void LoadMetadataReference()
+        {
+            Tools.MapPath("");
+            Tools.GetId();
+            string replstr = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "file:///" : "file://";
+            var assemblies = CompilerServicesUtility
+                .GetLoadedAssemblies()
+                .Where(a => !a.IsDynamic && File.Exists(a.CodeBase.Replace(replstr, "")))
+                .Select(a => (a.CodeBase.Replace(replstr, "")));
 
+            int c = assemblies.Count();
+
+            Constant.BaseNamespaces = new MetadataReference[c];
+
+            int i = 0;
+            foreach (string item in assemblies)
+            {
+                Constant.BaseNamespaces[i] = (MetadataReference.CreateFromFile(item));
+                i++;
+            }
         }
     }
 

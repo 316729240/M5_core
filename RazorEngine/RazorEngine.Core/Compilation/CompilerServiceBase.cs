@@ -11,6 +11,8 @@
     using System.Web.Razor.Generator;
     using System.Web.Razor.Parser;
 
+    using Microsoft.CodeAnalysis;
+    using Microsoft.CodeAnalysis.CSharp;
     using Inspectors;
     using Templating;
 
@@ -20,6 +22,7 @@
     public abstract class CompilerServiceBase : MarshalByRefObject, ICompilerService
     {
         public string CatchPath { get; set; }
+        public MetadataReference[] BaseNamespaces { get; set; }
         #region Constructor
         /// <summary>
         /// Initialises a new instance of <see cref="CompilerServiceBase"/>
